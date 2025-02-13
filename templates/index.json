@@ -29,10 +29,38 @@
         "show_text_below": true
       }
     },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "stealing-flowers",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
     "custom_liquid_m3pc7t": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"animated-container\">\n  <h2 class=\"animated-text\">Promoção Especial! 🚀</h2>\n  <img class=\"moving-image\" src=\"{{ 'exemplo.png' | asset_url }}\" alt=\"Imagem animada\">\n</div>\n\n<style>\n  .animated-container {\n    text-align: center;\n    padding: 20px;\n    position: relative;\n  }\n\n  .animated-text {\n    font-size: 24px;\n    font-weight: bold;\n    animation: fadeIn 2s ease-in-out infinite alternate;\n  }\n\n  @keyframes fadeIn {\n    0% { opacity: 0.5; transform: scale(1); }\n    100% { opacity: 1; transform: scale(1.1); }\n  }\n\n  .moving-image {\n    width: 200px;\n    height: auto;\n    animation: float 4s ease-in-out infinite;\n  }\n\n  @keyframes float {\n    0%, 100% { transform: translateY(0); }\n    50% { transform: translateY(-10px); }\n  }\n</style>",
+        "custom_liquid": "<div class=\"animated-container\">\n  <h2 class=\"animated-text\">Journal</h2>\n  <img class=\"moving-image\" src=\"{{ 'jornal.png' | asset_url }}\" alt=\"Jornal\">\n</div>\n\n<style>\n  .animated-container {\n    text-align: center;\n    padding: 20px;\n    position: relative;\n  }\n\n  .animated-text {\n    font-size: 24px;\n    font-weight: bold;\n    animation: fadeIn 2s ease-in-out infinite alternate;\n  }\n\n  @keyframes fadeIn {\n    0% { opacity: 0.5; transform: scale(1); }\n    100% { opacity: 1; transform: scale(1.1); }\n  }\n\n  .moving-image {\n    width: 200px;\n    height: auto;\n    animation: float 4s ease-in-out infinite;\n  }\n\n  @keyframes float {\n    0%, 100% { transform: translateY(0); }\n    50% { transform: translateY(-10px); }\n  }\n</style>",
         "color_scheme": "background-2",
         "padding_top": 40,
         "padding_bottom": 52
@@ -74,34 +102,6 @@
         "image_behavior": "none",
         "show_text_below": true,
         "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "stealing-flowers",
-        "products_to_show": 5,
-        "columns_desktop": 5,
-        "full_width": true,
-        "show_view_all": true,
-        "view_all_style": "link",
-        "enable_desktop_slider": true,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
       }
     },
     "featured_collection_cC38QC": {
