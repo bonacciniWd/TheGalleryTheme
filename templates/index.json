@@ -9,20 +9,6 @@
  */
 {
   "sections": {
-    "video_dPJM3R": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "heading_size": "h2",
-        "enable_video_looping": false,
-        "video_url": "https://www.youtube.com/watch?v=Sl162tkFwto",
-        "description": "",
-        "full_width": true,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "image_banner_zyji7q": {
       "type": "image-banner",
       "settings": {
@@ -404,7 +390,6 @@
     }
   },
   "order": [
-    "video_dPJM3R",
     "image_banner_zyji7q",
     "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "featured_collection",
