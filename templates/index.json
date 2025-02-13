@@ -12,8 +12,8 @@
     "image_banner_zyji7q": {
       "type": "image-banner",
       "custom_css": [
-        ".banner__media {width: 100%; height: 90vh; object-fit: cover; }",
-        "@media (max-width: 768px) {.banner__media {animation: zoomInOut 8s ease-in-out infinite; }}"
+        ".banner__media {width: 100%; height: 90vh; object-fit: cover;}",
+        "@media (max-width: 768px) {.banner__media {animation: zoomInOut 25s ease-in-out infinite; }}"
       ],
       "settings": {
         "image": "shopify://shop_images/THUMBS_BACKGROUND.jpg",
@@ -23,10 +23,19 @@
         "show_text_box": true,
         "desktop_content_alignment": "center",
         "color_scheme": "",
-        "image_behavior": "none",
+        "image_behavior": "fixed",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
+      }
+    },
+    "custom_liquid_m3pc7t": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"animated-container\">\n  <h2 class=\"animated-text\">Promoção Especial! 🚀</h2>\n  <img class=\"moving-image\" src=\"{{ 'exemplo.png' | asset_url }}\" alt=\"Imagem animada\">\n</div>\n\n<style>\n  .animated-container {\n    text-align: center;\n    padding: 20px;\n    position: relative;\n  }\n\n  .animated-text {\n    font-size: 24px;\n    font-weight: bold;\n    animation: fadeIn 2s ease-in-out infinite alternate;\n  }\n\n  @keyframes fadeIn {\n    0% { opacity: 0.5; transform: scale(1); }\n    100% { opacity: 1; transform: scale(1.1); }\n  }\n\n  .moving-image {\n    width: 200px;\n    height: auto;\n    animation: float 4s ease-in-out infinite;\n  }\n\n  @keyframes float {\n    0%, 100% { transform: translateY(0); }\n    50% { transform: translateY(-10px); }\n  }\n</style>",
+        "color_scheme": "background-2",
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
@@ -34,6 +43,7 @@
       "blocks": {
         "slide_8GWdMD": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/1029476.jpg",
             "heading": "",
@@ -395,8 +405,9 @@
   },
   "order": [
     "image_banner_zyji7q",
-    "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "featured_collection",
+    "custom_liquid_m3pc7t",
+    "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "featured_collection_cC38QC",
     "13e37e11-4abd-406f-b842-920e2a8de5d5",
     "f3451d88-a8db-4a3d-9b28-deb9729cd7ac",
