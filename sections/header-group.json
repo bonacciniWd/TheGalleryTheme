@@ -1,1 +1,84 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"d4709907-66e5-4fee-a7e7-b82cfafe8c77":{"type":"announcement","settings":{"text":"ID not found.","link":""}}},"block_order":["d4709907-66e5-4fee-a7e7-b82cfafe8c77"],"settings":{"color_scheme":"accent-1","show_line_separator":false,"show_social":false,"auto_rotate":true,"change_slides_speed":3,"enable_country_selector":false,"enable_language_selector":false}},"header":{"type":"header","settings":{"logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"drawer","sticky_header_type":"on-scroll-up","show_line_separator":true,"color_scheme":"accent-1","menu_color_scheme":"accent-1","enable_country_selector":true,"enable_language_selector":true,"mobile_logo_position":"center","margin_bottom":0,"padding_top":20,"padding_bottom":20}},"1702556271eaf9b50c":{"type":"apps","settings":{"include_margins":true}},"custom_liquid_PghtBW":{"type":"custom-liquid","disabled":true,"custom_css":[],"settings":{"custom_liquid":"<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Banner do Site<\/title>\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n            text-align: center;\n            font-family: Arial, sans-serif;\n        }\n        .banner {\n            width: 100%;\n            height: 300px;\n            background: url('https:\/\/drive.google.com\/uc?id=1aAV-lFC9Lg2pcc1pUblFl1fCzawXvu6-') no-repeat center center;\n            background-size: cover;\n        }\n        .banner-text {\n            position: relative;\n            top: 50%;\n            transform: translateY(-50%);\n            color: white;\n            font-size: 24px;\n            font-weight: bold;\n            background: rgba(0, 0, 0, 0.5);\n            padding: 10px;\n            display: inline-block;\n            border-radius: 10px;\n        }\n    <\/style>\n<\/head>\n<body>\n    <div class=\"banner\">\n        <div class=\"banner-text\">Bem-vindo ao nosso site!<\/div>\n    <\/div>\n<\/body>\n<\/html>","color_scheme":"","padding_top":40,"padding_bottom":52}}},"order":["announcement-bar","header","1702556271eaf9b50c","custom_liquid_PghtBW"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "d4709907-66e5-4fee-a7e7-b82cfafe8c77": {
+          "type": "announcement",
+          "settings": {
+            "text": "ID not found.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "d4709907-66e5-4fee-a7e7-b82cfafe8c77"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "show_line_separator": false,
+        "show_social": false,
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        "header {position: fixed; min-width: 80%; margin: 15px; background-color: #0a0a0aba; border-radius: 50px;}"
+      ],
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "drawer",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "accent-1",
+        "menu_color_scheme": "accent-1",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "enable_customer_avatar": true,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "1702556271eaf9b50c": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "custom_liquid_PghtBW": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Banner do Site</title>\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n            text-align: center;\n            font-family: Arial, sans-serif;\n        }\n        .banner {\n            width: 100%;\n            height: 300px;\n            background: url('https://drive.google.com/uc?id=1aAV-lFC9Lg2pcc1pUblFl1fCzawXvu6-') no-repeat center center;\n            background-size: cover;\n        }\n        .banner-text {\n            position: relative;\n            top: 50%;\n            transform: translateY(-50%);\n            color: white;\n            font-size: 24px;\n            font-weight: bold;\n            background: rgba(0, 0, 0, 0.5);\n            padding: 10px;\n            display: inline-block;\n            border-radius: 10px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"banner\">\n        <div class=\"banner-text\">Bem-vindo ao nosso site!</div>\n    </div>\n</body>\n</html>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "1702556271eaf9b50c",
+    "custom_liquid_PghtBW"
+  ]
+}

@@ -1,1 +1,418 @@
-{"sections":{"image_banner_zyji7q":{"type":"image-banner","settings":{"image":"shopify:\/\/shop_images\/THUMBS_BACKGROUND.jpg","image_overlay_opacity":0,"image_height":"adapt","desktop_content_position":"middle-center","show_text_box":true,"desktop_content_alignment":"center","color_scheme":"","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":true,"show_text_below":true}},"966fe78b-5060-4ad6-88e7-9fe770c14d98":{"type":"slideshow","blocks":{"slide_8GWdMD":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1029476.jpg","heading":"","heading_size":"h1","subheading":"","button_label":"","link":"","button_style_secondary":false,"box_align":"top-left","show_text_box":false,"text_alignment":"center","image_overlay_opacity":0,"color_scheme":"background-1","text_alignment_mobile":"center"}}},"block_order":["slide_8GWdMD"],"disabled":true,"settings":{"layout":"full_bleed","slide_height":"large","slider_visual":"dots","auto_rotate":true,"change_slides_speed":3,"image_behavior":"none","show_text_below":true,"accessibility_info":"Slideshow about our brand"}},"featured_collection":{"type":"featured-collection","settings":{"title":"","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"stealing-flowers","products_to_show":5,"columns_desktop":5,"full_width":true,"show_view_all":true,"view_all_style":"link","enable_desktop_slider":true,"color_scheme":"background-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"1","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}},"featured_collection_cC38QC":{"type":"featured-collection","settings":{"title":"","heading_size":"h2","description":"","show_description":true,"description_style":"body","collection":"fine-art","products_to_show":5,"columns_desktop":5,"full_width":true,"show_view_all":true,"view_all_style":"link","enable_desktop_slider":true,"color_scheme":"background-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}},"13e37e11-4abd-406f-b842-920e2a8de5d5":{"type":"collection-list","blocks":{"template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-1":{"type":"featured_collection","settings":{"collection":"masculino"}},"template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2":{"type":"featured_collection","settings":{"collection":"feminino"}}},"block_order":["template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-1","template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2"],"custom_css":[".media media--transparent media--hover-effect {width: 200px; height: 200px;}"],"settings":{"title":"Navegue por categorias","heading_size":"h2","image_ratio":"square","columns_desktop":2,"color_scheme":"","show_view_all":false,"columns_mobile":"1","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}},"f3451d88-a8db-4a3d-9b28-deb9729cd7ac":{"type":"multicolumn","blocks":{"template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-1":{"type":"column","settings":{"title":"Slow fashion movement","text":"<h5>Descaleramos em prol do planeta Terra e de todos que aqueles que fazem parte da nossa sociedade.<\/h5>","link_label":"","link":""}},"template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-2":{"type":"column","settings":{"title":"Art is our kind of thing","text":"<h5>Vestimos arte , criamos movimento.<\/h5>","link_label":"","link":""}},"template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-3":{"type":"column","settings":{"title":"In people we trust","text":"<h5>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.<\/h5>","link_label":"","link":""}}},"block_order":["template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-1","template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-2","template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-3"],"settings":{"title":"","heading_size":"h1","image_width":"full","image_ratio":"adapt","columns_desktop":3,"column_alignment":"center","background_style":"none","button_label":"","button_link":"","color_scheme":"background-1","columns_mobile":"1","swipe_on_mobile":false,"padding_top":100,"padding_bottom":32}},"65dc89e4-1148-46e1-9752-a54509740fe3":{"type":"multirow","blocks":{"template--20798371594556__65dc89e4-1148-46e1-9752-a54509740fe3-row-1":{"type":"row","settings":{"image":"shopify:\/\/shop_images\/A7R4656.jpg","caption":"","heading":"Criamos juntos","text":"<h5>A thegallery é uma marca atemporal que nasceu do amor pela arte e tem a expressão artística como essência. Essa é a nossa arte: te ajudar a criar o mundo em que você quer viver, te ajudar a expressar toda a sua essência.<\/h5><p><\/p><h5><a href=\"\/pages\/sobre\" title=\"Sobre\">Saiba mais<\/a><\/h5>","button_label":"","button_link":""}}},"block_order":["template--20798371594556__65dc89e4-1148-46e1-9752-a54509740fe3-row-1"],"settings":{"image_height":"small","desktop_image_width":"medium","heading_size":"h2","text_style":"body","button_style":"secondary","desktop_content_position":"middle","desktop_content_alignment":"left","image_layout":"alternate-left","section_color_scheme":"background-1","row_color_scheme":"background-1","mobile_content_alignment":"left","padding_top":52,"padding_bottom":44}},"24d2df80-6b1b-402d-a4e1-e896121ee23f":{"type":"multicolumn","blocks":{"template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-1":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/thegallery-Jul2023-IconesEcommerce-DescontoPrimeiraCompra.svg","title":"10% OFF primeira compra","text":"<h5>Economize 10% de desconto para deixar seu guarda roupa mais elegante.<\/h5>","link_label":"","link":""}},"template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-2":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/thegallery-Jul2023-IconesEcommerce-Frete.svg","title":"Frete grátis","text":"<h5>Em compras acima de R$ 399, a entrega fica por nossa conta<\/h5>","link_label":"","link":""}},"template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-3":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/thegallery-Jul2023-IconesEcommerce_Troca.svg","title":"Troca fácil","text":"<h5>07 dias para trocar ou devolver, facinho e agilizado<\/h5>","link_label":"","link":""}},"5eff8e35-e4c2-4fa8-8255-5820b0b4fdc5":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/Grudz-Jun2023-IconesSite_AtendimentoWhite.svg","title":"Atendimento agilizado","text":"<h5>Soluções de dúvidas de forma agilizada e pessoal<\/h5>","link_label":"","link":""}}},"block_order":["template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-1","template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-2","template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-3","5eff8e35-e4c2-4fa8-8255-5820b0b4fdc5"],"disabled":true,"settings":{"title":"","heading_size":"h1","image_width":"third","image_ratio":"adapt","columns_desktop":4,"column_alignment":"center","background_style":"none","button_label":"","button_link":"","color_scheme":"background-1","columns_mobile":"1","swipe_on_mobile":false,"padding_top":56,"padding_bottom":56}},"2fceb7f8-6f12-442d-8691-10f8d317cab3":{"type":"multicolumn","blocks":{"template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-1":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/30810_-_4203_-_Ilford_HP5_400_ALTA_-_Marco_Aurelio_Hartes_-24.jpg","title":"","text":"","link_label":"","link":""}},"template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-2":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/lambe-lambe_touca.jpg","title":"","text":"","link_label":"","link":""}},"template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-3":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/LOGO_T_LAMBE_LAMBE.jpg","title":"","text":"","link_label":"","link":""}},"c1d685e5-a512-4d13-b3af-ff69704c77ee":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/A7R8140.jpg","title":"","text":"","link_label":"","link":""}},"3228fe17-208c-4371-9aa0-79000fd8ddcf":{"type":"column","settings":{"image":"shopify:\/\/shop_images\/movement_lambe-lambe.jpg","title":"","text":"","link_label":"","link":""}}},"block_order":["template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-1","template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-2","template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-3","c1d685e5-a512-4d13-b3af-ff69704c77ee","3228fe17-208c-4371-9aa0-79000fd8ddcf"],"custom_css":[],"settings":{"title":"","heading_size":"h1","image_width":"full","image_ratio":"portrait","columns_desktop":5,"column_alignment":"center","background_style":"none","button_label":"","button_link":"","color_scheme":"inverse","columns_mobile":"2","swipe_on_mobile":false,"padding_top":100,"padding_bottom":100}}},"order":["image_banner_zyji7q","966fe78b-5060-4ad6-88e7-9fe770c14d98","featured_collection","featured_collection_cC38QC","13e37e11-4abd-406f-b842-920e2a8de5d5","f3451d88-a8db-4a3d-9b28-deb9729cd7ac","65dc89e4-1148-46e1-9752-a54509740fe3","24d2df80-6b1b-402d-a4e1-e896121ee23f","2fceb7f8-6f12-442d-8691-10f8d317cab3"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_dPJM3R": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=Sl162tkFwto",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_zyji7q": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify://shop_images/THUMBS_BACKGROUND.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_8GWdMD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1029476.jpg",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "top-left",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_8GWdMD"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "large",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "stealing-flowers",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_cC38QC": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "fine-art",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "13e37e11-4abd-406f-b842-920e2a8de5d5": {
+      "type": "collection-list",
+      "blocks": {
+        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "masculino"
+          }
+        },
+        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "feminino"
+          }
+        }
+      },
+      "block_order": [
+        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-1",
+        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2"
+      ],
+      "custom_css": [
+        ".media media--transparent media--hover-effect {width: 200px; height: 200px;}"
+      ],
+      "settings": {
+        "title": "Navegue por categorias",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 2,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "f3451d88-a8db-4a3d-9b28-deb9729cd7ac": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "Slow fashion movement",
+            "text": "<h5>Descaleramos em prol do planeta Terra e de todos que aqueles que fazem parte da nossa sociedade.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "Art is our kind of thing",
+            "text": "<h5>Vestimos arte , criamos movimento.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "In people we trust",
+            "text": "<h5>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-1",
+        "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-2",
+        "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 32
+      }
+    },
+    "65dc89e4-1148-46e1-9752-a54509740fe3": {
+      "type": "multirow",
+      "blocks": {
+        "template--20798371594556__65dc89e4-1148-46e1-9752-a54509740fe3-row-1": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/A7R4656.jpg",
+            "caption": "",
+            "heading": "Criamos juntos",
+            "text": "<h5>A thegallery é uma marca atemporal que nasceu do amor pela arte e tem a expressão artística como essência. Essa é a nossa arte: te ajudar a criar o mundo em que você quer viver, te ajudar a expressar toda a sua essência.</h5><p></p><h5><a href=\"/pages/sobre\" title=\"Sobre\">Saiba mais</a></h5>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20798371594556__65dc89e4-1148-46e1-9752-a54509740fe3-row-1"
+      ],
+      "settings": {
+        "image_height": "small",
+        "desktop_image_width": "medium",
+        "heading_size": "h2",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "background-1",
+        "row_color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 52,
+        "padding_bottom": 44
+      }
+    },
+    "24d2df80-6b1b-402d-a4e1-e896121ee23f": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-DescontoPrimeiraCompra.svg",
+            "title": "10% OFF primeira compra",
+            "text": "<h5>Economize 10% de desconto para deixar seu guarda roupa mais elegante.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-Frete.svg",
+            "title": "Frete grátis",
+            "text": "<h5>Em compras acima de R$ 399, a entrega fica por nossa conta</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce_Troca.svg",
+            "title": "Troca fácil",
+            "text": "<h5>07 dias para trocar ou devolver, facinho e agilizado</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "5eff8e35-e4c2-4fa8-8255-5820b0b4fdc5": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Grudz-Jun2023-IconesSite_AtendimentoWhite.svg",
+            "title": "Atendimento agilizado",
+            "text": "<h5>Soluções de dúvidas de forma agilizada e pessoal</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-1",
+        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-2",
+        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-3",
+        "5eff8e35-e4c2-4fa8-8255-5820b0b4fdc5"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "2fceb7f8-6f12-442d-8691-10f8d317cab3": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/30810_-_4203_-_Ilford_HP5_400_ALTA_-_Marco_Aurelio_Hartes_-24.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/lambe-lambe_touca.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/LOGO_T_LAMBE_LAMBE.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c1d685e5-a512-4d13-b3af-ff69704c77ee": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/A7R8140.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "3228fe17-208c-4371-9aa0-79000fd8ddcf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/movement_lambe-lambe.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-1",
+        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-2",
+        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-3",
+        "c1d685e5-a512-4d13-b3af-ff69704c77ee",
+        "3228fe17-208c-4371-9aa0-79000fd8ddcf"
+      ],
+      "custom_css": [],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "portrait",
+        "columns_desktop": 5,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "inverse",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "video_dPJM3R",
+    "image_banner_zyji7q",
+    "966fe78b-5060-4ad6-88e7-9fe770c14d98",
+    "featured_collection",
+    "featured_collection_cC38QC",
+    "13e37e11-4abd-406f-b842-920e2a8de5d5",
+    "f3451d88-a8db-4a3d-9b28-deb9729cd7ac",
+    "65dc89e4-1148-46e1-9752-a54509740fe3",
+    "24d2df80-6b1b-402d-a4e1-e896121ee23f",
+    "2fceb7f8-6f12-442d-8691-10f8d317cab3"
+  ]
+}
