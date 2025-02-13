@@ -11,6 +11,10 @@
   "sections": {
     "image_banner_zyji7q": {
       "type": "image-banner",
+      "custom_css": [
+        ".banner__media {width: 100%; height: 90vh; object-fit: cover; }",
+        "@media (max-width: 768px) {.banner__media {animation: zoomInOut 8s ease-in-out infinite; }}"
+      ],
       "settings": {
         "image": "shopify://shop_images/THUMBS_BACKGROUND.jpg",
         "image_overlay_opacity": 0,
