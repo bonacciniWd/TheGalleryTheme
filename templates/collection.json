@@ -51,6 +51,9 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "custom_css": [
+        ".facets-container {margin-top: 15px;}"
+      ],
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
