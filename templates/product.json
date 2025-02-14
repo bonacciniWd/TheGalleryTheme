@@ -66,6 +66,9 @@
         "description",
         "share"
       ],
+      "custom_css": [
+        ".product {margin-top: 20px;}"
+      ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "",
