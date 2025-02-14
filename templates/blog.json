@@ -11,6 +11,9 @@
   "sections": {
     "main": {
       "type": "main-blog",
+      "custom_css": [
+        ".main-blog {margin-top: 50px;}"
+      ],
       "settings": {
         "layout": "collage",
         "show_image": true,
