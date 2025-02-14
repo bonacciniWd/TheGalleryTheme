@@ -52,7 +52,7 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "custom_css": [
-        ".facets-container {margin-top: 15px;}"
+        ".facets-container {margin-top: 25px;}"
       ],
       "settings": {
         "products_per_page": 16,
