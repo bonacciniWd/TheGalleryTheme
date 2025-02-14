@@ -12,7 +12,8 @@
     "main": {
       "type": "main-blog",
       "custom_css": [
-        ".main-blog {margin-top: 50px;}"
+        ".main-blog {margin-top: 50px;}",
+        ".card:not(.ratio) {display: flex; flex-direction: column; height: 100%; margin-bottom: 30px;}"
       ],
       "settings": {
         "layout": "collage",
