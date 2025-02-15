@@ -13,7 +13,7 @@
       "type": "image-banner",
       "custom_css": [
         ".banner__media {width: 100%; height: 100vh; object-fit: cover; overflow-x: hidden;}",
-        "@media (max-width: 768px) {.banner__media {animation: zoomInOut 25s ease-in-out infinite; }}"
+        "@media (max-width: 768px) {.banner__media {animation: zoomInOut 25s ease-in-out infinite; height: 70vh; }}"
       ],
       "settings": {
         "image": "shopify://shop_images/THUMBS_BACKGROUND.jpg",
