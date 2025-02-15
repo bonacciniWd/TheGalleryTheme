@@ -174,7 +174,6 @@
         "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/A7R2536.jpg",
             "title": "Slow fashion movement",
             "text": "<h5>Descaleramos em prol do planeta Terra e de todos que aqueles que fazem parte da nossa sociedade.</h5>",
             "link_label": "",
@@ -184,7 +183,6 @@
         "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/A7R2774.jpg",
             "title": "Art is our kind of thing",
             "text": "<h5>Vestimos arte , criamos movimento.</h5>",
             "link_label": "",
@@ -194,7 +192,6 @@
         "template--20798371594556__f3451d88-a8db-4a3d-9b28-deb9729cd7ac-column-3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/DSF1731.webp",
             "title": "In people we trust",
             "text": "<h5>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</h5>",
             "link_label": "",
