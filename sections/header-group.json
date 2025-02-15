@@ -40,8 +40,7 @@
     "header": {
       "type": "header",
       "custom_css": [
-        "header {position: fixed; width: 80%; left: 50%; transform: translateX(-50%); top: 15px; background-color: #0a0a0aba; border-radius: 50px; padding: 10px 20px;}",
-        "@media (max-width: 768px) {header {width: 90%; left: 3vh; transform: none; margin: 10px auto; }}"
+        "header {position: fixed; background-color: #0a0a0aba;}"
       ],
       "settings": {
         "logo_position": "middle-left",
