@@ -92,15 +92,6 @@
         "padding_bottom": 12
       }
     },
-    "custom_liquid_QjP7ag": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -265,7 +256,6 @@
   },
   "order": [
     "main",
-    "custom_liquid_QjP7ag",
     "related-products",
     "d18e6c27-f30f-497a-b1ae-44db37732bcd",
     "b9c39303-8e94-422e-ac11-06ab0a123c1d",
