@@ -12,7 +12,7 @@
     "banner": {
       "type": "main-collection-banner",
       "custom_css": [
-        ".collection-hero__title {display: none }"
+        ".collection-hero__title {display: none;}"
       ],
       "settings": {
         "show_collection_description": true,
@@ -41,6 +41,15 @@
         "columns_mobile": "2",
         "padding_top": 100,
         "padding_bottom": 36
+      }
+    },
+    "custom_liquid_qUddr8": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"custom-grid-section\">\n  <div class=\"custom-grid\">\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'icone1.svg' | asset_url }}\" alt=\"Ícone Slow Fashion\">\n      <h3>Slow fashion Movement</h3>\n      <p>Desaceleramos em prol do planeta Terra e de todos aqueles que fazem parte da nossa sociedade.</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'icone2.svg' | asset_url }}\" alt=\"Ícone Art\">\n      <h3>Art is our kind of thing</h3>\n      <p>Vestimos arte, criamos movimento.</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'icone3.svg' | asset_url }}\" alt=\"Ícone People\">\n      <h3>In People we trust</h3>\n      <p>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</p>\n    </div>\n  </div>\n</section>\n\n<style>\n.custom-grid-section {\n  background: url('{{ 'background.jpg' | asset_url }}') no-repeat center center;\n  background-size: cover;\n  padding: 50px 20px;\n}\n\n.custom-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 20px;\n  max-width: 1200px;\n  margin: auto;\n  text-align: center;\n}\n\n.custom-grid-item {\n  background: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */\n  padding: 20px;\n  border-radius: 10px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.custom-grid-item img {\n  width: 50px; /* Ajuste conforme necessário */\n  height: auto;\n  margin-bottom: 10px;\n}\n\n.custom-grid-item h3 {\n  font-size: 1.4rem;\n  font-weight: bold;\n  margin-bottom: 10px;\n}\n\n.custom-grid-item p {\n  font-size: 1rem;\n  color: #333;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "bff4db11-e873-4576-8ead-a864c906d75b": {
@@ -134,6 +143,7 @@
   "order": [
     "banner",
     "product-grid",
+    "custom_liquid_qUddr8",
     "bff4db11-e873-4576-8ead-a864c906d75b",
     "33d0b73f-cb88-47ef-ba87-a9183c7cb646"
   ]
