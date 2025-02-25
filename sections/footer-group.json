@@ -58,7 +58,7 @@
         "6d82cc96-5353-4a02-a976-ffec657e4e01": {
           "type": "link_list",
           "settings": {
-            "heading": "<strong>Fast Menu</strong>",
+            "heading": "",
             "menu": "main-menu"
           }
         },
@@ -66,8 +66,8 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/LOGO_T_LAMBE_LAMBE_430x_1_5e5f137d-9ea4-4d50-ac06-3b6b307ddd67.png",
-            "image_width": 120,
-            "alignment": "center"
+            "image_width": 50,
+            "alignment": "right"
           }
         },
         "dfef869b-edb7-48ea-954b-9a5e4f6e74f9": {
