@@ -1,1 +1,110 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"newsletter_HjNMEg":{"type":"newsletter","blocks":{"heading_eePnKK":{"type":"heading","settings":{"heading":"","heading_size":"h1"}},"paragraph_WXTGDe":{"type":"paragraph","settings":{"text":"<p>ID not found.<\/p>"}},"email_form_Wq6fUY":{"type":"email_form","settings":{}}},"block_order":["heading_eePnKK","paragraph_WXTGDe","email_form_Wq6fUY"],"settings":{"color_scheme":"accent-1","full_width":true,"padding_top":40,"padding_bottom":52}},"footer":{"type":"footer","blocks":{"e29101cd-6d16-4c69-a189-48c5f24cd40c":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/thegallery-Ago2023-LogotipoOficial_Seasalt_Prancheta_1.svg","image_width":190,"alignment":""}},"6d82cc96-5353-4a02-a976-ffec657e4e01":{"type":"link_list","settings":{"heading":"","menu":"main-menu"}},"e4f83e93-4bc9-413c-b778-2445f16bd54c":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/LOGO_T_LAMBE_LAMBE_430x_1_5e5f137d-9ea4-4d50-ac06-3b6b307ddd67.png","image_width":120,"alignment":"center"}},"dfef869b-edb7-48ea-954b-9a5e4f6e74f9":{"type":"text","settings":{"heading":"","subtext":"<h5><a href=\"https:\/\/www.instagram.com\/thegallerycorporation\/?hl=en\" title=\"https:\/\/www.instagram.com\/thegallerycorporation\/?hl=en\">Instagram \/ <\/a><a href=\"https:\/\/www.tiktok.com\/@thegallery.co?lang=pt-BR\" title=\"https:\/\/www.tiktok.com\/@thegallery.co?lang=pt-BR\">Tik Tok<\/a><\/h5><h5>All rights reserved. thegallery®<\/h5><h5>CNPJ: 42.670.996\/0001-92 - Cascavel - Paraná<\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5>"}}},"block_order":["e29101cd-6d16-4c69-a189-48c5f24cd40c","6d82cc96-5353-4a02-a976-ffec657e4e01","e4f83e93-4bc9-413c-b778-2445f16bd54c","dfef869b-edb7-48ea-954b-9a5e4f6e74f9"],"custom_css":[".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}"],"settings":{"color_scheme":"accent-1","newsletter_enable":false,"newsletter_heading":"Subscribe to our emails","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":true,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":0,"padding_top":36,"padding_bottom":36}}},"order":["newsletter_HjNMEg","footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "newsletter_HjNMEg": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_eePnKK": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_WXTGDe": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>ID not found.</p>"
+          }
+        },
+        "email_form_Wq6fUY": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_eePnKK",
+        "paragraph_WXTGDe",
+        "email_form_Wq6fUY"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "e29101cd-6d16-4c69-a189-48c5f24cd40c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/thegallery-Ago2023-LogotipoOficial_Seasalt_Prancheta_1.svg",
+            "image_width": 190,
+            "alignment": ""
+          }
+        },
+        "6d82cc96-5353-4a02-a976-ffec657e4e01": {
+          "type": "link_list",
+          "settings": {
+            "heading": "<strong>Fast Menu</strong>",
+            "menu": "main-menu"
+          }
+        },
+        "e4f83e93-4bc9-413c-b778-2445f16bd54c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LOGO_T_LAMBE_LAMBE_430x_1_5e5f137d-9ea4-4d50-ac06-3b6b307ddd67.png",
+            "image_width": 120,
+            "alignment": "center"
+          }
+        },
+        "dfef869b-edb7-48ea-954b-9a5e4f6e74f9": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "subtext": "<h5><a href=\"https://www.instagram.com/thegallerycorporation/?hl=en\" title=\"https://www.instagram.com/thegallerycorporation/?hl=en\">Instagram / </a><a href=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\" title=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\">Tik Tok</a></h5><h5>All rights reserved. thegallery®</h5><h5>CNPJ: 42.670.996/0001-92 - Cascavel - Paraná</h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5>"
+          }
+        }
+      },
+      "block_order": [
+        "e29101cd-6d16-4c69-a189-48c5f24cd40c",
+        "6d82cc96-5353-4a02-a976-ffec657e4e01",
+        "e4f83e93-4bc9-413c-b778-2445f16bd54c",
+        "dfef869b-edb7-48ea-954b-9a5e4f6e74f9"
+      ],
+      "custom_css": [
+        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}"
+      ],
+      "settings": {
+        "color_scheme": "accent-1",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "newsletter_HjNMEg",
+    "footer"
+  ]
+}
