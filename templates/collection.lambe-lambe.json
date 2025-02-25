@@ -1,0 +1,170 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_YkMyrx": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_btmnDD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Camisetas confeccionada em algodão, fio 30/1 penteado, malha premium beneficiada com tratamento que alivia torções e encolhimento, gola tradicional.</p><p>Peça certificada BCI (BETTER COTTON INITIATIVE)</p><ul><li>Tingimento ECO, feito através de uma pigmentação que tem insumos orgânicos em sua composição.</li><li>Processo econômico, reduzindo em 35% o tempo de tingimento e consumindo 57% menos água e 44% menos temperatura. Na composição do amaciante, é utilizado casca de arroz, que antes era descartada por agricultores locais. O desbotamento é uma característica deste tingimento.</li></ul>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "text_btmnDD"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/5_7b418bf1-b873-4f23-9535-6e03c633c697.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".facets-container {margin-top: 25px;}"
+      ],
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
+    },
+    "bff4db11-e873-4576-8ead-a864c906d75b": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-1": {
+          "type": "column",
+          "settings": {
+            "title": "Slow fashion movement",
+            "text": "<h5>Descaleramos em prol do planeta Terra e de todos que aqueles que fazem parte da nossa sociedade.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-2": {
+          "type": "column",
+          "settings": {
+            "title": "Art is our kind of thing",
+            "text": "<h5>Vestimos arte , criamos movimento.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-3": {
+          "type": "column",
+          "settings": {
+            "title": "In people we trust",
+            "text": "<h5>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-1",
+        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-2",
+        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 32
+      }
+    },
+    "33d0b73f-cb88-47ef-ba87-a9183c7cb646": {
+      "type": "multirow",
+      "blocks": {
+        "template--20798371463484__33d0b73f-cb88-47ef-ba87-a9183c7cb646-row-1": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/1029476_874555e2-d304-4f3d-96ba-d6cc416fff5b.jpg",
+            "caption": "",
+            "heading": "Criamos juntos",
+            "text": "<h5>A thegallery é uma marca atemporal que nasceu do amor pela arte e tem a expressão artística como essência. Essa é a nossa arte: te ajudar a criar o mundo em que você quer viver, te ajudar a expressar toda a sua essência.</h5><p></p><h5><a href=\"/pages/sobre\" title=\"Sobre\">Saiba mais</a></h5>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--20798371463484__33d0b73f-cb88-47ef-ba87-a9183c7cb646-row-1"
+      ],
+      "settings": {
+        "image_height": "small",
+        "desktop_image_width": "medium",
+        "heading_size": "h2",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "background-1",
+        "row_color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 52,
+        "padding_bottom": 44
+      }
+    }
+  },
+  "order": [
+    "image_with_text_YkMyrx",
+    "banner",
+    "product-grid",
+    "bff4db11-e873-4576-8ead-a864c906d75b",
+    "33d0b73f-cb88-47ef-ba87-a9183c7cb646"
+  ]
+}
