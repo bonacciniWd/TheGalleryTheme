@@ -11,12 +11,12 @@
   "sections": {
     "image_banner_zyji7q": {
       "type": "image-banner",
+      "disabled": true,
       "custom_css": [
         ".banner__media {width: 100%; height: auto; object-fit: cover; overflow-x: hidden;}",
         "@media (max-width: 768px) {.banner__media {height: 90vh; }}"
       ],
       "settings": {
-        "image": "shopify://shop_images/THUMBS_BACKGROUND.jpg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "middle-center",
@@ -27,175 +27,6 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
         "show_text_below": true
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "stealing-flowers",
-        "products_to_show": 5,
-        "columns_desktop": 5,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "link",
-        "enable_desktop_slider": true,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_8GWdMD": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/1029476.jpg",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "top-left",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slide_8GWdMD"
-      ],
-      "disabled": true,
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "large",
-        "slider_visual": "dots",
-        "auto_rotate": true,
-        "change_slides_speed": 3,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "rich_text_fPRxCP": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_w89WmF": {
-          "type": "heading",
-          "settings": {
-            "heading": "Lambe Lambe",
-            "heading_size": "h1"
-          }
-        },
-        "text_yH38Cw": {
-          "type": "text",
-          "settings": {
-            "text": "<p>\"Lambe-lambe: arte urbana que transforma espaços. Minimalismo, sofisticação e expressão em cada detalhe. Leve a atitude da thegallery.co para suas paredes.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_w89WmF",
-        "text_yH38Cw"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "custom_liquid_xbbLbQ": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{% assign lambe_products = collections['lambe-lambes'].products %}\n\n{% if lambe_products.size > 0 %}\n  <div class=\"lambe-highlight\">\n    \n    \n    <div class=\"lambe-scroll-container\">\n      <div class=\"lambe-scroll\">\n        {% for product in lambe_products %}\n          {% for image in product.images %}\n            <div class=\"lambe-item\">\n              <img src=\"{{ image | img_url: 'large' }}\" alt=\"{{ product.title }}\" class=\"lambe-image\">\n            </div>\n          {% endfor %}\n        {% endfor %}\n        {% for product in lambe_products %}\n          {% for image in product.images %}\n            <div class=\"lambe-item\">\n              <img src=\"{{ image | img_url: 'large' }}\" alt=\"{{ product.title }}\" class=\"lambe-image\">\n            </div>\n          {% endfor %}\n        {% endfor %}\n      </div>\n    </div>\n\n    <a href=\"{{ collections['lambe-lambes'].url }}\" class=\"lambe-button\">Ver coleção</a>\n\n    <!-- Camadas de Blur -->\n    <div class=\"blur-layer blur-layer1\"></div>\n    <div class=\"blur-layer blur-layer2\"></div>\n  </div>\n{% endif %}\n\n<style>\n  .lambe-highlight {\n    text-align: center;\n    background: url('{{ 'muro-textura.jpg' | asset_url }}') no-repeat center center;\n    background-size: cover;\n    padding: 80px 20px;\n    border-radius: 10px;\n    max-width: 1400px;\n    margin: 40px auto;\n    overflow: hidden;\n    position: relative;\n  }\n\n  /* Simulação do PointLight */\n  .lambe-highlight::before {\n    content: \"\";\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    width: 600px;\n    height: 600px;\n    background: radial-gradient(circle, rgba(255, 255, 200, 0.7) 0%, rgba(0, 0, 0, 0) 70%);\n    transform: translate(-50%, -50%);\n    filter: blur(80px);\n    opacity: 0.6;\n    pointer-events: none;\n  }\n\n  /* Blur Effect */\n  .blur-layer {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 150%;\n    height: 100%;\n    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, rgba(0, 0, 0, 0) 80%);\n    filter: blur(20px);\n    opacity: 0.4;\n    pointer-events: none;\n  }\n\n  .blur-layer1 {\n    animation: blurMove1 15s linear infinite alternate;\n  }\n\n  .blur-layer2 {\n    animation: blurMove2 25s linear infinite alternate-reverse;\n    opacity: 0.3;\n  }\n\n  @keyframes blurMove1 {\n    from {\n      transform: translateX(-10%) translateY(-5%);\n    }\n    to {\n      transform: translateX(10%) translateY(5%);\n    }\n  }\n\n  @keyframes blurMove2 {\n    from {\n      transform: translateX(5%) translateY(10%);\n    }\n    to {\n      transform: translateX(-5%) translateY(-10%);\n    }\n  }\n\n  .lambe-title {\n    font-size: 24px;\n    font-weight: bold;\n    margin-bottom: 30px;\n    color: #fff;\n    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);\n  }\n\n  .lambe-scroll-container {\n    width: 100%;\n    overflow: hidden;\n    position: relative;\n    white-space: nowrap;\n    padding: 20px 0;\n  }\n\n  .lambe-scroll {\n    display: flex;\n    gap: 40px;\n    animation: scrollProducts 25s linear infinite;\n    width: max-content;\n  }\n\n  .lambe-item {\n    flex: 0 0 auto;\n    width: 250px;\n  }\n\n  .lambe-image {\n    width: 100%;\n    height: auto;\n    border-radius: 10px;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n    transition: transform 0.3s ease-in-out;\n  }\n\n  .lambe-image:hover {\n    transform: scale(1.05);\n  }\n\n  @keyframes scrollProducts {\n    from {\n      transform: translateX(0);\n    }\n    to {\n      transform: translateX(-50%);\n    }\n  }\n\n .lambe-button {\n    display: inline-block;\n    color: #fff; /* Texto branco */\n    padding: 10px 25px;\n    font-size: 16px;\n    font-weight: bolder;\n    text-decoration: underline;\n    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8); /* Sombra preta no texto */\n    transition: text-shadow 0.3s ease-in-out;\n    background: none; /* Sem fundo */\n    border: none;\n    margin-top: 30px;\n}\n\n.lambe-button:hover {\n    text-shadow: 5px 5px 10px rgba(0, 0, 0, 1); /* Aumenta a sombra no hover */\n}\n\n  /* Ajustes para desktop */\n  @media (min-width: 1024px) {\n    .lambe-highlight {\n      padding: 100px 80px;\n    }\n\n    .lambe-title {\n  font-size: 24px;\n  font-weight: bold;\n  position: absolute;\n  top: 10px; /* Apenas 10px do topo */\n  left: 50%;\n  transform: translateX(-50%);\n  color: #fff;\n  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);\n}\n\n\n    .lambe-item {\n      width: 300px;\n    }\n\n    .lambe-scroll {\n      gap: 60px;\n      animation-duration: 30s;\n    }\n  }\n@media (min-width: 1024px) {\n  .lambe-highlight {\n    padding: 100px 80px;\n    background-size: cover; /* Garante que cobre tudo */\n  }\n}\n</style>",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "featured_collection_cC38QC": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "<em>Fine Art</em>",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": true,
-        "description_style": "body",
-        "collection": "fine-art",
-        "products_to_show": 5,
-        "columns_desktop": 5,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "link",
-        "enable_desktop_slider": true,
-        "color_scheme": "background-1",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
-    "13e37e11-4abd-406f-b842-920e2a8de5d5": {
-      "type": "collection-list",
-      "blocks": {
-        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "masculino"
-          }
-        },
-        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "feminino"
-          }
-        }
-      },
-      "block_order": [
-        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-1",
-        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2"
-      ],
-      "custom_css": [
-        ".media media--transparent media--hover-effect {width: 200px; height: 200px;}"
-      ],
-      "settings": {
-        "title": "Navegue por categorias",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 2,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
       }
     },
     "custom_liquid_kgnPwV": {
@@ -222,7 +53,6 @@
         "template--20798371594556__65dc89e4-1148-46e1-9752-a54509740fe3-row-1": {
           "type": "row",
           "settings": {
-            "image": "shopify://shop_images/A7R4656.jpg",
             "caption": "",
             "heading": "Criamos juntos",
             "text": "<h5>A thegallery é uma marca atemporal que nasceu do amor pela arte e tem a expressão artística como essência. Essa é a nossa arte: te ajudar a criar o mundo em que você quer viver, te ajudar a expressar toda a sua essência.</h5><p></p><h5><a href=\"/pages/sobre\" title=\"Sobre\">Saiba mais</a></h5>",
@@ -256,7 +86,6 @@
         "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-DescontoPrimeiraCompra.svg",
             "title": "10% OFF primeira compra",
             "text": "<h5>Economize 10% de desconto para deixar seu guarda roupa mais elegante.</h5>",
             "link_label": "",
@@ -266,7 +95,6 @@
         "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-Frete.svg",
             "title": "Frete grátis",
             "text": "<h5>Em compras acima de R$ 399, a entrega fica por nossa conta</h5>",
             "link_label": "",
@@ -276,7 +104,6 @@
         "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce_Troca.svg",
             "title": "Troca fácil",
             "text": "<h5>07 dias para trocar ou devolver, facinho e agilizado</h5>",
             "link_label": "",
@@ -286,7 +113,6 @@
         "5eff8e35-e4c2-4fa8-8255-5820b0b4fdc5": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Grudz-Jun2023-IconesSite_AtendimentoWhite.svg",
             "title": "Atendimento agilizado",
             "text": "<h5>Soluções de dúvidas de forma agilizada e pessoal</h5>",
             "link_label": "",
@@ -324,7 +150,6 @@
         "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/30810_-_4203_-_Ilford_HP5_400_ALTA_-_Marco_Aurelio_Hartes_-24.jpg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -334,7 +159,6 @@
         "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/lambe-lambe_touca.jpg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -344,7 +168,6 @@
         "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/LOGO_T_LAMBE_LAMBE.jpg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -354,7 +177,6 @@
         "c1d685e5-a512-4d13-b3af-ff69704c77ee": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/A7R8140.jpg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -364,7 +186,6 @@
         "3228fe17-208c-4371-9aa0-79000fd8ddcf": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/movement_lambe-lambe.jpg",
             "title": "",
             "text": "",
             "link_label": "",
@@ -401,12 +222,6 @@
   },
   "order": [
     "image_banner_zyji7q",
-    "featured_collection",
-    "966fe78b-5060-4ad6-88e7-9fe770c14d98",
-    "rich_text_fPRxCP",
-    "custom_liquid_xbbLbQ",
-    "featured_collection_cC38QC",
-    "13e37e11-4abd-406f-b842-920e2a8de5d5",
     "custom_liquid_kgnPwV",
     "custom_liquid_m3pc7t",
     "65dc89e4-1148-46e1-9752-a54509740fe3",
