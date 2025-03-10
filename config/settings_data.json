@@ -10,8 +10,8 @@
 {
   "current": {
     "logo": "shopify://shop_images/next.svg",
-    "logo_width": 80,
-    "favicon": "shopify://shop_images/LOGO_T_LAMBE_LAMBE.jpg",
+    "logo_width": 150,
+    "favicon": "shopify://shop_images/next.svg",
     "type_header_font": "montserrat_n4",
     "heading_scale": 100,
     "type_body_font": "montserrat_n4",
