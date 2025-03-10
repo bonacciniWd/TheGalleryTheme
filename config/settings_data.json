@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/thegallery-Ago2023-LogotipoOficial_Seasalt_Prancheta_1.svg",
-    "logo_width": 190,
+    "logo": "shopify://shop_images/next.svg",
+    "logo_width": 80,
     "favicon": "shopify://shop_images/LOGO_T_LAMBE_LAMBE.jpg",
     "type_header_font": "montserrat_n4",
     "heading_scale": 100,
@@ -142,32 +142,6 @@
       }
     },
     "content_for_index": [],
-    "blocks": {
-      "15683396631634586217": {
-        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": true,
-        "settings": {
-          "button_color": "#000000",
-          "secondary_color": "#FFFFFF",
-          "ternary_color": "#6A6A6A",
-          "button_icon": "chat_bubble",
-          "button_text": "chat_with_us",
-          "button_horizontal_position": "bottom_right",
-          "button_vertical_position": "lowest",
-          "greeting_message": "👋 Olá. Em caso de dúvidas, envie uma mensagem. Estamos à disposição para ajudar."
-        }
-      },
-      "13768625480086291342": {
-        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
-        "disabled": false,
-        "settings": {}
-      },
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      }
-    },
     "color_schemes": {
       "background-1": {
         "settings": {
