@@ -51,7 +51,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/AMATERASU_._CO_500_x_500_px.gif",
-            "image_width": 310,
+            "image_width": 175,
             "alignment": ""
           }
         },
