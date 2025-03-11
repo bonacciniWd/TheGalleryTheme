@@ -85,7 +85,7 @@
       ],
       "custom_css": [
         ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}",
-        ".footer-block-image {animation: rotate;}"
+        ".footer-block-image {animation: spin 2s infinite;}"
       ],
       "settings": {
         "color_scheme": "accent-1",
