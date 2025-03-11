@@ -50,7 +50,7 @@
         "e29101cd-6d16-4c69-a189-48c5f24cd40c": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/AMATERASU_._CO_500_x_500_px.png",
+            "image": "shopify://shop_images/AMATERASU_._CO_500_x_500_px.gif",
             "image_width": 310,
             "alignment": ""
           }
@@ -60,13 +60,6 @@
           "settings": {
             "heading": "",
             "menu": "main-menu"
-          }
-        },
-        "e4f83e93-4bc9-413c-b778-2445f16bd54c": {
-          "type": "image",
-          "settings": {
-            "image_width": 50,
-            "alignment": "right"
           }
         },
         "dfef869b-edb7-48ea-954b-9a5e4f6e74f9": {
@@ -80,12 +73,10 @@
       "block_order": [
         "e29101cd-6d16-4c69-a189-48c5f24cd40c",
         "6d82cc96-5353-4a02-a976-ffec657e4e01",
-        "e4f83e93-4bc9-413c-b778-2445f16bd54c",
         "dfef869b-edb7-48ea-954b-9a5e4f6e74f9"
       ],
       "custom_css": [
-        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}",
-        ".footer-block-image {animation: spin 2s infinite;}"
+        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}"
       ],
       "settings": {
         "color_scheme": "accent-1",
