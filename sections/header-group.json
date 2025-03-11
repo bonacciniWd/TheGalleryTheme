@@ -64,17 +64,6 @@
         "include_margins": true
       }
     },
-    "custom_liquid_PghtBW": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Banner do Site</title>\n    <style>\n        body {\n            margin: 0;\n            padding: 0;\n            text-align: center;\n            font-family: Arial, sans-serif;\n        }\n        .banner {\n            width: 100%;\n            height: 300px;\n            background: url('https://drive.google.com/uc?id=1aAV-lFC9Lg2pcc1pUblFl1fCzawXvu6-') no-repeat center center;\n            background-size: cover;\n        }\n        .banner-text {\n            position: relative;\n            top: 50%;\n            transform: translateY(-50%);\n            color: white;\n            font-size: 24px;\n            font-weight: bold;\n            background: rgba(0, 0, 0, 0.5);\n            padding: 10px;\n            display: inline-block;\n            border-radius: 10px;\n        }\n    </style>\n</head>\n<body>\n    <div class=\"banner\">\n        <div class=\"banner-text\">Bem-vindo ao nosso site!</div>\n    </div>\n</body>\n</html>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "custom_liquid_KfVxk7": {
       "type": "custom-liquid",
       "disabled": true,
@@ -91,7 +80,6 @@
     "announcement-bar",
     "header",
     "1702556271eaf9b50c",
-    "custom_liquid_PghtBW",
     "custom_liquid_KfVxk7"
   ]
 }
