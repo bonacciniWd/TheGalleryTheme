@@ -17,14 +17,14 @@
         "heading_eePnKK": {
           "type": "heading",
           "settings": {
-            "heading": "",
-            "heading_size": "h1"
+            "heading": "<em>Esteja atento...</em>",
+            "heading_size": "h2"
           }
         },
         "paragraph_WXTGDe": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>ID not found.</p>"
+            "text": "<h5>Assine nossa newsletter e receba todas atualizações via e-mail</h5>"
           }
         },
         "email_form_Wq6fUY": {
@@ -50,8 +50,8 @@
         "e29101cd-6d16-4c69-a189-48c5f24cd40c": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/thegallery-Ago2023-LogotipoOficial_Seasalt_Prancheta_1.svg",
-            "image_width": 190,
+            "image": "shopify://shop_images/AMATERASU_._CO_500_x_500_px.png",
+            "image_width": 310,
             "alignment": ""
           }
         },
@@ -65,7 +65,6 @@
         "e4f83e93-4bc9-413c-b778-2445f16bd54c": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LOGO_T_LAMBE_LAMBE_430x_1_5e5f137d-9ea4-4d50-ac06-3b6b307ddd67.png",
             "image_width": 50,
             "alignment": "right"
           }
@@ -85,7 +84,8 @@
         "dfef869b-edb7-48ea-954b-9a5e4f6e74f9"
       ],
       "custom_css": [
-        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}"
+        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}",
+        ".footer-block-image {animation: rotate;}"
       ],
       "settings": {
         "color_scheme": "accent-1",
