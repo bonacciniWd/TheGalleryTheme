@@ -18,13 +18,32 @@
         "padding_bottom": 52
       }
     },
-    "custom_liquid_H6bQiG": {
-      "type": "custom-liquid",
+    "featured_collection_xKC49E": {
+      "type": "featured-collection",
       "settings": {
-        "custom_liquid": "{% paginate collection.products by 40 %}\n  <div class=\"page-container\">\n    <!-- Barra Lateral -->\n    <aside class=\"sidebar\">\n      <h3>Filtrar por</h3>\n\n      <!-- Filtrar por Cor -->\n      <div class=\"filter-group\">\n        <h4>Cor</h4>\n        {% for color in collection.all_tags %}\n          {% if color contains 'cor_' %}\n            <label>\n              <input type=\"checkbox\" class=\"filter-checkbox\" data-filter=\"color\" value=\"{{ color }}\">\n              {{ color | remove: 'cor_' }}\n            </label>\n          {% endif %}\n        {% endfor %}\n      </div>\n\n      <!-- Filtrar por Marca -->\n      <div class=\"filter-group\">\n        <h4>Marca</h4>\n        {% for brand in collection.all_tags %}\n          {% if brand contains 'marca_' %}\n            <label>\n              <input type=\"checkbox\" class=\"filter-checkbox\" data-filter=\"brand\" value=\"{{ brand }}\">\n              {{ brand | remove: 'marca_' }}\n            </label>\n          {% endif %}\n        {% endfor %}\n      </div>\n\n      <!-- Filtrar por Preço -->\n      <div class=\"filter-group\">\n        <h4>Preço</h4>\n        <label><input type=\"radio\" name=\"price\" class=\"filter-radio\" data-filter=\"price\" value=\"0-100\"> Até R$100</label>\n        <label><input type=\"radio\" name=\"price\" class=\"filter-radio\" data-filter=\"price\" value=\"100-300\"> R$100 - R$300</label>\n        <label><input type=\"radio\" name=\"price\" class=\"filter-radio\" data-filter=\"price\" value=\"300-500\"> R$300 - R$500</label>\n      </div>\n    </aside>\n\n    <!-- Lista de Produtos -->\n    <main class=\"product-list\">\n      <div id=\"product-container\">\n        {% for product in collection.products %}\n          <div class=\"product-item\" data-color=\"{{ product.tags | join: ',' }}\" data-brand=\"{{ product.vendor }}\" data-price=\"{{ product.price | divided_by: 100 }}\">\n            <a href=\"{{ product.url }}\">\n              <img src=\"{{ product.featured_image | img_url: 'medium' }}\" alt=\"{{ product.title }}\">\n              <h3>{{ product.title }}</h3>\n              <p>R$ {{ product.price | money_without_currency }}</p>\n            </a>\n          </div>\n        {% endfor %}\n      </div>\n\n      <!-- Botão de Carregar Mais -->\n      {% if paginate.next %}\n        <button id=\"load-more\" data-next-page=\"{{ paginate.next.url }}\">Carregar Mais</button>\n      {% endif %}\n    </main>\n  </div>\n{% endpaginate %}\n\n<!-- Script para Filtros e Infinite Scroll -->\n<script>\ndocument.addEventListener(\"DOMContentLoaded\", function() {\n  const productContainer = document.getElementById(\"product-container\");\n  const loadMoreButton = document.getElementById(\"load-more\");\n\n  // Função para aplicar filtros\n  function applyFilters() {\n    const selectedColors = Array.from(document.querySelectorAll('input[data-filter=\"color\"]:checked')).map(el => el.value);\n    const selectedBrands = Array.from(document.querySelectorAll('input[data-filter=\"brand\"]:checked')).map(el => el.value);\n    const selectedPrice = document.querySelector('input[data-filter=\"price\"]:checked')?.value;\n\n    document.querySelectorAll(\".product-item\").forEach(item => {\n      const itemColor = item.getAttribute(\"data-color\").split(\",\");\n      const itemBrand = item.getAttribute(\"data-brand\");\n      const itemPrice = parseFloat(item.getAttribute(\"data-price\"));\n\n      const colorMatch = selectedColors.length === 0 || selectedColors.some(color => itemColor.includes(color));\n      const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(itemBrand);\n      const priceMatch = !selectedPrice || (\n        itemPrice >= parseFloat(selectedPrice.split(\"-\")[0]) && itemPrice <= parseFloat(selectedPrice.split(\"-\")[1])\n      );\n\n      item.style.display = (colorMatch && brandMatch && priceMatch) ? \"block\" : \"none\";\n    });\n  }\n\n  // Event Listener para filtros\n  document.querySelectorAll(\".filter-checkbox, .filter-radio\").forEach(input => {\n    input.addEventListener(\"change\", applyFilters);\n  });\n\n  // Função para carregar mais produtos via AJAX\n  function loadMoreProducts() {\n    if (!loadMoreButton || !loadMoreButton.dataset.nextPage) return;\n\n    fetch(loadMoreButton.dataset.nextPage)\n      .then(response => response.text())\n      .then(data => {\n        const parser = new DOMParser();\n        const newProducts = parser.parseFromString(data, \"text/html\").querySelector(\"#product-container\").innerHTML;\n        productContainer.insertAdjacentHTML(\"beforeend\", newProducts);\n\n        // Atualiza o botão \"Carregar Mais\"\n        const newNextPage = parser.parseFromString(data, \"text/html\").querySelector(\"#load-more\");\n        if (newNextPage) {\n          loadMoreButton.dataset.nextPage = newNextPage.dataset.nextPage;\n        } else {\n          loadMoreButton.remove();\n        }\n      });\n  }\n\n  // Scroll infinito\n  window.addEventListener(\"scroll\", function() {\n    if (loadMoreButton && window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {\n      loadMoreProducts();\n    }\n  });\n\n  // Clique no botão \"Carregar Mais\"\n  if (loadMoreButton) {\n    loadMoreButton.addEventListener(\"click\", loadMoreProducts);\n  }\n});\n</script>\n\n<!-- CSS Básico -->\n<style>\n.page-container {\n  display: flex;\n  gap: 20px;\n}\n.sidebar {\n  width: 250px;\n  padding: 20px;\n  border-right: 1px solid #ddd;\n}\n.filter-group {\n  margin-bottom: 15px;\n}\n.product-list {\n  flex-grow: 1;\n}\n.product-item {\n  display: inline-block;\n  width: 22%;\n  margin: 1%;\n  text-align: center;\n  border: 1px solid #ddd;\n  padding: 10px;\n}\n#load-more {\n  display: block;\n  margin: 20px auto;\n  padding: 10px 20px;\n  background: #000;\n  color: #fff;\n  border: none;\n  cursor: pointer;\n}\n</style>",
+        "title": "<em><strong>Hot</strong></em> 🔥",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "frontpage",
+        "products_to_show": 25,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": true,
         "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "image_ratio": "adapt",
+        "image_shape": "blob",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "featured_blog_hq4Nkf": {
@@ -241,7 +260,7 @@
   },
   "order": [
     "custom_liquid_YpPPeC",
-    "custom_liquid_H6bQiG",
+    "featured_collection_xKC49E",
     "featured_blog_hq4Nkf",
     "video_N3ptFW",
     "image_banner_zyji7q",
