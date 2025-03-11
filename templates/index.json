@@ -9,15 +9,6 @@
  */
 {
   "sections": {
-    "custom_liquid_VVJbEn": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{% assign lambe_products = collections['all'].products %}\n\n{% if lambe_products.size > 0 %}\n  <div class=\"lambe-highlight\">\n    <div class=\"stars\"></div>\n    <div class=\"twinkling\"></div>\n    <div class=\"clouds\"></div>\n    \n    <div class=\"lambe-scroll-container\">\n      <div class=\"lambe-scroll\">\n        {% for product in lambe_products %}\n          {% for image in product.images %}\n            <div class=\"lambe-item\">\n              <img src=\"{{ image | img_url: 'large' }}\" alt=\"{{ product.title }}\" class=\"lambe-image\">\n            </div>\n          {% endfor %}\n        {% endfor %}\n      </div>\n    </div>\n    <a href=\"{{ collections['all'].url }}\" class=\"lambe-button\">Ver todos os produtos</a>\n  </div>\n{% endif %}\n\n<style>\n.lambe-highlight {\n  position: relative;\n  text-align: center;\n  background: black;\n  padding: 80px 20px;\n  height: 100vh;\n  overflow: hidden;\n}\n\n.stars {\n  background: url('{{ \"stars.png\" | asset_url }}') repeat;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 0;\n}\n\n.twinkling {\n  background: url('{{ \"twinkling.png\" | asset_url }}') repeat;\n  background-size: 1000px 1000px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 200%;\n  height: 100%;\n  z-index: 1;\n  animation: move-background 70s linear infinite;\n}\n\n.clouds {\n  background: url('{{ \"clouds_repeat.png\" | asset_url }}') repeat;\n  background-size: 1000px 1000px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 200%;\n  height: 100%;\n  z-index: 2;\n  animation: move-background 150s linear infinite;\n}\n\n@keyframes move-background {\n  from {\n    transform: translateX(0);\n  }\n  to {\n    transform: translateX(-1000px);\n  }\n}\n\n.lambe-scroll-container {\n  width: 100%;\n  overflow: hidden;\n  position: relative;\n  white-space: nowrap;\n  padding: 20px 0;\n}\n\n.lambe-scroll {\n  display: flex;\n  gap: 40px;\n  animation: scrollProducts 25s linear infinite;\n  width: max-content;\n}\n\n.lambe-item {\n  flex: 0 0 auto;\n  width: 200px;\n  margin-top: 20px;\n}\n\n.lambe-image {\n  width: 100%;\n  height: auto;\n  border-radius: 10px;\n  transition: transform 0.3s ease-in-out;\n}\n\n.lambe-image:hover {\n  transform: scale(1.05);\n}\n\n@keyframes scrollProducts {\n  from {\n    transform: translateX(0);\n  }\n  to {\n    transform: translateX(-50%);\n  }\n}\n\n.lambe-button {\n  display: inline-block;\n  color: #fff;\n  padding: 10px 25px;\n  font-size: 16px;\n  font-weight: bolder;\n  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);\n  background: none;\n  border: none;\n  margin-top: 30px;\n}\n\n.lambe-button:hover {\n  color: #FFD700;\n}\n</style>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "custom_liquid_YpPPeC": {
       "type": "custom-liquid",
       "settings": {
@@ -267,7 +258,6 @@
     }
   },
   "order": [
-    "custom_liquid_VVJbEn",
     "custom_liquid_YpPPeC",
     "featured_collection_xKC49E",
     "featured_blog_hq4Nkf",
