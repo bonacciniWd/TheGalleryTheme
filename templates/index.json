@@ -35,7 +35,7 @@
         "enable_desktop_slider": true,
         "color_scheme": "",
         "image_ratio": "adapt",
-        "image_shape": "blob",
+        "image_shape": "arch",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
