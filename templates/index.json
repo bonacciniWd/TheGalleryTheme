@@ -175,78 +175,6 @@
         "padding_bottom": 100
       }
     },
-    "collapsible_content_r8tA6X": {
-      "type": "collapsible-content",
-      "blocks": {
-        "collapsible_row_rhawUp": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Como posso rastrear meu pedido?",
-            "icon": "map_pin",
-            "row_content": "<p>Você pode rastrear seu pedido acessando a seção 'Meus Pedidos' em sua conta ou utilizando o link de rastreamento enviado para o seu e-mail.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_dFCtiB": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Qual é o prazo de entrega?",
-            "icon": "plane",
-            "row_content": "<p>O prazo de entrega varia de acordo com a região e o método de envio escolhido. Geralmente, o prazo é de 5 a 10 dias úteis.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_jkbymx": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Posso alterar o endereço de entrega após a compra?",
-            "icon": "clipboard",
-            "row_content": "<p>Sim, você pode alterar o endereço de entrega antes do envio do pedido. Entre em contato com nosso suporte o mais rápido possível para fazer a alteração.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_Udmheq": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Quais são as formas de pagamento aceitas?",
-            "icon": "question_mark",
-            "row_content": "<p>Aceitamos cartões de crédito (Visa, Mastercard, American Express), Pix, boleto bancário e transferência bancária.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_3qUe9G": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Como faço para devolver um produto?",
-            "icon": "return",
-            "row_content": "<p>Para devolver um produto, acesse a seção 'Devoluções' em sua conta, preencha o formulário e siga as instruções para enviar o produto de volta.</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_row_rhawUp",
-        "collapsible_row_dFCtiB",
-        "collapsible_row_jkbymx",
-        "collapsible_row_Udmheq",
-        "collapsible_row_3qUe9G"
-      ],
-      "settings": {
-        "caption": "Por aqui é possível ter acesso à algumas dúvidas comuns",
-        "heading": "Perguntas frequentes",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "row",
-        "color_scheme": "background-2",
-        "container_color_scheme": "background-2",
-        "open_first_collapsible_row": false,
-        "image": "shopify://shop_images/AMATERASU_._CO.png",
-        "image_ratio": "adapt",
-        "desktop_layout": "image_first",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "featured_blog_LLXp6W": {
       "type": "featured-blog",
       "settings": {
@@ -263,6 +191,68 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "collapsible_content_7GGYB7": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_K6NXzB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Como posso rastrear meu pedido?",
+            "icon": "map_pin",
+            "row_content": "<p>Você pode rastrear seu pedido acessando a seção 'Meus Pedidos' em sua conta ou utilizando o link de rastreamento enviado para o seu e-mail.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_HMX3DC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Linha recolhível",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_G9q4mz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Linha recolhível",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_6HzPJx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Linha recolhível",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_K6NXzB",
+        "collapsible_row_HMX3DC",
+        "collapsible_row_G9q4mz",
+        "collapsible_row_6HzPJx"
+      ],
+      "settings": {
+        "caption": "Por aqui você encontra respostas para algumas de nossas perguntas frequentes",
+        "heading": "Perguntas frequentes",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image": "shopify://shop_images/AMATERASU_._CO.png",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -273,7 +263,7 @@
     "video_N3ptFW",
     "image_banner_zyji7q",
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
-    "collapsible_content_r8tA6X",
-    "featured_blog_LLXp6W"
+    "featured_blog_LLXp6W",
+    "collapsible_content_7GGYB7"
   ]
 }
