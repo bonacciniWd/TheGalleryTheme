@@ -100,68 +100,6 @@
         "show_text_below": true
       }
     },
-    "collapsible_content_7GGYB7": {
-      "type": "collapsible-content",
-      "blocks": {
-        "collapsible_row_K6NXzB": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Como posso rastrear meu pedido?",
-            "icon": "map_pin",
-            "row_content": "<p>Você pode rastrear seu pedido acessando a seção 'Meus Pedidos' em sua conta ou utilizando o link de rastreamento enviado para o seu e-mail.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_HMX3DC": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Qual é o prazo de entrega?",
-            "icon": "plane",
-            "row_content": "<p>O prazo de entrega varia de acordo com a região e o método de envio escolhido. Geralmente, o prazo é de 5 a 10 dias úteis.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_G9q4mz": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Posso alterar o endereço de entrega após a compra?",
-            "icon": "question_mark",
-            "row_content": "<p>Sim, você pode alterar o endereço de entrega antes do envio do pedido. Entre em contato com nosso suporte o mais rápido possível para fazer a alteração.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_6HzPJx": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Como faço para devolver um produto?",
-            "icon": "return",
-            "row_content": "<p>Para devolver um produto, acesse a seção 'Devoluções' em sua conta, preencha o formulário e siga as instruções para enviar o produto de volta.</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_row_K6NXzB",
-        "collapsible_row_HMX3DC",
-        "collapsible_row_G9q4mz",
-        "collapsible_row_6HzPJx"
-      ],
-      "settings": {
-        "caption": "Por aqui você encontra respostas para algumas de nossas perguntas frequentes",
-        "heading": "Perguntas frequentes",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "color_scheme": "",
-        "container_color_scheme": "",
-        "open_first_collapsible_row": false,
-        "image": "shopify://shop_images/AMATERASU_._CO.png",
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "custom_liquid_gCLggz": {
       "type": "custom-liquid",
       "settings": {
@@ -169,6 +107,23 @@
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
+      }
+    },
+    "featured_blog_KPygWW": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Novidades",
+        "heading_size": "h1",
+        "blog": "novidades",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -179,7 +134,7 @@
     "custom_liquid_kgnPwV",
     "video_N3ptFW",
     "image_banner_zyji7q",
-    "collapsible_content_7GGYB7",
-    "custom_liquid_gCLggz"
+    "custom_liquid_gCLggz",
+    "featured_blog_KPygWW"
   ]
 }
