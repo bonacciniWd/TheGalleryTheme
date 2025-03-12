@@ -372,5 +372,106 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script>
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 30, // Quantidade de partículas
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#ffffff"
+          },
+          "shape": {
+            "type": "image", // Usar imagens como partículas
+            "image": [
+              {
+                "src": "{{ 'moon2.png' | asset_url }}", // Imagem da lua
+                "width": 100,
+                "height": 100
+              },
+              {
+                "src": "{{ 'stars.png' | asset_url }}", // Imagem das estrelas
+                "width": 50,
+                "height": 50
+              },
+              {
+                "src": "{{ 'twinkling.png' | asset_url }}", // Imagem do efeito de brilho
+                "width": 30,
+                "height": 30
+              }
+            ]
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 30,
+            "random": true,
+            "anim": {
+              "enable": true,
+              "speed": 2,
+              "size_min": 10,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": false // Desativar linhas entre partículas
+          },
+          "move": {
+            "enable": true,
+            "speed": 1, // Velocidade das partículas
+            "direction": "none",
+            "random": true,
+            "straight": false,
+            "out_mode": "bounce",
+            "bounce": true,
+            "attract": {
+              "enable": true,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "bubble"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "bubble": {
+              "distance": 200,
+              "size": 6,
+              "duration": 2,
+              "opacity": 0.8,
+              "speed": 3
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    </script>
   </body>
 </html>
