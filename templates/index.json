@@ -271,18 +271,18 @@
         "collapsible_row_dFCtiB": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Linha recolhível",
-            "icon": "check_mark",
-            "row_content": "",
+            "heading": "Qual é o prazo de entrega?",
+            "icon": "plane",
+            "row_content": "<p>O prazo de entrega varia de acordo com a região e o método de envio escolhido. Geralmente, o prazo é de 5 a 10 dias úteis.</p>",
             "page": ""
           }
         },
         "collapsible_row_jkbymx": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Linha recolhível",
+            "heading": "Posso alterar o endereço de entrega após a compra?",
             "icon": "check_mark",
-            "row_content": "",
+            "row_content": "<p>Sim, você pode alterar o endereço de entrega antes do envio do pedido. Entre em contato com nosso suporte o mais rápido possível para fazer a alteração.</p>",
             "page": ""
           }
         },
