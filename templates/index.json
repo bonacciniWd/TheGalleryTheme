@@ -255,6 +255,78 @@
         "padding_top": 100,
         "padding_bottom": 100
       }
+    },
+    "collapsible_content_r8tA6X": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_rhawUp": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Como posso rastrear meu pedido?",
+            "icon": "map_pin",
+            "row_content": "<p>Você pode rastrear seu pedido acessando a seção 'Meus Pedidos' em sua conta ou utilizando o link de rastreamento enviado para o seu e-mail.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_dFCtiB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Linha recolhível",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_jkbymx": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Linha recolhível",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_Udmheq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Linha recolhível",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_8WxtAX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Linha recolhível",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_rhawUp",
+        "collapsible_row_dFCtiB",
+        "collapsible_row_jkbymx",
+        "collapsible_row_Udmheq",
+        "collapsible_row_8WxtAX"
+      ],
+      "settings": {
+        "caption": "Por aqui é possível ter acesso à algumas dúvidas comuns",
+        "heading": "Perguntas frequentes",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "section",
+        "color_scheme": "background-2",
+        "container_color_scheme": "background-2",
+        "open_first_collapsible_row": false,
+        "image": "shopify://shop_images/AMATERASU_._CO.png",
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -266,6 +338,7 @@
     "video_N3ptFW",
     "image_banner_zyji7q",
     "24d2df80-6b1b-402d-a4e1-e896121ee23f",
-    "2fceb7f8-6f12-442d-8691-10f8d317cab3"
+    "2fceb7f8-6f12-442d-8691-10f8d317cab3",
+    "collapsible_content_r8tA6X"
   ]
 }
