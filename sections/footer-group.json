@@ -62,18 +62,10 @@
             "heading": "",
             "menu": "main-menu"
           }
-        },
-        "dfef869b-edb7-48ea-954b-9a5e4f6e74f9": {
-          "type": "text",
-          "settings": {
-            "heading": "",
-            "subtext": "<h5><a href=\"https://www.instagram.com/thegallerycorporation/?hl=en\" title=\"https://www.instagram.com/thegallerycorporation/?hl=en\">Instagram / </a><a href=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\" title=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\">Tik Tok</a></h5><h5>All rights reserved. thegallery®</h5><h5>CNPJ: 42.670.996/0001-92 - Cascavel - Paraná</h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5>"
-          }
         }
       },
       "block_order": [
-        "6d82cc96-5353-4a02-a976-ffec657e4e01",
-        "dfef869b-edb7-48ea-954b-9a5e4f6e74f9"
+        "6d82cc96-5353-4a02-a976-ffec657e4e01"
       ],
       "custom_css": [
         ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}"
