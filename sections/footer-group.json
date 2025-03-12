@@ -11,39 +11,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "newsletter_HjNMEg": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_eePnKK": {
-          "type": "heading",
-          "settings": {
-            "heading": "<em>Esteja atento...</em>",
-            "heading_size": "h2"
-          }
-        },
-        "paragraph_WXTGDe": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<h5>Assine nossa newsletter e receba todas atualizações via e-mail</h5>"
-          }
-        },
-        "email_form_Wq6fUY": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading_eePnKK",
-        "paragraph_WXTGDe",
-        "email_form_Wq6fUY"
-      ],
-      "settings": {
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "custom_liquid_CWafVA": {
       "type": "custom-liquid",
       "settings": {
@@ -98,7 +65,6 @@
     }
   },
   "order": [
-    "newsletter_HjNMEg",
     "custom_liquid_CWafVA",
     "footer",
     "custom_liquid_iwqQna"
