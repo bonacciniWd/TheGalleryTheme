@@ -80,23 +80,6 @@
         "padding_bottom": 36
       }
     },
-    "featured_blog_ab79xf": {
-      "type": "featured-blog",
-      "settings": {
-        "heading": "Novidades",
-        "heading_size": "h1",
-        "blog": "novidades",
-        "post_limit": 3,
-        "columns_desktop": 3,
-        "color_scheme": "",
-        "show_image": true,
-        "show_date": true,
-        "show_author": false,
-        "show_view_all": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "image_banner_zyji7q": {
       "type": "image-banner",
       "disabled": true,
@@ -261,7 +244,6 @@
     "featured_collection_xKC49E",
     "custom_liquid_kgnPwV",
     "video_N3ptFW",
-    "featured_blog_ab79xf",
     "image_banner_zyji7q",
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
     "collapsible_content_7GGYB7"
