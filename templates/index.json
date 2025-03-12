@@ -236,13 +236,13 @@
         "heading": "Perguntas frequentes",
         "heading_size": "h1",
         "heading_alignment": "center",
-        "layout": "section",
+        "layout": "none",
         "color_scheme": "background-2",
         "container_color_scheme": "background-2",
         "open_first_collapsible_row": false,
         "image": "shopify://shop_images/AMATERASU_._CO.png",
         "image_ratio": "adapt",
-        "desktop_layout": "image_second",
+        "desktop_layout": "image_first",
         "padding_top": 36,
         "padding_bottom": 36
       }
