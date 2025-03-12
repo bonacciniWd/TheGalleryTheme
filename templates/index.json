@@ -295,6 +295,15 @@
             "page": ""
           }
         },
+        "collapsible_row_3qUe9G": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Como faço para devolver um produto?",
+            "icon": "check_mark",
+            "row_content": "<p>Para devolver um produto, acesse a seção 'Devoluções' em sua conta, preencha o formulário e siga as instruções para enviar o produto de volta.</p>",
+            "page": ""
+          }
+        },
         "collapsible_row_8WxtAX": {
           "type": "collapsible_row",
           "settings": {
@@ -310,6 +319,7 @@
         "collapsible_row_dFCtiB",
         "collapsible_row_jkbymx",
         "collapsible_row_Udmheq",
+        "collapsible_row_3qUe9G",
         "collapsible_row_8WxtAX"
       ],
       "settings": {
