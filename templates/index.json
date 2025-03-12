@@ -100,81 +100,6 @@
         "show_text_below": true
       }
     },
-    "2fceb7f8-6f12-442d-8691-10f8d317cab3": {
-      "type": "multicolumn",
-      "blocks": {
-        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-1": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-2": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-3": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "c1d685e5-a512-4d13-b3af-ff69704c77ee": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "3228fe17-208c-4371-9aa0-79000fd8ddcf": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-1",
-        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-2",
-        "template--20798371594556__2fceb7f8-6f12-442d-8691-10f8d317cab3-column-3",
-        "c1d685e5-a512-4d13-b3af-ff69704c77ee",
-        "3228fe17-208c-4371-9aa0-79000fd8ddcf"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "portrait",
-        "columns_desktop": 5,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "inverse",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 100,
-        "padding_bottom": 100
-      }
-    },
     "collapsible_content_7GGYB7": {
       "type": "collapsible-content",
       "blocks": {
@@ -236,6 +161,15 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "custom_liquid_gCLggz": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"image-content-container\">\n  <!-- Imagem -->\n  <div class=\"image-container\">\n    <img src=\"{{ 'sua-imagem.jpg' | asset_url }}\" alt=\"Descrição da imagem\">\n  </div>\n\n  <!-- Conteúdo em Dropdown -->\n  <div class=\"content-container\">\n    {% for i in (1..3) %}\n      <div class=\"dropdown-item\">\n        <button class=\"dropdown-toggle\">Pergunta {{ i }}</button>\n        <div class=\"dropdown-content\">\n          <p>Resposta para a pergunta {{ i }}. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n        </div>\n      </div>\n    {% endfor %}\n  </div>\n</div>\n\n<style>\n  /* Layout Principal */\n  .image-content-container {\n    display: flex;\n    flex-direction: row;\n    align-items: flex-start;\n    gap: 20px;\n    margin: 20px;\n  }\n\n  .image-container img {\n    max-width: 100%;\n    height: auto;\n    border-radius: 10px;\n  }\n\n  .content-container {\n    flex: 1;\n  }\n\n  /* Dropdown */\n  .dropdown-item {\n    margin-bottom: 10px;\n  }\n\n  .dropdown-toggle {\n    width: 100%;\n    padding: 15px;\n    text-align: left;\n    background-color: #f1f1f1;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n    font-size: 16px;\n    transition: background-color 0.3s ease;\n  }\n\n  .dropdown-toggle:hover {\n    background-color: #ddd;\n  }\n\n  .dropdown-content {\n    display: none;\n    padding: 15px;\n    background-color: #f9f9f9;\n    border-radius: 5px;\n    margin-top: 5px;\n  }\n\n  .dropdown-content p {\n    margin: 0;\n  }\n\n  /* Responsivo */\n  @media (max-width: 768px) {\n    .image-content-container {\n      flex-direction: column;\n    }\n\n    .image-container {\n      width: 100%;\n      text-align: center;\n    }\n\n    .content-container {\n      width: 100%;\n    }\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -245,7 +179,7 @@
     "custom_liquid_kgnPwV",
     "video_N3ptFW",
     "image_banner_zyji7q",
-    "2fceb7f8-6f12-442d-8691-10f8d317cab3",
-    "collapsible_content_7GGYB7"
+    "collapsible_content_7GGYB7",
+    "custom_liquid_gCLggz"
   ]
 }
