@@ -38,7 +38,7 @@
         "email_form_Wq6fUY"
       ],
       "settings": {
-        "color_scheme": "accent-1",
+        "color_scheme": "inverse",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
@@ -49,6 +49,7 @@
       "blocks": {
         "e29101cd-6d16-4c69-a189-48c5f24cd40c": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/thegallery-Ago2023-LogotipoOficial_Seasalt_Prancheta_1.svg",
             "image_width": 190,
@@ -64,6 +65,7 @@
         },
         "e4f83e93-4bc9-413c-b778-2445f16bd54c": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/LOGO_T_LAMBE_LAMBE_430x_1_5e5f137d-9ea4-4d50-ac06-3b6b307ddd67.png",
             "image_width": 50,
@@ -72,6 +74,7 @@
         },
         "dfef869b-edb7-48ea-954b-9a5e4f6e74f9": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "heading": "",
             "subtext": "<h5><a href=\"https://www.instagram.com/thegallerycorporation/?hl=en\" title=\"https://www.instagram.com/thegallerycorporation/?hl=en\">Instagram / </a><a href=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\" title=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\">Tik Tok</a></h5><h5>All rights reserved. thegallery®</h5><h5>CNPJ: 42.670.996/0001-92 - Cascavel - Paraná</h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5>"
@@ -106,7 +109,7 @@
     "custom_liquid_4AjX3J": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<footer class=\"footer\">\n  <div class=\"footer-content\">\n    <!-- Grupo: Logo da The Gallery + Copyright -->\n    <div class=\"footer-group\">\n      <img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"Logo The Gallery\" class=\"footer-logo\">\n      <div class=\"footer-copyright\">\n        <p>2025 &copy; The Gallery</p>\n        <p>All Rights Reserved.</p>\n      </div>\n    </div>\n\n    <!-- Grupo: Logo da VRZ + Texto \"Coded by\" -->\n    <div class=\"footer-group\">\n      <img src=\"{{ 'vrz.png' | asset_url }}\" alt=\"Logo VRZ\" class=\"footer-logo-1\">\n      <p class=\"footer-coded-by\">Coded by Vrz Studio</p>\n    </div>\n  </div>\n</footer>\n<style>\n  /* Estilos do Footer */\n  .footer {\n    background-color: #000;\n    padding: 20px;\n    text-align: center;\n    border-top: 1px solid #333;\n  }\n\n  .footer-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: 20px;\n  }\n\n  .footer-group {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: 10px;\n  }\n\n  .footer-logo {\n    max-width: 160px;\n    height: auto;\n    transition: opacity 0.3s ease-in-out;\n  }\n .footer-logo-1 {\n    max-width: 90px;\n    height: auto;\n    transition: opacity 0.3s ease-in-out;\n  }\n\n  .footer-logo:hover {\n    opacity: 0.8;\n  }\n\n  .footer-copyright, .footer-coded-by {\n    color: #fff;\n    font-size: 14px;\n    line-height: 1.5;\n    text-align: center;\n  }\n\n  /* Layout para desktop */\n  @media (min-width: 769px) {\n    .footer-content {\n      flex-direction: row;\n      justify-content: center;\n      gap: 40px;\n    }\n  }\n\n  /* Responsivo para mobile */\n  @media (max-width: 768px) {\n    .footer-logo {\n      max-width: 80px;\n    }\n\n    .footer-copyright, .footer-coded-by {\n      font-size: 12px;\n    }\n  }\n</style>",
+        "custom_liquid": "<footer class=\"footer\">\n  <div class=\"footer-content\">\n    <!-- Grupo: Logo da The Gallery + Copyright -->\n    <div class=\"footer-group\">\n      <img src=\"{{ 'logo.svg' | asset_url }}\" alt=\"Logo The Gallery\" class=\"footer-logo\">\n      <div class=\"footer-copyright\">\n        <p>2025 &copy; The Gallery</p>\n        <p>All Rights Reserved.</p>\n      </div>\n    </div>\n\n    <!-- Grupo: Logo da VRZ + Texto \"Coded by\" -->\n    <div class=\"footer-group\">\n      <img src=\"{{ 'vrz.png' | asset_url }}\" alt=\"Logo VRZ\" class=\"footer-logo-1\">\n      <p class=\"footer-coded-by\">Coded by Vrz Studio</p>\n    </div>\n  </div>\n</footer>\n<style>\n  /* Estilos do Footer */\n  .footer {\n    background-color: #000;\n    padding: 20px;\n    text-align: center;\n    border-top: 1px solid #333;\n  }\n\n  .footer-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: 20px;\n  }\n\n  .footer-group {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    gap: 10px;\n  }\n\n  .footer-logo {\n    max-width: 160px;\n    height: auto;\n    transition: opacity 0.3s ease-in-out;\n  }\n .footer-logo-1 {\n    max-width: 80px;\n    height: auto;\n    transition: opacity 0.3s ease-in-out;\n  }\n\n  .footer-logo:hover {\n    opacity: 0.8;\n  }\n\n  .footer-copyright, .footer-coded-by {\n    color: #fff;\n    font-size: 14px;\n    line-height: 1.5;\n    text-align: center;\n  }\n\n  /* Layout para desktop */\n  @media (min-width: 769px) {\n    .footer-content {\n      flex-direction: row;\n      justify-content: center;\n      gap: 40px;\n    }\n  }\n\n  /* Responsivo para mobile */\n  @media (max-width: 768px) {\n    .footer-logo {\n      max-width: 80px;\n    }\n\n    .footer-copyright, .footer-coded-by {\n      font-size: 12px;\n    }\n  }\n</style>",
         "color_scheme": "inverse",
         "padding_top": 40,
         "padding_bottom": 52
