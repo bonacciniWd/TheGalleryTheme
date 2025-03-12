@@ -193,7 +193,7 @@
       },
       "inverse": {
         "settings": {
-          "background": "#121212",
+          "background": "#000000",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "{{ shop.brand.colors.primary[0].background }}",

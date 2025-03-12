@@ -85,7 +85,8 @@
         "dfef869b-edb7-48ea-954b-9a5e4f6e74f9"
       ],
       "custom_css": [
-        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}"
+        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}",
+        ".footer__copyright {display: none;}"
       ],
       "settings": {
         "color_scheme": "accent-1",
@@ -101,10 +102,20 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "custom_liquid_4AjX3J": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<footer class=\"footer\">\n  <div class=\"footer-logos\">\n    <img src=\"{{ 'vrz.png' | asset_url }}\" alt=\"Logo VRZ\" class=\"footer-logo\">\n    <img src=\"{{ 'amaterasu.png' | asset_url }}\" alt=\"Logo The Gallery\" class=\"footer-logo\">\n  </div>\n  <div class=\"footer-copyright\">\n    <p>2025 &copy; The Gallery <br/> All Rights reserved.</p>\n    <p>Coded by Vrz Studio</p>\n  </div>\n</footer>\n<style>\n  /* Estilos do Footer */\n  .footer {\n    background-color: #000; /* Fundo preto */\n    padding: 20px;\n    text-align: center;\n    border-top: 1px solid #333; /* Linha superior */\n  }\n\n  .footer-logos {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 20px; /* Espaçamento entre as logos */\n  }\n\n  .footer-logo {\n    max-width: 100px; /* Tamanho menor para desktop */\n    height: auto;\n    transition: opacity 0.3s ease-in-out; /* Efeito de transição */\n  }\n\n  .footer-logo:hover {\n    opacity: 0.8; /* Efeito de opacidade no hover */\n  }\n\n  /* Responsivo */\n  @media (max-width: 768px) {\n    .footer-logo {\n      max-width: 80px; /* Tamanho ainda menor para mobile */\n    }\n  }\n</style>",
+        "color_scheme": "inverse",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "newsletter_HjNMEg",
-    "footer"
+    "footer",
+    "custom_liquid_4AjX3J"
   ]
 }
