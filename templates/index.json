@@ -236,7 +236,7 @@
         "heading": "Perguntas frequentes",
         "heading_size": "h1",
         "heading_alignment": "center",
-        "layout": "none",
+        "layout": "row",
         "color_scheme": "background-2",
         "container_color_scheme": "background-2",
         "open_first_collapsible_row": false,
