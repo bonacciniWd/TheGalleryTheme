@@ -225,9 +225,9 @@
         "collapsible_row_6HzPJx": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Linha recolhível",
-            "icon": "check_mark",
-            "row_content": "",
+            "heading": "Como faço para devolver um produto?",
+            "icon": "return",
+            "row_content": "<p>Para devolver um produto, acesse a seção 'Devoluções' em sua conta, preencha o formulário e siga as instruções para enviar o produto de volta.</p>",
             "page": ""
           }
         }
