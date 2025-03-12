@@ -117,70 +117,6 @@
         "show_text_below": true
       }
     },
-    "24d2df80-6b1b-402d-a4e1-e896121ee23f": {
-      "type": "multicolumn",
-      "blocks": {
-        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-1": {
-          "type": "column",
-          "settings": {
-            "title": "10% OFF primeira compra",
-            "text": "<h5>Economize 10% de desconto para deixar seu guarda roupa mais elegante.</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-2": {
-          "type": "column",
-          "settings": {
-            "title": "Frete grátis",
-            "text": "<h5>Em compras acima de R$ 399, a entrega fica por nossa conta</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-3": {
-          "type": "column",
-          "settings": {
-            "title": "Troca fácil",
-            "text": "<h5>07 dias para trocar ou devolver, facinho e agilizado</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "5eff8e35-e4c2-4fa8-8255-5820b0b4fdc5": {
-          "type": "column",
-          "settings": {
-            "title": "Atendimento agilizado",
-            "text": "<h5>Soluções de dúvidas de forma agilizada e pessoal</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-1",
-        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-2",
-        "template--20798371594556__24d2df80-6b1b-402d-a4e1-e896121ee23f-column-3",
-        "5eff8e35-e4c2-4fa8-8255-5820b0b4fdc5"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 56,
-        "padding_bottom": 56
-      }
-    },
     "2fceb7f8-6f12-442d-8691-10f8d317cab3": {
       "type": "multicolumn",
       "blocks": {
@@ -337,7 +273,6 @@
     "featured_blog_hq4Nkf",
     "video_N3ptFW",
     "image_banner_zyji7q",
-    "24d2df80-6b1b-402d-a4e1-e896121ee23f",
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
     "collapsible_content_r8tA6X"
   ]
