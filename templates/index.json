@@ -281,7 +281,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Posso alterar o endereço de entrega após a compra?",
-            "icon": "check_mark",
+            "icon": "clipboard",
             "row_content": "<p>Sim, você pode alterar o endereço de entrega antes do envio do pedido. Entre em contato com nosso suporte o mais rápido possível para fazer a alteração.</p>",
             "page": ""
           }
