@@ -132,8 +132,8 @@
         "template--20798371660092__d18e6c27-f30f-497a-b1ae-44db37732bcd-heading-1",
         "template--20798371660092__d18e6c27-f30f-497a-b1ae-44db37732bcd-text-1"
       ],
+      "disabled": true,
       "settings": {
-        "image": "shopify://shop_images/A7R06691.jpg",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "text_first",
@@ -170,8 +170,8 @@
         "2dabfeb9-c1db-4947-9158-940aded74f1e",
         "ede7c39d-02eb-44be-a52b-947d5250b6d9"
       ],
+      "disabled": true,
       "settings": {
-        "image": "shopify://shop_images/A7R2516-2.jpg",
         "height": "small",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -192,7 +192,6 @@
         "template--20798371660092__d8fc8898-c7e3-4775-9a7e-1f26fc13d665-column-1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-DescontoPrimeiraCompra-2.svg",
             "title": "10% OFF na primeira compra",
             "text": "<p>Economize 10% na sua primeira compra</p>",
             "link_label": "",
@@ -202,7 +201,6 @@
         "template--20798371660092__d8fc8898-c7e3-4775-9a7e-1f26fc13d665-column-2": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-Frete-2.svg",
             "title": "Frete grátis",
             "text": "<p>Para compras acima de R$ 399, a entrega fica por nossa conta</p>",
             "link_label": "",
@@ -212,7 +210,6 @@
         "template--20798371660092__d8fc8898-c7e3-4775-9a7e-1f26fc13d665-column-3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce_Troca-2.svg",
             "title": "Troca fácil",
             "text": "<p>20 dias para trocar ou devolver, facinho e agilizado</p>",
             "link_label": "",
@@ -222,7 +219,6 @@
         "466d8acd-853f-427b-8f1c-70a648212da5": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/Grudz-Jun2023-IconesSite_AtendimentoWhite-2.svg",
             "title": "Atendimento agilizado",
             "text": "<p>Soluções de dúvidas de forma agilizada e pessoal</p>",
             "link_label": "",
@@ -236,6 +232,7 @@
         "template--20798371660092__d8fc8898-c7e3-4775-9a7e-1f26fc13d665-column-3",
         "466d8acd-853f-427b-8f1c-70a648212da5"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h2",
