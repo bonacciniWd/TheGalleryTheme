@@ -125,6 +125,15 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "custom_liquid_nkdi3H": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<footer class=\"footer\">\n  <div class=\"footer-logos\">\n    <img src=\"{{ 'vrz.png' | asset_url }}\" alt=\"Logo VRZ\" class=\"footer-logo\">\n    <img src=\"{{ 'amaterasu.png' | asset_url }}\" alt=\"Logo Amaterasu\" class=\"footer-logo\">\n  </div>\n</footer>\n<style>\n  /* Estilos do Footer */\n  .footer {\n    background-color: #000;\n    padding: 20px;\n    text-align: center;\n    border-top: 1px solid #333;\n  }\n\n  .footer-logos {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 40px;\n  }\n\n  .footer-logo {\n    max-width: 150px;\n    height: auto;\n    transition: opacity 0.3s ease-in-out;\n  }\n\n  .footer-logo:hover {\n    opacity: 0.8;\n  }\n\n  /* Responsivo */\n  @media (max-width: 768px) {\n    .footer-logos {\n      flex-direction: column;\n      gap: 20px;\n    }\n\n    .footer-logo {\n      max-width: 120px;\n    }\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -135,6 +144,7 @@
     "video_N3ptFW",
     "image_banner_zyji7q",
     "custom_liquid_gCLggz",
-    "featured_blog_KPygWW"
+    "featured_blog_KPygWW",
+    "custom_liquid_nkdi3H"
   ]
 }
