@@ -100,75 +100,6 @@
         "show_text_below": true
       }
     },
-    "featured_product_JKy7Vx": {
-      "type": "featured-product",
-      "blocks": {
-        "text_xRpdge": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title_xAtPCC": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h1"
-          }
-        },
-        "price_QHRKNa": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_WmBnzc": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector_gYmrqf": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_nrmyMY": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "share_mYDri4": {
-          "type": "share",
-          "settings": {
-            "share_label": "Compartilhar"
-          }
-        }
-      },
-      "block_order": [
-        "text_xRpdge",
-        "title_xAtPCC",
-        "price_QHRKNa",
-        "variant_picker_WmBnzc",
-        "quantity_selector_gYmrqf",
-        "buy_buttons_nrmyMY",
-        "share_mYDri4"
-      ],
-      "settings": {
-        "product": "adi-2000",
-        "color_scheme": "",
-        "secondary_background": true,
-        "media_size": "medium",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": false,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "custom_liquid_gCLggz": {
       "type": "custom-liquid",
       "settings": {
@@ -203,7 +134,6 @@
     "custom_liquid_kgnPwV",
     "video_N3ptFW",
     "image_banner_zyji7q",
-    "featured_product_JKy7Vx",
     "custom_liquid_gCLggz",
     "featured_blog_KPygWW"
   ]
