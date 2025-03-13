@@ -1,1 +1,24 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":28}},"c098fa37-7ee2-42f0-bc8a-33535514dd94":{"type":"video","settings":{"heading":"","heading_size":"h1","enable_video_looping":false,"video_url":"https:\/\/www.youtube.com\/watch?v=Sl162tkFwto","cover_image":"shopify:\/\/shop_images\/FOTO_TELA.png","description":"","full_width":true,"color_scheme":"","padding_top":0,"padding_bottom":0}},"5d6e9ac0-8b07-4c04-bb54-89c26105de3f":{"type":"rich-text","blocks":{"template--20798371561788__5d6e9ac0-8b07-4c04-bb54-89c26105de3f-heading-1":{"type":"heading","settings":{"heading":"creating our own lives","heading_size":"h1"}},"template--20798371561788__5d6e9ac0-8b07-4c04-bb54-89c26105de3f-text-1":{"type":"text","settings":{"text":"<p>O nosso papel é vestir o mundo de criatividade. Existimos para ajudar pessoas a expressarem sua identidade. E como fazemos isso? <strong>Juntos!<\/strong><\/p><p>Nas ruas, nas praças, nas casas e nos festivais, nossas peças são arte em constante movimento. Aonde a nossa marca vai, leva a mensagem de que a arte pode ser expressa de infinitas formas e a vida que criamos é a nossa maior obra prima.<\/p>"}},"template--20798371561788__5d6e9ac0-8b07-4c04-bb54-89c26105de3f-button-1":{"type":"button","settings":{"button_label":"","button_link":"","button_style_secondary":false,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["template--20798371561788__5d6e9ac0-8b07-4c04-bb54-89c26105de3f-heading-1","template--20798371561788__5d6e9ac0-8b07-4c04-bb54-89c26105de3f-text-1","template--20798371561788__5d6e9ac0-8b07-4c04-bb54-89c26105de3f-button-1"],"settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"background-2","full_width":true,"padding_top":80,"padding_bottom":80}},"d721ea9e-4c9d-40dc-ba89-c2a43f8775ee":{"type":"multicolumn","blocks":{"template--20798371561788__d721ea9e-4c9d-40dc-ba89-c2a43f8775ee-column-1":{"type":"column","settings":{"title":"Seleto","text":"<h5>Menos sempre foi mais. Com coleções enxutas, produzimos o básico com conforto, elegância e versatilidade, permitindo que nossas peças sejam parte dos mais diferentes estilos.<\/h5>","link_label":"","link":""}},"template--20798371561788__d721ea9e-4c9d-40dc-ba89-c2a43f8775ee-column-2":{"type":"column","settings":{"title":"Peças agênero","text":"<h5>Nas coleções da thegallery, não consideramos o gênero como ponto de partida para a criação das peças. A partir da consciência do presente, do passado e do futuro da sociedade, entendemos que limitar uma peça a um gênero é negar a nossa evolução.<\/h5>","link_label":"","link":""}},"template--20798371561788__d721ea9e-4c9d-40dc-ba89-c2a43f8775ee-column-3":{"type":"column","settings":{"title":"Moda atemporal","text":"<h5>Atemporalidade e o minimalismo são complementares. Na moda, ser atemporal é se desprender de tendência. É se permitir criar um guarda-roupa inteligente e sem prazo de validade, composto por peças que não perderão sentido com o passar das estações.<\/h5>","link_label":"","link":""}},"0c2e417f-8d01-4e70-b123-c34934e189f4":{"type":"column","settings":{"title":"Design minimalista","text":"<h5>O minimalismo nos permite fazer escolhas que realmente importam. A partir dele, eliminamos o excesso e valorizamos o essencial.<\/h5>","link_label":"","link":""}}},"block_order":["template--20798371561788__d721ea9e-4c9d-40dc-ba89-c2a43f8775ee-column-1","template--20798371561788__d721ea9e-4c9d-40dc-ba89-c2a43f8775ee-column-2","template--20798371561788__d721ea9e-4c9d-40dc-ba89-c2a43f8775ee-column-3","0c2e417f-8d01-4e70-b123-c34934e189f4"],"custom_css":[".title-wrapper-with-link {margin-top: 0; justify-content: center;}"],"settings":{"title":"","heading_size":"h2","image_width":"full","image_ratio":"adapt","columns_desktop":4,"column_alignment":"left","background_style":"none","button_label":"","button_link":"","color_scheme":"","columns_mobile":"1","swipe_on_mobile":false,"padding_top":32,"padding_bottom":32}}},"order":["main","c098fa37-7ee2-42f0-bc8a-33535514dd94","5d6e9ac0-8b07-4c04-bb54-89c26105de3f","d721ea9e-4c9d-40dc-ba89-c2a43f8775ee"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
