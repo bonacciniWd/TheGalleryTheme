@@ -7,6 +7,29 @@
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
   },
+
+  {
+    "name": "Frete Dinâmico",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Configurações da Frenet"
+      },
+      {
+        "type": "text",
+        "id": "frenet_token",
+        "label": "Token da Frenet",
+        "info": "Insira o token de autenticação da Frenet."
+      },
+      {
+        "type": "text",
+        "id": "frenet_cep_origem",
+        "label": "CEP de Origem",
+        "info": "Insira o CEP de origem para o cálculo do frete."
+      }
+    ]
+  },
+
   {
     "name": "t:settings_schema.logo.name",
     "settings": [
