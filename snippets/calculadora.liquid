@@ -1,0 +1,52 @@
+{% comment %}
+  Snippet: calculadora.liquid
+  Descrição: Exibe uma calculadora de frete dinâmico utilizando a API da Frenet.
+{% endcomment %}
+
+<div id="calculadora-frete">
+  <h3>Calcule o frete</h3>
+  <form id="form-calculadora-frete">
+    <label for="cep">Digite seu CEP:</label>
+    <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+    <button type="submit">Calcular</button>
+  </form>
+  <div id="resultado-frete"></div>
+</div>
+
+<script>
+  document.getElementById('form-calculadora-frete').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const cep = document.getElementById('cep').value.replace(/\D/g, '');
+    const productId = {{ product.id }};
+    const variantId = {{ product.selected_or_first_available_variant.id }};
+
+    fetch('/apps/frenet/calculate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cep: cep,
+        product_id: productId,
+        variant_id: variantId
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const resultadoFrete = document.getElementById('resultado-frete');
+      if (data.error) {
+        resultadoFrete.innerHTML = `<p>Erro: ${data.error}</p>`;
+      } else {
+        let html = '<ul>';
+        data.shipping_rates.forEach(rate => {
+          html += `<li>${rate.service}: ${rate.price}</li>`;
+        });
+        html += '</ul>';
+        resultadoFrete.innerHTML = html;
+      }
+    })
+    .catch(error => {
+      console.error('Erro ao calcular frete:', error);
+    });
+  });
+</script>
