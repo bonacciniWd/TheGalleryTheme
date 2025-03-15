@@ -26,7 +26,7 @@
         "type": "text",
         "id": "frenet_cep_origem",
         "label": "CEP de Origem",
-        "info": "Insira o CEP de origem para o cálculo do frete."
+        "info": "88338270"
       },
       {
         "type": "header",
