@@ -57,6 +57,12 @@
             "show_gift_card_recipient": true
           }
         },
+        "custom_liquid_zJQnMp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% comment %}\n  Adicione este código no seu arquivo product.liquid (dentro da seção do produto)\n{% endcomment %}\n\n<div id=\"frete-calculator\">\n  <input type=\"text\" id=\"cep\" placeholder=\"Digite seu CEP\" maxlength=\"8\">\n  <button id=\"calcular-frete\">Calcular Frete</button>\n  <div id=\"resultado-frete\"></div>\n</div>\n\n<script>\ndocument.getElementById('calcular-frete').addEventListener('click', function() {\n  const cep = document.getElementById('cep').value.replace(/\\D/g, '');\n  \n  // Validação básica do CEP\n  if(cep.length !== 8) {\n    alert('CEP inválido!');\n    return;\n  }\n\n  // Dados do produto\n  const productData = {\n    {%- assign current_variant = product.selected_or_first_available_variant -%}\n    Weight: {{ current_variant.weight | weight_in_grams }}, // Peso em gramas\n    Length: {{ current_variant.length }}, // Dimensões em cm\n    Width: {{ current_variant.width }},\n    Height: {{ current_variant.height }},\n    Price: {{ current_variant.price | money_without_currency }},\n    Quantity: 1\n  };\n\n  // Configuração da requisição\n  fetch('https://api.frenet.com.br/shipping/quote', {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/json',\n      'token': '85B6637AR42D0R487ER895ER04DCF293EDE0' // 👈 Substitua pelo seu token\n    },\n    body: JSON.stringify({\n      Recipient: { ZipCode: cep },\n      ShippingItemArray: [productData]\n    })\n  })\n  .then(response => response.json())\n  .then(data => {\n    const results = document.getElementById('resultado-frete');\n    results.innerHTML = '';\n    \n    if(data.ShippingSevicesArray) {\n      data.ShippingSevicesArray.forEach(service => {\n        results.innerHTML += `\n          <div class=\"frete-option\">\n            <strong>${service.ServiceDescription}</strong>\n            <p>${service.Carrier} - ${service.DeliveryTime} dias úteis</p>\n            <p>R$ ${service.ShippingPrice.toFixed(2).replace('.', ',')}</p>\n          </div>\n        `;\n      });\n    } else {\n      results.innerHTML = 'Nenhum método de entrega disponível';\n    }\n  })\n  .catch(error => {\n    console.error('Erro:', error);\n  });\n});\n</script>\n\n<style>\n#frete-calculator {\n  margin: 20px 0;\n  padding: 15px;\n  border: 1px solid #ddd;\n}\n\n#cep {\n  padding: 8px;\n  margin-right: 10px;\n}\n\n.frete-option {\n  margin: 10px 0;\n  padding: 10px;\n  border-bottom: 1px solid #eee;\n}\n</style>"
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -77,6 +83,7 @@
         "quantity_selector",
         "custom_liquid_cexH48",
         "buy_buttons",
+        "custom_liquid_zJQnMp",
         "description",
         "share"
       ],
