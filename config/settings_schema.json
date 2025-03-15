@@ -8,52 +8,6 @@
     "theme_support_url": "https://support.shopify.com/"
   },
 
- 
-  {
-    "name": "Configurações de Frete",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Configurações da Frenet"
-      },
-      {
-        "type": "text",
-        "id": "frenet_token",
-        "label": "Token da Frenet",
-        "info": "85B6637AR42D0R487ER895ER04DCF293EDE0"
-      },
-      {
-        "type": "text",
-        "id": "frenet_cep_origem",
-        "label": "CEP de Origem",
-        "info": "88338270"
-      },
-      {
-        "type": "header",
-        "content": "Estilização da Calculadora"
-      },
-      {
-        "type": "color",
-        "id": "calculadora_background",
-        "label": "Cor de Fundo",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "calculadora_text_color",
-        "label": "Cor do Texto",
-        "default": "#000000"
-      },
-      {
-        "type": "text",
-        "id": "calculadora_button_text",
-        "label": "Texto do Botão",
-        "default": "Calcular Frete"
-      }
-    ]
-  },
-
-
   {
     "name": "t:settings_schema.logo.name",
     "settings": [
