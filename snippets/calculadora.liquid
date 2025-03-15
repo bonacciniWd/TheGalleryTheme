@@ -3,50 +3,89 @@
   Descrição: Exibe uma calculadora de frete dinâmico utilizando a API da Frenet.
 {% endcomment %}
 
+<style>
+  #calculadora-frete {
+    background-color: {{ settings.calculadora_background }};
+    color: {{ settings.calculadora_text_color }};
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  #calculadora-frete button {
+    background-color: {{ settings.calculadora_text_color }};
+    color: {{ settings.calculadora_background }};
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #calculadora-frete button:hover {
+    opacity: 0.9;
+  }
+  #resultado-frete {
+    margin-top: 15px;
+  }
+</style>
+
 <div id="calculadora-frete">
   <h3>Calcule o frete</h3>
   <form id="form-calculadora-frete">
     <label for="cep">Digite seu CEP:</label>
     <input type="text" id="cep" name="cep" placeholder="00000-000" required>
-    <button type="submit">Calcular</button>
+    <button type="submit">{{ settings.calculadora_button_text }}</button>
   </form>
   <div id="resultado-frete"></div>
 </div>
 
 <script>
-  document.getElementById('form-calculadora-frete').addEventListener('submit', function(event) {
+  document.getElementById('form-calculadora-frete').addEventListener('submit', async function(event) {
     event.preventDefault();
     const cep = document.getElementById('cep').value.replace(/\D/g, '');
-    const productId = {{ product.id }};
-    const variantId = {{ product.selected_or_first_available_variant.id }};
+    const product = {{ product | json }};
+    const variant = {{ product.selected_or_first_available_variant | json }};
 
-    fetch('/apps/frenet/calculate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        cep: cep,
-        product_id: productId,
-        variant_id: variantId
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
+    // Dados necessários para a API da Frenet
+    const payload = {
+      SellerCEP: "{{ settings.frenet_cep_origem }}",
+      RecipientCEP: cep,
+      ShipmentInvoiceValue: variant.price / 100, // Valor do produto em reais
+      ShippingItemArray: [
+        {
+          Height: variant.height || 10, // Altura do produto (em cm)
+          Length: variant.length || 10, // Comprimento do produto (em cm)
+          Width: variant.width || 10, // Largura do produto (em cm)
+          Weight: variant.weight / 1000 || 1, // Peso do produto (em kg)
+          Quantity: 1 // Quantidade do produto
+        }
+      ]
+    };
+
+    try {
+      const response = await fetch('https://api.frenet.com.br/shipping/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Token': "{{ settings.frenet_token }}"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
       const resultadoFrete = document.getElementById('resultado-frete');
-      if (data.error) {
-        resultadoFrete.innerHTML = `<p>Erro: ${data.error}</p>`;
-      } else {
+      if (data.ShippingSevicesArray && data.ShippingSevicesArray.length > 0) {
         let html = '<ul>';
-        data.shipping_rates.forEach(rate => {
-          html += `<li>${rate.service}: ${rate.price}</li>`;
+        data.ShippingSevicesArray.forEach(service => {
+          html += `<li>${service.ServiceDescription}: R$ ${service.ShippingPrice.toFixed(2)} (${service.DeliveryTime} dias úteis)</li>`;
         });
         html += '</ul>';
         resultadoFrete.innerHTML = html;
+      } else {
+        resultadoFrete.innerHTML = '<p>Nenhuma opção de frete disponível para este CEP.</p>';
       }
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Erro ao calcular frete:', error);
-    });
+      document.getElementById('resultado-frete').innerHTML = '<p>Erro ao calcular frete. Tente novamente.</p>';
+    }
   });
 </script>
