@@ -139,7 +139,6 @@
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     {{ form | payment_terms }}
                   {%- endform -%}
-                  {% include 'calculadora' %}
                 </div>
               {%- when 'inventory' -%}
                 <p
