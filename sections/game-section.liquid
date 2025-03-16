@@ -24,21 +24,29 @@
 </div>
 
 <style>
-  /* Seu CSS original aqui */
-  .game-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    /* Seu CSS original aqui */
+    .game-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+  .restart {
+    /* ... mantém as outras propriedades ... */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
   }
 
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-  }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
 
-  /* Cole todo o restante do CSS fornecido aqui */
+    /* Cole todo o restante do CSS fornecido aqui */
 </style>
 
 <script src="{{ 'game.js' | asset_url }}" defer></script>
