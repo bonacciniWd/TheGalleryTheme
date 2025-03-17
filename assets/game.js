@@ -94,6 +94,9 @@ function resetGame() {
   restartButton.style.display = "none";
   updateScoreDisplay();
 
+  // Limpar nuvens antes de gerar novas
+  clouds = []; // Limpa o array de nuvens
+
   // The first platform is always the same
   // x + w has to match paddingX
   platforms = [{ x: 50, w: 50 }];
