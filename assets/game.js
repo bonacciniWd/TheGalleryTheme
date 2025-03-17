@@ -488,8 +488,9 @@ function drawSticks() {
 function drawBackground() {
   // Desenhar céu crepuscular
   var gradient = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
-  gradient.addColorStop(0, "#000000"); // Cor do céu no topo (preto)
-  gradient.addColorStop(1, "#FF7E00"); // Cor do céu na parte inferior (avermelhado)
+  gradient.addColorStop(0, "#1a1a4b"); // Azul escuro no topo
+  gradient.addColorStop(0.5, "#6a4b8a"); // Roxo no meio
+  gradient.addColorStop(1, "#ff7e00"); // Laranja na parte inferior
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
