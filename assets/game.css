@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  overscroll-behavior-block;
   justify-content: center;
   align-items: center;
   height: 90vh;
