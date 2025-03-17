@@ -9,7 +9,7 @@
 #score {
   position: absolute;
   top: 50px;
-  right: 150px;
+  right: 50vh;
   font-size: 2em;
   font-weight: 900;
 }
