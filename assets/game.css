@@ -45,7 +45,7 @@
 }
 
 #creditos {
-   display: flex;
+   display: block;
     position: absolute;
     bottom: 5px;
     left: 50px;
