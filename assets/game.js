@@ -539,7 +539,7 @@ function getTreeY(x, baseHeight, amplitude) {
 function generateCloud() {
   const cloudX = Math.random() * window.innerWidth; // Posição X aleatória
   const cloudY = Math.random() * (canvas.height / 2); // Posição Y aleatória no céu
-  const cloudWidth = 60 + Math.random() * 60; // Largura da nuvem
+  const cloudWidth = 60 + Math.random() * 40; // Largura da nuvem
   const cloudSpeed = 0.5 + Math.random(); // Velocidade da nuvem
 
   clouds.push({ x: cloudX, y: cloudY, width: cloudWidth, speed: cloudSpeed });
@@ -549,7 +549,8 @@ function generateCloud() {
 function drawClouds() {
   clouds.forEach((cloud) => {
     ctx.save();
-    ctx.drawImage(cloudImage, cloud.x - cloud.width / 2, cloud.y - cloud.width / 4, cloud.width, cloud.width / 2); // Desenhar a imagem da nuvem
+    const cloudHeight = (cloud.width / cloudImage.width) * cloudImage.height; // Calcular a altura proporcional
+    ctx.drawImage(cloudImage, cloud.x - cloud.width / 2, cloud.y - cloudHeight / 2, cloud.width, cloudHeight); // Desenhar a imagem da nuvem
     ctx.restore();
 
     // Mover nuvens
