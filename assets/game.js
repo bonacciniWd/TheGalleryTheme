@@ -364,6 +364,11 @@ function draw() {
   drawHero();
   drawSticks();
 
+  // Render the score
+  ctx.fillStyle = "black"; // Cor do texto
+  ctx.font = "4em Arial"; // Defina a fonte e o tamanho
+  ctx.fillText(score, 20, 50); // Desenhar o score no canvas (x, y)
+
   // Restore transformation
   ctx.restore();
 }
