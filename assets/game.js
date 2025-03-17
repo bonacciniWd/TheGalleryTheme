@@ -82,6 +82,18 @@ cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho 
 // Initialize layout
 resetGame();
 
+// Função para exibir a mensagem de introdução com todas as dicas
+function displayIntroduction() {
+  const allTips = tips.join("\n"); // Junta todas as dicas com quebras de linha
+  introductionElement.innerText = `Dicas de Jogo:\n${allTips}`; // Atualiza o texto de introdução
+  introductionElement.style.opacity = 1; // Garante que a opacidade esteja visível
+
+  // Ocultar a introdução após 5 segundos
+  setTimeout(() => {
+    introductionElement.style.opacity = 0; // Esconde a introdução
+  }, 5000); // 5000 milissegundos = 5 segundos
+}
+
 // Resets game variables and layouts but does not start the game (game starts on keypress)
 function resetGame() {
   // Reset game progress
@@ -90,7 +102,6 @@ function resetGame() {
   sceneOffset = 0;
   score = 0;
 
-  introductionElement.style.opacity = 0.8;
   perfectElement.style.opacity = 0;
   restartButton.style.display = "none";
   updateScoreDisplay();
@@ -100,6 +111,9 @@ function resetGame() {
 
   // Gerar estrelas
   generateStars(); // Gera as estrelas uma vez
+
+  // Exibir a mensagem de introdução com todas as dicas
+  displayIntroduction(); // Chama a função para exibir a introdução
 
   // The first platform is always the same
   platforms = [{ x: 50, w: 50 }];
