@@ -48,8 +48,7 @@
    display: block;
     bottom: 0px !important;
     left: 0px !important;
-    border-top-right-radius: 20px;
-    background: #000000B9;
+    background: #000;
     padding: 8px 12px;
     color: #FFF;
 }
