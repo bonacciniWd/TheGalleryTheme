@@ -109,15 +109,6 @@ window.addEventListener("touchstart", function (event) {
   }
 });
 
-// Prevenir copiar e colar ao segurar na tela
-document.addEventListener('mousedown', function(event) {
-    event.preventDefault();
-});
-
-document.addEventListener('touchstart', function(event) {
-    event.preventDefault();
-});
-
 // Initialize layout
 resetGame();
 
