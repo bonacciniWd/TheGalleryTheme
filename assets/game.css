@@ -47,8 +47,8 @@
 #creditos {
    display: block;
     position: absolute;
-    bottom: 8px;
-    left: 8px;
+    bottom: 0px;
+    left: 0px;
     border-top-right-radius: 20px;
     background: #000000B9;
     padding: 6px 10px;
