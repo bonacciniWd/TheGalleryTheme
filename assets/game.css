@@ -47,6 +47,7 @@
 #creditos {
    display: flex;
     position: absolute;
+      min-width: fullscreen;
     bottom: 5px;
     left: 5px;
     border-radius: 20px;
