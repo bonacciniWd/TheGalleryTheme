@@ -32,6 +32,7 @@ let platforms = [];
 let sticks = [];
 let trees = [];
 let clouds = []; // Array para armazenar as nuvens
+let stars = []; // Array para armazenar as estrelas
 
 // Todo: Save high score to localStorage (?)
 
@@ -97,8 +98,10 @@ function resetGame() {
   // Limpar nuvens antes de gerar novas
   clouds = []; // Limpa o array de nuvens
 
+  // Gerar estrelas
+  generateStars(); // Gera as estrelas uma vez
+
   // The first platform is always the same
-  // x + w has to match paddingX
   platforms = [{ x: 50, w: 50 }];
   generatePlatform();
   generatePlatform();
@@ -485,17 +488,26 @@ function drawSticks() {
   });
 }
 
-// Função para desenhar estrelas
-function drawStars() {
+// Função para gerar estrelas
+function generateStars() {
   const starCount = 50; // Número de estrelas
+  stars = []; // Limpa o array de estrelas
   for (let i = 0; i < starCount; i++) {
     const x = Math.random() * window.innerWidth; // Posição X aleatória
     const y = Math.random() * (window.innerHeight / 2); // Posição Y aleatória na parte superior
-    ctx.fillStyle = "white"; // Cor da estrela
-    ctx.beginPath();
-    ctx.arc(x, y, Math.random() * 2 + 1, 0, Math.PI * 2); // Tamanho aleatório da estrela
-    ctx.fill();
+    const size = Math.random() * 2 + 1; // Tamanho aleatório da estrela
+    stars.push({ x, y, size }); // Armazena a estrela no array
   }
+}
+
+// Função para desenhar estrelas
+function drawStars() {
+  ctx.fillStyle = "white"; // Cor da estrela
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2); // Desenha a estrela
+    ctx.fill();
+  });
 }
 
 function drawBackground() {
