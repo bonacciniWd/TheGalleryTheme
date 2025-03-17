@@ -116,6 +116,7 @@ function resetGame() {
   heroY = 0;
 
   draw();
+  showControlButton();
 }
 
 function generateTree() {
@@ -190,6 +191,11 @@ window.addEventListener("resize", function (event) {
 });
 
 window.requestAnimationFrame(animate);
+
+// Adiciona um listener para o evento touchstart
+window.addEventListener("touchstart", function (event) {
+  event.preventDefault(); // Previne o comportamento padrão
+});
 
 // The main game loop
 function animate(timestamp) {
@@ -522,3 +528,19 @@ function getTreeY(x, baseHeight, amplitude) {
   const sineBaseY = window.innerHeight - baseHeight;
   return Math.sinus(x) * amplitude + sineBaseY;
 }
+
+// Exibe o botão de controle em dispositivos móveis
+function showControlButton() {
+  const controlButton = document.getElementById("controlButton");
+  controlButton.style.display = "block";
+}
+
+// Adiciona um listener para o botão de controle
+document.getElementById("controlButton").addEventListener("click", function () {
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
+  }
+});
