@@ -57,19 +57,10 @@
         "padding_bottom": 20
       }
     },
-    "1702556271eaf9b50c": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "custom_liquid_KfVxk7": {
+    "custom_liquid_KzCEMy": {
       "type": "custom-liquid",
-      "disabled": true,
-      "custom_css": [],
       "settings": {
-        "custom_liquid": "",
+        "custom_liquid": "{% comment %} Shopify Liquid Template for Custom Stick Hero Game {% endcomment %}\n\n<div class=\"container\">\n  <div id=\"score\"></div>\n  <canvas id=\"game\" width=\"375\" height=\"375\"></canvas>\n  <div id=\"introduction\">Hold down the mouse to stretch out a stick</div>\n  <div id=\"perfect\">DOUBLE SCORE</div>\n  <button id=\"restart\">RESTART</button>\n</div>\n\n<a id=\"youtube\" href=\"https://youtu.be/eue3UdFvwPo\" target=\"_top\">\n  <span>See how this game was made</span>\n</a>\n<div id=\"youtube-card\">\n  How to create a Stick Hero game with JavaScript and HTML Canvas\n</div>\n\n<link rel=\"stylesheet\" href=\"{{ 'game.css' | asset_url }}\">\n<script src=\"{{ 'game.js' | asset_url }}\" defer></script>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
@@ -79,7 +70,6 @@
   "order": [
     "announcement-bar",
     "header",
-    "1702556271eaf9b50c",
-    "custom_liquid_KfVxk7"
+    "custom_liquid_KzCEMy"
   ]
 }
