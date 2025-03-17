@@ -25,6 +25,10 @@
   font-size: 0.8em;
   text-align: center;
   transition: opacity 2s;
+  color: white;
+  background-color: #000000AB;
+  padding: 8px 14px;
+  border-radius: 20px;
 }
 
 #restart {
