@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  overflow-y: none ;
   justify-content: center;
   align-items: center;
   height: 90vh;
