@@ -168,27 +168,16 @@ function generatePlatform() {
 
 resetGame();
 
-// Adicionar evento de toque para iniciar o jogo
-window.addEventListener("touchstart", function (event) {
-  event.preventDefault(); // Prevenir o comportamento padrão de seleção
-  if (phase == "waiting") {
-    lastTimestamp = undefined;
-    introductionElement.style.opacity = 0;
-    phase = "stretching";
-    window.requestAnimationFrame(animate);
+// If space was pressed restart the game
+window.addEventListener("keydown", function (event) {
+  if (event.key == " ") {
+    event.preventDefault();
+    resetGame();
+    return;
   }
 });
 
-// Adicionar evento de toque para soltar o stick
-window.addEventListener("touchend", function (event) {
-  if (phase == "stretching") {
-    phase = "turning"; // Mudar para a fase de turning
-  }
-});
-
-// Adicionar evento de clique ao botão
-document.getElementById("mobileStartButton").addEventListener("click", function (event) {
-  event.preventDefault(); // Prevenir comportamento padrão
+window.addEventListener("mousedown", function (event) {
   if (phase == "waiting") {
     lastTimestamp = undefined;
     introductionElement.style.opacity = 0;
