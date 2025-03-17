@@ -27,6 +27,7 @@
   background-color: #000000AB;
   padding: 12px 16px;
   border-radius: 20px;
+  pointer-events: not-allowed;
 }
 
 #restart {
