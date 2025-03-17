@@ -179,13 +179,10 @@ window.addEventListener("touchstart", function (event) {
   }
 });
 
-// Remover o evento mousedown se não for necessário
-window.addEventListener("mousedown", function (event) {
-  if (phase == "waiting") {
-    lastTimestamp = undefined;
-    introductionElement.style.opacity = 0;
-    phase = "stretching";
-    window.requestAnimationFrame(animate);
+// Adicionar evento de toque para soltar o stick
+window.addEventListener("touchend", function (event) {
+  if (phase == "stretching") {
+    phase = "turning"; // Mudar para a fase de turning
   }
 });
 
