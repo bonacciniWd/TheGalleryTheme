@@ -73,7 +73,7 @@ const ctx = canvas.getContext("2d");
 const introductionElement = document.getElementById("introduction");
 const perfectElement = document.getElementById("perfect");
 const restartButton = document.getElementById("restart");
-
+const scoreElement = document.getElementById("score");
 
 let cloudImage = new Image(); // Criar uma nova imagem
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
