@@ -79,6 +79,15 @@ const scoreElement = document.getElementById("score");
 let cloudImage = new Image(); // Criar uma nova imagem
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
 
+// Array de dicas de jogo
+const tips = [
+  "Toque e segure para esticar o bastão!",
+  "Tente acertar o centro da plataforma para mais pontos!",
+  "Cuidado com a altura do bastão!",
+  "Use a gravidade a seu favor!",
+  "Reinicie o jogo para tentar novamente!"
+];
+
 // Initialize layout
 resetGame();
 
@@ -100,6 +109,10 @@ function resetGame() {
 
   // Gerar estrelas
   generateStars(); // Gera as estrelas uma vez
+
+  // Exibir uma dica aleatória
+  const randomTip = tips[Math.floor(Math.random() * tips.length)];
+  introductionElement.innerText = randomTip; // Atualiza o texto de introdução
 
   // The first platform is always the same
   platforms = [{ x: 50, w: 50 }];
