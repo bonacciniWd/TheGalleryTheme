@@ -177,7 +177,30 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
+// Adicionar evento de toque para iniciar o jogo
+window.addEventListener("touchstart", function (event) {
+  event.preventDefault(); // Prevenir o comportamento padrão de seleção
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
+  }
+});
+
+// Remover o evento mousedown se não for necessário
 window.addEventListener("mousedown", function (event) {
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
+  }
+});
+
+// Adicionar evento de clique ao botão
+document.getElementById("mobileStartButton").addEventListener("click", function (event) {
+  event.preventDefault(); // Prevenir comportamento padrão
   if (phase == "waiting") {
     lastTimestamp = undefined;
     introductionElement.style.opacity = 0;
