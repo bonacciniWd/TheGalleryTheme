@@ -90,7 +90,7 @@ function resetGame() {
   sceneOffset = 0;
   score = 0;
 
-  introductionElement.style.opacity = 1;
+  introductionElement.style.opacity = 0.8;
   perfectElement.style.opacity = 0;
   restartButton.style.display = "none";
   updateScoreDisplay();
