@@ -1,9 +1,8 @@
 .container {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   height: 80vh;
-  background-color: #000 !important;
 }
 
 
@@ -44,6 +43,7 @@
   opacity: 0;
   transition: opacity 2s;
 }
+
 
 
 
