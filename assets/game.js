@@ -166,7 +166,10 @@ function generatePlatform() {
   platforms.push({ x, w });
 }
 
-resetGame();
+// Prevenir o menu de contexto ao pressionar a tela
+window.addEventListener("contextmenu", function (event) {
+  event.preventDefault(); // Prevenir o menu de contexto
+});
 
 // Adicionar evento de toque para iniciar o jogo
 window.addEventListener("touchstart", function (event) {
@@ -365,10 +368,11 @@ function draw() {
   ctx.restore();
 }
 
+// Adicionar evento de clique ao botão de reiniciar
 restartButton.addEventListener("click", function (event) {
   event.preventDefault();
   resetGame();
-  restartButton.style.display = "none";
+  restartButton.style.display = "none"; // Esconder o botão após reiniciar
 });
 
 function drawPlatforms() {
