@@ -249,7 +249,7 @@ function animate(timestamp) {
         if (nextPlatform) {
           // Increase score
           score += perfectHit ? 2 : 1;
-          scoreElement.innerText = score;
+          updateScoreDisplay();
 
           if (perfectHit) {
             perfectElement.style.opacity = 1;
