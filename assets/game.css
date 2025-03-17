@@ -45,11 +45,10 @@
 }
 
 #creditos {
-   display: block;
-    position: absolute;
+    display: relative;
     bottom: 20px;
     left: 20px;
-    background: red;
+    
 }
 
 @media (min-height: 425px) {
