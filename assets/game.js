@@ -560,19 +560,3 @@ function drawClouds() {
     }
   });
 }
-
-// Função para verificar se o dispositivo é móvel
-function isMobile() {
-  return /Mobi|Android/i.test(navigator.userAgent);
-}
-
-// Mostrar o botão apenas em dispositivos móveis
-if (isMobile()) {
-  document.getElementById("mobileStartButton").style.display = "block";
-}
-
-// Adicionar evento de clique ao botão
-document.getElementById("mobileStartButton").addEventListener("click", function (event) {
-  event.preventDefault(); // Prevenir comportamento padrão
-  resetGame(); // Iniciar o jogo
-});
