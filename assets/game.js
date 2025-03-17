@@ -177,11 +177,6 @@ window.addEventListener("contextmenu", function (event) {
   event.preventDefault(); // Prevenir o menu de contexto
 });
 
-// Prevenir o comportamento padrão de seleção ao tocar
-window.addEventListener("touchstart", function (event) {
-  event.preventDefault(); // Prevenir o comportamento padrão de seleção
-});
-
 // Adicionar evento de toque para iniciar o jogo
 window.addEventListener("touchstart", function (event) {
   event.preventDefault(); // Prevenir o comportamento padrão de seleção
@@ -628,4 +623,18 @@ function updateScoreDisplay() {
   scoreElement.innerText = "Pontos: " + score; // Adiciona "Score: " antes da pontuação
   scoreElement.style.textAlign = "center"; // Centraliza o texto
   scoreElement.style.fontSize = "2em"; // Define o tamanho da fonte
+}
+
+// Função para exibir a mensagem de introdução com todas as dicas
+function displayIntroduction() {
+  const formattedTips = tips.map(tip => `► ${tip}`).join("\n"); // Formata as dicas com "►"
+  introductionElement.innerText = `Dicas de Jogo:\n${formattedTips}`; // Atualiza o texto de introdução
+  introductionElement.style.opacity = 1; // Garante que a opacidade esteja visível
+  introductionElement.classList.remove('hidden'); // Remove a classe hidden
+
+  // Ocultar a introdução após 5 segundos
+  setTimeout(() => {
+    introductionElement.style.opacity = 0; // Esconde a introdução
+    introductionElement.classList.add('hidden'); // Adiciona a classe hidden
+  }, 5000); // 5000 milissegundos = 5 segundos
 }
