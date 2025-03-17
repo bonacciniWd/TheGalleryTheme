@@ -189,9 +189,21 @@ window.addEventListener("touchend", function (event) {
   }
 });
 
-// Adicionar evento de clique ao botão
+// Função para ativar o modo de tela cheia
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen(); // Ativar tela cheia
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen(); // Sair do modo de tela cheia
+    }
+  }
+}
+
+// Adicionar evento de clique para ativar/desativar tela cheia
 document.getElementById("mobileStartButton").addEventListener("click", function (event) {
   event.preventDefault(); // Prevenir comportamento padrão
+  toggleFullScreen(); // Chamar a função de tela cheia
   if (phase == "waiting") {
     lastTimestamp = undefined;
     introductionElement.style.opacity = 0;
