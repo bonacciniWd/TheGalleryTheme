@@ -177,19 +177,19 @@ window.addEventListener("contextmenu", function (event) {
   event.preventDefault(); // Prevenir o menu de contexto
 });
 
-// Adicionar evento de toque à área invisível
-document.getElementById("touchArea").addEventListener("touchstart", function (event) {
+// Adicionar evento de toque para iniciar o jogo
+window.addEventListener("touchstart", function (event) {
   event.preventDefault(); // Prevenir o comportamento padrão de seleção
   if (phase == "waiting") {
     lastTimestamp = undefined;
-    introductionElement.style.opacity = 0; // Esconde a introdução
+    introductionElement.style.opacity = 0;
     phase = "stretching";
     window.requestAnimationFrame(animate);
   }
 });
 
 // Adicionar evento de toque para soltar o stick
-document.getElementById("touchArea").addEventListener("touchend", function (event) {
+window.addEventListener("touchend", function (event) {
   if (phase == "stretching") {
     phase = "turning"; // Mudar para a fase de turning
   }
