@@ -79,6 +79,36 @@ const clouds = [];
 const cloudImage = new Image();
 cloudImage.src = 'https://mangainsider.com/wp-content/uploads/2022/06/Akatsuki-Logo.png'; // Substitua pelo caminho da sua imagem PNG
 
+// Adiciona um botão centralizado na tela
+const touchButton = document.createElement("button");
+touchButton.innerText = "Aperte aqui";
+touchButton.style.position = "absolute";
+touchButton.style.left = "50%";
+touchButton.style.top = "50%";
+touchButton.style.transform = "translate(-50%, -50%)";
+touchButton.style.zIndex = "1000"; // Para garantir que o botão fique acima de outros elementos
+document.body.appendChild(touchButton);
+
+// Adiciona evento de toque ao botão
+touchButton.addEventListener("mousedown", function (event) {
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
+  }
+});
+
+// Adiciona evento de toque na tela
+window.addEventListener("touchstart", function (event) {
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
+  }
+});
+
 // Initialize layout
 resetGame();
 
