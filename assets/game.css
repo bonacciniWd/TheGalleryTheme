@@ -62,7 +62,3 @@
     color: #FFF;
 }
 
-#game {
-  touch-action: none; /* Impede a seleção de texto e o zoom */
-}
-
