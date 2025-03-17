@@ -23,7 +23,7 @@
         ".container {background-color: #000 !important;}"
       ],
       "settings": {
-        "custom_liquid": "{% comment %} Shopify Liquid Template para o jogo Stick Hero {% endcomment %}\n\n<div class=\"container\">\n  <canvas id=\"game\" width=\"375\" height=\"375\"></canvas>\n  <div id=\"score\"></div>\n  <div id=\"introduction\">Segure o botão do mouse para esticar o bastão</div>\n  <div id=\"perfect\">PONTUAÇÃO DOBRADA</div>\n  <button id=\"mobileStartButton\" style=\"display: none;\">Iniciar Jogo</button>\n</div>\n\n<div id=\"creditos\">\n  Powered by Vrz Studio\n</div>\n\n<!-- Mover o botão de reiniciar para fora do contêiner do canvas -->\n<button id=\"restart\" style=\"display: none;\">REINICIAR</button>\n\n<link rel=\"stylesheet\" href=\"{{ 'game.css' | asset_url }}\">\n<script src=\"{{ 'game.js' | asset_url }}\" defer></script>",
+        "custom_liquid": "{% comment %} Shopify Liquid Template para o jogo Stick Hero {% endcomment %}\n\n<div class=\"container\">\n  <canvas id=\"game\" width=\"375\" height=\"375\"></canvas>\n  <div id=\"introduction\">Segure o botão do mouse para esticar o bastão</div>\n  <div id=\"perfect\">PONTUAÇÃO DOBRADA</div>\n  <button id=\"mobileStartButton\" style=\"display: none;\">Iniciar Jogo</button>\n</div>\n\n<div id=\"creditos\">\n  Powered by Vrz Studio\n</div>\n\n<!-- Mover o botão de reiniciar para fora do contêiner do canvas -->\n<button id=\"restart\" style=\"display: none;\">REINICIAR</button>\n\n<link rel=\"stylesheet\" href=\"{{ 'game.css' | asset_url }}\">\n<script src=\"{{ 'game.js' | asset_url }}\" defer></script>",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
