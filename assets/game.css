@@ -66,3 +66,16 @@
     color: #FFF;
 }
 
+#tipsContainer {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Para garantir que fique acima de outros elementos */
+}
+
