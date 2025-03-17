@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 80vh;
 }
 
 
@@ -46,6 +46,7 @@
 
 #creditos {
    display: flex;
+    position: absolute;
     bottom: 5px;
     left: 5px;
     border-radius: 20px;
