@@ -485,6 +485,19 @@ function drawSticks() {
   });
 }
 
+// Função para desenhar estrelas
+function drawStars() {
+  const starCount = 50; // Número de estrelas
+  for (let i = 0; i < starCount; i++) {
+    const x = Math.random() * window.innerWidth; // Posição X aleatória
+    const y = Math.random() * (window.innerHeight / 2); // Posição Y aleatória na parte superior
+    ctx.fillStyle = "white"; // Cor da estrela
+    ctx.beginPath();
+    ctx.arc(x, y, Math.random() * 2 + 1, 0, Math.PI * 2); // Tamanho aleatório da estrela
+    ctx.fill();
+  }
+}
+
 function drawBackground() {
   // Desenhar céu crepuscular
   var gradient = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
@@ -493,6 +506,9 @@ function drawBackground() {
   gradient.addColorStop(1, "#ff7e00"); // Laranja na parte inferior
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+  // Desenhar estrelas
+  drawStars(); // Chama a função para desenhar estrelas
 
   // Desenhar colinas
   drawHill(hill1BaseHeight, hill1Amplitude, hill1Stretch, "#95C629");
