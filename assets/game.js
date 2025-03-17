@@ -588,7 +588,7 @@ function drawClouds() {
 
 // Atualizar a exibição da pontuação
 function updateScoreDisplay() {
-  scoreElement.innerText = "Score: " + score; // Adiciona "Score: " antes da pontuação
+  scoreElement.innerText = "Pontuação: " + score; // Adiciona "Score: " antes da pontuação
   scoreElement.style.textAlign = "center"; // Centraliza o texto
   scoreElement.style.fontSize = "2em"; // Define o tamanho da fonte
 }
