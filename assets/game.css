@@ -20,18 +20,13 @@
 #introduction {
   position: absolute;
   font-weight: 600;
-  font-size: 1.5em;
+  font-size: 0.8em;
   text-align: center;
   transition: opacity 2s;
   color: white;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
+  background-color: #000000AB;
+  padding: 12px 16px;
+  border-radius: 20px;
 }
 
 #restart {
@@ -65,5 +60,30 @@
     background: #000;
     padding: 8px 12px;
     color: #FFF;
+}
+
+#tipsContainer {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Para garantir que fique acima de outros elementos */
+  max-width: 300px; /* Limitar a largura do container */
+  text-align: center; /* Centralizar o texto */
+}
+
+#tipsList {
+  list-style-type: none; /* Remove os marcadores da lista */
+  padding: 0; /* Remove o padding padrão */
+}
+
+#tipsList li {
+  margin: 5px 0; /* Espaçamento entre as dicas */
+  font-size: 1em; /* Tamanho da fonte das dicas */
 }
 
