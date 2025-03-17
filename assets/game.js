@@ -92,7 +92,7 @@ function resetGame() {
   introductionElement.style.opacity = 1;
   perfectElement.style.opacity = 0;
   restartButton.style.display = "none";
-  scoreElement.innerText = score;
+  updateScoreDisplay();
 
   // The first platform is always the same
   // x + w has to match paddingX
@@ -249,7 +249,7 @@ function animate(timestamp) {
         if (nextPlatform) {
           // Increase score
           score += perfectHit ? 2 : 1;
-          updateScoreDisplay();
+          scoreElement.innerText = score;
 
           if (perfectHit) {
             perfectElement.style.opacity = 1;
@@ -589,4 +589,6 @@ function drawClouds() {
 // Atualizar a exibição da pontuação
 function updateScoreDisplay() {
   scoreElement.innerText = "Score: " + score; // Adiciona "Score: " antes da pontuação
+  scoreElement.style.textAlign = "center"; // Centraliza o texto
+  scoreElement.style.fontSize = "2em"; // Define o tamanho da fonte
 }
