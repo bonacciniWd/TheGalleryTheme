@@ -79,6 +79,27 @@ const scoreElement = document.getElementById("score");
 let cloudImage = new Image(); // Criar uma nova imagem
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
 
+// Array de dicas de jogo
+const tips = [
+  "Toque e segure para esticar o bastão!",
+  "Tente acertar o centro da plataforma para mais pontos!",
+  "Cuidado com a altura do bastão!",
+  "Use a gravidade a seu favor!",
+  "Reinicie o jogo para tentar novamente!"
+];
+
+// Função para exibir a mensagem de introdução com uma dica aleatória
+function displayIntroduction() {
+  const randomTip = tips[Math.floor(Math.random() * tips.length)];
+  introductionElement.innerText = `Dica: ${randomTip}`; // Atualiza o texto de introdução
+  introductionElement.style.opacity = 1; // Garante que a opacidade esteja visível
+
+  // Ocultar a introdução após 5 segundos
+  setTimeout(() => {
+    introductionElement.style.opacity = 0; // Esconde a introdução
+  }, 5000); // 5000 milissegundos = 5 segundos
+}
+
 // Initialize layout
 resetGame();
 
@@ -90,7 +111,6 @@ function resetGame() {
   sceneOffset = 0;
   score = 0;
 
-  introductionElement.style.opacity = 0.8;
   perfectElement.style.opacity = 0;
   restartButton.style.display = "none";
   updateScoreDisplay();
@@ -100,6 +120,9 @@ function resetGame() {
 
   // Gerar estrelas
   generateStars(); // Gera as estrelas uma vez
+
+  // Exibir a mensagem de introdução com uma dica
+  displayIntroduction(); // Chama a função para exibir a introdução
 
   // The first platform is always the same
   platforms = [{ x: 50, w: 50 }];
