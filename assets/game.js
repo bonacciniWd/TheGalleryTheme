@@ -88,8 +88,22 @@ const tips = [
   "Reinicie o jogo para tentar novamente!"
 ];
 
+const tipsContainer = document.getElementById("tipsContainer");
+const tipsList = document.getElementById("tipsList");
+
 // Initialize layout
 resetGame();
+
+// Função para exibir todas as dicas
+function displayTips() {
+  tipsList.innerHTML = ""; // Limpa a lista de dicas
+  tips.forEach(tip => {
+    const listItem = document.createElement("li");
+    listItem.innerText = tip; // Adiciona cada dica à lista
+    tipsList.appendChild(listItem);
+  });
+  tipsContainer.style.display = "block"; // Exibe o container de dicas
+}
 
 // Resets game variables and layouts but does not start the game (game starts on keypress)
 function resetGame() {
@@ -110,9 +124,8 @@ function resetGame() {
   // Gerar estrelas
   generateStars(); // Gera as estrelas uma vez
 
-  // Exibir uma dica aleatória
-  const randomTip = tips[Math.floor(Math.random() * tips.length)];
-  introductionElement.innerText = randomTip; // Atualiza o texto de introdução
+  // Exibir todas as dicas
+  displayTips(); // Chama a função para exibir as dicas
 
   // The first platform is always the same
   platforms = [{ x: 50, w: 50 }];
