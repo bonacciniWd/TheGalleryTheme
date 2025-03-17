@@ -18,7 +18,6 @@
 
 
 #introduction {
-  height: 120px;
   position: absolute;
   font-weight: 600;
   font-size: 0.8em;
@@ -26,7 +25,7 @@
   transition: opacity 2s;
   color: white;
   background-color: #000000AB;
-  padding: 16px 12px;
+  padding: 6px;
   border-radius: 20px;
 }
 
