@@ -27,7 +27,10 @@
 #restart {
   width: 120px;
   height: 120px;
-  position: absolute;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 50%;
   color: white;
   background-color: red;
@@ -36,7 +39,7 @@
   font-size: 1.2em;
   display: none;
   cursor: pointer;
-  z-index: 1000; /* Adicionando um z-index alto */
+  z-index: 1000;
 }
 
 #perfect {
@@ -52,20 +55,5 @@
     background: #000;
     padding: 8px 12px;
     color: #FFF;
-}
-
-#mobileStartButton {
-  position: fixed;
-  bottom: 20px; /* Distância do fundo */
-  left: 50%;
-  transform: translateX(-50%); /* Centraliza horizontalmente */
-  padding: 10px 20px;
-  font-size: 1.2em;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: none; /* Inicialmente escondido */
 }
 
