@@ -79,14 +79,13 @@ const clouds = [];
 const cloudImage = new Image();
 cloudImage.src = 'https://mangainsider.com/wp-content/uploads/2022/06/Akatsuki-Logo.png'; // Substitua pelo caminho da sua imagem PNG
 
-// Adiciona um botão centralizado na parte inferior da tela
+// Adiciona um botão centralizado na tela
 const touchButton = document.createElement("button");
-touchButton.innerText = "Segure e solte!"; // Texto do botão
-touchButton.className = "touch-button"; // Adiciona a classe ao botão
+touchButton.innerText = "Aperte aqui";
 touchButton.style.position = "absolute";
-touchButton.style.left = "50%"; // Centraliza horizontalmente
-touchButton.style.bottom = "10px"; // 10 pixels acima da parte inferior
-touchButton.style.transform = "translateX(-50%)"; // Ajusta a posição para o centro
+touchButton.style.left = "50%";
+touchButton.style.top = "50%";
+touchButton.style.transform = "translate(-50%, -50%)";
 touchButton.style.zIndex = "1000"; // Para garantir que o botão fique acima de outros elementos
 document.body.appendChild(touchButton);
 
@@ -108,6 +107,15 @@ window.addEventListener("touchstart", function (event) {
     phase = "stretching";
     window.requestAnimationFrame(animate);
   }
+});
+
+// Prevenir copiar e colar ao segurar na tela
+document.addEventListener('mousedown', function(event) {
+    event.preventDefault();
+});
+
+document.addEventListener('touchstart', function(event) {
+    event.preventDefault();
 });
 
 // Initialize layout
