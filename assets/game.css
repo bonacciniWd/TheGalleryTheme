@@ -9,10 +9,13 @@
 #score {
   position: absolute;
   top: 150px;
-  right: 30px;
-  font-size: 4em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2em;
   font-weight: 900;
+  color: black;
 }
+
 
 #introduction {
   width: 200px;
