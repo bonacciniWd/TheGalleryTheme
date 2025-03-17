@@ -31,6 +31,7 @@ let sceneOffset; // Moves the whole game
 let platforms = [];
 let sticks = [];
 let trees = [];
+let clouds = []; // Array para armazenar as nuvens
 
 // Todo: Save high score to localStorage (?)
 
@@ -114,6 +115,11 @@ function resetGame() {
 
   heroX = platforms[0].x + platforms[0].w - heroDistanceFromEdge;
   heroY = 0;
+
+  // Chame a função para gerar algumas nuvens no início do jogo
+  for (let i = 0; i < 5; i++) {
+    generateCloud();
+  }
 
   draw();
 }
@@ -449,19 +455,22 @@ function drawSticks() {
 }
 
 function drawBackground() {
-  // Draw sky
+  // Desenhar céu crepuscular
   var gradient = ctx.createLinearGradient(0, 0, 0, window.innerHeight);
-  gradient.addColorStop(0, "#BBD691");
-  gradient.addColorStop(1, "#FEF1E1");
+  gradient.addColorStop(0, "#FF7E00"); // Cor do céu no topo
+  gradient.addColorStop(1, "#BBD691"); // Cor do céu na parte inferior
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
-  // Draw hills
+  // Desenhar colinas
   drawHill(hill1BaseHeight, hill1Amplitude, hill1Stretch, "#95C629");
   drawHill(hill2BaseHeight, hill2Amplitude, hill2Stretch, "#659F1C");
 
-  // Draw trees
+  // Desenhar árvores
   trees.forEach((tree) => drawTree(tree.x, tree.color));
+
+  // Desenhar nuvens
+  drawClouds();
 }
 
 // A hill is a shape under a stretched out sinus wave
@@ -521,4 +530,32 @@ function getHillY(windowX, baseHeight, amplitude, stretch) {
 function getTreeY(x, baseHeight, amplitude) {
   const sineBaseY = window.innerHeight - baseHeight;
   return Math.sinus(x) * amplitude + sineBaseY;
+}
+
+// Função para gerar nuvens
+function generateCloud() {
+  const cloudX = Math.random() * window.innerWidth; // Posição X aleatória
+  const cloudY = Math.random() * (canvas.height / 2); // Posição Y aleatória no céu
+  const cloudWidth = 60 + Math.random() * 40; // Largura da nuvem
+  const cloudSpeed = 0.5 + Math.random(); // Velocidade da nuvem
+
+  clouds.push({ x: cloudX, y: cloudY, width: cloudWidth, speed: cloudSpeed });
+}
+
+// Função para desenhar nuvens
+function drawClouds() {
+  clouds.forEach((cloud) => {
+    ctx.save();
+    ctx.fillStyle = "white"; // Cor da nuvem
+    ctx.beginPath();
+    ctx.arc(cloud.x, cloud.y, cloud.width / 2, 0, Math.PI * 2); // Nuvem como círculo
+    ctx.fill();
+    ctx.restore();
+
+    // Mover nuvens
+    cloud.x += cloud.speed; // Mover nuvem para a direita
+    if (cloud.x > window.innerWidth) {
+      cloud.x = -cloud.width; // Reiniciar a nuvem do lado esquerdo
+    }
+  });
 }
