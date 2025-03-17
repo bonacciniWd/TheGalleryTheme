@@ -249,7 +249,7 @@ function animate(timestamp) {
         if (nextPlatform) {
           // Increase score
           score += perfectHit ? 2 : 1;
-          scoreElement.innerText = score;
+          updateScoreDisplay();
 
           if (perfectHit) {
             perfectElement.style.opacity = 1;
@@ -584,4 +584,9 @@ function drawClouds() {
       cloud.x = -cloud.width; // Reiniciar a nuvem do lado esquerdo
     }
   });
+}
+
+// Atualizar a exibição da pontuação
+function updateScoreDisplay() {
+  scoreElement.innerText = "Score: " + score; // Adiciona "Score: " antes da pontuação
 }
