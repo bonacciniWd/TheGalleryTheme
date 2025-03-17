@@ -168,15 +168,36 @@ function generatePlatform() {
 
 resetGame();
 
-// If space was pressed restart the game
-window.addEventListener("keydown", function (event) {
-  if (event.key == " ") {
-    event.preventDefault();
-    resetGame();
-    return;
+// Adicionar evento de toque para iniciar o jogo
+window.addEventListener("touchstart", function (event) {
+  event.preventDefault(); // Prevenir o comportamento padrão de seleção
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
   }
 });
 
+// Adicionar evento de toque para soltar o stick
+window.addEventListener("touchend", function (event) {
+  if (phase == "stretching") {
+    phase = "turning"; // Mudar para a fase de turning
+  }
+});
+
+// Adicionar evento de clique ao botão
+document.getElementById("mobileStartButton").addEventListener("click", function (event) {
+  event.preventDefault(); // Prevenir comportamento padrão
+  if (phase == "waiting") {
+    lastTimestamp = undefined;
+    introductionElement.style.opacity = 0;
+    phase = "stretching";
+    window.requestAnimationFrame(animate);
+  }
+});
+
+// Adicionar eventos para desktop
 window.addEventListener("mousedown", function (event) {
   if (phase == "waiting") {
     lastTimestamp = undefined;
@@ -188,7 +209,7 @@ window.addEventListener("mousedown", function (event) {
 
 window.addEventListener("mouseup", function (event) {
   if (phase == "stretching") {
-    phase = "turning";
+    phase = "turning"; // Mudar para a fase de turning
   }
 });
 
