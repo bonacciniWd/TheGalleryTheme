@@ -53,3 +53,18 @@
     color: #FFF;
 }
 
+#mobileStartButton {
+  position: fixed;
+  bottom: 20px; /* Distância do fundo */
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza horizontalmente */
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none; /* Inicialmente escondido */
+}
+
