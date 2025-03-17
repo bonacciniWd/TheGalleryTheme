@@ -7,9 +7,16 @@
 
 .touch-button {
     background-color: #ff0000;
+    padding: 8px 5px;
+  color: #FFF;
+border-radius: 15px;
+  
 }
 #touch-button {
     background-color: #ff0000;
+     padding: 8px 5px;
+      color: #FFF;
+border-radius: 15px;
 }
 
 #score {
