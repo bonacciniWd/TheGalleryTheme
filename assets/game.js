@@ -542,14 +542,14 @@ function generateCloud() {
   clouds.push({ x: cloudX, y: cloudY, width: cloudWidth, speed: cloudSpeed });
 }
 
+let cloudImage = new Image(); // Criar uma nova imagem
+cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Substitua por sua URL do Imgbb
+
 // Função para desenhar nuvens
 function drawClouds() {
   clouds.forEach((cloud) => {
     ctx.save();
-    ctx.fillStyle = "white"; // Cor da nuvem
-    ctx.beginPath();
-    ctx.arc(cloud.x, cloud.y, cloud.width / 2, 0, Math.PI * 2); // Nuvem como círculo
-    ctx.fill();
+    ctx.drawImage(cloudImage, cloud.x - cloud.width / 2, cloud.y - cloud.width / 4, cloud.width, cloud.width / 2); // Desenhar a imagem da nuvem
     ctx.restore();
 
     // Mover nuvens
