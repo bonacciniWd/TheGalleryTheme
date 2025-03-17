@@ -27,12 +27,6 @@
   background-color: #000000AB;
   padding: 12px 16px;
   border-radius: 20px;
-  pointer-events: none;
-}
-
-#introduction.hidden {
-  opacity: 0;
-  pointer-events: none;
 }
 
 #restart {
@@ -66,5 +60,9 @@
     background: #000;
     padding: 8px 12px;
     color: #FFF;
+}
+
+#game {
+  touch-action: none; /* Impede a seleção de texto e o zoom */
 }
 
