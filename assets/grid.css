@@ -3,7 +3,7 @@
   grid-template-columns: repeat(3, 1fr); /* 3 colunas */
   gap: 24px;
   width: 90%;
-  padding: auto;
+  padding: 10px;
 }
 
 .collection-card {
