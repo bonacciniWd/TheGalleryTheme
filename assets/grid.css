@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colunas */
   gap: 24px;
-  width: auto;
-  padding: 20px;
+  width: 100%;
 }
 
 .collection-card {
@@ -67,7 +66,7 @@
   }
 
   .collection-card img {
-    height: 250px;
+    height: 300px;
   }
 
   .collection-info {
