@@ -10,9 +10,9 @@
 }
 
 .parent {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr; /* 1 imagem grande à esquerda e 4 pequenas à direita */
-  grid-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .collection-card {
@@ -21,6 +21,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  width: 100%;
 }
 
 .collection-card img {
@@ -41,11 +42,13 @@
   border-radius: 4px;
 }
 
-/* Ajustando a imagem grande (primeiro item) */
+/* Definindo a imagem grande à esquerda */
 .parent .collection-card:nth-child(1) {
-  grid-column: span 2; /* Ocupa 2 colunas */
+  flex: 2 1 60%; /* Ocupa 60% do espaço */
 }
 
+/* Definindo as 4 imagens pequenas à direita */
 .parent .collection-card:nth-child(n+2) {
-  height: 150px; /* Definindo uma altura fixa para as imagens pequenas */
+  flex: 1 1 20%; /* Cada imagem pequena ocupa 20% */
+  height: 200px; /* Definindo altura para as pequenas */
 }
