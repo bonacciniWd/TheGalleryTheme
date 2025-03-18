@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400..700&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000;
+  color: white;
+  gap: 40px;
+  font-family: "Bebas Neue", serif;
+  font-size: 2.5em;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  background: white;
+  background-image: url(https://drive.google.com/thumbnail?id=1WgmFviu12pxFdyMIsswhQ2LFKithDEWX&sz=w2000);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 1200px;
+  height: 50%;
+  border-radius: 40px;
+  margin: 0px 24px;
+}
+
+.filter {
+  position: absolute;
+  filter: invert(1);
+  transition: left 0.5s ease-in-out, transform 0.5s ease-in-out;
+  top: -200%;
+  left: -150%;
+  width: 200%;
+  height: 500%;
+  background: #000;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transform-origin: 100% 50%;
+}
+
+#mask {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  justify-content: center;
+  filter: invert(1);
+  text-transform: uppercase;
+  padding-right: 3px;
+  margin: 0;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 120px;
+  height: 40px;
+  filter: invert(1);
+  mix-blend-mode: difference;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.toggle-label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 60px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  border: 5px solid black;
+  margin-left: -5px;
+}
+
+.toggle-label::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: #000;
+  border-radius: 50%;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle-input:checked + .toggle-label::after {
+  left: 86px;
+}
+
+.arrow {
+  position: absolute;
+  width: 60px;
+  margin-left: 200px;
+  margin-top: 40px;
+  filter: invert(1);
+}
+
+.info {
+  position: absolute;
+  margin-left: 390px;
+  margin-top: 40px;
+  font-family: "Caveat", serif;
+  font-size: 1em;
+}
+
+@media (max-width: 767px) {
+  body {
+    gap: 16px;
+    font-size: 1.5em;
+  }
+  .toggle-switch {
+    transform: scale(0.5);
+  }
+}
