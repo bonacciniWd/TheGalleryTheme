@@ -15,20 +15,9 @@
   flex: 0 0 33.33%; /* Cada item ocupa 33.33% da largura do contêiner */
   text-align: center;
   opacity: 0; /* Começa invisível */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Transição de opacidade e transformação */
+  transition: opacity 0.5s ease; /* Transição de opacidade */
 }
 
 .art-piece.active {
   opacity: 1; /* Torna o item visível */
-  transform: translateY(0); /* Mantém a posição original */
-}
-
-.art-piece.enter {
-  opacity: 0; /* Começa invisível */
-  transform: translateY(20px); /* Move para baixo ao entrar */
-}
-
-.art-piece.exit {
-  opacity: 0; /* Torna invisível ao sair */
-  transform: translateY(-20px); /* Move para cima ao sair */
 }
