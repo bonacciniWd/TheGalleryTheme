@@ -29,6 +29,15 @@
         "show_text_below": true
       }
     },
+    "custom_liquid_XrAxRT": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% comment %}\n  Inclua o CSS e o JS da galeria\n{% endcomment %}\n<link rel=\"stylesheet\" href=\"{{ 'gallery.css' | asset_url }}\">\n<script src=\"{{ 'gallery.js' | asset_url }}\" defer></script>\n\n<div class=\"gallery\"></div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -419,6 +428,7 @@
   },
   "order": [
     "image_banner_zyji7q",
+    "custom_liquid_XrAxRT",
     "featured_collection",
     "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "custom_liquid_tPR6Rr",
