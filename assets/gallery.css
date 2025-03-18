@@ -9,12 +9,17 @@
 .gallery {
   display: flex;
   transition: transform 0.5s ease; /* Efeito de transição suave */
-  width: calc(100% * (var(--total-items) / 2)); /* Ajusta a largura da galeria */
 }
 
 .art-piece {
-  flex: 0 0 50%; /* Cada item ocupa 50% da largura do contêiner */
+  flex: 0 0 33.33%; /* Cada item ocupa 33.33% da largura do contêiner */
   text-align: center;
+  opacity: 0; /* Começa invisível */
+  transition: opacity 0.5s ease; /* Transição de opacidade */
+}
+
+.art-piece.active {
+  opacity: 1; /* Torna o item visível */
 }
 
 .art-piece img {
