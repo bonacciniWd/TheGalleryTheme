@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colunas */
   gap: 24px;
+    margin: 20px;
   width: 100%;
 }
 
