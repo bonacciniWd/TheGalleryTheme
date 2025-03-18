@@ -171,6 +171,15 @@
         "padding_bottom": 36
       }
     },
+    "custom_liquid_UGmbwJ": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% comment %}\n  Inclua o CSS e o JS da galeria\n{% endcomment %}\n<link rel=\"stylesheet\" href=\"{{ 'gallery.css' | asset_url }}\">\n<script src=\"{{ 'gallery.js' | asset_url }}\" defer></script>\n\n<div class=\"gallery\"></div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "13e37e11-4abd-406f-b842-920e2a8de5d5": {
       "type": "collection-list",
       "blocks": {
@@ -416,6 +425,7 @@
     "rich_text_fPRxCP",
     "custom_liquid_xbbLbQ",
     "featured_collection_cC38QC",
+    "custom_liquid_UGmbwJ",
     "13e37e11-4abd-406f-b842-920e2a8de5d5",
     "custom_liquid_kgnPwV",
     "custom_liquid_m3pc7t",
