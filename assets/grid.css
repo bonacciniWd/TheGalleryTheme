@@ -1,7 +1,7 @@
 .wrapper {
   max-width: 1200px; /* Limita a largura máxima do conteúdo */
   margin: 0 auto; /* Centraliza o conteúdo */
-  padding: 40px 20px; /* Adiciona espaçamento no topo e na base, e nas laterais */
+  padding: 20px 20px; /* Adiciona espaçamento no topo e na base, e nas laterais */
 }
 
 .parent {
