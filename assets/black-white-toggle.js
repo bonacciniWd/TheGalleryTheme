@@ -1,14 +1,19 @@
-let currentRotation = 0;
+document.addEventListener('DOMContentLoaded', function() {
+  let currentRotation = 0;
+  const toggle = document.getElementById('toggle');
+  const filter = document.querySelector('.filter');
 
-function rotateFilter(degrees) {
-  let filters = document.getElementsByClassName("filter");
-  for (let i = 0; i < filters.length; i++) {
-    filters[i].style.transition = "transform 1s ease-in-out";
-    filters[i].style.transform = `rotate(${degrees}deg)`;
+  function rotateFilter(degrees) {
+    if (filter) {
+      filter.style.transition = "transform 1s ease-in-out";
+      filter.style.transform = `rotate(${degrees}deg)`;
+    }
   }
-}
 
-function toggleRotation() {
-  currentRotation = currentRotation === 0 ? 180 : 0;
-  rotateFilter(currentRotation);
-}
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      currentRotation = currentRotation === 0 ? 180 : 0;
+      rotateFilter(currentRotation);
+    });
+  }
+});
