@@ -4,21 +4,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const totalItems = items.length;
   let currentIndex = 0;
 
-  // Define a variável CSS para o total de itens
-  gallery.style.setProperty('--total-items', totalItems);
+  // Inicializa os primeiros 3 itens
+  function initializeGallery() {
+    for (let i = 0; i < 3; i++) {
+      if (i < totalItems) {
+        items[i].classList.add('active');
+      }
+    }
+  }
 
   function updateGallery() {
-    const offset = -currentIndex * 50; // Cada item ocupa 50% da largura
-    gallery.style.transform = `translateX(${offset}%)`;
+    // Remove a classe 'active' do item atual
+    items[currentIndex].classList.remove('active');
+
+    // Avança para o próximo índice
+    currentIndex = (currentIndex + 1) % totalItems;
+
+    // Adiciona a classe 'active' ao novo item
+    items[currentIndex].classList.add('active');
+
+    // Se o próximo item também estiver dentro do limite, adicione-o
+    if (currentIndex + 1 < totalItems) {
+      items[(currentIndex + 1) % totalItems].classList.add('active');
+    }
   }
 
-  function nextItems() {
-    currentIndex = (currentIndex + 2) % totalItems; // Avança 2 itens
-    updateGallery();
-  }
+  // Inicializa a galeria
+  initializeGallery();
 
-  // Muda automaticamente a cada 3 segundos
-  setInterval(nextItems, 3000);
-
-  updateGallery(); // Inicializa a galeria
+  // Muda automaticamente a cada 1.5 segundos
+  setInterval(updateGallery, 1500);
 });
