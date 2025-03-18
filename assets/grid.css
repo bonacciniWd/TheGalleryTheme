@@ -6,6 +6,10 @@
   padding: 0 16px; /* Adicionando padding horizontal para afastar das bordas */
 }
 
+.categories-title {
+    margin-left: 20px;
+}
+
 .collection-card {
   position: relative;
   border-radius: 16px;
