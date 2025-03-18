@@ -66,15 +66,6 @@
         "padding_bottom": 36
       }
     },
-    "custom_liquid_8EANbz": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "custom_liquid_kgnPwV": {
       "type": "custom-liquid",
       "settings": {
@@ -151,7 +142,6 @@
     "custom_liquid_h9cQmK",
     "custom_liquid_m3pc7t",
     "featured_collection_xKC49E",
-    "custom_liquid_8EANbz",
     "custom_liquid_kgnPwV",
     "custom_liquid_tEVPYf",
     "video_N3ptFW",
