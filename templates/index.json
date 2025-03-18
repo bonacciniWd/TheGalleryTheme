@@ -66,6 +66,15 @@
         "padding_bottom": 36
       }
     },
+    "custom_liquid_UNFyry": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"zebra-container\">\n  <h1>BLACK OR WHITE</h1>\n  <div class=\"zebra-box\">\n    <img id=\"zebra\" src=\"{{ 'zebra.png' | asset_url }}\" alt=\"Zebra\">\n    <div class=\"filter\"></div>\n  </div>\n\n  <label class=\"switch\">\n    <input type=\"checkbox\" id=\"toggle\">\n    <span class=\"slider\"></span>\n  </label>\n</div>\n\n<style>\n  .zebra-container {\n    text-align: center;\n    padding: 2rem;\n  }\n\n  .zebra-box {\n    position: relative;\n    width: 300px;\n    margin: 0 auto;\n  }\n\n  .zebra-box img {\n    width: 100%;\n  }\n\n  .filter {\n    position: absolute;\n    top: 0; left: 0;\n    width: 100%; height: 100%;\n    background: radial-gradient(circle, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%);\n    pointer-events: none;\n    transition: transform 0.5s;\n  }\n\n  .switch {\n    margin-top: 20px;\n    position: relative;\n    display: inline-block;\n    width: 60px;\n    height: 34px;\n  }\n\n  .switch input { display: none; }\n\n  .slider {\n    position: absolute;\n    cursor: pointer;\n    background-color: #ccc;\n    border-radius: 34px;\n    width: 100%; height: 100%;\n    transition: .4s;\n  }\n\n  .slider:before {\n    content: \"\";\n    position: absolute;\n    height: 26px;\n    width: 26px;\n    background-color: white;\n    border-radius: 50%;\n    top: 4px;\n    left: 4px;\n    transition: .4s;\n  }\n\n  .switch input:checked + .slider {\n    background-color: #2196F3;\n  }\n\n  .switch input:checked + .slider:before {\n    transform: translateX(26px);\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function() {\n    let rotation = 0;\n    const toggle = document.getElementById('toggle');\n    const filter = document.querySelector('.filter');\n\n    if (toggle && filter) {\n      toggle.addEventListener('change', function() {\n        rotation = (rotation + 180) % 360;\n        filter.style.transform = `rotate(${rotation}deg)`;\n      });\n    }\n  });\n</script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "custom_liquid_kgnPwV": {
       "type": "custom-liquid",
       "settings": {
@@ -142,6 +151,7 @@
     "custom_liquid_h9cQmK",
     "custom_liquid_m3pc7t",
     "featured_collection_xKC49E",
+    "custom_liquid_UNFyry",
     "custom_liquid_kgnPwV",
     "custom_liquid_tEVPYf",
     "video_N3ptFW",
