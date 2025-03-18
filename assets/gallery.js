@@ -15,18 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateGallery() {
     // Remove a classe 'active' do item atual
     items[currentIndex].classList.remove('active');
-    items[currentIndex].classList.add('exit');
 
     // Avança para o próximo índice
     currentIndex = (currentIndex + 1) % totalItems;
 
     // Adiciona a classe 'active' ao novo item
-    items[currentIndex].classList.remove('exit');
     items[currentIndex].classList.add('active');
 
     // Se o próximo item também estiver dentro do limite, adicione-o
     if (currentIndex + 1 < totalItems) {
-      items[(currentIndex + 1) % totalItems].classList.remove('exit');
       items[(currentIndex + 1) % totalItems].classList.add('active');
     }
   }
