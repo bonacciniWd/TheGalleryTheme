@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const totalItems = items.length;
   let currentIndex = 0;
 
+  // Define a variável CSS para o total de itens
+  gallery.style.setProperty('--total-items', totalItems);
+
   function updateGallery() {
     const offset = -currentIndex * 50; // Cada item ocupa 50% da largura
     gallery.style.transform = `translateX(${offset}%)`;
