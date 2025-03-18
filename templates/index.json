@@ -66,6 +66,15 @@
         "padding_bottom": 36
       }
     },
+    "custom_liquid_8EANbz": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<h1> Black or White</h1>\n\n<div class=\"container\">\n  <img id=\"mask\" src=\"https://drive.google.com/thumbnail?id=1WCdqGlJNcZVKgGg2JG_cke1yOI1K3CpY&sz=w2000\" alt=\"Mask\">\n</div>\n\n<div class=\"toggle-container\">\n  <div class=\"toggle-switch\">\n    <input type=\"checkbox\" id=\"toggle\" class=\"toggle-input\" onclick=\"toggleRotation()\">\n    <label for=\"toggle\" class=\"toggle-label\"></label>\n  </div>\n  <img class=\"arrow\" src=\"https://drive.google.com/thumbnail?id=1np2fNEMsUl0LzuQjrNX9U-lCQONdZwLO&sz=w1000\">\n  <span class=\"info\">Click Me</span>\n</div>\n\n<div class=\"filter\"></div>\n\n{{ 'black-white-toggle.css' | asset_url | stylesheet_tag }}\n{{ 'black-white-toggle.js' | asset_url | script_tag }}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "custom_liquid_kgnPwV": {
       "type": "custom-liquid",
       "settings": {
@@ -142,6 +151,7 @@
     "custom_liquid_h9cQmK",
     "custom_liquid_m3pc7t",
     "featured_collection_xKC49E",
+    "custom_liquid_8EANbz",
     "custom_liquid_kgnPwV",
     "custom_liquid_tEVPYf",
     "video_N3ptFW",
