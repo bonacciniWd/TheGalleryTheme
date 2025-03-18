@@ -1,0 +1,40 @@
+.gallery-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Ajuste conforme necessário */
+  overflow: hidden; /* Esconde itens fora da área visível */
+  margin: auto;
+}
+
+.gallery {
+  display: flex;
+  transition: transform 0.5s ease; /* Efeito de transição suave */
+}
+
+.art-piece {
+  flex: 0 0 50%; /* Cada item ocupa 50% da largura do contêiner */
+  text-align: center;
+}
+
+.art-piece img {
+  width: 100%; /* Imagem ocupa toda a largura do item */
+  height: auto;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
