@@ -1,69 +1,57 @@
-.wrapper {
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.categories-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
 .parent {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr; /* 1 grande à esquerda, 4 pequenas à direita */
-  grid-gap: 20px;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
 }
 
 .collection-card {
   position: relative;
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .collection-card img {
   width: 100%;
-  height: auto;
+  height: 350px;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-.collection-card .collection-info {
+.collection-info {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  border-radius: 4px;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
-/* A primeira coleção vai ocupar 2 colunas (imagem grande à esquerda) */
-.parent .collection-card:nth-child(1) {
-  grid-column: span 2; /* Ocupa 2 colunas */
-  height: 100%; /* Garantindo altura proporcional */
+.collection-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
-/* As imagens pequenas ocupam 1 coluna cada e têm altura definida */
-.parent .collection-card:nth-child(n+2) {
-  height: 150px; /* Definindo altura das imagens pequenas */
+.collection-card:hover img {
+  transform: scale(1.05);
 }
 
-/* Responsividade: Em telas menores, vamos reorganizar para uma coluna única */
+.collection-card:hover .collection-info {
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
 @media (max-width: 768px) {
-  .parent {
-    grid-template-columns: 1fr; /* Apenas 1 coluna */
+  .collection-card img {
+    height: 250px;
   }
 
-  .parent .collection-card:nth-child(1) {
-    grid-column: span 1; /* A imagem grande ocupa a tela inteira em telas menores */
-  }
-
-  .parent .collection-card:nth-child(n+2) {
-    height: 120px; /* Ajusta a altura das imagens pequenas */
+  .collection-info {
+    font-size: 1.2rem;
   }
 }
