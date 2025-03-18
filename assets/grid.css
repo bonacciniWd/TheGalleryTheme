@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colunas */
   gap: 24px;
-  width: 90%;
-  padding: 10px;
+  width: auto;
+  padding: 20px;
 }
 
 .collection-card {
