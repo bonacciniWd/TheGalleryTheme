@@ -70,7 +70,7 @@
   }
 
   .collection-card img {
-    height: auto; /* Remover altura fixa para adaptar melhor no mobile */
+    height: 280px; /* Remover altura fixa para adaptar melhor no mobile */
   }
 
   .collection-info {
