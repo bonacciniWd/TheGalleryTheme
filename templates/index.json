@@ -37,7 +37,7 @@
         ".art-piece img {width: 200px; height: auto;}"
       ],
       "settings": {
-        "custom_liquid": "{% comment %}\n  Inclua o CSS da galeria\n{% endcomment %}\n<link rel=\"stylesheet\" href=\"{{ 'gallery.css' | asset_url }}\">\n\n<div class=\"gallery\">\n  {% assign collection_handle = 'skate' %}\n  {% assign collection = collections[collection_handle] %}\n  \n  {% if collection.products.size > 0 %}\n    {% for product in collection.products %}\n      {% for image in product.images %}\n        <div class=\"art-piece\">\n          <img src=\"{{ image | img_url: 'medium' }}\" alt=\"{{ product.title }}\" />\n          <h3>{{ product.title }}</h3>\n        </div>\n      {% endfor %}\n    {% endfor %}\n  {% else %}\n    <p>Nenhum produto encontrado na coleção \"lambe-lambe\".</p>\n  {% endif %}\n</div>",
+        "custom_liquid": "{% comment %}\n  Inclua o CSS da galeria\n{% endcomment %}\n<link rel=\"stylesheet\" href=\"{{ 'gallery.css' | asset_url }}\">\n\n<div class=\"gallery\">\n  {% assign collection_handle = 'skateboarding' %}\n  {% assign collection = collections[collection_handle] %}\n  \n  {% if collection.products.size > 0 %}\n    {% for product in collection.products %}\n      {% for image in product.images %}\n        <div class=\"art-piece\">\n          <img src=\"{{ image | img_url: 'medium' }}\" alt=\"{{ product.title }}\" />\n          <h3>{{ product.title }}</h3>\n        </div>\n      {% endfor %}\n    {% endfor %}\n  {% else %}\n    <p>Nenhum produto encontrado na coleção \"lambe-lambe\".</p>\n  {% endif %}\n</div>",
         "color_scheme": "background-1",
         "padding_top": 40,
         "padding_bottom": 52
