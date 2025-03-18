@@ -29,16 +29,6 @@
         "show_text_below": true
       }
     },
-    "custom_liquid_XrAxRT": {
-      "type": "custom-liquid",
-      "custom_css": [],
-      "settings": {
-        "custom_liquid": "<style>\n  .skate-slider {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 20px;\n    justify-content: space-between;\n    overflow: hidden;\npadding: 10px;\n  }\n\n  .skate-item {\n    flex: 1 1 calc(25% - 16px); /* 4 no desktop */\n    opacity: 1;\n    transition: opacity 1s ease-in-out, transform 1s ease-in-out;\n    border-radius: 8px;\n    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\n    overflow: hidden;\n    background-color: #fff;\n    padding: 16px;\n    text-align: center;\n    transform: translateX(0);\n  }\n\n  .skate-item.hidden {\n    opacity: 0;\n    transform: translateX(-20px); /* Desloca o card para a esquerda */\n  }\n\n  @media (max-width: 768px) {\n    .skate-item {\n      flex: 1 1 calc(50% - 16px); /* 2 no mobile */\n    }\n  }\n\n  .skate-item img {\n    width: 100%;\n    height: auto;\n    object-fit: cover;\n    transition: transform 0.3s ease;\n  }\n\n  .skate-item:hover img {\n    transform: scale(1.1);\n  }\n\n  .skate-product-title {\n    margin-top: 12px;\n    font-weight: bold;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    max-width: 100%;\n    padding: 0 10px;\n  }\n\n  .skate-product-price {\n    font-size: 1.2rem;\n    font-weight: bold;\n    color: #333;\n    margin-top: 8px;\n    padding: 0 10px;\n  }\n\n  .skate-item a {\n    display: block;\n    position: relative;\n  }\n</style>\n\n<div class=\"skate-slider\" id=\"skate-slider\">\n  {% assign skate_products = collections['skateboarding'].products %}\n  {% for product in skate_products %}\n    <div class=\"skate-item\">\n      <a href=\"{{ product.url }}\">\n        <img src=\"{{ product.featured_image | image_url: width: 500 }}\" alt=\"{{ product.title }}\">\n        <div class=\"skate-product-title\">{{ product.title }}</div>\n        <div class=\"skate-product-price\">{{ product.price | money }}</div> <!-- Exibe o preço -->\n      </a>\n    </div>\n  {% endfor %}\n</div>\n\n<script>\n  const items = Array.from(document.querySelectorAll('#skate-slider .skate-item'));\n  const visibleDesktop = 4;\n  const visibleMobile = 2;\n  let visibleCount = window.innerWidth > 768 ? visibleDesktop : visibleMobile;\n  let startIndex = 0;\n\n  function updateVisibleCount() {\n    visibleCount = window.innerWidth > 768 ? visibleDesktop : visibleMobile;\n  }\n\n  function showItems() {\n    // Esconde todos os cards\n    items.forEach(item => item.classList.add('hidden'));\n\n    // Exibe os novos cards\n    let indexes = [];\n    for (let i = 0; i < visibleCount; i++) {\n      let index = (startIndex + i) % items.length;\n      indexes.push(index);\n      items[index].classList.remove('hidden');\n    }\n\n    startIndex = (startIndex + 1) % items.length; // Avança para o próximo card\n  }\n\n  // Primeira renderização\n  updateVisibleCount();\n  showItems();\n\n  // Roda o efeito dinâmico\n  const skateInterval = setInterval(showItems, 1500);\n\n  // Atualiza no resize\n  window.addEventListener('resize', () => {\n    updateVisibleCount();\n    showItems();\n  });\n</script>",
-        "color_scheme": "background-2",
-        "padding_top": 56,
-        "padding_bottom": 60
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -181,10 +171,29 @@
         "padding_bottom": 36
       }
     },
+    "custom_liquid_XrAxRT": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<style>\n  .skate-zone-header {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 20px;\n    margin-bottom: 20px;\n  }\n\n  .skate-zone-header img {\n    width: 50px; /* Ajuste o tamanho conforme necessário */\n    height: 50px;\n    border-radius: 50%;\n    object-fit: cover;\n    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);\n  }\n\n  .skate-zone-title {\n    font-size: 2rem;\n    font-weight: 700;\n    color: #333;\n    text-transform: uppercase;\n    letter-spacing: 2px;\n    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);\n  }\n\n  .skate-zone-header .icon {\n    font-size: 2rem;\n    color: #f39c12; /* Cor dourada para o ícone */\n    background-color: #333; /* Fundo escuro para destacar o ícone */\n    padding: 10px;\n    border-radius: 50%;\n    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);\n  }\n</style>\n\n<!-- Início da área do título e ícone -->\n<div class=\"skate-zone-header\">\n  <img src=\"URL_DA_IMAGEM_AQUI\" alt=\"Skate Zone Image\"> <!-- Substitua pela URL da imagem desejada -->\n  <div class=\"skate-zone-title\">Skate Zone</div>\n  <div class=\"icon\">\n    <!-- Use um ícone aqui, por exemplo, com Font Awesome -->\n    <i class=\"fa fa-skateboard\"></i> <!-- Ou qualquer outro ícone de sua preferência -->\n  </div>\n</div>\n<!-- Fim da área do título e ícone -->\n\n<!-- Slider -->\n<div class=\"skate-slider\" id=\"skate-slider\">\n  {% assign skate_products = collections['skateboarding'].products %}\n  {% for product in skate_products %}\n    <div class=\"skate-item\">\n      <a href=\"{{ product.url }}\">\n        <img src=\"{{ product.featured_image | image_url: width: 500 }}\" alt=\"{{ product.title }}\">\n        <div class=\"skate-product-title\">{{ product.title }}</div>\n        <div class=\"skate-product-price\">{{ product.price | money }}</div> <!-- Exibe o preço -->\n      </a>\n    </div>\n  {% endfor %}\n</div>\n\n<script>\n  const items = Array.from(document.querySelectorAll('#skate-slider .skate-item'));\n  const visibleDesktop = 4;\n  const visibleMobile = 2;\n  let visibleCount = window.innerWidth > 768 ? visibleDesktop : visibleMobile;\n  let startIndex = 0;\n\n  function updateVisibleCount() {\n    visibleCount = window.innerWidth > 768 ? visibleDesktop : visibleMobile;\n  }\n\n  function showItems() {\n    // Esconde todos os cards\n    items.forEach(item => item.classList.add('hidden'));\n\n    // Exibe os novos cards\n    let indexes = [];\n    for (let i = 0; i < visibleCount; i++) {\n      let index = (startIndex + i) % items.length;\n      indexes.push(index);\n      items[index].classList.remove('hidden');\n    }\n\n    startIndex = (startIndex + 1) % items.length; // Avança para o próximo card\n  }\n\n  // Primeira renderização\n  updateVisibleCount();\n  showItems();\n\n  // Roda o efeito dinâmico\n  const skateInterval = setInterval(showItems, 1500);\n\n  // Atualiza no resize\n  window.addEventListener('resize', () => {\n    updateVisibleCount();\n    showItems();\n  });\n</script>",
+        "color_scheme": "background-2",
+        "padding_top": 56,
+        "padding_bottom": 60
+      }
+    },
     "custom_liquid_Dpx34i": {
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_kgnPwV": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"custom-grid-section\">\n  <div class=\"custom-grid\">\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'tag.png' | asset_url }}\" alt=\"Ícone Slow Fashion\">\n      <h3>Slow fashion Movement</h3>\n      <p>Desaceleramos em prol do planeta Terra e de todos aqueles que fazem parte da nossa sociedade.</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'abstract.png' | asset_url }}\" alt=\"Ícone Art\">\n      <h3>Art is our kind of thing</h3>\n      <p>Vestimos arte, criamos movimento.</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'unity.png' | asset_url }}\" alt=\"Ícone People\">\n      <h3>In People we trust</h3>\n      <p>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</p>\n    </div>\n  </div>\n</section>\n\n<style>\n.custom-grid-section {\n  background: url('{{ 'blank' | asset_url }}') no-repeat center center;\n  background-size: cover;\n  padding: 80px 40px; /* Mais padding para evitar bordas coladas */\n}\n\n.custom-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));\n  gap: 30px;\n  max-width: 1400px;\n  margin: auto;\n  text-align: center;\n}\n\n.custom-grid-item {\n  background: rgba(255, 255, 255, 0.9); /* Fundo mais opaco para melhor contraste */\n  padding: 30px;\nmargin: 20px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  transition: transform 0.3s ease;\n}\n\n.custom-grid-item:hover {\n  transform: scale(1.05); /* Efeito sutil de hover */\n}\n\n.custom-grid-item img {\n  width: 70px;\n  height: auto;\n  margin-bottom: 15px;\n}\n\n.custom-grid-item h3 {\n  font-size: 1.6rem;\n  font-weight: bold;\n  color: #222;\n  margin-bottom: 12px;\n}\n\n.custom-grid-item p {\n  font-size: 1rem;\n  color: #555;\n  line-height: 1.6;\n  max-width: 90%;\n}\n\n/* Responsivo */\n@media (max-width: 768px) {\n  .custom-grid-section {\n    padding: 50px 20px;\n  }\n  \n  .custom-grid {\n    gap: 20px;\n  }\n\n  .custom-grid-item {\n    padding: 20px;\n  }\n\n  .custom",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
@@ -224,15 +233,6 @@
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
-      }
-    },
-    "custom_liquid_kgnPwV": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<section class=\"custom-grid-section\">\n  <div class=\"custom-grid\">\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'tag.png' | asset_url }}\" alt=\"Ícone Slow Fashion\">\n      <h3>Slow fashion Movement</h3>\n      <p>Desaceleramos em prol do planeta Terra e de todos aqueles que fazem parte da nossa sociedade.</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'abstract.png' | asset_url }}\" alt=\"Ícone Art\">\n      <h3>Art is our kind of thing</h3>\n      <p>Vestimos arte, criamos movimento.</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'unity.png' | asset_url }}\" alt=\"Ícone People\">\n      <h3>In People we trust</h3>\n      <p>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</p>\n    </div>\n  </div>\n</section>\n\n<style>\n.custom-grid-section {\n  background: url('{{ 'blank' | asset_url }}') no-repeat center center;\n  background-size: cover;\n  padding: 80px 40px; /* Mais padding para evitar bordas coladas */\n}\n\n.custom-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));\n  gap: 30px;\n  max-width: 1400px;\n  margin: auto;\n  text-align: center;\n}\n\n.custom-grid-item {\n  background: rgba(255, 255, 255, 0.9); /* Fundo mais opaco para melhor contraste */\n  padding: 30px;\nmargin: 20px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  transition: transform 0.3s ease;\n}\n\n.custom-grid-item:hover {\n  transform: scale(1.05); /* Efeito sutil de hover */\n}\n\n.custom-grid-item img {\n  width: 70px;\n  height: auto;\n  margin-bottom: 15px;\n}\n\n.custom-grid-item h3 {\n  font-size: 1.6rem;\n  font-weight: bold;\n  color: #222;\n  margin-bottom: 12px;\n}\n\n.custom-grid-item p {\n  font-size: 1rem;\n  color: #555;\n  line-height: 1.6;\n  max-width: 90%;\n}\n\n/* Responsivo */\n@media (max-width: 768px) {\n  .custom-grid-section {\n    padding: 50px 20px;\n  }\n  \n  .custom-grid {\n    gap: 20px;\n  }\n\n  .custom-grid-item {\n    padding: 20px;\n  }\n\n  .custom",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "custom_liquid_m3pc7t": {
@@ -429,16 +429,16 @@
   },
   "order": [
     "image_banner_zyji7q",
-    "custom_liquid_XrAxRT",
     "featured_collection",
     "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "custom_liquid_tPR6Rr",
     "rich_text_fPRxCP",
     "custom_liquid_xbbLbQ",
     "featured_collection_cC38QC",
+    "custom_liquid_XrAxRT",
     "custom_liquid_Dpx34i",
-    "13e37e11-4abd-406f-b842-920e2a8de5d5",
     "custom_liquid_kgnPwV",
+    "13e37e11-4abd-406f-b842-920e2a8de5d5",
     "custom_liquid_m3pc7t",
     "65dc89e4-1148-46e1-9752-a54509740fe3",
     "24d2df80-6b1b-402d-a4e1-e896121ee23f",
