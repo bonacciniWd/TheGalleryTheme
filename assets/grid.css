@@ -1,15 +1,16 @@
 .parent {
   display: grid;
   grid-template-columns: 2fr 3fr;
-  gap: 20px;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
   width: 100%;
-  height: 600px;
+  height: 80vh;
 }
 
 .left-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 16px;
 }
 
@@ -18,8 +19,8 @@
   border-radius: 16px;
   overflow: hidden;
   background-color: #f9f9f9;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .collection-card img {
@@ -41,26 +42,27 @@
 }
 
 .collection-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
 }
 
 .collection-card:hover img {
   transform: scale(1.05);
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
   .parent {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: column;
     height: auto;
   }
 
   .left-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
   }
 
-  .right-big {
-    height: 300px;
+  .collection-card img {
+    height: 200px;
   }
 }
