@@ -15,7 +15,6 @@
 }
 
 .image-container {
-  padding: 16px; /* Adicionando padding ao redor da imagem */
   position: relative;
   width: 100%;
   height: 400px; /* Definindo a altura fixada para o contêiner da imagem */
