@@ -31,11 +31,7 @@
     },
     "custom_liquid_XrAxRT": {
       "type": "custom-liquid",
-      "custom_css": [
-        ".gallery {display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; width: 100%; max-width: 100%; border: 1px solid #ccc; padding: 10px; box-sizing: border-box;}",
-        ".art-piece {flex: 0 0 auto; margin: 10px; text-align: center; scroll-snap-align: start;}",
-        ".art-piece img {width: 200px; height: auto;}"
-      ],
+      "custom_css": [],
       "settings": {
         "custom_liquid": "{% comment %}\n  Inclua o CSS e o JS da galeria\n{% endcomment %}\n<link rel=\"stylesheet\" href=\"{{ 'gallery.css' | asset_url }}\">\n<script src=\"{{ 'gallery.js' | asset_url }}\" defer></script>\n\n<div class=\"gallery-container\">\n  <div class=\"gallery\">\n    {% assign collection_handle = 'skateboarding' %}\n    {% assign collection = collections[collection_handle] %}\n    \n    {% if collection.products.size > 0 %}\n      {% for product in collection.products %}\n        {% for image in product.images %}\n          <div class=\"art-piece\" data-title=\"{{ product.title }}\">\n            <img src=\"{{ image | img_url: 'medium' }}\" alt=\"{{ product.title }}\" />\n          </div>\n          {% break %} {# Para pegar apenas a primeira imagem do produto #}\n        {% endfor %}\n      {% endfor %}\n    {% else %}\n      <p>Nenhum produto encontrado na coleção \"skateboarding\".</p>\n    {% endif %}\n  </div>\n</div>",
         "color_scheme": "background-1",
