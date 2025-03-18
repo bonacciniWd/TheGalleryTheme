@@ -18,7 +18,7 @@
       "settings": {
         "layout": "collage",
         "show_image": true,
-        "image_height": "adapt",
+        "image_height": "large",
         "show_date": true,
         "show_author": true,
         "padding_top": 36,
