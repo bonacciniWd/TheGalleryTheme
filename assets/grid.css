@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colunas */
   gap: 24px;
-  width: 100%;
+  width: 90%;
 }
 
 .collection-card {
