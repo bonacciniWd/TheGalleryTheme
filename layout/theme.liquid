@@ -291,6 +291,13 @@
         onload="this.media='all'"
       >
     {%- endif -%}
+    {% comment %}
+      Inclua o CSS e o JS da galeria
+    {% endcomment %}
+    <link rel="stylesheet" href="{{ 'gallery.css' | asset_url }}">
+    <script src="{{ 'gallery.js' | asset_url }}" defer></script>
+
+    <div class="gallery"></div>
 
     <script>
       if (Shopify.designMode) {
