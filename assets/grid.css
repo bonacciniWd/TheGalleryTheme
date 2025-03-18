@@ -1,13 +1,19 @@
+.wrapper {
+  max-width: 1200px; /* Limita a largura máxima do conteúdo */
+  margin: 0 auto; /* Centraliza o conteúdo */
+  padding: 40px 20px; /* Adiciona espaçamento no topo e na base, e nas laterais */
+}
+
 .parent {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  gap: 24px;
+  gap: 24px; /* Espaçamento entre os cards */
   width: 100%;
-  padding: 0 16px; /* Adicionando padding horizontal para afastar das bordas */
 }
 
 .categories-title {
   margin-left: 20px;
+  margin-bottom: 24px; /* Adiciona espaçamento abaixo do título */
 }
 
 .collection-card {
