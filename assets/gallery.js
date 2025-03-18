@@ -9,15 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     gallery.style.transform = `translateX(${offset}%)`;
   }
 
-  document.querySelector('.next').addEventListener('click', function() {
+  function nextItems() {
     currentIndex = (currentIndex + 2) % totalItems; // Avança 2 itens
     updateGallery();
-  });
+  }
 
-  document.querySelector('.prev').addEventListener('click', function() {
-    currentIndex = (currentIndex - 2 + totalItems) % totalItems; // Retrocede 2 itens
-    updateGallery();
-  });
+  // Muda automaticamente a cada 3 segundos
+  setInterval(nextItems, 3000);
 
   updateGallery(); // Inicializa a galeria
 });
