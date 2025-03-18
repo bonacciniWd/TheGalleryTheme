@@ -9,6 +9,7 @@
 .gallery {
   display: flex;
   transition: transform 0.5s ease; /* Efeito de transição suave */
+  width: calc(100% * (var(--total-items) / 2)); /* Ajusta a largura da galeria */
 }
 
 .art-piece {
