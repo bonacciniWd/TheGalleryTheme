@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colunas */
   gap: 24px;
-    margin: 20px;
   width: 100%;
+  padding: 0 16px; /* Adicionando padding horizontal para afastar das bordas */
 }
 
 .collection-card {
@@ -18,9 +18,9 @@
 .image-container {
   position: relative;
   width: 100%;
-  height: 100%; /* Usando altura 100% para flexibilidade no contêiner */
-  padding-top: 66.66%; /* Isso cria uma proporção de 3:2 para as imagens */
-  overflow: hidden; /* Garante que a imagem não ultrapasse os limites do contêiner */
+  height: 100%;
+  padding-top: 66.66%; /* Mantém proporção 3:2 */
+  overflow: hidden;
 }
 
 .collection-card img {
@@ -29,7 +29,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Garantindo que a imagem cubra completamente a área sem deformar */
+  object-fit: cover;
   transition: transform 0.4s ease;
 }
 
@@ -71,7 +71,7 @@
   }
 
   .collection-card img {
-    height: 480px; /* Remover altura fixa para adaptar melhor no mobile */
+    height: auto; /* Remove altura fixa para adaptar no mobile */
   }
 
   .collection-info {
