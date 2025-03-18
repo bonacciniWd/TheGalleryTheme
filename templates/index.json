@@ -174,7 +174,7 @@
     "custom_liquid_Dpx34i": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{% comment %}\n  Inclua o CSS e o JS da galeria\n{% endcomment %}\n<link rel=\"stylesheet\" href=\"{{ 'gallery.css' | asset_url }}\">\n<script src=\"{{ 'gallery.js' | asset_url }}\" defer></script>\n\n<div class=\"gallery\"></div>",
+        "custom_liquid": "",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
