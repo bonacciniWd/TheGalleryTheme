@@ -1,0 +1,15 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.art-piece {
+  margin: 20px;
+  text-align: center;
+}
+
+.art-piece img {
+  width: 200px; /* Ajuste conforme necessário */
+  height: auto;
+}
