@@ -291,13 +291,6 @@
         onload="this.media='all'"
       >
     {%- endif -%}
-    {% comment %}
-      Inclua o CSS e o JS da galeria
-    {% endcomment %}
-    <link rel="stylesheet" href="{{ 'gallery.css' | asset_url }}">
-    <script src="{{ 'gallery.js' | asset_url }}" defer></script>
-
-    <div class="gallery"></div>
 
     <script>
       if (Shopify.designMode) {
@@ -376,6 +369,13 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    {% comment %}
+      Inclua o CSS e o JS da galeria
+    {% endcomment %}
+    <link rel="stylesheet" href="{{ 'gallery.css' | asset_url }}">
+    <script src="{{ 'gallery.js' | asset_url }}" defer></script>
+
+    <div class="gallery"></div>
 
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
