@@ -17,11 +17,15 @@
 .image-container {
   position: relative;
   width: 100%;
-  height: 400px; /* Definindo a altura fixada para o contêiner da imagem */
+  height: 100%; /* Usando altura 100% para flexibilidade no contêiner */
+  padding-top: 66.66%; /* Isso cria uma proporção de 3:2 para as imagens */
   overflow: hidden; /* Garante que a imagem não ultrapasse os limites do contêiner */
 }
 
 .collection-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover; /* Garantindo que a imagem cubra completamente a área sem deformar */
@@ -66,7 +70,7 @@
   }
 
   .collection-card img {
-    height: 300px;
+    height: auto; /* Remover altura fixa para adaptar melhor no mobile */
   }
 
   .collection-info {
