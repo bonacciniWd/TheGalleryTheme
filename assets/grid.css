@@ -11,7 +11,7 @@
 
 .parent {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr; /* 1 imagem grande à esquerda e 4 pequenas à direita */
   grid-gap: 20px;
 }
 
@@ -41,15 +41,11 @@
   border-radius: 4px;
 }
 
+/* Ajustando a imagem grande (primeiro item) */
 .parent .collection-card:nth-child(1) {
-  grid-column: span 2;
-}
-
-.parent .collection-card:nth-child(1) img {
-  object-fit: cover;
-  height: 100%;
+  grid-column: span 2; /* Ocupa 2 colunas */
 }
 
 .parent .collection-card:nth-child(n+2) {
-  width: 100%;
+  height: 150px; /* Definindo uma altura fixa para as imagens pequenas */
 }
