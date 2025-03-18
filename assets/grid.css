@@ -1,6 +1,6 @@
 .parent {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
   gap: 24px;
   width: 100%;
 }
@@ -54,7 +54,18 @@
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
+/* Responsividade */
+@media (max-width: 1024px) {
+  .parent {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas de tablet */
+  }
+}
+
 @media (max-width: 768px) {
+  .parent {
+    grid-template-columns: 1fr; /* 1 coluna em telas menores */
+  }
+
   .collection-card img {
     height: 250px;
   }
