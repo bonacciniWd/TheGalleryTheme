@@ -8,7 +8,6 @@ body{
 }
 
 #ganvas{
-    aspect-ratio:16 / 9;
     height: 90vmin;
 }
 
