@@ -135,15 +135,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "custom_liquid_M643jd": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "{% assign colors = \"#a62121,#4bb7e6,#f39c12,#27ae60,#8e44ad,#e67e22,#2c3e50,#d35400\" | split: \",\" %}\n\n<main class=\"product-container\">\n  {% assign shuffled_products = collections.all.products | shuffle %}\n  {% for product in shuffled_products limit: 8 %}\n    {% assign color = colors[forloop.index0] %}\n    <div class=\"product-card\" style=\"background-color: {{ color }};\">\n      <div class=\"product-image\">\n        <img src=\"{{ product.featured_image | img_url: 'medium' }}\" alt=\"{{ product.title }}\" draggable=\"false\" />\n      </div>\n      <div class=\"product-info\">\n        <h2>{{ product.title }}</h2>\n        <p>{{ product.vendor }}</p>\n        <div class=\"price\">{{ product.price | money }}</div>\n      </div>\n      <div class=\"btn\">\n        <a href=\"{{ product.url }}\" class=\"buy-btn\">Comprar</a>\n        \n      </div>\n    </div>\n  {% endfor %}\n</main>\n<style>\n/* Estilização do Container */\n.product-container {\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  gap: 20px;\n  padding: 20px;\n}\n\n/* Cards de Produtos */\n.product-card {\n  padding: 1rem;\n  border-radius: 0.9rem;\n  color: #fff;\n  box-shadow: -1px 15px 30px -12px rgba(32, 32, 32, 0.5);\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  transition: transform 0.3s ease-in-out;\n}\n\n.product-card:hover {\n  transform: translateY(-5px);\n}\n\n/* Imagem do Produto */\n.product-image img {\n  width: 100%;\n  height: auto;\n  border-radius: 10px;\n}\n\n/* Informações do Produto */\n.product-info h2 {\n  font-size: 1.2rem;\n  margin: 10px 0;\n}\n\n.product-info p {\n  font-size: 0.9rem;\n}\n\n.price {\n  font-size: 1.1rem;\n  font-weight: bold;\n}\n\n/* Botões */\n.btn {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-top: 10px;\n}\n\n.buy-btn {\n  background: #141414;\n  color: #fff;\n  padding: 8px 15px;\n  border-radius: 6px;\n  text-decoration: none;\n  transition: background 0.3s;\n}\n\n.buy-btn:hover {\n  background: #3a3a3a;\n}\n\n.fav {\n  background: #fff;\n  border-radius: 6px;\n  padding: 5px;\n}\n\n.fav .svg {\n  width: 20px;\n  height: 20px;\n}\n\n/* Responsivo */\n@media screen and (max-width: 768px) {\n  .product-container {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n\n</style>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
@@ -155,7 +146,6 @@
     "custom_liquid_tEVPYf",
     "video_N3ptFW",
     "image_banner_zyji7q",
-    "featured_blog_KPygWW",
-    "custom_liquid_M643jd"
+    "featured_blog_KPygWW"
   ]
 }
