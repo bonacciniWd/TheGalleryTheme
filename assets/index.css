@@ -4,7 +4,7 @@ body{
     display: grid;
     place-items: center;
     background: black;
-    min-height:100vh;
+    min-height:95vh;
 }
 
 #ganvas{
@@ -13,7 +13,7 @@ body{
 }
 
 #ganvas{
-    position: absolute;
+    position: relative;
     top: 10%;
     left: 0;
     width: 100%;
