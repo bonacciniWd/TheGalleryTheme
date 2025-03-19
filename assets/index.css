@@ -12,7 +12,7 @@ body{
 }
 
 #ganvas{
-    position: relative;
+    position: block;
     top: 10%;
     left: 0;
     width: 100%;
