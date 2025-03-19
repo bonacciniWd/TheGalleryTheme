@@ -38,6 +38,15 @@
         "padding_bottom": 0
       }
     },
+    "custom_liquid_y8kdFj": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n  .custom-grid {\n    display: grid;\n    grid-template-columns: repeat(4, 1fr);\n    gap: 20px;\n    padding: 20px;\n  }\n  .custom-card {\n    background-color: #fff;\n    border-radius: 10px;\n    overflow: hidden;\n    box-shadow: 0 4px 12px rgba(0,0,0,0.1);\n    display: flex;\n    flex-direction: column;\n    transition: transform 0.3s;\n  }\n  .custom-card:hover {\n    transform: translateY(-5px);\n  }\n  .custom-card-img {\n    width: 100%;\n    height: 220px;\n    object-fit: cover;\n  }\n  .custom-card-body {\n    padding: 15px;\n    text-align: center;\n  }\n  .custom-card-body h3 {\n    font-size: 1.1rem;\n    margin-bottom: 10px;\n  }\n  .custom-card-body p {\n    font-size: 0.9rem;\n    color: #555;\n    margin-bottom: 15px;\n  }\n  .custom-price {\n    font-weight: bold;\n    color: #222;\n    font-size: 1rem;\n    margin-bottom: 10px;\n  }\n  .custom-buy-btn {\n    background: #000;\n    color: #fff;\n    padding: 10px 15px;\n    border-radius: 5px;\n    text-decoration: none;\n    display: inline-block;\n  }\n  @media(max-width: 768px) {\n    .custom-grid {\n      grid-template-columns: repeat(2, 1fr);\n    }\n  }\n</style>\n\n<div class=\"custom-grid\">\n  {% assign shuffled_products = collections.all.products | sample: 8 %}\n  {% for product in shuffled_products %}\n    <div class=\"custom-card\">\n      <img src=\"{{ product.featured_image | image_url: width:600 }}\" alt=\"{{ product.title }}\" class=\"custom-card-img\">\n      <div class=\"custom-card-body\">\n        <h3>{{ product.title }}</h3>\n        <p>{{ product.vendor }}</p>\n        <div class=\"custom-price\">{{ product.price | money }}</div>\n        <a href=\"{{ product.url }}\" class=\"custom-buy-btn\">Comprar</a>\n      </div>\n    </div>\n  {% endfor %}\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "featured_collection_xKC49E": {
       "type": "featured-collection",
       "settings": {
@@ -141,6 +150,7 @@
     "custom_liquid_YpPPeC",
     "custom_liquid_h9cQmK",
     "custom_liquid_m3pc7t",
+    "custom_liquid_y8kdFj",
     "featured_collection_xKC49E",
     "custom_liquid_kgnPwV",
     "custom_liquid_tEVPYf",
