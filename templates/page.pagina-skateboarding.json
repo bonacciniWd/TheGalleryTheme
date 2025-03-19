@@ -32,7 +32,7 @@
     "custom_liquid_DUHNCT": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"{{ 'index.css' | asset_url }}\">\n    <title>Parallax</title>\n</head>\n<body>\n    <canvas id=\"ganvas\" width=\"1920\" height=\"1080\"></canvas>\n    <img id=\"img_b0\" style=\"display:none\" src=\"{{ 'img_b0.png' | asset_url }}\" />\n    <img id=\"img_b1\" style=\"display:none\" src=\"{{ 'img_b1.png' | asset_url }}\" />\n    <img id=\"img_b2\" style=\"display:none\" src=\"{{ 'img_b2.png' | asset_url }}\" />\n    <img id=\"img_b3\" style=\"display:none\" src=\"{{ 'img_b3.png' | asset_url }}\" />\n    <script type=\"module\" src=\"{{ 'index.js' | asset_url }}\"></script>\n</body>\n</html>",
+        "custom_liquid": "",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 52
