@@ -1,0 +1,143 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+/*===== VARIABLES CSS =====*/
+:root {
+  --custom-dark-bg: #f2f5ff;
+  --custom-red: #a62121;
+  --custom-blue: #4bb7e6;
+  --custom-btn: #141414;
+  --custom-btn-hover: #3a3a3a;
+  --custom-text: #fbf7f7;
+}
+
+/*===== RESET =====*/
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.custom-body {
+  width: 100%;
+  background-color: var(--custom-dark-bg);
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: 100%;
+  user-select: none;
+  object-fit: cover;
+}
+
+/*===== CUSTOM GRID =====*/
+.custom-container {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.custom-card {
+  background-color: var(--custom-red);
+  color: var(--custom-text);
+  border-radius: 0.9rem;
+  box-shadow: -1px 15px 30px -12px rgba(32, 32, 32, 0.5);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.custom-card-alt {
+  background-color: var(--custom-blue);
+}
+
+.custom-card:hover {
+  transform: translateY(-10px);
+}
+
+.custom-product-image {
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-product-image img {
+  border-radius: 0.5rem;
+}
+
+.custom-product-info {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.custom-product-info h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.custom-product-info p {
+  font-size: 0.9rem;
+  margin: 0.4rem 0;
+}
+
+.custom-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.custom-btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.custom-buy-btn {
+  background-color: var(--custom-btn);
+  color: var(--custom-text);
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.3rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.custom-buy-btn:hover {
+  background-color: var(--custom-btn-hover);
+}
+
+.custom-fav-btn {
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #000;
+}
+
+.custom-svg {
+  height: 25px;
+  width: 25px;
+  fill: #fff;
+  transition: all 0.3s ease;
+}
+
+.custom-fav-btn:hover .custom-svg {
+  fill: #000;
+}
+
+/*===== RESPONSIVO =====*/
+@media (max-width: 768px) {
+  .custom-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
