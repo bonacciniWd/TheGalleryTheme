@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amate Ninja - Jogo</title>
     <style>
-      /* Estilos para responsividade e centralização do iframe */
+      /* Estilos para responsividade e centralização do iframe em tela cheia */
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+      }
+
       .game-container {
         width: 100%;
-        max-width: 800px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 0;
         text-align: center;
       }
 
       .game-iframe {
         width: 100%;
-        height: 600px;
+        height: 100vh; /* Altura total da viewport */
         border: none;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
+        display: block;
       }
 
       .game-description {
@@ -27,26 +33,27 @@
         font-family: 'Arial', sans-serif;
         color: #333;
         line-height: 1.6;
+        padding: 0 20px;
       }
 
-      @media (max-width: 768px) {
-        .game-iframe {
-          height: 500px;
-        }
+      h1 {
+        padding: 20px;
+        margin: 0;
       }
 
-      @media (max-width: 480px) {
-        .game-iframe {
-          height: 400px;
-        }
+      /* Você pode ocultar a descrição se quiser mais espaço para o jogo */
+      /*
+      .game-description {
+        display: none;
       }
+      */
     </style>
   </head>
   <body>
     <div class="game-container">
       <h1>Amate Ninja - Jogo</h1>
 
-      <!-- Substitua o URL pela sua URL da Vercel quando estiver pronta -->
+      <!-- iframe com URL da Vercel -->
       <iframe
         src="https://amaterasu-game.vercel.app"
         class="game-iframe"
@@ -55,6 +62,7 @@
         title="Amate Ninja"
       ></iframe>
 
+      <!-- Você pode remover esta seção se quiser apenas o jogo -->
       <div class="game-description">
         <p>
           Teste suas habilidades no jogo Amate Ninja! Use sua destreza e timing para construir pontes e avançar o máximo
