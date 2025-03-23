@@ -135,3 +135,32 @@ canvas {
     background-position: 0% 50%;
   }
 }
+
+@media (max-width: 768px) {
+  canvas {
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+  }
+
+  #score {
+    font-size: 3em; /* Aumenta o tamanho da fonte do score em mobile */
+    top: 10%; /* Ajusta a posição do score */
+  }
+
+  #introduction {
+    font-size: 1em; /* Aumenta o tamanho da fonte da introdução em mobile */
+    padding: 10px 14px; /* Ajusta o padding */
+  }
+
+  #restart {
+    width: 100px; /* Aumenta o tamanho do botão em mobile */
+    height: 100px;
+    font-size: 1.5em; /* Aumenta o tamanho da fonte do botão */
+    bottom: 10%; /* Ajusta a posição do botão */
+  }
+
+  #creditos {
+    font-size: 1.5em; /* Aumenta o tamanho da fonte dos créditos em mobile */
+    padding: 10px 14px; /* Ajusta o padding */
+  }
+}
