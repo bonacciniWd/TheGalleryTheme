@@ -59,18 +59,25 @@ canvas {
   width: 120px;
   height: 120px;
   position: fixed;
-  bottom: 8%;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
   color: white;
-  background-color: red;
+  background: linear-gradient(45deg, #00ff88, #00aaff);
   border: none;
   font-weight: 700;
   font-size: 1.2em;
   display: none;
   cursor: pointer;
   z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#restart:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 #perfect {
@@ -89,10 +96,24 @@ canvas {
   position: fixed;
   bottom: 0;
   left: 0;
-  background: #000;
   padding: 8px 12px;
-  color: #FFF;
+  color: #000;
   width: 100%;
   text-align: center;
   z-index: 1000;
+  background: linear-gradient(90deg, #00ff88, #00aaff, #00ff88);
+  background-size: 200% 100%;
+  animation: waveAnimation 5s linear infinite;
+}
+
+@keyframes waveAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
