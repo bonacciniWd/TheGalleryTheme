@@ -94,7 +94,7 @@ canvas {
 
 #creditos {
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   left: 0px;
   padding: 8px 16px;
   background-color: rgba(0, 0, 0, 0.5);
