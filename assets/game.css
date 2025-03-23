@@ -95,10 +95,10 @@ canvas {
 #creditos {
   position: fixed;
   bottom: 20px;
-  left: 20px;
+  left: 0px;
   padding: 8px 16px;
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 20px;
+  border-radius: 0px;
   font-size: 1em;
   font-weight: 600;
   z-index: 1000;
