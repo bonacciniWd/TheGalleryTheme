@@ -4,48 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amate Ninja - Jogo</title>
+    <!-- Incluir Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-      /* Estilos para responsividade e centralização do iframe */
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden; /* Permitir scroll vertical */
+      }
+
       .game-container {
         width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
       }
 
       .game-iframe {
         width: 100%;
-        height: 600px;
-        border: none;
+        height: 90vh; /* Altura ajustada para dispositivos móveis */
+        border: none; /* Remover bordas */
+        display: block;
+        margin-top: 20px; /* Espaço entre as dicas e o iframe */
+      }
+
+      .game-instructions {
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 20px;
+        padding: 20px;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        line-height: 1.6;
+        text-align: left;
+        background-color: #f9f9f9;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
       }
 
-      .game-description {
-        margin-top: 20px;
-        font-family: 'Arial', sans-serif;
-        color: #333;
-        line-height: 1.6;
+      .game-instructions i {
+        color: #4CAF50;
+        margin-right: 8px;
       }
 
-      @media (max-width: 768px) {
+      @media (min-width: 769px) {
         .game-iframe {
-          height: 500px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .game-iframe {
-          height: 500px;
-          width: 100%;
+          height: 100vh; /* Altura total da viewport para desktops */
         }
       }
     </style>
   </head>
   <body>
     <div class="game-container">
-      <h1>Amate Ninja - Jogo</h1>
+      <!-- Instruções do jogo -->
+      <div class="game-instructions">
+        <p>
+          <i class="fas fa-gamepad"></i> <strong>Como Jogar:</strong> Clique e segure para esticar o bastão. Solte para
+          posicioná-lo.
+        </p>
+        <p>
+          <i class="fas fa-trophy"></i> <strong>Objetivo:</strong> Quanto mais longe você chegar, maior será sua
+          pontuação!
+        </p>
+        <p>
+          <i class="fas fa-gift"></i> <strong>Prêmio:</strong> Ao atingir o nível 50, você ganha um cupom de frete
+          grátis!
+        </p>
+      </div>
 
       <!-- Substitua o URL pela sua URL da Vercel quando estiver pronta -->
       <iframe
@@ -55,17 +83,6 @@
         allow="autoplay; fullscreen; microphone; camera"
         title="Amate Ninja"
       ></iframe>
-
-      <div class="game-description">
-        <p>
-          Teste suas habilidades no jogo Amate Ninja! Use sua destreza e timing para construir pontes e avançar o máximo
-          possível.
-        </p>
-        <p>
-          <strong>Instruções:</strong> Clique e segure para esticar o bastão. Solte para posicioná-lo. Quanto mais longe
-          você chegar, maior será sua pontuação!
-        </p>
-      </div>
     </div>
   </body>
 </html>
