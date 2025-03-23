@@ -24,11 +24,11 @@
       }
 
       .game-iframe {
-        width: calc(100% - 14px); /* Subtrair 7px de cada lado para margem em dispositivos móveis */
+        width: 100%; /* Usar 100% da largura disponível */
         height: 90vh; /* Altura ajustada para dispositivos móveis */
         border: none; /* Remover bordas */
         display: block;
-        margin: 20px 7px; /* Espaço entre as dicas e o iframe, e margem lateral */
+        margin: 20px 0; /* Espaço entre as dicas e o iframe */
         border-radius: 10px; /* Cantos arredondados */
         overflow: hidden; /* Garantir que o conteúdo do iframe não ultrapasse os cantos arredondados */
       }
@@ -52,21 +52,9 @@
         margin-right: 8px;
       }
 
-      .fullscreen-button {
-        margin: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-      }
-
       @media (min-width: 769px) {
         .game-iframe {
           height: 95vh; /* Altura ajustada para desktops */
-          margin: 20px 0; /* Remover margem lateral em desktops */
         }
       }
     </style>
@@ -89,9 +77,6 @@
         </p>
       </div>
 
-      <!-- Botão para tela cheia -->
-      <button class="fullscreen-button" onclick="toggleFullScreen()">Tela Cheia</button>
-
       <!-- Substitua o URL pela sua URL da Vercel quando estiver pronta -->
       <iframe
         id="gameIframe"
@@ -102,20 +87,5 @@
         title="Amate Ninja"
       ></iframe>
     </div>
-
-    <script>
-      function toggleFullScreen() {
-        const iframe = document.getElementById('gameIframe');
-        if (iframe.requestFullscreen) {
-          iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) { // Firefox
-          iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
-          iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) { // IE/Edge
-          iframe.msRequestFullscreen();
-        }
-      }
-    </script>
   </body>
 </html>
