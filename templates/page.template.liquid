@@ -24,13 +24,13 @@
       }
 
       .game-iframe {
-        width: calc(100% - 14px); /* Subtrair 7px de cada lado para margem em dispositivos móveis */
-        height: 90vh; /* Altura ajustada para dispositivos móveis */
+        width: 100%; /* Usar 100% da largura disponível */
+        height: 100vh; /* Altura total da viewport */
         border: none; /* Remover bordas */
         display: block;
-        margin: 20px 7px; /* Espaço entre as dicas e o iframe, e margem lateral */
-        border-radius: 10px; /* Cantos arredondados */
-        overflow: hidden; /* Garantir que o conteúdo do iframe não ultrapasse os cantos arredondados */
+        margin: 0; /* Remover margens */
+        border-radius: 0; /* Sem cantos arredondados */
+        overflow: hidden; /* Garantir que o conteúdo do iframe não ultrapasse */
       }
 
       .game-instructions {
@@ -50,13 +50,6 @@
       .game-instructions i {
         color: #4CAF50;
         margin-right: 8px;
-      }
-
-      @media (min-width: 769px) {
-        .game-iframe {
-          height: 95vh; /* Altura ajustada para desktops */
-          margin: 20px 0; /* Remover margem lateral em desktops */
-        }
       }
     </style>
   </head>
