@@ -152,25 +152,7 @@ function generateTree() {
   trees.push({ x, color });
 }
 
-function resizeCanvas() {
-  const canvas = document.getElementById('game');
-  const container = document.querySelector('.container');
 
-  // Define o tamanho do canvas com base na menor dimensão (altura ou largura)
-  const size = Math.min(window.innerWidth, window.innerHeight);
-
-  // Ajusta o tamanho do canvas
-  canvas.width = size;
-  canvas.height = size;
-
-  // Centraliza o canvas no contêiner
-  container.style.width = `${size}px`;
-  container.style.height = `${size}px`;
-}
-
-// Redimensiona o canvas ao carregar a página e ao redimensionar a janela
-window.addEventListener('load', resizeCanvas);
-window.addEventListener('resize', resizeCanvas);
 
 function generatePlatform() {
   const minimumGap = 40;
