@@ -1,8 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Fundo preto para combinar com o tema do jogo */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita barras de rolagem */
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  width: 100%; /* Ocupa toda a largura da tela */
+  position: relative;
 }
 
 
