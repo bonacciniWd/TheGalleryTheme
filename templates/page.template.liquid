@@ -31,13 +31,13 @@
 
     <!-- Adicionar elementos de áudio -->
     <audio id="backgroundMusic" loop>
-      <source src="https://assets.codepen.io/21542/howling-wind.mp3" type="audio/mp3">
+      <source src="{{ 'howling-wind.mp3' | asset_url }}" type="audio/mp3">
     </audio>
     <audio id="perfectSound">
-      <source src="https://assets.codepen.io/21542/click.mp3" type="audio/mp3">
+      <source src="{{ 'click.mp3' | asset_url }}" type="audio/mp3">
     </audio>
     <audio id="fallSound">
-      <source src="https://assets.codepen.io/21542/fall.mp3" type="audio/mp3">
+      <source src="{{ 'fall.mp3' | asset_url }}" type="audio/mp3">
     </audio>
 
     <div id="creditos" unselectable="on">
