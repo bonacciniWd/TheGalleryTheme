@@ -36,7 +36,7 @@ canvas {
 /* Score */
 #score {
   position: absolute;
-  top: 10px; /* Distância do topo */
+  top: 20px; /* Distância do topo */
   left: 50%;
   transform: translateX(-50%);
   font-size: 2em;
@@ -135,34 +135,5 @@ canvas {
   }
   100% {
     background-position: 0% 50%;
-  }
-}
-
-/* Media Queries para ajustes específicos em mobile */
-@media (max-width: 768px) {
-  /* Ajusta o tamanho da fonte do score */
-  #score {
-    font-size: 3em; /* Aumenta o tamanho da fonte do score em mobile */
-    top: 5%; /* Ajusta a posição do score */
-  }
-
-  /* Ajusta o tamanho da fonte e padding da introdução */
-  #introduction {
-    font-size: 1em; /* Aumenta o tamanho da fonte da introdução em mobile */
-    padding: 10px 14px; /* Ajusta o padding */
-  }
-
-  /* Ajusta o tamanho e posição do botão de reiniciar */
-  #restart {
-    width: 100px; /* Aumenta o tamanho do botão em mobile */
-    height: 100px;
-    font-size: 1.5em; /* Aumenta o tamanho da fonte do botão */
-    bottom: 10%; /* Ajusta a posição do botão */
-  }
-
-  /* Ajusta o tamanho da fonte e padding dos créditos */
-  #creditos {
-    font-size: 1.5em; /* Aumenta o tamanho da fonte dos créditos em mobile */
-    padding: 10px 14px; /* Ajusta o padding */
   }
 }
