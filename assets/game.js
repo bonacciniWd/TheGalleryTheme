@@ -77,6 +77,7 @@ const restartButton = document.getElementById("restart");
 const scoreElement = document.getElementById("score");
 
 let cloudImage = new Image(); // Criar uma nova imagem
+cloudImage.crossOrigin = "anonymous";
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
 
 // Variáveis globais para os sons
