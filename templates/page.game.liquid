@@ -73,9 +73,52 @@
       src="https://amaterasu-game.vercel.app" 
       class="game-iframe" 
       allowfullscreen 
-      allow="autoplay; fullscreen; microphone; camera" 
+      allow="autoplay; fullscreen; microphone; camera; gamepad; accelerometer; gyroscope; picture-in-picture" 
       title="Amate Ninja"
+      scrolling="no"
+      frameborder="0"
+      sandbox="allow-same-origin allow-scripts allow-forms allow-pointer-lock allow-popups allow-modals"
+      importance="high"
+      loading="eager"
     ></iframe>
   </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Referência ao iframe
+      const gameIframe = document.getElementById('gameIframe');
+      
+      // Função para enviar mensagem para o iframe (caso seja necessário)
+      function sendMessageToGame(message) {
+        gameIframe.contentWindow.postMessage(message, '*');
+      }
+      
+      // Adicionar evento para detectar toques na tela
+      document.addEventListener('touchstart', function(e) {
+        // Garantir que o iframe mantém o foco
+        gameIframe.focus();
+      }, {passive: true});
+      
+      // Recarregar iframe se estiver com problema
+      function reloadIframeIfNeeded() {
+        gameIframe.src = gameIframe.src;
+      }
+      
+      // Botão de recarga para depuração (pode remover depois)
+      const reloadButton = document.createElement('button');
+      reloadButton.textContent = 'Recarregar Jogo';
+      reloadButton.style.position = 'fixed';
+      reloadButton.style.bottom = '10px';
+      reloadButton.style.right = '10px';
+      reloadButton.style.zIndex = '1000';
+      reloadButton.style.padding = '8px 12px';
+      reloadButton.style.background = '#4CAF50';
+      reloadButton.style.color = 'white';
+      reloadButton.style.border = 'none';
+      reloadButton.style.borderRadius = '4px';
+      reloadButton.addEventListener('click', reloadIframeIfNeeded);
+      document.body.appendChild(reloadButton);
+    });
+  </script>
 </body>
 </html>
