@@ -6,28 +6,20 @@
     <title>Amate Ninja - Jogo</title>
     <style>
       /* Estilos para responsividade e centralização do iframe */
-      body, html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
       .game-container {
         width: 100%;
-        height: 100vh; /* Altura total da viewport */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
       }
 
       .game-iframe {
         width: 100%;
-        height: 100%; /* Altura total do contêiner */
+        height: 600px;
         border: none;
-        display: block;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
       }
 
       .game-description {
@@ -35,12 +27,18 @@
         font-family: 'Arial', sans-serif;
         color: #333;
         line-height: 1.6;
-        padding: 0 20px;
       }
 
-      h1 {
-        padding: 20px;
-        margin: 0;
+      @media (max-width: 768px) {
+        .game-iframe {
+          height: 500px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .game-iframe {
+          height: 400px;
+        }
       }
     </style>
   </head>
