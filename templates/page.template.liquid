@@ -28,14 +28,14 @@
     </div>
 
     <!-- Adicionar elementos de áudio -->
-    <audio id="backgroundMusic" preload="auto" loop>
-      <source src="{{ 'howling-wind.mp3' | asset_url }}" type="audio/mp3">
+    <audio id="backgroundMusic" preload="auto" loop muted>
+      <source src="howling-wind.mp3" type="audio/mp3">
     </audio>
-    <audio id="perfectSound" preload="auto">
-      <source src="{{ 'click.mp3' | asset_url }}" type="audio/mp3">
+    <audio id="perfectSound" preload="auto" muted>
+      <source src="click.mp3" type="audio/mp3">
     </audio>
-    <audio id="fallSound" preload="auto">
-      <source src="{{ 'fall.mp3' | asset_url }}" type="audio/mp3">
+    <audio id="fallSound" preload="auto" muted>
+      <source src="fall.mp3" type="audio/mp3">
     </audio>
 
     <div id="creditos" unselectable="on">
@@ -43,7 +43,6 @@
     </div>
     <div id="touchArea"></div>
     <button id="restart">REINICIAR</button>
-    <button id="startButton">Iniciar Jogo</button>
 
     <script>
       // Garantir que o jogo seja carregado corretamente
@@ -118,17 +117,34 @@
         document.getElementById('story-screen').style.display = 'none';
         document.querySelector('.container').style.display = 'flex';
 
-        // Tentar carregar o sistema de sons (será definido em index.js)
-        if (typeof loadSounds === 'function') {
-          loadSounds();
+        // Remover restrições de áudio após interação do usuário
+        const unmuteSounds = function() {
+          const sounds = ['backgroundMusic', 'perfectSound', 'fallSound'];
+          sounds.forEach(id => {
+            const sound = document.getElementById(id);
+            if (sound) sound.muted = false;
+          });
 
-          // Tentar tocar música de fundo após um pequeno atraso
-          setTimeout(function() {
-            if (typeof playBackgroundMusic === 'function') {
-              playBackgroundMusic();
-            }
-          }, 500);
-        }
+          // Tentar inicializar sistema de som
+          if (typeof loadSounds === 'function') {
+            loadSounds();
+
+            // Tentar tocar música de fundo após um pequeno atraso
+            setTimeout(function() {
+              if (typeof playBackgroundMusic === 'function') {
+                playBackgroundMusic();
+              }
+            }, 500);
+          }
+
+          // Remover eventos após primeira interação
+          document.removeEventListener('click', unmuteSounds);
+          document.removeEventListener('touchstart', unmuteSounds);
+        };
+
+        // Adicionar ouvintes para interação do usuário
+        document.addEventListener('click', unmuteSounds, { once: true });
+        document.addEventListener('touchstart', unmuteSounds, { once: true });
 
         // Disparar evento para inicializar o jogo
         const gameStartEvent = new Event('gameStartFromStory');
