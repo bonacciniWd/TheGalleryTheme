@@ -24,13 +24,11 @@ body, html {
   overflow: hidden; /* Garante que nada ultrapasse o contêiner */
 }
 
-/* Canvas do jogo */
 canvas {
-  width: 100%; /* Ocupa toda a largura do contêiner */
-  height: 100%; /* Ocupa toda a altura do contêiner */
-  display: block;
-  border: 1px solid #fff; /* Borda branca para destacar o canvas */
-  background-color: #222; /* Fundo escuro para o canvas */
+  width: 100vw; /* Ocupa toda a largura da tela */
+  height: 100vh; /* Ocupa toda a altura da tela */
+  display: block; /* Remove espaços extras ao redor do canvas */
+  margin: 0 auto; /* Centraliza o canvas */
 }
 
 /* Score */
