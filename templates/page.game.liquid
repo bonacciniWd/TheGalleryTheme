@@ -3,98 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Amate Ninja - Jogo</title>
-  <!-- Incluir Font Awesome para ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Amate Ninja</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
     
-    body, html {
+    html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
-    }
-    
-    .game-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .game-instructions {
-      padding: 10px;
-      background-color: #f9f9f9;
-      font-family: 'Arial', sans-serif;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .game-instructions i {
-      color: #4CAF50;
-      margin-right: 5px;
-    }
-    
-    .iframe-container {
-      flex: 1;
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    #gameIframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    
-    .reload-button {
       position: fixed;
-      bottom: 10px;
-      right: 10px;
-      padding: 8px 12px;
-      background: #4CAF50;
-      color: white;
+    }
+    
+    iframe {
+      width: 100%;
+      height: 100%;
       border: none;
-      border-radius: 4px;
-      z-index: 100;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="game-container">
-    <div class="game-instructions">
-      <p><i class="fas fa-gamepad"></i> <strong>Como Jogar:</strong> Toque e segure para esticar o bastão. Solte para posicioná-lo.</p>
-      <p><i class="fas fa-trophy"></i> <strong>Objetivo:</strong> Quanto mais longe você chegar, maior será sua pontuação!</p>
-      <p><i class="fas fa-gift"></i> <strong>Prêmio:</strong> Ao atingir o nível 50, você ganha um cupom de frete grátis!</p>
-    </div>
-    
-    <div class="iframe-container">
-      <iframe 
-        id="gameIframe"
-        src="https://amaterasu-game.vercel.app" 
-        allowfullscreen
-        allow="autoplay; fullscreen"
-      ></iframe>
-    </div>
-    
-    <button class="reload-button" id="reloadButton">Recarregar Jogo</button>
-  </div>
-
-  <script>
-    document.getElementById('reloadButton').addEventListener('click', function() {
-      const iframe = document.getElementById('gameIframe');
-      iframe.src = iframe.src;
-    });
-  </script>
+  <iframe src="https://amaterasu-game.vercel.app" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>
 </body>
 </html>
