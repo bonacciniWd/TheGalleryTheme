@@ -1,155 +1,70 @@
-{% layout none %}
-
 <!doctype html>
-<html>
+<html lang="pt-br">
   <head>
-    <title>Amaterasu rescue</title>
-    <link rel="stylesheet" href="{{ 'game.css' | asset_url }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amate Ninja - Jogo</title>
+    <style>
+      /* Estilos para responsividade e centralização do iframe */
+      .game-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .game-iframe {
+        width: 100%;
+        height: 600px;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .game-description {
+        margin-top: 20px;
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
+        .game-iframe {
+          height: 500px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .game-iframe {
+          height: 400px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Tela de história introdutória -->
-    <div id="story-screen">
-      <div class="story-container">
-        <h1>Amate Ninja</h1>
-        <div id="story-text"></div>
-        <button id="skip-story">Pular</button>
-        <button id="continue-story">Continuar</button>
+    <div class="game-container">
+      <h1>Amate Ninja - Jogo</h1>
+
+      <!-- Substitua o URL pela sua URL da Vercel quando estiver pronta -->
+      <iframe
+        src="https://amaterasu-game.vercel.app"
+        class="game-iframe"
+        allowfullscreen
+        allow="autoplay; fullscreen; microphone; camera"
+        title="Amate Ninja"
+      ></iframe>
+
+      <div class="game-description">
+        <p>
+          Teste suas habilidades no jogo Amate Ninja! Use sua destreza e timing para construir pontes e avançar o máximo
+          possível.
+        </p>
+        <p>
+          <strong>Instruções:</strong> Clique e segure para esticar o bastão. Solte para posicioná-lo. Quanto mais longe
+          você chegar, maior será sua pontuação!
+        </p>
       </div>
     </div>
-
-    <!-- Tela do jogo -->
-    <div class="container" style="display: none;">
-      <canvas id="game"></canvas>
-      <div id="score" unselectable="on">0</div>
-      <div id="introduction" unselectable="on">Segure o botão do mouse para esticar o bastão</div>
-      <div id="perfect" unselectable="on">PERFECT 🧙</div>
-      <button id="mobileStartButton" style="display: none;">Tocar para iniciar</button>
-    </div>
-
-    <audio id="backgroundMusic" preload="auto" loop muted>
-      <source src="{{ 'howling-wind.mp3' | asset_url }}" type="audio/mp3">
-    </audio>
-    <audio id="perfectSound" preload="auto" muted>
-      <source src="{{ 'click.mp3' | asset_url }}" type="audio/mp3">
-    </audio>
-    <audio id="fallSound" preload="auto" muted>
-      <source src="{{ 'fall.mp3' | asset_url }}" type="audio/mp3">
-    </audio>
-
-    <div id="creditos" unselectable="on">
-      <span>Powered by Vrz Studio</span>
-    </div>
-    <div id="touchArea"></div>
-    <button id="restart">REINICIAR</button>
-
-    <script>
-      // Garantir que o jogo seja carregado corretamente
-      window.addEventListener('pageshow', function(event) {
-        // Se a página está sendo carregada a partir do cache do navegador
-        if (event.persisted) {
-          // Recarregar a página para evitar problemas de branco
-          window.location.reload();
-        }
-      });
-
-      // Prevenir seleção de texto em toda a página
-      document.addEventListener('touchstart', function(e) {
-        // Permitir eventos normais em botões
-        if (e.target.tagName !== 'BUTTON') {
-          e.preventDefault();
-        }
-      }, { passive: false });
-
-      // História dividida em parágrafos para exibição gradual
-      const storyParagraphs = [
-        "Em um Japão ancestral coberto por sombras e traições, o lendário Clã Amaterasu protegia os segredos da luz celestial — a força capaz de manter o equilíbrio entre o mundo dos vivos e o reino dos espíritos.",
-        "Por séculos, os Amaterasu viveram nas montanhas sagradas, ocultos dos olhos mortais. Até que uma noite, o impiedoso Senhor Kurojin, mestre das artes obscuras, invadiu o santuário e capturou os anciãos do clã, roubando o pergaminho da Luz Eterna.",
-        "Com o mundo mergulhando lentamente na escuridão, a última esperança recai sobre um pequeno grupo de jovens ninjas sobreviventes. Ágeis, leais e determinados, eles agora devem atravessar territórios inimigos, enfrentar criaturas das trevas e resgatar seus mestres antes que a luz se apague para sempre.",
-        "O destino do clã... e do mundo... está em suas mãos."
-      ];
-
-      let currentParagraph = 0;
-      const storyTextElement = document.getElementById('story-text');
-      const continueButton = document.getElementById('continue-story');
-      const skipButton = document.getElementById('skip-story');
-
-      // Função para criar efeito de digitação
-      function typeWriter(text, element, speed = 30) {
-        let i = 0;
-        element.textContent = '';
-        continueButton.disabled = true;
-
-        function type() {
-          if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-          } else {
-            continueButton.disabled = false;
-          }
-        }
-
-        type();
-      }
-
-      // Exibir o primeiro parágrafo com efeito de digitação
-      typeWriter(storyParagraphs[currentParagraph], storyTextElement);
-
-      // Botão de continuar para avançar na história
-      continueButton.addEventListener('click', function() {
-        currentParagraph++;
-        if (currentParagraph < storyParagraphs.length) {
-          typeWriter(storyParagraphs[currentParagraph], storyTextElement);
-        } else {
-          startGame();
-        }
-      });
-
-      // Botão para pular a história e ir direto para o jogo
-      skipButton.addEventListener('click', function() {
-        startGame();
-      });
-
-      // Função para iniciar o jogo
-      function startGame() {
-        document.getElementById('story-screen').style.display = 'none';
-        document.querySelector('.container').style.display = 'flex';
-
-        // Remover restrições de áudio após interação do usuário
-        const unmuteSounds = function() {
-          const sounds = ['backgroundMusic', 'perfectSound', 'fallSound'];
-          sounds.forEach(id => {
-            const sound = document.getElementById(id);
-            if (sound) sound.muted = false;
-          });
-
-          // Tentar inicializar sistema de som
-          if (typeof loadSounds === 'function') {
-            loadSounds();
-
-            // Tentar tocar música de fundo após um pequeno atraso
-            setTimeout(function() {
-              if (typeof playBackgroundMusic === 'function') {
-                playBackgroundMusic();
-              }
-            }, 500);
-          }
-
-          // Remover eventos após primeira interação
-          document.removeEventListener('click', unmuteSounds);
-          document.removeEventListener('touchstart', unmuteSounds);
-        };
-
-        // Adicionar ouvintes para interação do usuário
-        document.addEventListener('click', unmuteSounds, { once: true });
-        document.addEventListener('touchstart', unmuteSounds, { once: true });
-
-        // Disparar evento para inicializar o jogo
-        const gameStartEvent = new Event('gameStartFromStory');
-        window.dispatchEvent(gameStartEvent);
-      }
-    </script>
-    <script src="{{ 'game.js' | asset_url }}" defer></script>
   </body>
 </html>
