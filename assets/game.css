@@ -19,14 +19,7 @@ body {
   overflow: visible; /* Garante que o conteúdo não seja cortado */
 }
 
-canvas {
-  width: 100vw; /* Ocupa 100% da largura da tela */
-  height: 100vh; /* Ocupa 100% da altura da tela */
-  max-width: 100%; /* Garante que não ultrapasse a largura da tela */
-  max-height: 100%; /* Garante que não ultrapasse a altura da tela */
-  display: block; /* Remove espaços extras ao redor do canvas */
-  margin: 0 auto; /* Centraliza o canvas */
-}
+
 
 #score {
   position: absolute;
