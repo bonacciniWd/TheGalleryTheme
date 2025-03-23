@@ -1,166 +1,65 @@
-/* Reset básico e estilos globais */
-body, html {
-  margin: 0;
-  padding: 0;
-  background-color: #000; /* Fundo preto para combinar com o tema do jogo */
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Remove o scroll */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Contêiner principal */
 .container {
-  position: fixed; /* Fixa o contêiner na tela */
-  top: 0;
-  left: 0;
-  width: 100vw; /* Ocupa toda a largura da tela */
-  height: 100vh; /* Ocupa toda a altura da tela */
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Garante que nada ultrapasse o contêiner */
+  height: 85vh;
 }
 
-canvas {
-  width: 100vw; /* Ocupa toda a largura da tela */
-  height: 100vh; /* Ocupa toda a altura da tela */
-  display: block; /* Remove espaços extras ao redor do canvas */
-  margin: 0 auto; /* Centraliza o canvas */
-}
 
-/* Score */
 #score {
   position: absolute;
-  top: 20px; /* Distância do topo */
+  top: 150px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 2em;
   font-weight: 900;
-  color: white;
-  z-index: 1000; /* Garante que fique acima de outros elementos */
-  background-color: transparent; /* Fundo transparente */
+    color: white;
 }
 
-/* Introdução */
+
 #introduction {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-weight: 600;
   font-size: 0.8em;
   text-align: center;
+  transition: opacity 2s;
   color: white;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #000000AB;
   padding: 12px 16px;
   border-radius: 20px;
-  pointer-events: none; /* Impede interação */
-  z-index: 1000;
+  pointer-events: not-allowed;
 }
 
-/* Botão de reiniciar */
 #restart {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(45deg, #ff0000, #ff6b6b);
+  width: 120px;
+  height: 120px;
   position: fixed;
-  bottom: 20px; /* Distância do fundo */
+  bottom: 4;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
   color: white;
+  background-color: red;
   border: none;
   font-weight: 700;
   font-size: 1.2em;
   display: none;
   cursor: pointer;
   z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#restart:hover {
-  transform: translateX(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Mensagem "Perfect" */
 #perfect {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 2s;
-  color: white;
-  font-size: 1.5em;
-  z-index: 1000;
 }
 
-/* Créditos */
 #creditos {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 8px 16px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 0 30px 0 0; /* Bordas arredondadas apenas no canto superior direito */
-  font-size: 1em;
-  font-weight: 600;
-  z-index: 1000;
-  display: inline-block;
+   display: block;
+    bottom: 0px !important;
+    left: 0px !important;
+    background: #000;
+    padding: 8px 12px;
+    color: #FFF;
 }
 
-/* Gradiente animado no texto dos créditos */
-#creditos span {
-  background: linear-gradient(180deg, #00d2ff, #3a7bd5, #00d2ff);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: waveAnimation 5s linear infinite;
-}
-
-/* Animação do gradiente */
-@keyframes waveAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@media (max-width: 768px) {
-  canvas {
-    width: 100vw; /* Ocupa toda a largura da tela */
-    height: 100vh; /* Ocupa toda a altura da tela */
-  }
-
-  #score {
-    font-size: 3em; /* Aumenta o tamanho da fonte do score em mobile */
-    top: 10%; /* Ajusta a posição do score */
-  }
-
-  #introduction {
-    font-size: 1em; /* Aumenta o tamanho da fonte da introdução em mobile */
-    padding: 10px 14px; /* Ajusta o padding */
-  }
-
-  #restart {
-    width: 100px; /* Aumenta o tamanho do botão em mobile */
-    height: 100px;
-    font-size: 1.5em; /* Aumenta o tamanho da fonte do botão */
-    bottom: 10%; /* Ajusta a posição do botão */
-  }
-
-  #creditos {
-    font-size: 1.5em; /* Aumenta o tamanho da fonte dos créditos em mobile */
-    padding: 10px 14px; /* Ajusta o padding */
-  }
-}
