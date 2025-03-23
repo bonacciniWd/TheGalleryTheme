@@ -1,14 +1,4 @@
-/*
 
-
-
-If you want to know how this game was made, check out this video, that explains how it's made: 
-
-https://youtu.be/eue3UdFvwPo
-
-Follow me on twitter for more: https://twitter.com/HunorBorbely
-
-*/
 
 // Extend the base functionality of JavaScript
 Array.prototype.last = function () {
@@ -76,8 +66,7 @@ const perfectElement = document.getElementById("perfect");
 const restartButton = document.getElementById("restart");
 const scoreElement = document.getElementById("score");
 
-let cloudImage = new Image();
-cloudImage.crossOrigin = "anonymous"; // Permitir CORS
+let cloudImage = new Image(); // Criar uma nova imagem
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
 
 // Variáveis globais para os sons
@@ -147,10 +136,7 @@ function loadSounds() {
   fallSound = document.getElementById("fallSound");
   
   if (!backgroundMusic || !perfectSound || !fallSound) {
-    console.error("Alguns elementos de áudio não foram encontrados:");
-    console.error("backgroundMusic:", backgroundMusic);
-    console.error("perfectSound:", perfectSound);
-    console.error("fallSound:", fallSound);
+    console.error("Alguns elementos de áudio não foram encontrados.");
     return;
   }
   
@@ -991,24 +977,26 @@ function addSoundControl() {
 // Adicionar o botão de som após o carregamento da página
 window.addEventListener('load', function() {
   addSoundControl();
-  
-  // Tentar carregar sons após a página ser carregada
-  loadSounds();
-  
-  // Adiciona evento de interação global para ativar os sons
-  const activateSounds = function() {
-    if (soundsEnabled) {
-      playBackgroundMusic();
-    }
-    document.removeEventListener('click', activateSounds);
-    document.removeEventListener('touchstart', activateSounds);
-  };
-  
-  document.addEventListener('click', activateSounds);
-  document.addEventListener('touchstart', activateSounds);
 });
 
 // Garantir que os sons sejam carregados
 document.addEventListener('DOMContentLoaded', function() {
   loadSounds();
+});
+
+function startGame() {
+  document.getElementById('story-screen').style.display = 'none';
+  document.querySelector('.container').style.display = 'flex';
+  
+  // Carregar sons
+  loadSounds();
+  
+  // Tentar tocar a música de fundo após um pequeno atraso
+  setTimeout(function() {
+    playBackgroundMusic();
+  }, 100); // Atraso de 100ms para garantir que a interação foi registrada
+}
+
+document.getElementById('startButton').addEventListener('click', function() {
+  startGame(); // Chame a função que inicia o jogo
 });
