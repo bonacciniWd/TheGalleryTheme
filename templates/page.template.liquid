@@ -30,14 +30,14 @@
     </div>
 
     <!-- Adicionar elementos de áudio -->
-    <audio id="backgroundMusic" loop>
-      <source src="{{ 'howling-wind.mp3' | asset_url }}" type="audio/mp3">
+    <audio id="backgroundMusic" preload="auto" loop>
+      <source src="howling-wind.mp3" type="audio/mp3">
     </audio>
-    <audio id="perfectSound">
-      <source src="{{ 'click.mp3' | asset_url }}" type="audio/mp3">
+    <audio id="perfectSound" preload="auto">
+      <source src="click.mp3" type="audio/mp3">
     </audio>
-    <audio id="fallSound">
-      <source src="{{ 'fall.wav' | asset_url }}" type="audio/mp3">
+    <audio id="fallSound" preload="auto">
+      <source src="fall.mp3" type="audio/mp3">
     </audio>
 
     <div id="creditos" unselectable="on">
@@ -45,6 +45,7 @@
     </div>
     <div id="touchArea"></div>
     <button id="restart">REINICIAR</button>
+
     <script>
       // Garantir que o jogo seja carregado corretamente
       window.addEventListener('pageshow', function(event) {
@@ -117,6 +118,18 @@
       function startGame() {
         document.getElementById('story-screen').style.display = 'none';
         document.querySelector('.container').style.display = 'flex';
+
+        // Tentar carregar o sistema de sons (será definido em index.js)
+        if (typeof loadSounds === 'function') {
+          loadSounds();
+
+          // Tentar tocar música de fundo após um pequeno atraso
+          setTimeout(function() {
+            if (typeof playBackgroundMusic === 'function') {
+              playBackgroundMusic();
+            }
+          }, 500);
+        }
 
         // Disparar evento para inicializar o jogo
         const gameStartEvent = new Event('gameStartFromStory');
