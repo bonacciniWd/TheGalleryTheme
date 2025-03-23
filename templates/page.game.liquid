@@ -1,3 +1,4 @@
+{% layout none %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,9 +24,48 @@
       height: 100%;
       border: none;
     }
+    
+    /* Ocultar elementos do tema da Shopify */
+    header, 
+    .shopify-section--header,
+    #shopify-section-header,
+    .site-header,
+    nav.header__inline-menu,
+    .header,
+    .announcement-bar,
+    footer,
+    .footer,
+    #shopify-section-footer {
+      display: none !important;
+    }
+    
+    /* Garantir que o corpo da página ocupe toda a tela */
+    body.template-page,
+    main,
+    .page-width,
+    .main-content,
+    .content-for-layout {
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
   </style>
 </head>
 <body>
   <iframe src="https://amaterasu-game.vercel.app" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe>
+  
+  <script>
+    // Script para ocultar elementos da Shopify que podem ser carregados após a página
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tenta encontrar e ocultar o header da Shopify
+      var shopifyElements = document.querySelectorAll('header, .shopify-section--header, #shopify-section-header, .site-header, .header, .announcement-bar, footer, .footer, #shopify-section-footer');
+      
+      shopifyElements.forEach(function(element) {
+        element.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>
