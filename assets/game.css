@@ -28,7 +28,7 @@ canvas {
 
 #score {
   position: absolute;
-  top: 20px; /* Ajuste a posição vertical */
+  top: 30px; /* Ajuste a posição vertical */
   left: 50%;
   transform: translateX(-50%);
   font-size: 2em;
