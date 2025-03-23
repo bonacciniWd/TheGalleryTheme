@@ -1,28 +1,8 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #000; /* Fundo preto para combinar com o tema do jogo */
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Evita barras de rolagem */
-}
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa toda a altura da tela */
-  width: 100%; /* Ocupa toda a largura da tela */
-  position: relative;
-}
-
-canvas {
-  border: 1px solid #fff; /* Borda branca para destacar o canvas */
-  background-color: #222; /* Fundo escuro para o canvas */
-  max-width: 100%;
-  max-height: 100vh;
+  height: auto;
 }
 
 
