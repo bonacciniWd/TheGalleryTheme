@@ -76,8 +76,7 @@ const perfectElement = document.getElementById("perfect");
 const restartButton = document.getElementById("restart");
 const scoreElement = document.getElementById("score");
 
-let cloudImage = new Image();
-cloudImage.crossOrigin = "anonymous"; // Permitir CORS
+let cloudImage = new Image(); // Criar uma nova imagem
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
 
 // Variáveis globais para os sons
@@ -147,10 +146,9 @@ function loadSounds() {
   fallSound = document.getElementById("fallSound");
   
   if (!backgroundMusic || !perfectSound || !fallSound) {
-    console.error("Alguns elementos de áudio não foram encontrados:");
-    console.error("backgroundMusic:", backgroundMusic);
-    console.error("perfectSound:", perfectSound);
-    console.error("fallSound:", fallSound);
+    console.log("Alguns elementos de áudio não foram encontrados. Tentando novamente em breve...");
+    // Tentar novamente depois
+    setTimeout(loadSounds, 1000);
     return;
   }
   
@@ -159,14 +157,54 @@ function loadSounds() {
   perfectSound.volume = 0.5;
   fallSound.volume = 0.6;
   
+  // Configurar para preload
+  backgroundMusic.preload = "auto";
+  perfectSound.preload = "auto";
+  fallSound.preload = "auto";
+  
+  // Impedir erro de reprodução automática
+  backgroundMusic.muted = true;
+  perfectSound.muted = true;
+  fallSound.muted = true;
+  
+  // Tentar carregar áudio
+  try {
+    backgroundMusic.load();
+    perfectSound.load();
+    fallSound.load();
+  } catch (e) {
+    console.log("Erro ao carregar áudio:", e.message);
+  }
+  
   soundsLoaded = true;
   console.log("Sons carregados com sucesso!");
   
-  // Tentar reproduzir áudio após interação do usuário
-  document.addEventListener('click', function initialPlay() {
+  // Adicionar evento de interação para ativar áudio
+  setupAudioContext();
+}
+
+// Função para inicializar contexto de áudio
+function setupAudioContext() {
+  // Criar função para desmutar após interação
+  const unmuteSounds = function() {
+    if (backgroundMusic) backgroundMusic.muted = false;
+    if (perfectSound) perfectSound.muted = false;
+    if (fallSound) fallSound.muted = false;
+    
     playBackgroundMusic();
-    document.removeEventListener('click', initialPlay);
-  }, { once: true });
+    
+    // Remover eventos após primeira interação
+    document.removeEventListener('click', unmuteSounds);
+    document.removeEventListener('touchstart', unmuteSounds);
+    document.removeEventListener('keydown', unmuteSounds);
+    
+    console.log("Áudio ativado após interação do usuário");
+  };
+  
+  // Adicionar eventos para interação do usuário
+  document.addEventListener('click', unmuteSounds);
+  document.addEventListener('touchstart', unmuteSounds);
+  document.addEventListener('keydown', unmuteSounds);
 }
 
 // Função para tocar música de fundo
@@ -175,21 +213,29 @@ function playBackgroundMusic() {
     loadSounds();
   }
   
-  if (soundsEnabled && backgroundMusic && backgroundMusic.paused) {
-    console.log("Tentando reproduzir música de fundo...");
-    backgroundMusic.play().then(() => {
-      console.log("Música de fundo reproduzida com sucesso!");
-    }).catch(error => {
-      console.error("Erro ao reproduzir música de fundo:", error);
-    });
+  if (soundsEnabled && backgroundMusic) {
+    // Verificar se já está tocando para evitar erros
+    if (backgroundMusic.paused) {
+      console.log("Tentando reproduzir música de fundo...");
+      backgroundMusic.play().then(() => {
+        console.log("Música de fundo reproduzida com sucesso!");
+      }).catch(error => {
+        console.log("Não foi possível reproduzir música de fundo:", error.message);
+        // Não mostrar erro, apenas registrar
+      });
+    }
   }
 }
 
 // Função para pausar música de fundo
 function pauseBackgroundMusic() {
   if (backgroundMusic && !backgroundMusic.paused) {
-    backgroundMusic.pause();
-    console.log("Música de fundo pausada");
+    try {
+      backgroundMusic.pause();
+      console.log("Música de fundo pausada");
+    } catch (error) {
+      console.log("Erro ao pausar música:", error.message);
+    }
   }
 }
 
@@ -217,13 +263,19 @@ function playFallSound() {
   }
   
   if (soundsEnabled && fallSound) {
-    fallSound.currentTime = 0;
-    console.log("Tentando reproduzir som de queda...");
-    fallSound.play().then(() => {
-      console.log("Som de queda reproduzido com sucesso!");
-    }).catch(error => {
-      console.error("Erro ao reproduzir som de queda:", error);
-    });
+    // Primeiro pausar a música de fundo para evitar conflitos
+    pauseBackgroundMusic();
+    
+    // Pequeno atraso para garantir que a música parou
+    setTimeout(() => {
+      fallSound.currentTime = 0;
+      console.log("Tentando reproduzir som de queda...");
+      fallSound.play().then(() => {
+        console.log("Som de queda reproduzido com sucesso!");
+      }).catch(error => {
+        console.log("Não foi possível reproduzir som de queda:", error.message);
+      });
+    }, 100);
   }
 }
 
@@ -288,8 +340,13 @@ function resetGame() {
   // Verificar se precisamos configurar para mobile
   setupMobileInterface();
 
-  // Iniciar música de fundo quando o jogo reinicia
-  playBackgroundMusic();
+  // Garantir que os sons estejam carregados
+  if (!soundsLoaded) {
+    loadSounds();
+  } else if (soundsEnabled) {
+    // Tentar tocar a música de fundo com um pequeno atraso
+    setTimeout(playBackgroundMusic, 300);
+  }
 }
 
 function generateTree() {
@@ -500,8 +557,10 @@ function animate(timestamp) {
       const maxHeroY =
         platformHeight + 100 + (window.innerHeight - canvasHeight) / 2;
       if (heroY > maxHeroY) {
-        playFallSound(); // Tocar som de queda
-        pauseBackgroundMusic(); // Pausar música de fundo
+        // Pausar música primeiro, reproduzir som depois
+        pauseBackgroundMusic();
+        setTimeout(() => playFallSound(), 200);
+        
         restartButton.style.display = "block";
         document.body.classList.remove("game-active"); // Desativar captura de toques quando o jogo termina
         
@@ -929,6 +988,18 @@ function initGameAfterStory() {
   // Garantir que o jogo seja desenhado
   resizeCanvas();
   draw();
+  
+  // Garantir que os sons estejam carregados
+  if (!soundsLoaded) {
+    loadSounds();
+    // Pequena espera para garantir que o áudio possa ser reproduzido após interação
+    window.addEventListener('click', function audioSetup() {
+      window.removeEventListener('click', audioSetup);
+      if (soundsEnabled) {
+        setTimeout(playBackgroundMusic, 500);
+      }
+    }, { once: true });
+  }
 }
 
 // Verificar se estamos iniciando o jogo direto da tela de história
@@ -978,11 +1049,22 @@ function addSoundControl() {
     
     if (soundsEnabled) {
       soundButton.innerHTML = '🔊';
+      // Tentar desmutar os elementos de áudio
+      if (backgroundMusic) backgroundMusic.muted = false;
+      if (perfectSound) perfectSound.muted = false;
+      if (fallSound) fallSound.muted = false;
+      
       playBackgroundMusic();
       console.log("Sons ativados");
     } else {
       soundButton.innerHTML = '🔇';
       pauseBackgroundMusic();
+      
+      // Tentar mutar os elementos de áudio
+      if (backgroundMusic) backgroundMusic.muted = true;
+      if (perfectSound) perfectSound.muted = true;
+      if (fallSound) fallSound.muted = true;
+      
       console.log("Sons desativados");
     }
   });
