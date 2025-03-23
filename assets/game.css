@@ -102,7 +102,7 @@ canvas {
   z-index: 1000;
   font-size: 1em;
   font-weight: 600;
-  background: linear-gradient(90deg, #00ff88, #00aaff, #00ff88);
+ background: linear-gradient(90deg, #8a2be2, #ff00ff, #8a2be2);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
