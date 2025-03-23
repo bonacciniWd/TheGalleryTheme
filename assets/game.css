@@ -28,14 +28,14 @@ canvas {
 
 #score {
   position: absolute;
-  top: 20px; /* Ajuste a posição vertical */
+  top: 150px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 2em;
   font-weight: 900;
-  color: white;
-  z-index: 1000; /* Garante que fique acima de outros elementos */
+    color: white;
 }
+
 
 #introduction {
   position: absolute;
@@ -47,17 +47,14 @@ canvas {
   background-color: #000000AB;
   padding: 12px 16px;
   border-radius: 20px;
-  pointer-events: none; /* Corrigido para "none" */
-  top: 50%; /* Centraliza verticalmente */
-  left: 50%;
-  transform: translate(-50%, -50%);
+  pointer-events: not-allowed;
 }
 
 #restart {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   position: fixed;
-  bottom: 30px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
@@ -75,23 +72,14 @@ canvas {
   position: absolute;
   opacity: 0;
   transition: opacity 2s;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.5em;
-  z-index: 1000;
 }
 
 #creditos {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background: #000;
-  padding: 8px 12px;
-  color: #FFF;
-  width: 100%;
-  text-align: center;
-  z-index: 1000;
+   display: block;
+    bottom: 0px !important;
+    left: 0px !important;
+    background: #000;
+    padding: 8px 12px;
+    color: #FFF;
 }
 
