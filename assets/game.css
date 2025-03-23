@@ -149,8 +149,8 @@ canvas {
 
   /* Ajusta o tamanho da fonte do score */
   #score {
-    font-size: 1.5em; /* Reduz o tamanho da fonte do score em mobile */
-    top: 10px; /* Ajusta a posição do score */
+    font-size: 2.5em; /* Reduz o tamanho da fonte do score em mobile */
+    top: 40px; /* Ajusta a posição do score */
   }
 
   /* Ajusta o tamanho da fonte e padding da introdução */
