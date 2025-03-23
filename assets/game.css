@@ -111,7 +111,7 @@ canvas {
   padding: 8px 16px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0 30px 0 0; /* Bordas arredondadas apenas no canto superior direito */
-  font-size: 3em;
+  font-size: 1em;
   font-weight: 600;
   z-index: 1000;
   display: inline-block;
@@ -139,3 +139,37 @@ canvas {
   }
 }
 
+/* Media Queries para ajustes específicos em mobile */
+@media (max-width: 768px) {
+  /* Ajusta o tamanho do canvas para caber na tela */
+  canvas {
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+  }
+
+  /* Ajusta o tamanho da fonte do score */
+  #score {
+    font-size: 3.0em; /* Aumenta o tamanho da fonte do score em mobile */
+    top: 20%; /* Ajusta a posição do score */
+  }
+
+  /* Ajusta o tamanho da fonte e padding da introdução */
+  #introduction {
+    font-size: 0.7em; /* Reduz o tamanho da fonte da introdução em mobile */
+    padding: 8px 12px; /* Ajusta o padding */
+  }
+
+  /* Ajusta o tamanho e posição do botão de reiniciar */
+  #restart {
+    width: 60px; /* Reduz o tamanho do botão em mobile */
+    height: 60px;
+    font-size: 1em; /* Reduz o tamanho da fonte do botão */
+    bottom: 5%; /* Ajusta a posição do botão */
+  }
+
+  /* Ajusta o tamanho da fonte e padding dos créditos */
+  #creditos {
+    font-size: 2em; /* Aumenta o tamanho da fonte dos créditos em mobile */
+    padding: 6px 12px; /* Ajusta o padding */
+  }
+}
