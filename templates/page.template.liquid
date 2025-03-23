@@ -1,11 +1,34 @@
 {% layout none %}
+<!-- Isso remove o layout padrão do tema -->
+
 <!doctype html>
 <html>
   <head>
     <title>{{ page.title }}</title>
     {{ content_for_header }}
+    <!-- Isso inclui os scripts e estilos necessários do Shopify -->
+    <style>
+      /* Adicione seus estilos personalizados aqui */
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f9f9f9;
+      }
+      .custom-page {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+    </style>
   </head>
   <body>
-    {{ page.content }}
+    <div class="custom-page">
+      <h1>{{ page.title }}</h1>
+      <div class="page-content">
+        {{ page.content }}
+        <!-- Isso renderiza o conteúdo da página -->
+      </div>
+    </div>
   </body>
 </html>
