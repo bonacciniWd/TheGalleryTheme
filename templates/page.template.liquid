@@ -52,6 +52,17 @@
         margin-right: 8px;
       }
 
+      .fullscreen-button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
       @media (min-width: 769px) {
         .game-iframe {
           height: 95vh; /* Altura ajustada para desktops */
@@ -78,8 +89,12 @@
         </p>
       </div>
 
+      <!-- Botão para tela cheia -->
+      <button class="fullscreen-button" onclick="toggleFullScreen()">Tela Cheia</button>
+
       <!-- Substitua o URL pela sua URL da Vercel quando estiver pronta -->
       <iframe
+        id="gameIframe"
         src="https://amaterasu-game.vercel.app"
         class="game-iframe"
         allowfullscreen
@@ -87,5 +102,20 @@
         title="Amate Ninja"
       ></iframe>
     </div>
+
+    <script>
+      function toggleFullScreen() {
+        const iframe = document.getElementById('gameIframe');
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) { // Firefox
+          iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+          iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) { // IE/Edge
+          iframe.msRequestFullscreen();
+        }
+      }
+    </script>
   </body>
 </html>
