@@ -59,7 +59,7 @@ canvas {
   width: 120px;
   height: 120px;
   position: fixed;
-  bottom: 20px;
+  bottom: 23%;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
