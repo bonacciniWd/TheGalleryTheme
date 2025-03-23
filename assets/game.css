@@ -94,10 +94,11 @@ canvas {
 
 #creditos {
   position: fixed;
+  padding: 4 8px;
+  background: #000;
   bottom: 0;
   left: 0;
   padding: 8px 12px;
-   transform: translate(-50%, -50%);
   width: 100%;
   text-align: center;
   z-index: 1000;
