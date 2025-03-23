@@ -53,7 +53,9 @@
       }
 
       .fullscreen-button {
-        margin: 10px;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
@@ -61,6 +63,7 @@
         color: white;
         border: none;
         border-radius: 5px;
+        z-index: 1000;
       }
 
       @media (min-width: 769px) {
@@ -89,9 +92,6 @@
         </p>
       </div>
 
-      <!-- Botão para tela cheia -->
-      <button class="fullscreen-button" onclick="toggleFullScreen()">Tela Cheia</button>
-
       <!-- Substitua o URL pela sua URL da Vercel quando estiver pronta -->
       <iframe
         id="gameIframe"
@@ -102,6 +102,9 @@
         title="Amate Ninja"
       ></iframe>
     </div>
+
+    <!-- Botão para tela cheia -->
+    <button class="fullscreen-button" id="fullscreenButton" onclick="toggleFullScreen()">Tela Cheia</button>
 
     <script>
       function toggleFullScreen() {
@@ -128,6 +131,15 @@
           }
         }
       }
+
+      document.addEventListener('fullscreenchange', () => {
+        const button = document.getElementById('fullscreenButton');
+        if (document.fullscreenElement) {
+          button.textContent = 'Sair da Tela Cheia';
+        } else {
+          button.textContent = 'Tela Cheia';
+        }
+      });
     </script>
   </body>
 </html>
