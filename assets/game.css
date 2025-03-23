@@ -5,6 +5,9 @@
   height: 85vh;
 }
 
+#canvas {
+  object-fit: cover;
+}
 
 #score {
   position: absolute;
