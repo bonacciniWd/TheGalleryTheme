@@ -106,7 +106,7 @@ canvas {
 }
 
 #creditos span {
- background: linear-gradient(90deg, #6a11cb, #2575fc, #6a11cb);
+ background: linear-gradient(90deg, #00d2ff, #3a7bd5, #00d2ff);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
