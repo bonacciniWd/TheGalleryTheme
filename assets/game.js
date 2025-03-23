@@ -77,7 +77,6 @@ const restartButton = document.getElementById("restart");
 const scoreElement = document.getElementById("score");
 
 let cloudImage = new Image(); // Criar uma nova imagem
-cloudImage.crossOrigin = "anonymous";
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
 
 // Variáveis globais para os sons
@@ -1094,4 +1093,44 @@ window.addEventListener('load', function() {
 // Garantir que os sons sejam carregados
 document.addEventListener('DOMContentLoaded', function() {
   loadSounds();
+});
+
+// Criar um botão ou overlay visível para iniciar o jogo
+const startGameButton = document.createElement('button');
+startGameButton.innerHTML = '▶️ Iniciar Jogo com Áudio';
+startGameButton.style.position = 'absolute';
+startGameButton.style.top = '50%';
+startGameButton.style.left = '50%';
+startGameButton.style.transform = 'translate(-50%, -50%)';
+startGameButton.style.fontSize = '20px';
+startGameButton.style.padding = '15px 30px';
+startGameButton.style.zIndex = '9999';
+startGameButton.style.backgroundColor = '#4CAF50';
+startGameButton.style.color = 'white';
+startGameButton.style.border = 'none';
+startGameButton.style.borderRadius = '5px';
+startGameButton.style.cursor = 'pointer';
+
+document.body.appendChild(startGameButton);
+
+startGameButton.addEventListener('click', function() {
+  // Remover o botão após o clique
+  this.remove();
+  
+  // Iniciar áudio explicitamente após interação
+  if (backgroundMusic) {
+    backgroundMusic.muted = false;
+    backgroundMusic.play().then(() => {
+      console.log("Áudio iniciado com sucesso após interação!");
+      // Agora podemos iniciar o jogo
+      resetGame();
+    }).catch(e => {
+      console.log("Erro ao iniciar áudio:", e.message);
+      // Iniciar o jogo mesmo sem áudio
+      resetGame();
+    });
+  } else {
+    // Iniciar o jogo sem áudio se o elemento não existir
+    resetGame();
+  }
 });
