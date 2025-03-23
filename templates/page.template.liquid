@@ -14,18 +14,18 @@
     <div class="container">
       <canvas id="game" width="375" height="375"></canvas>
 
+      <div id="score">0</div>
+      <!-- Score deve estar aqui -->
+
       <div id="introduction">Segure o botão do mouse para esticar o bastão</div>
       <div id="perfect">PONTUAÇÃO DOBRADA</div>
       <button id="mobileStartButton" style="display: none;">Iniciar Jogo</button>
-      <!-- Mover o botão de reiniciar para fora do contêiner do canvas -->
-      <div id="touchArea"></div>
-      <button id="restart" style="display: none;">REINICIAR</button>
     </div>
 
-    <div id="creditos">
-      <div id="score"></div>
-      Powered by Vrz Studio
-    </div>
+    <div id="creditos">Powered by Vrz Studio</div>
+
+    <div id="touchArea"></div>
+    <button id="restart" style="display: none;">REINICIAR</button>
 
     <script src="{{ 'game.js' | asset_url }}" defer></script>
     <!-- Carrega o JavaScript personalizado -->
