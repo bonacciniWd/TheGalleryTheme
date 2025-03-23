@@ -1,34 +1,34 @@
 {% layout none %}
-<!-- Isso remove o layout padrão do tema -->
+<!-- Remove o layout padrão do tema -->
 
 <!doctype html>
 <html>
   <head>
-    <title>{{ page.title }}</title>
+    <title>Stick Hero</title>
     {{ content_for_header }}
-    <!-- Isso inclui os scripts e estilos necessários do Shopify -->
-    <style>
-      /* Adicione seus estilos personalizados aqui */
-      body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          background-color: #f9f9f9;
-      }
-      .custom-page {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 20px;
-      }
-    </style>
+    <!-- Inclui scripts e estilos necessários do Shopify -->
+    <link rel="stylesheet" href="{{ 'game.css' | asset_url }}">
+    <!-- Carrega o CSS personalizado -->
   </head>
   <body>
-    <div class="custom-page">
-      <h1>{{ page.title }}</h1>
-      <div class="page-content">
-        {{ page.content }}
-        <!-- Isso renderiza o conteúdo da página -->
-      </div>
+    <div class="container">
+      <canvas id="game" width="375" height="375"></canvas>
+
+      <div id="introduction">Segure o botão do mouse para esticar o bastão</div>
+      <div id="perfect">PONTUAÇÃO DOBRADA</div>
+      <button id="mobileStartButton" style="display: none;">Iniciar Jogo</button>
     </div>
+
+    <div id="creditos">
+      <div id="score"></div>
+      Powered by Vrz Studio
+    </div>
+
+    <!-- Mover o botão de reiniciar para fora do contêiner do canvas -->
+    <div id="touchArea"></div>
+    <button id="restart" style="display: none;">REINICIAR</button>
+
+    <script src="{{ 'game.js' | asset_url }}" defer></script>
+    <!-- Carrega o JavaScript personalizado -->
   </body>
 </html>
