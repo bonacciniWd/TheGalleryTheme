@@ -53,7 +53,9 @@
       }
 
       .fullscreen-button {
-        margin: 10px;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
@@ -61,6 +63,7 @@
         color: white;
         border: none;
         border-radius: 5px;
+        z-index: 1000;
       }
 
       @media (min-width: 769px) {
@@ -89,9 +92,6 @@
         </p>
       </div>
 
-      <!-- Botão para tela cheia -->
-      <button class="fullscreen-button" onclick="toggleFullScreen()">Tela Cheia</button>
-
       <!-- Substitua o URL pela sua URL da Vercel quando estiver pronta -->
       <iframe
         id="gameIframe"
@@ -103,19 +103,43 @@
       ></iframe>
     </div>
 
+    <!-- Botão para tela cheia -->
+    <button class="fullscreen-button" id="fullscreenButton" onclick="toggleFullScreen()">Tela Cheia</button>
+
     <script>
       function toggleFullScreen() {
         const iframe = document.getElementById('gameIframe');
-        if (iframe.requestFullscreen) {
-          iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) { // Firefox
-          iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
-          iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) { // IE/Edge
-          iframe.msRequestFullscreen();
+        if (!document.fullscreenElement) {
+          if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+          } else if (iframe.mozRequestFullScreen) { // Firefox
+            iframe.mozRequestFullScreen();
+          } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            iframe.webkitRequestFullscreen();
+          } else if (iframe.msRequestFullscreen) { // IE/Edge
+            iframe.msRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) { // Firefox
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen();
+          }
         }
       }
+
+      document.addEventListener('fullscreenchange', () => {
+        const button = document.getElementById('fullscreenButton');
+        if (document.fullscreenElement) {
+          button.textContent = 'Sair da Tela Cheia';
+        } else {
+          button.textContent = 'Tela Cheia';
+        }
+      });
     </script>
   </body>
 </html>
