@@ -46,110 +46,94 @@
     <button id="startButton">Iniciar Jogo</button>
 
     <script>
-            // Garantir que o jogo seja carregado corretamente
-            window.addEventListener('pageshow', function(event) {
-              // Se a página está sendo carregada a partir do cache do navegador
-              if (event.persisted) {
-                // Recarregar a página para evitar problemas de branco
-                window.location.reload();
-              }
-            });
+      // Garantir que o jogo seja carregado corretamente
+      window.addEventListener('pageshow', function(event) {
+        // Se a página está sendo carregada a partir do cache do navegador
+        if (event.persisted) {
+          // Recarregar a página para evitar problemas de branco
+          window.location.reload();
+        }
+      });
 
-            // Prevenir seleção de texto em toda a página
-            document.addEventListener('touchstart', function(e) {
-              // Permitir eventos normais em botões
-              if (e.target.tagName !== 'BUTTON') {
-                e.preventDefault();
-              }
-            }, { passive: false });
+      // Prevenir seleção de texto em toda a página
+      document.addEventListener('touchstart', function(e) {
+        // Permitir eventos normais em botões
+        if (e.target.tagName !== 'BUTTON') {
+          e.preventDefault();
+        }
+      }, { passive: false });
 
-            // História dividida em parágrafos para exibição gradual
-            const storyParagraphs = [
-              "Em um Japão ancestral coberto por sombras e traições, o lendário Clã Amaterasu protegia os segredos da luz celestial — a força capaz de manter o equilíbrio entre o mundo dos vivos e o reino dos espíritos.",
-              "Por séculos, os Amaterasu viveram nas montanhas sagradas, ocultos dos olhos mortais. Até que uma noite, o impiedoso Senhor Kurojin, mestre das artes obscuras, invadiu o santuário e capturou os anciãos do clã, roubando o pergaminho da Luz Eterna.",
-              "Com o mundo mergulhando lentamente na escuridão, a última esperança recai sobre um pequeno grupo de jovens ninjas sobreviventes. Ágeis, leais e determinados, eles agora devem atravessar territórios inimigos, enfrentar criaturas das trevas e resgatar seus mestres antes que a luz se apague para sempre.",
-              "O destino do clã... e do mundo... está em suas mãos."
-            ];
+      // História dividida em parágrafos para exibição gradual
+      const storyParagraphs = [
+        "Em um Japão ancestral coberto por sombras e traições, o lendário Clã Amaterasu protegia os segredos da luz celestial — a força capaz de manter o equilíbrio entre o mundo dos vivos e o reino dos espíritos.",
+        "Por séculos, os Amaterasu viveram nas montanhas sagradas, ocultos dos olhos mortais. Até que uma noite, o impiedoso Senhor Kurojin, mestre das artes obscuras, invadiu o santuário e capturou os anciãos do clã, roubando o pergaminho da Luz Eterna.",
+        "Com o mundo mergulhando lentamente na escuridão, a última esperança recai sobre um pequeno grupo de jovens ninjas sobreviventes. Ágeis, leais e determinados, eles agora devem atravessar territórios inimigos, enfrentar criaturas das trevas e resgatar seus mestres antes que a luz se apague para sempre.",
+        "O destino do clã... e do mundo... está em suas mãos."
+      ];
 
-            let currentParagraph = 0;
-            const storyTextElement = document.getElementById('story-text');
-            const continueButton = document.getElementById('continue-story');
-            const skipButton = document.getElementById('skip-story');
+      let currentParagraph = 0;
+      const storyTextElement = document.getElementById('story-text');
+      const continueButton = document.getElementById('continue-story');
+      const skipButton = document.getElementById('skip-story');
 
-            // Função para criar efeito de digitação
-            function typeWriter(text, element, speed = 30) {
-              let i = 0;
-              element.textContent = '';
-              continueButton.disabled = true;
+      // Função para criar efeito de digitação
+      function typeWriter(text, element, speed = 30) {
+        let i = 0;
+        element.textContent = '';
+        continueButton.disabled = true;
 
-              function type() {
-                if (i < text.length) {
-                  element.textContent += text.charAt(i);
-                  i++;
-                  setTimeout(type, speed);
-                } else {
-                  continueButton.disabled = false;
-                }
-              }
+        function type() {
+          if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          } else {
+            continueButton.disabled = false;
+          }
+        }
 
-              type();
-            }
+        type();
+      }
 
-            // Exibir o primeiro parágrafo com efeito de digitação
-            typeWriter(storyParagraphs[currentParagraph], storyTextElement);
+      // Exibir o primeiro parágrafo com efeito de digitação
+      typeWriter(storyParagraphs[currentParagraph], storyTextElement);
 
-            // Botão de continuar para avançar na história
-            continueButton.addEventListener('click', function() {
-              currentParagraph++;
-              if (currentParagraph < storyParagraphs.length) {
-                typeWriter(storyParagraphs[currentParagraph], storyTextElement);
-              } else {
-                startGame();
-              }
-            });
+      // Botão de continuar para avançar na história
+      continueButton.addEventListener('click', function() {
+        currentParagraph++;
+        if (currentParagraph < storyParagraphs.length) {
+          typeWriter(storyParagraphs[currentParagraph], storyTextElement);
+        } else {
+          startGame();
+        }
+      });
 
-            // Botão para pular a história e ir direto para o jogo
-            skipButton.addEventListener('click', function() {
-              startGame();
-            });
+      // Botão para pular a história e ir direto para o jogo
+      skipButton.addEventListener('click', function() {
+        startGame();
+      });
 
-            // Função para iniciar o jogo
-            function startGame() {
-              document.getElementById('story-screen').style.display = 'none';
-              document.querySelector('.container').style.display = 'flex';
-
-              // Tentar carregar o sistema de sons (será definido em index.js)
-              if (typeof loadSounds === 'function') {
-                loadSounds();
-
-                // Tentar tocar música de fundo após um pequeno atraso
-                setTimeout(function() {
-                  if (typeof playBackgroundMusic === 'function') {
-                    playBackgroundMusic();
-                  }
-                }, 500);
-              }
-
-              // Disparar evento para inicializar o jogo
-              const gameStartEvent = new Event('gameStartFromStory');
-              window.dispatchEvent(gameStartEvent);
-            }
-            function startGame() {
+      // Função para iniciar o jogo
+      function startGame() {
         document.getElementById('story-screen').style.display = 'none';
         document.querySelector('.container').style.display = 'flex';
 
-        // Carregar sons
-        loadSounds();
+        // Tentar carregar o sistema de sons (será definido em index.js)
+        if (typeof loadSounds === 'function') {
+          loadSounds();
 
-        // Tentar tocar a música de fundo após um pequeno atraso
-        setTimeout(function() {
-          playBackgroundMusic();
-        }, 100); // Atraso de 100ms para garantir que a interação foi registrada
+          // Tentar tocar música de fundo após um pequeno atraso
+          setTimeout(function() {
+            if (typeof playBackgroundMusic === 'function') {
+              playBackgroundMusic();
+            }
+          }, 500);
+        }
+
+        // Disparar evento para inicializar o jogo
+        const gameStartEvent = new Event('gameStartFromStory');
+        window.dispatchEvent(gameStartEvent);
       }
-
-      document.getElementById('startButton').addEventListener('click', function() {
-        startGame(); // Chame a função que inicia o jogo
-      });
     </script>
     <script src="{{ 'game.js' | asset_url }}" defer></script>
   </body>
