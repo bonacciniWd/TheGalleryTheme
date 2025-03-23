@@ -1,6 +1,4 @@
 {% layout none %}
-<!-- Remove o layout padrão do tema -->
-<!-- Remove o layout padrão do tema -->
 
 <!doctype html>
 <html>
@@ -31,13 +29,13 @@
 
     <!-- Adicionar elementos de áudio -->
     <audio id="backgroundMusic" preload="auto" loop>
-      <source src="howling-wind.mp3" type="audio/mp3">
+      <source src="{{ 'howling-wind.mp3' | asset_url }}" type="audio/mp3">
     </audio>
     <audio id="perfectSound" preload="auto">
-      <source src="click.mp3" type="audio/mp3">
+      <source src="{{ 'click.mp3' | asset_url }}" type="audio/mp3">
     </audio>
     <audio id="fallSound" preload="auto">
-      <source src="fall.mp3" type="audio/mp3">
+      <source src="{{ 'fall.mp3' | asset_url }}" type="audio/mp3">
     </audio>
 
     <div id="creditos" unselectable="on">
