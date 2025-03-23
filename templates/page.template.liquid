@@ -1,35 +1,128 @@
 {% layout none %}
 <!-- Remove o layout padrão do tema -->
+<!-- Remove o layout padrão do tema -->
 
 <!doctype html>
 <html>
   <head>
-    <title>Stick Hero</title>
-    {{ content_for_header }}
-    <!-- Inclui scripts e estilos necessários do Shopify -->
-    <link rel="stylesheet" href="{{ 'game.css' | asset_url }}">
-    <!-- Carrega o CSS personalizado -->
+    <title>Amaterasu rescue</title>
+    <link rel="stylesheet" href="game.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   </head>
   <body>
-    <div class="container">
-      <canvas id="game" width="375" height="375"></canvas>
-
-      <div id="score">0</div>
-      <!-- Score deve estar aqui -->
-
-      <div id="introduction">Segure o botão do mouse para esticar o bastão</div>
-      <div id="perfect">PERFECT 🧙</div>
-      <button id="mobileStartButton" style="display: none;">Iniciar Jogo</button>
+    <!-- Tela de história introdutória -->
+    <div id="story-screen">
+      <div class="story-container">
+        <h1>Amate Ninja</h1>
+        <div id="story-text"></div>
+        <button id="skip-story">Pular</button>
+        <button id="continue-story">Continuar</button>
+      </div>
     </div>
 
-    <div id="creditos">
+    <!-- Tela do jogo -->
+    <div class="container" style="display: none;">
+      <canvas id="game"></canvas>
+      <div id="score" unselectable="on">0</div>
+      <div id="introduction" unselectable="on">Segure o botão do mouse para esticar o bastão</div>
+      <div id="perfect" unselectable="on">PERFECT 🧙</div>
+      <button id="mobileStartButton" style="display: none;">Tocar para iniciar</button>
+    </div>
+
+    <!-- Adicionar elementos de áudio -->
+    <audio id="backgroundMusic" loop>
+      <source src="https://assets.codepen.io/21542/howling-wind.mp3" type="audio/mp3">
+    </audio>
+    <audio id="perfectSound">
+      <source src="https://assets.codepen.io/21542/click.mp3" type="audio/mp3">
+    </audio>
+    <audio id="fallSound">
+      <source src="https://assets.codepen.io/21542/fall.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="creditos" unselectable="on">
       <span>Powered by Vrz Studio</span>
     </div>
-
     <div id="touchArea"></div>
-    <button id="restart" style="display: none;">REINICIAR</button>
+    <button id="restart">REINICIAR</button>
+    <script>
+      // Garantir que o jogo seja carregado corretamente
+      window.addEventListener('pageshow', function(event) {
+        // Se a página está sendo carregada a partir do cache do navegador
+        if (event.persisted) {
+          // Recarregar a página para evitar problemas de branco
+          window.location.reload();
+        }
+      });
 
+      // Prevenir seleção de texto em toda a página
+      document.addEventListener('touchstart', function(e) {
+        // Permitir eventos normais em botões
+        if (e.target.tagName !== 'BUTTON') {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      // História dividida em parágrafos para exibição gradual
+      const storyParagraphs = [
+        "Em um Japão ancestral coberto por sombras e traições, o lendário Clã Amaterasu protegia os segredos da luz celestial — a força capaz de manter o equilíbrio entre o mundo dos vivos e o reino dos espíritos.",
+        "Por séculos, os Amaterasu viveram nas montanhas sagradas, ocultos dos olhos mortais. Até que uma noite, o impiedoso Senhor Kurojin, mestre das artes obscuras, invadiu o santuário e capturou os anciãos do clã, roubando o pergaminho da Luz Eterna.",
+        "Com o mundo mergulhando lentamente na escuridão, a última esperança recai sobre um pequeno grupo de jovens ninjas sobreviventes. Ágeis, leais e determinados, eles agora devem atravessar territórios inimigos, enfrentar criaturas das trevas e resgatar seus mestres antes que a luz se apague para sempre.",
+        "O destino do clã... e do mundo... está em suas mãos."
+      ];
+
+      let currentParagraph = 0;
+      const storyTextElement = document.getElementById('story-text');
+      const continueButton = document.getElementById('continue-story');
+      const skipButton = document.getElementById('skip-story');
+
+      // Função para criar efeito de digitação
+      function typeWriter(text, element, speed = 30) {
+        let i = 0;
+        element.textContent = '';
+        continueButton.disabled = true;
+
+        function type() {
+          if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          } else {
+            continueButton.disabled = false;
+          }
+        }
+
+        type();
+      }
+
+      // Exibir o primeiro parágrafo com efeito de digitação
+      typeWriter(storyParagraphs[currentParagraph], storyTextElement);
+
+      // Botão de continuar para avançar na história
+      continueButton.addEventListener('click', function() {
+        currentParagraph++;
+        if (currentParagraph < storyParagraphs.length) {
+          typeWriter(storyParagraphs[currentParagraph], storyTextElement);
+        } else {
+          startGame();
+        }
+      });
+
+      // Botão para pular a história e ir direto para o jogo
+      skipButton.addEventListener('click', function() {
+        startGame();
+      });
+
+      // Função para iniciar o jogo
+      function startGame() {
+        document.getElementById('story-screen').style.display = 'none';
+        document.querySelector('.container').style.display = 'flex';
+
+        // Disparar evento para inicializar o jogo
+        const gameStartEvent = new Event('gameStartFromStory');
+        window.dispatchEvent(gameStartEvent);
+      }
+    </script>
     <script src="{{ 'game.js' | asset_url }}" defer></script>
-    <!-- Carrega o JavaScript personalizado -->
   </body>
 </html>
