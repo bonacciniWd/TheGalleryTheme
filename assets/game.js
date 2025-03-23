@@ -66,8 +66,8 @@ const heroWidth = 17; // 24
 const heroHeight = 30; // 40
 
 const canvas = document.getElementById("game");
-//canvas.width = window.innerWidth; // Make the Canvas full screen
-//canvas.height = window.innerHeight;
+const canvasWidth = canvas.width;
+const canvasHeight = canvas.height;
 
 const ctx = canvas.getContext("2d");
 
