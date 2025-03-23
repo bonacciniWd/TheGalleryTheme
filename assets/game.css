@@ -169,7 +169,7 @@ canvas {
 
   /* Ajusta o tamanho da fonte e padding dos créditos */
   #creditos {
-    font-size: 0.8em; /* Reduz o tamanho da fonte dos créditos em mobile */
+    font-size: 2em; /* Reduz o tamanho da fonte dos créditos em mobile */
     padding: 6px 12px; /* Ajusta o padding */
   }
 }
