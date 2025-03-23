@@ -10,13 +10,13 @@ body {
 }
 
 .container {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden; /* Evita barras de rolagem */
+  height: 100vh; /* Ocupa toda a altura da tela */
+  width: 100%; /* Ocupa toda a largura da tela */
+  position: relative;
+  overflow: visible; /* Garante que o conteúdo não seja cortado */
 }
 
 canvas {
