@@ -24,11 +24,11 @@
       }
 
       .game-iframe {
-        width: 100%;
+        width: calc(100% - 14px); /* Subtrair 7px de cada lado para margem em dispositivos móveis */
         height: 90vh; /* Altura ajustada para dispositivos móveis */
         border: none; /* Remover bordas */
         display: block;
-        margin-top: 20px; /* Espaço entre as dicas e o iframe */
+        margin: 20px 7px; /* Espaço entre as dicas e o iframe, e margem lateral */
       }
 
       .game-instructions {
@@ -52,7 +52,8 @@
 
       @media (min-width: 769px) {
         .game-iframe {
-          height: 100vh; /* Altura total da viewport para desktops */
+          height: 95vh; /* Altura ajustada para desktops */
+          margin: 20px 0; /* Remover margem lateral em desktops */
         }
       }
     </style>
