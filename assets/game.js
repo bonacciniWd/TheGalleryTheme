@@ -39,11 +39,11 @@ let stars = []; // Array para armazenar as estrelas
 let score = 0;
 
 // Configuration
-const canvasWidth = 375;
-const canvasHeight = 375;
+let canvasWidth = window.innerWidth < 768 ? window.innerWidth - 50 : 375;
+let canvasHeight = window.innerWidth < 768 ? window.innerHeight - 150 : 375;
 const platformHeight = 100;
-const heroDistanceFromEdge = 10; // While waiting
-const paddingX = 100; // The waiting position of the hero in from the original canvas size
+let heroDistanceFromEdge = window.innerWidth < 768 ? 5 : 10; // While waiting
+let paddingX = window.innerWidth < 768 ? 50 : 100; // The waiting position of the hero in from the original canvas size
 const perfectAreaSize = 10;
 
 // The background moves slower than the hero
@@ -79,8 +79,109 @@ const scoreElement = document.getElementById("score");
 let cloudImage = new Image(); // Criar uma nova imagem
 cloudImage.src = 'https://i.ibb.co/0RV2hgtj/v9c4lr6v.png'; // Definir o caminho da imagem
 
+// Variáveis globais para os sons
+let backgroundMusic;
+let perfectSound;
+let fallSound;
+let soundsEnabled = true; // Flag para controlar se os sons estão ativos
+
+// Detecta se é um dispositivo móvel
+function isMobileDevice() {
+  return (window.innerWidth < 768) || 
+         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Configura a interface para dispositivo móvel
+function setupMobileInterface() {
+  const mobileButton = document.getElementById("mobileStartButton");
+  const introText = document.getElementById("introduction");
+  
+  if (isMobileDevice()) {
+    // Ajustar texto de instrução para mobile
+    introText.innerText = "Toque na tela para iniciar e esticar o bastão";
+    introText.style.padding = "15px 20px";
+    introText.style.fontSize = "1em";
+    
+    // Esconder botão de início para mobile, pois vamos usar toques diretos na tela
+    mobileButton.style.display = "none";
+  } else {
+    // Desktop
+    introText.innerText = "Clique e segure para esticar o bastão";
+    mobileButton.style.display = "none";
+  }
+}
+
+// Função adicionada para prevenir seleção de texto durante o jogo
+function preventTextSelection() {
+  const elements = [
+    document.getElementById("score"),
+    document.getElementById("introduction"),
+    document.getElementById("perfect"),
+    document.getElementById("creditos")
+  ];
+  
+  elements.forEach(element => {
+    if (element) {
+      element.style.webkitUserSelect = "none";
+      element.style.userSelect = "none";
+      element.setAttribute("unselectable", "on");
+    }
+  });
+}
+
 // Initialize layout
+recalculateConstants(); // Garantir que as constantes estejam corretas no início
+setupMobileInterface(); // Configurar interface para mobile se necessário
+preventTextSelection(); // Prevenir seleção de texto
 resetGame();
+
+// Função para carregar sons
+function loadSounds() {
+  backgroundMusic = document.getElementById("backgroundMusic");
+  perfectSound = document.getElementById("perfectSound");
+  fallSound = document.getElementById("fallSound");
+  
+  // Configurar volume
+  backgroundMusic.volume = 0.3;
+  perfectSound.volume = 0.5;
+  fallSound.volume = 0.6;
+}
+
+// Função para tocar música de fundo
+function playBackgroundMusic() {
+  if (soundsEnabled && backgroundMusic && backgroundMusic.paused) {
+    backgroundMusic.play().catch(error => {
+      console.log("Reprodução automática bloqueada pelo navegador:", error);
+    });
+  }
+}
+
+// Função para pausar música de fundo
+function pauseBackgroundMusic() {
+  if (backgroundMusic && !backgroundMusic.paused) {
+    backgroundMusic.pause();
+  }
+}
+
+// Função para tocar som de perfect
+function playPerfectSound() {
+  if (soundsEnabled && perfectSound) {
+    perfectSound.currentTime = 0; // Reinicia o som para permitir reprodução repetida
+    perfectSound.play().catch(error => {
+      console.log("Erro ao reproduzir som de perfect:", error);
+    });
+  }
+}
+
+// Função para tocar som de queda
+function playFallSound() {
+  if (soundsEnabled && fallSound) {
+    fallSound.currentTime = 0;
+    fallSound.play().catch(error => {
+      console.log("Erro ao reproduzir som de queda:", error);
+    });
+  }
+}
 
 // Resets game variables and layouts but does not start the game (game starts on keypress)
 function resetGame() {
@@ -90,9 +191,15 @@ function resetGame() {
   sceneOffset = 0;
   score = 0;
 
+  // Remover classe de jogo ativo
+  document.body.classList.remove("game-active");
+
+  // Garantir que os elementos de interface estejam visíveis
   introductionElement.style.opacity = 0.8;
   perfectElement.style.opacity = 0;
   restartButton.style.display = "none";
+  
+  // Atualizar a pontuação
   updateScoreDisplay();
 
   // Limpar nuvens antes de gerar novas
@@ -130,7 +237,15 @@ function resetGame() {
     generateCloud();
   }
 
+  // Garantir que o jogo seja renderizado
+  resizeCanvas();
   draw();
+  
+  // Verificar se precisamos configurar para mobile
+  setupMobileInterface();
+
+  // Iniciar música de fundo quando o jogo reinicia
+  playBackgroundMusic();
 }
 
 function generateTree() {
@@ -177,18 +292,33 @@ window.addEventListener("contextmenu", function (event) {
   event.preventDefault(); // Prevenir o menu de contexto
 });
 
-// Adicionar evento de toque para iniciar o jogo
+// Prevenir seleção de texto ao tocar na tela
+window.addEventListener("selectstart", function(event) {
+  event.preventDefault();
+});
+
+// Garantir que os eventos de toque funcionem corretamente
 window.addEventListener("touchstart", function (event) {
-  event.preventDefault(); // Prevenir o comportamento padrão de seleção
+  // Ignorar eventos do botão de som
+  if (event.target.id === 'soundToggle' || event.target.closest('#soundToggle')) {
+    return;
+  }
+  
+  // Prevenir comportamento padrão exceto para botões
+  if (event.target.tagName !== "BUTTON") {
+    event.preventDefault();
+  }
+  
   if (phase == "waiting") {
     lastTimestamp = undefined;
     introductionElement.style.opacity = 0;
     phase = "stretching";
+    document.body.classList.add("game-active"); // Ativar captura de toques
     window.requestAnimationFrame(animate);
   }
 });
 
-// Adicionar evento de toque para soltar o stick
+// Garantir que o evento de soltar o stick funcione
 window.addEventListener("touchend", function (event) {
   if (phase == "stretching") {
     phase = "turning"; // Mudar para a fase de turning
@@ -208,6 +338,11 @@ document.getElementById("mobileStartButton").addEventListener("click", function 
 
 // Adicionar eventos para desktop
 window.addEventListener("mousedown", function (event) {
+  // Ignorar eventos do botão de som
+  if (event.target.id === 'soundToggle' || event.target.closest('#soundToggle')) {
+    return;
+  }
+  
   if (phase == "waiting") {
     lastTimestamp = undefined;
     introductionElement.style.opacity = 0;
@@ -223,8 +358,14 @@ window.addEventListener("mouseup", function (event) {
 });
 
 window.addEventListener("resize", function (event) {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  resizeCanvas();
+  
+  // Recalcular constantes ao redimensionar
+  recalculateConstants();
+  
+  // Atualizar interface para mobile se necessário
+  setupMobileInterface();
+  
   draw();
 });
 
@@ -315,7 +456,23 @@ function animate(timestamp) {
       const maxHeroY =
         platformHeight + 100 + (window.innerHeight - canvasHeight) / 2;
       if (heroY > maxHeroY) {
+        playFallSound(); // Tocar som de queda
+        pauseBackgroundMusic(); // Pausar música de fundo
         restartButton.style.display = "block";
+        document.body.classList.remove("game-active"); // Desativar captura de toques quando o jogo termina
+        
+        // Esconder o botão de início quando o jogo termina
+        const mobileButton = document.getElementById("mobileStartButton");
+        if (mobileButton) {
+          mobileButton.style.display = "none";
+        }
+        
+        // Garantir que o botão de som ainda está visível e funcionando
+        const soundButton = document.getElementById("soundToggle");
+        if (soundButton) {
+          soundButton.style.zIndex = "3000"; // Aumentar o z-index acima do botão de reinício
+        }
+        
         return;
       }
       break;
@@ -347,36 +504,73 @@ function thePlatformTheStickHits() {
       stickFarX &&
     stickFarX <
       platformTheStickHits.x + platformTheStickHits.w / 2 + perfectAreaSize / 2
-  )
+  ) {
+    // Tocar som quando acertar perfect
+    playPerfectSound();
     return [platformTheStickHits, true];
+  }
 
   return [platformTheStickHits, false];
 }
 
 function draw() {
-  ctx.save();
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  // Verificar se o contexto e canvas existem
+  if (!ctx || !canvas) {
+    console.error("Contexto ou canvas não disponível");
+    return;
+  }
 
-  drawBackground();
+  try {
+    ctx.save();
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-  // Center main canvas area to the middle of the screen
-  ctx.translate(
-    (window.innerWidth - canvasWidth) / 2 - sceneOffset,
-    (window.innerHeight - canvasHeight) / 2
-  );
+    drawBackground();
 
-  // Draw scene
-  drawPlatforms();
-  drawHero();
-  drawSticks();
+    // Ajuste para telas menores e mobile
+    let scaleRatio = 1;
+    let translateX, translateY;
+    
+    // Verifica se é uma tela pequena (provavelmente mobile)
+    if (window.innerWidth < 768) {
+      // Calcula uma escala melhor para cada dispositivo
+      scaleRatio = Math.min(window.innerWidth / (canvasWidth * 1.1), window.innerHeight / (canvasHeight * 1.2), 1);
+      
+      // Centraliza melhor o conteúdo na tela
+      translateX = (window.innerWidth / 2) - ((canvasWidth * scaleRatio) / 2) - (sceneOffset * scaleRatio);
+      translateY = (window.innerHeight / 2) - ((canvasHeight * scaleRatio) / 2);
+    } else {
+      // Comportamento original para desktop
+      translateX = (window.innerWidth - canvasWidth) / 2 - sceneOffset;
+      translateY = (window.innerHeight - canvasHeight) / 2;
+    }
 
-  // Restore transformation
-  ctx.restore();
+    // Aplicar transformações
+    ctx.translate(translateX, translateY);
+    if (window.innerWidth < 768) {
+      ctx.scale(scaleRatio, scaleRatio);
+    }
+
+    // Draw scene
+    drawPlatforms();
+    drawHero();
+    drawSticks();
+
+    // Restore transformation
+    ctx.restore();
+  } catch (e) {
+    console.error("Erro ao desenhar:", e);
+    
+    // Tentar recuperar o contexto
+    if (canvas) {
+      ctx = canvas.getContext("2d");
+    }
+  }
 }
 
 // Adicionar evento de clique ao botão de reiniciar
 restartButton.addEventListener("click", function (event) {
   event.preventDefault();
+  event.stopPropagation(); // Impedir que o evento se propague
   resetGame();
   restartButton.style.display = "none"; // Esconder o botão após reiniciar
 });
@@ -624,3 +818,144 @@ function updateScoreDisplay() {
   scoreElement.style.textAlign = "center"; // Centraliza o texto
   scoreElement.style.fontSize = "2em"; // Define o tamanho da fonte
 }
+
+// Função para recalcular constantes com base no tamanho da tela
+function recalculateConstants() {
+  // Atualizar valores de configuração
+  canvasWidth = window.innerWidth < 768 ? window.innerWidth - 50 : 375;
+  canvasHeight = window.innerWidth < 768 ? window.innerHeight - 150 : 375;
+  heroDistanceFromEdge = window.innerWidth < 768 ? 5 : 10;
+  paddingX = window.innerWidth < 768 ? 50 : 100;
+}
+
+// Função para garantir que o canvas ocupe todo o espaço disponível
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+// Garantir que o canvas tenha o tamanho correto no carregamento e evitar que desapareça
+window.addEventListener("load", function() {
+  resizeCanvas();
+  // Pequeno atraso para garantir que todos os elementos foram carregados
+  setTimeout(function() {
+    draw();
+    setupMobileInterface();
+  }, 100);
+});
+
+// Garantir que a função draw seja chamada após o carregamento da imagem da nuvem
+cloudImage.onload = function() {
+  draw();
+};
+
+// Função para garantir que o jogo esteja sempre visível
+function ensureGameVisibility() {
+  // Verificar se o jogo está visível, caso contrário renderizar novamente
+  const isCanvasBlank = function(canvas) {
+    const context = canvas.getContext('2d');
+    const pixelBuffer = new Uint32Array(
+      context.getImageData(0, 0, canvas.width, canvas.height).data.buffer
+    );
+    return !pixelBuffer.some(color => color !== 0);
+  };
+  
+  if (isCanvasBlank(canvas)) {
+    console.log("Canvas detectado em branco, re-renderizando...");
+    resizeCanvas();
+    recalculateConstants();
+    draw();
+  }
+}
+
+// Chamar a função periodicamente para garantir que o jogo seja sempre visível
+setInterval(ensureGameVisibility, 500);
+
+// Função para inicializar o jogo após a história
+function initGameAfterStory() {
+  // Verificar se já foi inicializado antes
+  if (!window.gameInitialized) {
+    recalculateConstants(); // Garantir que as constantes estejam corretas no início
+    setupMobileInterface(); // Configurar interface para mobile se necessário
+    preventTextSelection(); // Prevenir seleção de texto
+    resetGame();
+    window.gameInitialized = true;
+  }
+
+  // Garantir que o jogo seja desenhado
+  resizeCanvas();
+  draw();
+}
+
+// Verificar se estamos iniciando o jogo direto da tela de história
+window.addEventListener('gameStartFromStory', function() {
+  initGameAfterStory();
+});
+
+// Verificar se o documento já está totalmente carregado para inicializar
+if (document.readyState === 'complete') {
+  // Se não estamos mostrando a história, inicializar o jogo diretamente
+  if (!document.getElementById('story-screen') || document.getElementById('story-screen').style.display === 'none') {
+    initGameAfterStory();
+  }
+} else {
+  // Esperar o carregamento da página
+  window.addEventListener('load', function() {
+    // Se não estamos mostrando a história, inicializar o jogo diretamente
+    if (!document.getElementById('story-screen') || document.getElementById('story-screen').style.display === 'none') {
+      setTimeout(function() {
+        initGameAfterStory();
+      }, 100);
+    }
+  });
+}
+
+// Modificar a função startGame para iniciar os sons
+function startGame() {
+  document.getElementById('story-screen').style.display = 'none';
+  document.querySelector('.container').style.display = 'flex';
+  
+  // Carregar e iniciar sons
+  loadSounds();
+  playBackgroundMusic();
+  
+  // Disparar evento para inicializar o jogo
+  const gameStartEvent = new Event('gameStartFromStory');
+  window.dispatchEvent(gameStartEvent);
+}
+
+// Adicionar botão para controlar o som
+function addSoundControl() {
+  const soundButton = document.createElement('button');
+  soundButton.id = 'soundToggle';
+  soundButton.innerHTML = '🔊';
+  soundButton.className = 'sound-button';
+  
+  document.body.appendChild(soundButton);
+  
+  soundButton.addEventListener('click', function(event) {
+    // Impedir que o evento se propague para o jogo
+    event.stopPropagation();
+    event.preventDefault();
+    
+    soundsEnabled = !soundsEnabled;
+    
+    if (soundsEnabled) {
+      soundButton.innerHTML = '🔊';
+      playBackgroundMusic();
+    } else {
+      soundButton.innerHTML = '🔇';
+      pauseBackgroundMusic();
+    }
+  });
+}
+
+// Adicionar o botão de som após o carregamento da página
+window.addEventListener('load', function() {
+  addSoundControl();
+});
+
+// Garantir que os sons sejam carregados
+document.addEventListener('DOMContentLoaded', function() {
+  loadSounds();
+});
