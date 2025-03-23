@@ -3,33 +3,31 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <div class="game-description">
-      <p>
-        Teste suas habilidades no jogo Amate Ninja! Use sua destreza e timing para construir pontes e avançar o máximo
-        possível.
-      </p>
-      <p>
-        <strong>Instruções:</strong> Clique e segure para esticar o bastão. Solte para posicioná-lo. Quanto mais longe
-        você chegar, maior será sua pontuação!
-      </p>
-    </div>
+    <title>Amate Ninja - Jogo</title>
     <style>
       /* Estilos para responsividade e centralização do iframe */
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+      }
+
       .game-container {
         width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
+        height: 100vh; /* Altura total da viewport */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .game-iframe {
         width: 100%;
-        height: 600px;
+        height: 100%;
         border: none;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
+        display: block;
       }
 
       .game-description {
@@ -37,18 +35,12 @@
         font-family: 'Arial', sans-serif;
         color: #333;
         line-height: 1.6;
+        padding: 0 20px;
       }
 
-      @media (max-width: 768px) {
-        .game-iframe {
-          height: 500px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .game-iframe {
-          height: 400px;
-        }
+      h1 {
+        padding: 20px;
+        margin: 0;
       }
     </style>
   </head>
@@ -64,6 +56,17 @@
         allow="autoplay; fullscreen; microphone; camera"
         title="Amate Ninja"
       ></iframe>
+
+      <div class="game-description">
+        <p>
+          Teste suas habilidades no jogo Amate Ninja! Use sua destreza e timing para construir pontes e avançar o máximo
+          possível.
+        </p>
+        <p>
+          <strong>Instruções:</strong> Clique e segure para esticar o bastão. Solte para posicioná-lo. Quanto mais longe
+          você chegar, maior será sua pontuação!
+        </p>
+      </div>
     </div>
   </body>
 </html>
