@@ -72,6 +72,28 @@
         "padding_bottom": 36
       }
     },
+    "rich_text_4Qidba": {
+      "type": "rich-text",
+      "blocks": {
+        "text_xEm7mC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>O feminino traduz a sensualidade com elegância e minimalismo. No universo da thegallery.co, cada peça carrega sofisticação atemporal, atitude com espírito livre e audacioso. Entre alfaiataria refinada e cortes precisos, descubra vestidos, croppeds, camisas, calças e jaquetas que exaltam a feminilidade com força e estilo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_xEm7mC"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "custom_liquid_XMnzwn": {
       "type": "custom-liquid",
       "settings": {
@@ -120,6 +142,7 @@
     "image_with_text_YkMyrx",
     "banner",
     "product-grid",
+    "rich_text_4Qidba",
     "custom_liquid_XMnzwn",
     "33d0b73f-cb88-47ef-ba87-a9183c7cb646"
   ]
