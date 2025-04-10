@@ -165,7 +165,7 @@
     "custom_liquid_aXtE3H": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"art-subtitle\">\n  Dê um check em nossa coleção de arte de rua!\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "custom_liquid": "<div class=\"art-subtitle\">\n  Fine Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 0
@@ -189,25 +189,39 @@
             "collection": "masculino"
           }
         },
-        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2": {
+        "featured_collection_pbBeAe": {
           "type": "featured_collection",
           "settings": {
             "collection": "feminino"
+          }
+        },
+        "featured_collection_4aa3kD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "skateboarding"
+          }
+        },
+        "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fine-art"
           }
         }
       },
       "block_order": [
         "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-1",
+        "featured_collection_pbBeAe",
+        "featured_collection_4aa3kD",
         "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2"
       ],
       "custom_css": [
         ".media media--transparent media--hover-effect {width: 200px; height: 200px;}"
       ],
       "settings": {
-        "title": "Navegue por categorias",
+        "title": "",
         "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 2,
+        "image_ratio": "portrait",
+        "columns_desktop": 4,
         "color_scheme": "",
         "show_view_all": false,
         "columns_mobile": "1",
