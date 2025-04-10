@@ -79,6 +79,11 @@ body {
   color: #333;
   font-weight: normal;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+  text-decoration: none;
   letter-spacing: 1px;
 }
 
