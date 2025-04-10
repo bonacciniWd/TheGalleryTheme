@@ -1,15 +1,9 @@
 /* Estilos inovadores e modernos */
 
-@font-face {
-  font-family: 'SuisseIntl-Regular';
-  src: url('{{ 'SuisseIntl-Regular.woff2' | asset_url }}') format('woff2'),
-       url('{{ 'SuisseIntl-Regular.woff' | asset_url }}') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 body {
-  font-family: 'SuisseIntl-Regular';
+  font-family: 'Helvetica';
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -33,7 +27,7 @@ body {
   border-bottom: 3px solid #ff758c;
   display: inline-block;
   padding-bottom: 5px;
-    font-family: 'SuisseIntl-Regular';
+    font-family: 'Helvetica';
 }
 
 .parent {
