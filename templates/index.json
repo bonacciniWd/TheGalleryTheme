@@ -38,7 +38,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "stealing-flowers",
-        "products_to_show": 5,
+        "products_to_show": 10,
         "columns_desktop": 5,
         "full_width": false,
         "show_view_all": true,
@@ -181,7 +181,7 @@
       "settings": {
         "title": "",
         "heading_size": "h2",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "columns_desktop": 4,
         "color_scheme": "",
         "show_view_all": false,
