@@ -33,7 +33,6 @@ body {
   border-bottom: 3px solid #ff758c;
   display: inline-block;
   padding-bottom: 5px;
-    font-family: 'SuisseIntl-Regular';
 }
 
 .parent {
@@ -74,8 +73,12 @@ body {
   color: #333;
   font-weight: normal;
   text-transform: uppercase;
-    text-decoration: none !important;
   letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.collection-card a {
+  text-decoration: none;
 }
 
 /* Responsividade */
