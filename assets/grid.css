@@ -30,11 +30,6 @@ body {
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 10px;
-  text-decoration: none;
   border-bottom: 3px solid #ff758c;
   display: inline-block;
   padding-bottom: 5px;
@@ -79,11 +74,7 @@ body {
   color: #333;
   font-weight: normal;
   text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 10px;
-  text-decoration: none;
+    text-decoration: none !important;
   letter-spacing: 1px;
 }
 
