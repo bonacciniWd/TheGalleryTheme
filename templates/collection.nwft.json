@@ -1,0 +1,244 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "image_with_text_n3Hedi": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ahbQ8k": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_rQhTkX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Camisetas confeccionada em algodão, fio 30/1 penteado, malha premium beneficiada com tratamento que alivia torções e encolhimento, gola tradicional.</p><p>Peça certificada BCI (BETTER COTTON INITIATIVE)</p><ul><li>Tingimento ECO, feito através de uma pigmentação que tem insumos orgânicos em sua composição.</li><li>Processo econômico, reduzindo em 35% o tempo de tingimento e consumindo 57% menos água e 44% menos temperatura. Na composição do amaciante, é utilizado casca de arroz, que antes era descartada por agricultores locais. O desbotamento é uma característica deste tingimento.</li></ul>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ahbQ8k",
+        "text_rQhTkX"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/5_7b418bf1-b873-4f23-9535-6e03c633c697.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 36,
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_TGwDUh": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_UAhMzg": {
+          "type": "column",
+          "settings": {
+            "title": "Slow fashion movement",
+            "text": "<h5>Descaleramos em prol do planeta Terra e de todos que aqueles que fazem parte da nossa sociedade.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EryEQb": {
+          "type": "column",
+          "settings": {
+            "title": "Art is our kind of thing",
+            "text": "<h5>A arte é a nossa essência. Por isso, vemos a roupa como uma tela em branco e nos posicionamos como uma marca livre.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_pKykVK": {
+          "type": "column",
+          "settings": {
+            "title": "In people we trust",
+            "text": "<h5>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_UAhMzg",
+        "column_EryEQb",
+        "column_pKykVK"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 32
+      }
+    },
+    "multirow_JTjdLH": {
+      "type": "multirow",
+      "blocks": {
+        "row_cha33K": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Captura_de_Tela_2023-07-16_as_-2.webp",
+            "caption": "",
+            "heading": "Criamos juntos",
+            "text": "<h5>A thegallery é uma marca atemporal que nasceu do amor pela arte e tem a expressão artística como essência. Essa é a nossa arte: te ajudar a criar o mundo em que você quer viver, te ajudar a expressar toda a sua essência.</h5><p></p><h5><a href=\"/pages/sobre\" title=\"Sobre\">Saiba mais</a></h5>",
+            "button_label": "",
+            "button_link": "shopify://pages/sobre"
+          }
+        }
+      },
+      "block_order": [
+        "row_cha33K"
+      ],
+      "settings": {
+        "image_height": "adapt",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_6Rc8nX": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_jqhqzd": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-DescontoPrimeiraCompra.svg",
+            "title": "10% OFF primeira compra",
+            "text": "<h5>Economize 10% de desconto para deixar seu guarda roupa mais elegante.</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_k9afFm": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-Frete.svg",
+            "title": "Frete grátis",
+            "text": "<h5>Em compras acima de R$ 399, a entrega fica por nossa conta</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hXCWW9": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce_Troca.svg",
+            "title": "Troca fácil",
+            "text": "<h5>07 dias para trocar ou devolver, facinho e agilizado</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Xzgk7X": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Grudz-Jun2023-IconesSite_AtendimentoWhite.svg",
+            "title": "Atendimento agilizado",
+            "text": "<h5>Soluções de dúvidas de forma agilizada e pessoal</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_jqhqzd",
+        "column_k9afFm",
+        "column_hXCWW9",
+        "column_Xzgk7X"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "image_with_text_n3Hedi",
+    "product-grid",
+    "multicolumn_TGwDUh",
+    "multirow_JTjdLH",
+    "multicolumn_6Rc8nX"
+  ]
+}
