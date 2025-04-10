@@ -100,7 +100,7 @@
       "settings": {
         "title": "<em>Fine Art</em>",
         "heading_size": "h2",
-        "description": "<p><strong>A</strong>rte que transcende o tempo. </p><p><strong> L</strong>eve a essência da thegallery.co para o seu espaço.</p><p><strong>M</strong>inimalismo, sofisticação e atemporalidade em cada detalhe.</p><p><strong>A</strong> Coleção de quadros exclusivos, impressos em Fine Art no papel alemão Hahnemühle 290gsm.</p>",
+        "description": "",
         "show_description": false,
         "description_style": "subtitle",
         "collection": "fine-art",
