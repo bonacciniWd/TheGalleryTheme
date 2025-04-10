@@ -1,93 +1,69 @@
+/* Estilos gerais */
 .wrapper {
-  max-width: 1200px; /* Limita a largura máxima do conteúdo */
-  margin: 0 auto; /* Centraliza o conteúdo */
-  padding: 20px 20px; /* Adiciona espaçamento no topo e na base, e nas laterais */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.categories-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .parent {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-  gap: 24px; /* Espaçamento entre os cards */
-  width: 100%;
-}
-
-.categories-title {
-  margin-left: 20px;
-  margin-bottom: 24px; /* Adiciona espaçamento abaixo do título */
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: center;
 }
 
 .collection-card {
-  position: relative;
-  border-radius: 16px;
+  background: #fff;
+  border-radius: 8px;
   overflow: hidden;
-  background-color: #f9f9f9;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 100%; /* Limita a largura máxima do card */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.collection-card:hover {
+  transform: translateY(-5px);
 }
 
 .image-container {
-  position: relative;
   width: 100%;
-  padding-top: 120%; /* Mantém um aspecto mais equilibrado */
+  height: 200px;
   overflow: hidden;
-  border-radius: 12px; /* Bordas levemente arredondadas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.collection-card img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 110%;
-  height: 110%;
-  object-fit: cover; /* Mantém o foco da imagem */
-  transform: translate(-50%, -50%);
-  transition: transform 0.4s ease, opacity 0.3s ease;
-}
-
-/* Ajuste fino no hover */
-.collection-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-}
-
-.collection-card:hover img {
-  transform: translate(-50%, -50%) scale(1.08); /* Expansão sutil ao passar o mouse */
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .collection-info {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-  color: #fff;
-  font-size: 1.4rem;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-.collection-card:hover .collection-info {
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 15px;
+  font-size: 1.2rem;
+  color: #555;
 }
 
 /* Responsividade */
 @media (max-width: 1024px) {
   .parent {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas de tablet */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .parent {
-    grid-template-columns: 1fr; /* 1 coluna em telas menores */
+    grid-template-columns: repeat(1, 1fr);
   }
-
-  .image-container {
-    padding-top: 100%; /* Proporção mais quadrada no mobile */
-  }
-
-  .collection-info {
-    font-size: 1.2rem;
+  .categories-title {
+    font-size: 1.5rem;
   }
 }
