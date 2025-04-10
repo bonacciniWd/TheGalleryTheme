@@ -197,12 +197,14 @@
         },
         "featured_collection_4aa3kD": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "skateboarding"
           }
         },
         "template--20798371594556__13e37e11-4abd-406f-b842-920e2a8de5d5-featured_collection-2": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "fine-art"
           }
