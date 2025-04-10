@@ -60,7 +60,7 @@
     "custom_liquid_dPLTTL": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"skate-zone-header\">\n  <script src=\"https://cdn.lordicon.com/lordicon.js\"></script>\n<lord-icon\n    src=\"https://cdn.lordicon.com/rszslpey.json\"\n    trigger=\"loop\"\n    stroke=\"light\"\n    state=\"loop-cycle\"\n    colors=\"primary:#000,secondary:#000\"\n    style=\"width:120px;height:120px\">\n</lord-icon>\n  <div class=\"skate-zone-title\"></div>",
+        "custom_liquid": "<div class=\"fine-art-title\">\n  Fine Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 0
