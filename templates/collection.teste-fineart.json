@@ -9,36 +9,6 @@
  */
 {
   "sections": {
-    "rich_text_3xEH77": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_MyEHVX": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h1"
-          }
-        },
-        "text_qHJmpw": {
-          "type": "text",
-          "settings": {
-            "text": "<h4>Sofisticação e atitude se encontram no universo masculino da thegallery.co. Peças atemporais, minimalistas e com a essência do skate. Entre o street e a alfaiataria, criamos um novo olhar para o urbano. Explore camisas, calças, jaquetas e shapes com design sofisticado e identidade única</h4>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_MyEHVX",
-        "text_qHJmpw"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "featured_collection_GAzEXU": {
       "type": "featured-collection",
       "settings": {
@@ -105,6 +75,36 @@
         "show_collection_description": true,
         "show_collection_image": false,
         "color_scheme": "background-1"
+      }
+    },
+    "rich_text_3xEH77": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MyEHVX": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_qHJmpw": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Sofisticação e atitude se encontram no universo masculino da thegallery.co. Peças atemporais, minimalistas e com a essência do skate. Entre o street e a alfaiataria, criamos um novo olhar para o urbano. Explore camisas, calças, jaquetas e shapes com design sofisticado e identidade única</h3>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MyEHVX",
+        "text_qHJmpw"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "product-grid": {
@@ -217,10 +217,10 @@
     }
   },
   "order": [
-    "rich_text_3xEH77",
     "featured_collection_GAzEXU",
     "image_with_text_YkMyrx",
     "banner",
+    "rich_text_3xEH77",
     "product-grid",
     "bff4db11-e873-4576-8ead-a864c906d75b",
     "33d0b73f-cb88-47ef-ba87-a9183c7cb646"
