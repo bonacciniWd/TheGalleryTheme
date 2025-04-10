@@ -77,6 +77,7 @@
       "blocks": {
         "text_xEm7mC": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>O feminino traduz a sensualidade com elegância e minimalismo. No universo da thegallery.co, cada peça carrega sofisticação atemporal, atitude com espírito livre e audacioso. Entre alfaiataria refinada e cortes precisos, descubra vestidos, croppeds, camisas, calças e jaquetas que exaltam a feminilidade com força e estilo.</p>"
           }

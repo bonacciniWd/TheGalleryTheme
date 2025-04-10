@@ -146,6 +146,15 @@
         "padding_bottom": 32
       }
     },
+    "custom_liquid_ELnjtC": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "featured_product_EnXLNy": {
       "type": "featured-product",
       "blocks": {
@@ -208,7 +217,7 @@
       ],
       "settings": {
         "product": "part-of-me-fine-art",
-        "color_scheme": "accent-1",
+        "color_scheme": "inverse",
         "secondary_background": false,
         "media_size": "medium",
         "constrain_to_viewport": true,
@@ -290,59 +299,6 @@
         "image_zoom": "none",
         "hide_variants": false,
         "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn_BRzRKE": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_YakWnY": {
-          "type": "column",
-          "settings": {
-            "title": "Slow fashion movement",
-            "text": "<p>Desaceleramos em prol do planeta Terra e de todos aqueles que fazem parte da nossa sociedade..</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_bAdjeX": {
-          "type": "column",
-          "settings": {
-            "title": "Art is out kind of thing",
-            "text": "<h5>Vestimos arte , criamos movimento</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_BYkUpa": {
-          "type": "column",
-          "settings": {
-            "title": "In people we trust",
-            "text": "<p>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_YakWnY",
-        "column_bAdjeX",
-        "column_BYkUpa"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "image_width": "half",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "accent-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -594,6 +550,59 @@
         "padding_bottom": 36
       }
     },
+    "multicolumn_BRzRKE": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_YakWnY": {
+          "type": "column",
+          "settings": {
+            "title": "Slow fashion movement",
+            "text": "<p>Desaceleramos em prol do planeta Terra e de todos aqueles que fazem parte da nossa sociedade..</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_bAdjeX": {
+          "type": "column",
+          "settings": {
+            "title": "Art is out kind of thing",
+            "text": "<h5>Vestimos arte , criamos movimento</h5>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_BYkUpa": {
+          "type": "column",
+          "settings": {
+            "title": "In people we trust",
+            "text": "<p>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_YakWnY",
+        "column_bAdjeX",
+        "column_BYkUpa"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "half",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "accent-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "featured_product_qjAHC4": {
       "type": "featured-product",
       "blocks": {
@@ -673,13 +682,14 @@
     "c098fa37-7ee2-42f0-bc8a-33535514dd94",
     "5d6e9ac0-8b07-4c04-bb54-89c26105de3f",
     "d721ea9e-4c9d-40dc-ba89-c2a43f8775ee",
+    "custom_liquid_ELnjtC",
     "featured_product_EnXLNy",
     "featured_product_rwdCdg",
-    "multicolumn_BRzRKE",
     "featured_collection_WqPz7U",
     "featured_product_pMwYyK",
     "featured_product_y7yCqj",
     "featured_product_jXC3qx",
+    "multicolumn_BRzRKE",
     "featured_product_qjAHC4"
   ]
 }
