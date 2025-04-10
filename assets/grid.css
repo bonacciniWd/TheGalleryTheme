@@ -17,6 +17,7 @@
   border-bottom: 3px solid #ff758c;
   display: inline-block;
   padding-bottom: 5px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .parent {
@@ -58,6 +59,7 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Responsividade */
