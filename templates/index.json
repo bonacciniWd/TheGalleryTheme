@@ -57,6 +57,15 @@
         "padding_bottom": 36
       }
     },
+    "custom_liquid_dPLTTL": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n@font-face {\n  font-family: 'SuisseIntl-Regular';\n  src: url('{{ 'SuisseIntl-Regular.woff2' | asset_url }}') format('woff2'),\n       url('{{ 'SuisseIntl-Regular.woff' | asset_url }}') format('woff');\n  font-weight: normal;\n  font-style: normal;\n}\n\n.fine-art-title {\n  font-family: 'SuisseIntl-Regular', sans-serif;\n  font-size: 3rem;\n  font-weight: normal;\n  text-align: center;\n  color: #222;\n  margin: 50px 0;\n}\n</style>\n\n<div class=\"fine-art-title\">\n  Fine Art\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
     "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
       "type": "slideshow",
       "blocks": {
@@ -98,7 +107,7 @@
     "featured_collection_cC38QC": {
       "type": "featured-collection",
       "settings": {
-        "title": "<em>Fine Art</em>",
+        "title": "",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -119,7 +128,7 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 44,
+        "padding_top": 0,
         "padding_bottom": 36
       }
     },
@@ -359,6 +368,7 @@
   "order": [
     "image_banner_zyji7q",
     "featured_collection",
+    "custom_liquid_dPLTTL",
     "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "featured_collection_cC38QC",
     "custom_liquid_kgnPwV",
