@@ -72,28 +72,6 @@
         "padding_bottom": 36
       }
     },
-    "rich_text_xLVc6P": {
-      "type": "rich-text",
-      "blocks": {
-        "text_WJTAtU": {
-          "type": "text",
-          "settings": {
-            "text": "<p>A coleção de camisetas da thegallery.co, onde sofisticação e minimalismo se encontram. De camisetas polo elegantes a oversized despojadas, passando por modelos clássicos e de manga longa, cada peça é desenvolvida com tecidos premium e caimento impecável. Versáteis e atemporais, nossas camisetas elevam qualquer look, unindo conforto, design exclusivo e um toque de sensualidade discreta.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_WJTAtU"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "custom_liquid_XMnzwn": {
       "type": "custom-liquid",
       "settings": {
@@ -142,7 +120,6 @@
     "image_with_text_YkMyrx",
     "banner",
     "product-grid",
-    "rich_text_xLVc6P",
     "custom_liquid_XMnzwn",
     "33d0b73f-cb88-47ef-ba87-a9183c7cb646"
   ]
