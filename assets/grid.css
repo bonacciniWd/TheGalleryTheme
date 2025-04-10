@@ -21,7 +21,7 @@ body {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #222;
-  font-weight: bold;
+    font-weight: normal ;
   text-transform: uppercase;
   letter-spacing: 2px;
   border-bottom: 3px solid #ff758c;
