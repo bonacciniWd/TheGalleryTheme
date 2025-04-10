@@ -174,6 +174,10 @@
         "heading_w89WmF",
         "text_yH38Cw"
       ],
+      "custom_css": [
+        "h2 {font-family: Helvetica;}",
+        "p {font-family: Helvetica;}"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
