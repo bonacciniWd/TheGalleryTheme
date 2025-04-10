@@ -27,12 +27,13 @@ body {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #222;
-  font-weight: bold;
+  font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 2px;
   border-bottom: 3px solid #ff758c;
   display: inline-block;
   padding-bottom: 5px;
+    font-family: 'SuisseIntl-Regular';
 }
 
 .parent {
@@ -71,10 +72,9 @@ body {
   padding: 10px 0;
   font-size: 1.4rem;
   color: #333;
-  font-weight: bold;
+  font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-decoration: none;
 }
 
 /* Responsividade */
