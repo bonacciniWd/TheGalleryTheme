@@ -72,5 +72,6 @@
   }
   .image-container img {
     max-height: 220px;
+      padding: 50px;
   }
 }
