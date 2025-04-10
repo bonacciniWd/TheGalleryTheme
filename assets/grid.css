@@ -30,8 +30,6 @@ body {
   color: #222;
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border-bottom: 3px solid #BBA151;
   display: inline-block;
   padding-bottom: 2px;
 }
