@@ -68,9 +68,9 @@
     font-size: 1.5rem;
   }
   .image-container {
-    height: 150px;
+    height: 300px;
   }
   .image-container img {
-    max-height: 150px;
+    max-height: 220px;
   }
 }
