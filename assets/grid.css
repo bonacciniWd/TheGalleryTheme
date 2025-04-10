@@ -71,7 +71,7 @@
     height: 300px;
   }
   .image-container img {
-    max-height: 220px;
-      padding: 50px;
+    max-height: 250px;
+      padding: 10px;
   }
 }
