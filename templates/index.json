@@ -100,9 +100,9 @@
       "settings": {
         "title": "<em>Fine Art</em>",
         "heading_size": "h2",
-        "description": "",
-        "show_description": true,
-        "description_style": "body",
+        "description": "<p>\"Arte que transcende o tempo. </p><p> Leve a essência da thegallery.co para o seu espaço.</p><p>Minimalismo, sofisticação e atemporalidade em cada detalhe.</p><p>Quadros exclusivos, impressos em Fine Art no papel alemão Hahnemühle 290gsm.</p>",
+        "show_description": false,
+        "description_style": "subtitle",
         "collection": "fine-art",
         "products_to_show": 5,
         "columns_desktop": 5,
