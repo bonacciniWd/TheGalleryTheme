@@ -432,16 +432,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     .popup-content {
       background: url("{{ 'GALLERY-1069.jpg' | asset_url }}") center/cover no-repeat; 
-      padding: 40px;
+      width: 400px;
+      height: 500px;
       border-radius: 12px;
       text-align: center;
-      width: 350px;
-      height: 450px;
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-end; /* Empurra o form para o fundo */
+      padding-bottom: 20px; /* Espaço inferior */
     }
     .popup-close {
       position: absolute;
@@ -451,10 +450,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       font-size: 20px;
       color: white;
     }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      bottom: 20px; /* Fixa no fundo do popup */
+      left: 50%;
+      transform: translateX(-50%);
+    }
     input[type="email"] {
       width: 80%;
       padding: 12px;
-      margin-bottom: 12px;
       border: none;
       border-radius: 8px;
       text-align: center;
@@ -504,6 +513,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   </script>
 {% endif %}
+
 
 
   </body>
