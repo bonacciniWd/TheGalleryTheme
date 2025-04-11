@@ -486,7 +486,43 @@ button {
       font-size: 20px;
       color: white;
     }
-  
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      bottom: 20px; /* Fixa no fundo do popup */
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    input[type="email"] {
+      width: 80%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 16px;
+      color: white;
+      background: rgba(255, 255, 255, 0.2); /* Vidro fosco */
+      backdrop-filter: blur(8px);
+      outline: none;
+    }
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    button {
+      background-color: #A68D7B; /* Mocha Mousse */
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      transition: 0.3s;
+    }
     button:hover {
       background-color: #8C7765;
     }
