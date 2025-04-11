@@ -407,5 +407,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+    {% if customer == nil %}
+  <div id="newsletter-popup" class="popup">
+    <div class="popup-content">
+      <span class="popup-close">&times;</span>
+      <h2>Ganhe um desconto especial!</h2>
+      <p>Cadastre-se na nossa newsletter e receba um cupom exclusivo.</p>
+      <form id="newsletter-form">
+        <input type="email" name="email" placeholder="Digite seu e-mail" required>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .popup {
+      display: none; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+      position: relative;
+    }
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (!localStorage.getItem("popupClosed")) {
+        document.getElementById("newsletter-popup").style.display = "flex";
+      }
+
+      document.querySelector(".popup-close").addEventListener("click", function() {
+        document.getElementById("newsletter-popup").style.display = "none";
+        localStorage.setItem("popupClosed", "true");
+      });
+
+      document.getElementById("newsletter-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let email = this.querySelector("input[name='email']").value;
+        // Aqui você pode enviar o email para sua lista, por exemplo, via API da Shopify ou Klaviyo.
+        alert("Obrigado por se cadastrar! O cupom chegará no seu e-mail.");
+        document.getElementById("newsletter-popup").style.display = "none";
+        localStorage.setItem("popupClosed", "true");
+      });
+    });
+  </script>
+{% endif %}
+
   </body>
 </html>
