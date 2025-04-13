@@ -146,15 +146,6 @@
         "padding_bottom": 32
       }
     },
-    "custom_liquid_ELnjtC": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "featured_product_EnXLNy": {
       "type": "featured-product",
       "blocks": {
@@ -682,7 +673,6 @@
     "c098fa37-7ee2-42f0-bc8a-33535514dd94",
     "5d6e9ac0-8b07-4c04-bb54-89c26105de3f",
     "d721ea9e-4c9d-40dc-ba89-c2a43f8775ee",
-    "custom_liquid_ELnjtC",
     "featured_product_EnXLNy",
     "featured_product_rwdCdg",
     "featured_collection_WqPz7U",
