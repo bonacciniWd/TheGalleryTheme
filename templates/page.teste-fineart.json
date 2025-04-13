@@ -208,7 +208,7 @@
       ],
       "settings": {
         "product": "part-of-me-fine-art",
-        "color_scheme": "inverse",
+        "color_scheme": "accent-1",
         "secondary_background": false,
         "media_size": "medium",
         "constrain_to_viewport": true,
