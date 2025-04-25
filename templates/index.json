@@ -75,7 +75,7 @@
         "description": "<h2><em><strong>Converse</strong></em></h2>",
         "show_description": false,
         "description_style": "body",
-        "collection": "",
+        "collection": "nike",
         "products_to_show": 25,
         "columns_desktop": 4,
         "full_width": false,
