@@ -99,9 +99,9 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Para todas as ocasiões",
+        "title": "",
         "heading_size": "h1",
-        "description": "",
+        "description": "<h2><em><br/>Para todas as ocasiões</em><br/><br/></h2>",
         "show_description": false,
         "description_style": "body",
         "collection": "heavy-duty",
