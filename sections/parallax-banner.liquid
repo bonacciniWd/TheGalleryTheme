@@ -51,7 +51,7 @@
     pointer-events: none; /* Impede que a imagem seja arrastada */
   }
 
-  /* Container da imagem 'Depois' - atua como uma MÁSCARA de recorte */
+  /* Container da imagem 'Depois' - atua como uma MÁSCARA de recorte (clipper) */
   .image-comparison-after-clipper-{{ section.id }} {
     position: absolute;
     top: 0;
@@ -59,14 +59,16 @@
     height: 100%;
     overflow: hidden; /* ESSENCIAL para o recorte */
     z-index: 2; /* Acima da imagem 'before' */
+    /* width will be set by JS */
   }
 
-  /* A imagem 'Depois' em si - sempre com a largura total do container principal, mas com posição ajustada */
-  .image-comparison-after-{{ section.id }} {
+  /* A IMAGEM 'Depois' em si (a tag <img> dentro do clipper) */
+  /* Ela deve ter a largura total do container principal e sua posição 'left' ajustada pelo JS */
+  .image-comparison-after-clipper-{{ section.id }} img {
     position: absolute;
     top: 0;
     left: 0; /* A posição 'left' será ajustada pelo JS para alinhamento */
-    width: 100%; /* A imagem 'depois' sempre ocupa a largura total do container principal */
+    /* A largura será definida pelo JS para ser igual à largura do container principal */
     height: 100%;
     object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
     pointer-events: none;
@@ -179,18 +181,18 @@
     </div>
 
     <div class="image-comparison-after-clipper-{{ section.id }}">
-      <div class="image-comparison-after-{{ section.id }}">
-        {% if section.settings.image_after != blank %}
-          <img src="{{ section.settings.image_after | img_url: 'master' }}"
-               srcset="{{ section.settings.image_after | img_url: '400x' }} 400w,
-                       {{ section.settings.image_after | img_url: '800x' }} 800w,
-                       {{ section.settings.image_after | img_url: '1200x' }} 1200w"
-               sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
-               alt="{{ section.settings.label_after | default: 'Imagem Depois' }}">
-        {% else %}
-          <img src="https://placehold.co/800x600/A0A0A0/FFFFFF?text=Imagem+Depois" alt="Placeholder Imagem Depois">
-        {% endif %}
-      </div>
+      {% if section.settings.image_after != blank %}
+        <img class="image-comparison-after-image-{{ section.id }}"
+             src="{{ section.settings.image_after | img_url: 'master' }}"
+             srcset="{{ section.settings.image_after | img_url: '400x' }} 400w,
+                     {{ section.settings.image_after | img_url: '800x' }} 800w,
+                     {{ section.settings.image_after | img_url: '1200x' }} 1200w"
+             sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
+             alt="{{ section.settings.label_after | default: 'Imagem Depois' }}">
+      {% else %}
+        <img class="image-comparison-after-image-{{ section.id }}"
+             src="https://placehold.co/800x600/A0A0A0/FFFFFF?text=Imagem+Depois" alt="Placeholder Imagem Depois">
+      {% endif %}
     </div>
 
     <div class="image-comparison-slider-line-{{ section.id }}"></div>
@@ -204,8 +206,7 @@
     const sectionId = '{{ section.id }}';
     const container = document.querySelector(`.image-comparison-container-${sectionId}`);
     const afterImageClipper = document.querySelector(`.image-comparison-after-clipper-${sectionId}`);
-    const afterImage = document.querySelector(`.image-comparison-after-${sectionId}`); // O div que contém a imagem 'depois'
-    const afterImgElement = afterImage ? afterImage.querySelector('img') : null; // A tag <img> real
+    const afterImgElement = afterImageClipper ? afterImageClipper.querySelector('.image-comparison-after-image-' + sectionId) : null; // A tag <img> real
     const sliderLine = document.querySelector(`.image-comparison-slider-line-${sectionId}`);
     const sliderHandle = document.querySelector(`.image-comparison-slider-handle-${sectionId}`);
 
@@ -213,13 +214,12 @@
     console.log(`[Slider ${sectionId}] Inicializando...`);
     console.log(`[Slider ${sectionId}] Container:`, container);
     console.log(`[Slider ${sectionId}] After Clipper:`, afterImageClipper);
-    console.log(`[Slider ${sectionId}] After Image Div:`, afterImage);
     console.log(`[Slider ${sectionId}] After Img Element:`, afterImgElement);
     console.log(`[Slider ${sectionId}] Slider Line:`, sliderLine);
     console.log(`[Slider ${sectionId}] Slider Handle:`, sliderHandle);
 
 
-    if (!container || !afterImageClipper || !afterImage || !afterImgElement || !sliderLine || !sliderHandle) {
+    if (!container || !afterImageClipper || !afterImgElement || !sliderLine || !sliderHandle) {
       console.error(`[Slider ${sectionId}] ERRO: Um ou mais elementos essenciais não foram encontrados. O slider não funcionará.`);
       return;
     }
@@ -245,9 +245,11 @@
 
       // Atualiza a largura do container de recorte da imagem 'after'
       afterImageClipper.style.width = `${x}px`;
-      // Atualiza a posição da imagem 'after' dentro do seu container de recorte
+      // A imagem 'depois' dentro do clipper deve ter a largura total do container principal
+      afterImgElement.style.width = `${containerRect.width}px`;
+      // Atualiza a posição da imagem 'depois' dentro do seu container de recorte
       // Isso é crucial para manter a imagem 'depois' alinhada com a 'antes'
-      afterImage.style.left = `-${x}px`;
+      afterImgElement.style.left = `-${x}px`;
 
       // Atualiza a posição da linha e do handle do slider
       sliderLine.style.left = `${x}px`;
@@ -308,7 +310,8 @@
 
       // Aplica a posição inicial
       afterImageClipper.style.width = `${initialX}px`;
-      afterImage.style.left = `-${initialX}px`; // Alinha a imagem 'depois'
+      afterImgElement.style.width = `${containerWidth}px`; // Garante que a imagem 'depois' tenha a largura total
+      afterImgElement.style.left = `-${initialX}px`; // Alinha a imagem 'depois'
       sliderLine.style.left = `${initialX}px`;
       sliderHandle.style.left = `${initialX}px`;
       console.log(`[Slider ${sectionId}] Posição inicial definida para ${initialPercentage * 100}% (${initialX}px).`);
@@ -326,7 +329,7 @@
 
 {% schema %}
 {
-  "name": "Comparação",
+  "name": "Comparação de Imagens",
   "settings": [
     {
       "type": "text",
