@@ -215,10 +215,9 @@
       "name": "Comparação de Imagens",
       "settings": {
         "heading": "Compare a Evolução",
-        "image_before": "shopify://shop_images/5_3a8426f5-34ae-48f3-85eb-70b9451734eb.png",
-        "label_before": "Série Anterior",
-        "image_after": "shopify://shop_images/4_2163cab9-5746-4ffb-83f7-1be7ed19ed98.png",
-        "label_after": "Série Nova",
+        "image_before": "shopify://shop_images/1_3b366fe1-f367-4722-aab8-eef36f9b5544.png",
+        "label_before": "",
+        "label_after": "",
         "initial_slider_position": 50,
         "max_width": 1000,
         "aspect_ratio": 1.3,
