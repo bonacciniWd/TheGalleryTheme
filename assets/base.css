@@ -3785,6 +3785,7 @@ details-disclosure > details {
   .before-after-slider .wrapper {
     width: 95vw; /* quase toda largura da tela */
     height: auto;
+    margin-right: 20px;
   }
 
   .before-after-slider .after {
