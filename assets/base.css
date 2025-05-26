@@ -3776,4 +3776,47 @@ details-disclosure > details {
   }
 }
 
+/* Ajustes para telas muito pequenas, ex: iPhone SE (320-375px) */
+@media (max-width: 375px) {
+  .before-after-slider {
+    height: 300px; /* menor altura */
+  }
+
+  .before-after-slider .wrapper {
+    width: 95vw; /* quase toda largura da tela */
+    height: 250px;
+  }
+
+  .before-after-slider .after {
+    width: 80px !important; /* linha menor inicialmente */
+  }
+
+  #scroller {
+    width: 45px;
+    height: 30px;
+    left: 20px !important;
+  }
+
+  #scroller.right {
+    right: 20px !important;
+  }
+
+  #text {
+    font-size: 12px;
+    margin-right: 4px;
+    margin-left: 4px;
+  }
+
+  #icon-wrapper {
+    width: 35px;
+    height: 30px;
+  }
+
+  #star-svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+
 
