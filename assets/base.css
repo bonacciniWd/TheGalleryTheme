@@ -3783,7 +3783,7 @@ details-disclosure > details {
   }
 
   .before-after-slider .wrapper {
-    width: 75vw; /* quase toda largura da tela */
+    width: 100vw; /* quase toda largura da tela */
     height: auto;
   }
 
