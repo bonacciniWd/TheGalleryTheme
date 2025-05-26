@@ -34,6 +34,7 @@
       url('{{ section.settings.background_image | img_url: '2x' }}') 2x
     );
     background-repeat: no-repeat;
+    background-color: #cccccc; /* Cor de fundo de fallback para depuração se a imagem não carregar */
   }
 
   .parallax-content-{{ section.id }} {
@@ -124,10 +125,16 @@
   document.addEventListener('DOMContentLoaded', function() {
     const sectionElement = document.querySelector('.parallax-section-{{ section.id }}');
     const parallaxBg = sectionElement.querySelector('.parallax-bg-{{ section.id }}');
-    const parallaxContent = sectionElement.querySelector('.parallax-content-{{ section.id }}');
     const fadeElements = sectionElement.querySelectorAll('.fade-element-{{ section.id }}');
 
+    // Verifica se os elementos foram encontrados
+    if (!sectionElement || !parallaxBg) {
+      console.error('Parallax Section: Elementos principais não encontrados para a seção {{ section.id }}.');
+      return; // Sai da função se os elementos essenciais não forem encontrados
+    }
+
     const parallaxSpeed = parseFloat(parallaxBg.dataset.parallaxSpeed);
+    console.log('Parallax Section {{ section.id }}: Velocidade do Parallax:', parallaxSpeed);
 
     function applyParallax() {
       const scrollPosition = window.pageYOffset;
@@ -138,6 +145,7 @@
       // Parallax para o fundo
       const yPos = -(scrollPosition * parallaxSpeed);
       parallaxBg.style.transform = `translateY(${yPos}px)`;
+      // console.log('Parallax Section {{ section.id }}: scrollPosition:', scrollPosition, 'yPos:', yPos); // Para depuração do movimento
 
       // Efeito de desvanecimento para o conteúdo
       const visibilityThreshold = 0.5; // A seção está visível se pelo menos 50% dela estiver na tela
