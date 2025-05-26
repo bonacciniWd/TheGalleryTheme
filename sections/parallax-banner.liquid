@@ -32,8 +32,7 @@
     margin-top: 2rem; /* Espaçamento do texto superior */
   }
 
-  /* Imagem 'Antes' - sempre visível no fundo */
-  .image-comparison-before-image-{{ section.id }} {
+  .image-comparison-image-wrapper-{{ section.id }} {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,7 +43,7 @@
     justify-content: center;
   }
 
-  .image-comparison-before-image-{{ section.id }} img {
+  .image-comparison-image-wrapper-{{ section.id }} img {
     display: block;
     width: 100%;
     height: 100%;
@@ -52,7 +51,6 @@
     pointer-events: none; /* Impede que a imagem seja arrastada */
   }
 
-  /* Container da imagem 'Depois' - atua como uma máscara de recorte */
   .image-comparison-after-{{ section.id }} {
     position: absolute;
     top: 0;
@@ -61,17 +59,6 @@
     height: 100%;
     overflow: hidden; /* Corta a imagem 'after' */
     z-index: 2; /* Acima da imagem 'before' */
-  }
-
-  /* A imagem 'Depois' em si - sempre com a largura total do container principal, mas com posição ajustada */
-  .image-comparison-after-{{ section.id }} img {
-    position: absolute;
-    top: 0;
-    left: 0; /* A posição 'left' será ajustada pelo JS */
-    width: 100%; /* A imagem 'depois' sempre ocupa a largura total do container principal */
-    height: 100%;
-    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
-    pointer-events: none;
   }
 
   .image-comparison-slider-line-{{ section.id }} {
@@ -164,7 +151,7 @@
   </div>
 
   <div class="image-comparison-container-{{ section.id }}">
-    <div class="image-comparison-before-image-{{ section.id }}">
+    <div class="image-comparison-image-wrapper-{{ section.id }}">
       {% if section.settings.image_before != blank %}
         <img src="{{ section.settings.image_before | img_url: 'master' }}"
              srcset="{{ section.settings.image_before | img_url: '400x' }} 400w,
@@ -178,16 +165,18 @@
     </div>
 
     <div class="image-comparison-after-{{ section.id }}">
-      {% if section.settings.image_after != blank %}
-        <img src="{{ section.settings.image_after | img_url: 'master' }}"
-             srcset="{{ section.settings.image_after | img_url: '400x' }} 400w,
-                     {{ section.settings.image_after | img_url: '800x' }} 800w,
-                     {{ section.settings.image_after | img_url: '1200x' }} 1200w"
-             sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
-             alt="{{ section.settings.label_after | default: 'Imagem Depois' }}">
-      {% else %}
-        <img src="https://placehold.co/800x600/A0A0A0/FFFFFF?text=Imagem+Depois" alt="Placeholder Imagem Depois">
-      {% endif %}
+      <div class="image-comparison-image-wrapper-{{ section.id }}">
+        {% if section.settings.image_after != blank %}
+          <img src="{{ section.settings.image_after | img_url: 'master' }}"
+               srcset="{{ section.settings.image_after | img_url: '400x' }} 400w,
+                       {{ section.settings.image_after | img_url: '800x' }} 800w,
+                       {{ section.settings.image_after | img_url: '1200x' }} 1200w"
+               sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
+               alt="{{ section.settings.label_after | default: 'Imagem Depois' }}">
+        {% else %}
+          <img src="https://placehold.co/800x600/A0A0A0/FFFFFF?text=Imagem+Depois" alt="Placeholder Imagem Depois">
+        {% endif %}
+      </div>
     </div>
 
     <div class="image-comparison-slider-line-{{ section.id }}"></div>
@@ -200,12 +189,11 @@
   document.addEventListener('DOMContentLoaded', function() {
     const sectionId = '{{ section.id }}';
     const container = document.querySelector(`.image-comparison-container-${sectionId}`);
-    const afterImageContainer = document.querySelector(`.image-comparison-after-${sectionId}`); // O container de recorte
-    const afterImage = afterImageContainer.querySelector('img'); // A imagem dentro do container de recorte
+    const afterImage = document.querySelector(`.image-comparison-after-${sectionId}`);
     const sliderLine = document.querySelector(`.image-comparison-slider-line-${sectionId}`);
     const sliderHandle = document.querySelector(`.image-comparison-slider-handle-${sectionId}`);
 
-    if (!container || !afterImageContainer || !afterImage || !sliderLine || !sliderHandle) {
+    if (!container || !afterImage || !sliderLine || !sliderHandle) {
       console.error(`Slider de Comparação: Elementos não encontrados para a seção ${sectionId}.`);
       return;
     }
@@ -229,13 +217,8 @@
       if (x < 0) x = 0;
       if (x > containerRect.width) x = containerRect.width;
 
-      // Atualiza a largura do container de recorte da imagem 'after'
-      afterImageContainer.style.width = `${containerRect.width - x}px`;
-      // Atualiza a posição da imagem 'after' dentro do seu container de recorte
-      // Isso garante que a imagem 'depois' esteja sempre alinhada com a imagem 'antes'
-      afterImage.style.left = `${x - containerRect.width}px`;
-
-      // Atualiza a posição da linha e do handle do slider
+      // Atualiza a largura da imagem 'after' e a posição do slider
+      afterImage.style.width = `${containerRect.width - x}px`;
       sliderLine.style.left = `${x}px`;
       sliderHandle.style.left = `${x}px`;
     }
@@ -279,9 +262,7 @@
       const containerWidth = container.getBoundingClientRect().width;
       const initialX = containerWidth * initialPercentage;
 
-      // Aplica a posição inicial
-      afterImageContainer.style.width = `${containerWidth - initialX}px`;
-      afterImage.style.left = `${initialX - containerWidth}px`; // Alinha a imagem 'depois'
+      afterImage.style.width = `${containerWidth - initialX}px`;
       sliderLine.style.left = `${initialX}px`;
       sliderHandle.style.left = `${initialX}px`;
     }
