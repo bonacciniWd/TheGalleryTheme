@@ -1,106 +1,346 @@
 {% comment %}
-  Seção de Parallax Personalizada para Shopify
-  Este arquivo Liquid cria uma seção de parallax configurável no editor de temas.
-  Permite definir imagem de fundo, texto, botão e velocidade do parallax.
-  Os estilos dinâmicos (cores, imagem, altura) permanecem aqui.
-  Os estilos estáticos estão em assets/global.css.
-  O JavaScript está em assets/config.js.
+  Seção de Comparação de Imagens com Slider para Shopify
+  Este arquivo Liquid cria uma seção configurável no editor de temas para comparar duas imagens.
+  Permite definir as imagens, textos descritivos e a posição inicial do slider.
 {% endcomment %}
 
 <style>
-  /* Estilos dinâmicos para a seção parallax (dependem das configurações do schema) */
-  .parallax-section-{{ section.id }} {
-    height: {{ section.settings.section_height }}vh; /* Altura da seção em VH (Viewport Height) */
-    background-color: {{ section.settings.background_color }}; /* Cor de fundo da seção */
+  /* Estilos essenciais para a seção de comparação de imagens */
+  .image-comparison-section-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    max-width: {{ section.settings.max_width }}px; /* Largura máxima da seção */
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: {{ section.settings.background_color }};
+    padding: 2rem 0; /* Adiciona padding vertical */
+    box-sizing: border-box; /* Garante que padding não adicione largura extra */
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  .parallax-bg-{{ section.id }} {
-    /* Fallback para imagem de fundo caso a definida no schema não carregue */
-    background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
-    background-image: -webkit-image-set(
-      url('{{ section.settings.background_image | img_url: 'master' }}') 1x,
-      url('{{ section.settings.background_image | img_url: '2x' }}') 2x
-    );
-    background-color: #cccccc; /* Cor de fundo de fallback para depuração se a imagem não carregar */
+  .image-comparison-container-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    padding-top: {{ 100 | divided_by: section.settings.aspect_ratio }}%; /* Mantém o aspect ratio da imagem */
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 2rem; /* Espaçamento do texto superior */
   }
 
-  /* Estilos para o texto */
-  .parallax-content-{{ section.id }} h1,
-  .parallax-content-{{ section.id }} h2 {
-    color: {{ section.settings.heading_color }};
+  .image-comparison-image-wrapper-{{ section.id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Para centralizar a imagem se ela não preencher */
+    align-items: center;
+    justify-content: center;
   }
 
-  .parallax-content-{{ section.id }} p {
-    color: {{ section.settings.subheading_color }};
+  .image-comparison-image-wrapper-{{ section.id }} img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
+    pointer-events: none; /* Impede que a imagem seja arrastada */
   }
 
-  /* Fundo semi-transparente para melhor legibilidade do texto */
-  .parallax-content-{{ section.id }} {
-    background-color: {{ section.settings.content_bg_color }};
+  .image-comparison-after-{{ section.id }} {
+    position: absolute;
+    top: 0;
+    right: 0; /* Começa do lado direito */
+    width: 50%; /* Largura inicial, será ajustada pelo JS */
+    height: 100%;
+    overflow: hidden; /* Corta a imagem 'after' */
+    z-index: 2; /* Acima da imagem 'before' */
   }
 
-  /* Estilos para o botão */
-  .btn-primary-{{ section.id }} {
-      color: {{ section.settings.button_text_color }};
-      background-color: {{ section.settings.button_bg_color }};
+  .image-comparison-slider-line-{{ section.id }} {
+    position: absolute;
+    left: 50%; /* Posição inicial, será ajustada pelo JS */
+    top: 0;
+    bottom: 0;
+    width: 2px; /* Espessura da linha */
+    background-color: {{ section.settings.slider_line_color }};
+    z-index: 3; /* Acima das imagens */
+    transform: translateX(-50%); /* Centraliza a linha no ponto do slider */
   }
 
-  .btn-primary-{{ section.id }}:hover {
-      background-color: {{ section.settings.button_hover_bg_color }};
+  .image-comparison-slider-handle-{{ section.id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Posição inicial, será ajustada pelo JS */
+    width: 40px; /* Largura do handle */
+    height: 40px; /* Altura do handle */
+    background-color: {{ section.settings.slider_handle_color }};
+    border: 2px solid {{ section.settings.slider_line_color }};
+    border-radius: 50%;
+    cursor: grab;
+    z-index: 4; /* Acima da linha */
+    transform: translate(-50%, -50%); /* Centraliza o handle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .image-comparison-slider-handle-{{ section.id }}:active {
+    cursor: grabbing;
+  }
+
+  /* Estilos para os textos descritivos */
+  .image-comparison-label-wrapper-{{ section.id }} {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: {{ section.settings.max_width }}px;
+    margin-bottom: 1rem;
+    padding: 0 1rem; /* Padding para não colar nas bordas */
+    box-sizing: border-box;
+  }
+
+  .image-comparison-label-{{ section.id }} {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    text-align: center;
+    flex: 1; /* Distribui o espaço igualmente */
+  }
+
+  .image-comparison-label-{{ section.id }}.left {
+    text-align: left;
+  }
+
+  .image-comparison-label-{{ section.id }}.right {
+    text-align: right;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .image-comparison-slider-handle-{{ section.id }} {
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+    }
+    .image-comparison-label-{{ section.id }} {
+      font-size: 1rem;
+    }
   }
 </style>
 
-<section class="parallax-section-{{ section.id }} js-parallax-section">
-  <div class="parallax-bg-{{ section.id }} js-parallax-bg"
-       data-parallax-speed="{{ section.settings.parallax_speed }}">
+<section class="image-comparison-section-{{ section.id }}">
+  {% if section.settings.heading != blank %}
+    <h2 style="color: {{ section.settings.text_color }}; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="image-comparison-label-wrapper-{{ section.id }}">
+    {% if section.settings.label_before != blank %}
+      <span class="image-comparison-label-{{ section.id }} left">{{ section.settings.label_before }}</span>
+    {% endif %}
+    {% if section.settings.label_after != blank %}
+      <span class="image-comparison-label-{{ section.id }} right">{{ section.settings.label_after }}</span>
+    {% endif %}
   </div>
-  <div class="parallax-content-{{ section.id }}">
-    {% if section.settings.heading != blank %}
-      <h1 class="text-5xl font-bold mb-4 js-fade-element">{{ section.settings.heading }}</h1>
-    {% endif %}
-    {% if section.settings.subheading != blank %}
-      <p class="text-xl mb-8 js-fade-element">{{ section.settings.subheading }}</p>
-    {% endif %}
-    {% if section.settings.button_text != blank and section.settings.button_url != blank %}
-      <a href="{{ section.settings.button_url }}" class="btn-primary-{{ section.id }} js-fade-element">
-        {{ section.settings.button_text }}
-      </a>
-    {% endif %}
+
+  <div class="image-comparison-container-{{ section.id }}">
+    <div class="image-comparison-image-wrapper-{{ section.id }}">
+      {% if section.settings.image_before != blank %}
+        <img src="{{ section.settings.image_before | img_url: 'master' }}"
+             srcset="{{ section.settings.image_before | img_url: '400x' }} 400w,
+                     {{ section.settings.image_before | img_url: '800x' }} 800w,
+                     {{ section.settings.image_before | img_url: '1200x' }} 1200w"
+             sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
+             alt="{{ section.settings.label_before | default: 'Imagem Antes' }}">
+      {% else %}
+        <img src="https://placehold.co/800x600/E0E0E0/333333?text=Imagem+Antes" alt="Placeholder Imagem Antes">
+      {% endif %}
+    </div>
+
+    <div class="image-comparison-after-{{ section.id }}">
+      <div class="image-comparison-image-wrapper-{{ section.id }}">
+        {% if section.settings.image_after != blank %}
+          <img src="{{ section.settings.image_after | img_url: 'master' }}"
+               srcset="{{ section.settings.image_after | img_url: '400x' }} 400w,
+                       {{ section.settings.image_after | img_url: '800x' }} 800w,
+                       {{ section.settings.image_after | img_url: '1200x' }} 1200w"
+               sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
+               alt="{{ section.settings.label_after | default: 'Imagem Depois' }}">
+        {% else %}
+          <img src="https://placehold.co/800x600/A0A0A0/FFFFFF?text=Imagem+Depois" alt="Placeholder Imagem Depois">
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="image-comparison-slider-line-{{ section.id }}"></div>
+    <div class="image-comparison-slider-handle-{{ section.id }}">
+      &#x2194; </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionId = '{{ section.id }}';
+    const container = document.querySelector(`.image-comparison-container-${sectionId}`);
+    const afterImage = document.querySelector(`.image-comparison-after-${sectionId}`);
+    const sliderLine = document.querySelector(`.image-comparison-slider-line-${sectionId}`);
+    const sliderHandle = document.querySelector(`.image-comparison-slider-handle-${sectionId}`);
+
+    if (!container || !afterImage || !sliderLine || !sliderHandle) {
+      console.error(`Slider de Comparação: Elementos não encontrados para a seção ${sectionId}.`);
+      return;
+    }
+
+    let isDragging = false;
+
+    // Função para atualizar a posição do slider e a largura da imagem 'after'
+    function updateSlider(e) {
+      const containerRect = container.getBoundingClientRect();
+      let clientX;
+
+      if (e.touches && e.touches.length > 0) { // Para eventos de toque
+        clientX = e.touches[0].clientX;
+      } else { // Para eventos de mouse
+        clientX = e.clientX;
+      }
+
+      let x = clientX - containerRect.left;
+
+      // Limita o movimento do slider dentro do container
+      if (x < 0) x = 0;
+      if (x > containerRect.width) x = containerRect.width;
+
+      // Atualiza a largura da imagem 'after' e a posição do slider
+      afterImage.style.width = `${containerRect.width - x}px`;
+      sliderLine.style.left = `${x}px`;
+      sliderHandle.style.left = `${x}px`;
+    }
+
+    // Eventos de mouse
+    sliderHandle.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      sliderHandle.style.cursor = 'grabbing';
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      sliderHandle.style.cursor = 'grab';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault(); // Previne seleção de texto ou outras ações padrão
+      updateSlider(e);
+    });
+
+    // Eventos de toque
+    sliderHandle.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      // e.preventDefault(); // Previne rolagem da página ao arrastar o handle
+    }, { passive: true }); // Use passive: true para não bloquear a rolagem se não for necessário
+
+    document.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      // e.preventDefault(); // Previne rolagem da página ao arrastar o handle
+      updateSlider(e);
+    }, { passive: true }); // Use passive: true
+
+    // Define a posição inicial do slider ao carregar e redimensionar
+    function setInitialPosition() {
+      const initialPercentage = parseFloat('{{ section.settings.initial_slider_position }}') / 100;
+      const containerWidth = container.getBoundingClientRect().width;
+      const initialX = containerWidth * initialPercentage;
+
+      afterImage.style.width = `${containerWidth - initialX}px`;
+      sliderLine.style.left = `${initialX}px`;
+      sliderHandle.style.left = `${initialX}px`;
+    }
+
+    window.addEventListener('load', setInitialPosition);
+    window.addEventListener('resize', setInitialPosition);
+
+    // Garante que a posição inicial seja definida mesmo que o DOMContentLoaded ocorra antes do load
+    setInitialPosition();
+  });
+</script>
 
 
 {% schema %}
 {
-  "name": "Parallax Personalizado",
+  "name": "Comparação de Imagens",
   "settings": [
     {
+      "type": "text",
+      "id": "heading",
+      "label": "Título da Seção",
+      "default": "Compare a Evolução"
+    },
+    {
       "type": "image_picker",
-      "id": "background_image",
-      "label": "Imagem de Fundo",
-      "info": "Escolha uma imagem para o fundo da seção parallax."
+      "id": "image_before",
+      "label": "Imagem 'Antes'",
+      "info": "A imagem original ou 'antes'."
+    },
+    {
+      "type": "text",
+      "id": "label_before",
+      "label": "Texto 'Antes'",
+      "default": "Série Anterior"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_after",
+      "label": "Imagem 'Depois'",
+      "info": "A imagem nova ou 'depois'."
+    },
+    {
+      "type": "text",
+      "id": "label_after",
+      "label": "Texto 'Depois'",
+      "default": "Série Nova"
     },
     {
       "type": "range",
-      "id": "parallax_speed",
-      "min": 0.0,
-      "max": 1.0,
-      "step": 0.1,
-      "unit": "x",
-      "label": "Velocidade do Parallax",
-      "default": 0.3,
-      "info": "Controla a velocidade de rolagem da imagem de fundo (0 = parado, 1 = velocidade normal)."
-    },
-    {
-      "type": "range",
-      "id": "section_height",
-      "min": 50,
+      "id": "initial_slider_position",
+      "min": 0,
       "max": 100,
-      "step": 5,
-      "unit": "vh",
-      "label": "Altura da Seção",
-      "default": 100,
-      "info": "Altura da seção em relação à altura da tela (viewport height)."
+      "step": 1,
+      "unit": "%",
+      "label": "Posição Inicial do Slider",
+      "default": 50,
+      "info": "Define a posição inicial do slider em porcentagem (0% = todo 'depois', 100% = todo 'antes')."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 300,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Largura Máxima do Slider",
+      "default": 1000,
+      "info": "Largura máxima do container de comparação de imagens."
+    },
+    {
+      "type": "range",
+      "id": "aspect_ratio",
+      "min": 0.5,
+      "max": 2.0,
+      "step": 0.1,
+      "label": "Proporção da Imagem (Largura/Altura)",
+      "default": 1.3,
+      "info": "Define a proporção da imagem (ex: 1.3 para 4:3, 1.7 para 16:9). Ajuste para a proporção das suas imagens."
     },
     {
       "type": "color",
@@ -109,70 +349,27 @@
       "default": "#f5f5f7"
     },
     {
-      "type": "text",
-      "id": "heading",
-      "label": "Título",
-      "default": "Descubra o Futuro"
+      "type": "color",
+      "id": "text_color",
+      "label": "Cor do Texto",
+      "default": "#333333"
     },
     {
       "type": "color",
-      "id": "heading_color",
-      "label": "Cor do Título",
-      "default": "#ffffff"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subtítulo",
-      "default": "Tecnologia inovadora ao seu alcance."
-    },
-    {
-      "type": "color",
-      "id": "subheading_color",
-      "label": "Cor do Subtítulo",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "content_bg_color",
-      "label": "Cor de Fundo do Conteúdo",
-      "default": "rgba(0,0,0,0.4)",
-      "info": "Fundo semi-transparente para o bloco de texto."
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Texto do Botão",
-      "default": "Saiba Mais"
-    },
-    {
-      "type": "url",
-      "id": "button_url",
-      "label": "Link do Botão",
-      "default": "/collections/all"
-    },
-    {
-      "type": "color",
-      "id": "button_bg_color",
-      "label": "Cor de Fundo do Botão",
+      "id": "slider_line_color",
+      "label": "Cor da Linha do Slider",
       "default": "#007aff"
     },
     {
       "type": "color",
-      "id": "button_hover_bg_color",
-      "label": "Cor de Fundo do Botão (Hover)",
-      "default": "#005bb5"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Cor do Texto do Botão",
-      "default": "#ffffff"
+      "id": "slider_handle_color",
+      "label": "Cor do Handle do Slider",
+      "default": "#007aff"
     }
   ],
   "presets": [
     {
-      "name": "Parallax Personalizado",
+      "name": "Comparação de Imagens",
       "category": "Imagens e Vídeos"
     }
   ]
