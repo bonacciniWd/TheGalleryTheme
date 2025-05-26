@@ -193,6 +193,14 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "comparir_nhnmgf": {
+      "type": "comparir",
+      "name": "Comparador de Imagens",
+      "settings": {
+        "text_a": "Modelo A",
+        "text_b": "Modelo B"
+      }
     }
   },
   "order": [
@@ -206,6 +214,7 @@
     "custom_liquid_tEVPYf",
     "video_N3ptFW",
     "image_banner_zyji7q",
-    "featured_blog_KPygWW"
+    "featured_blog_KPygWW",
+    "comparir_nhnmgf"
   ]
 }
