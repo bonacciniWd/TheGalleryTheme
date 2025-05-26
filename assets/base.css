@@ -3818,10 +3818,5 @@ details-disclosure > details {
   }
 }
 
-/* Ocultar o slider em telas menores que 768px (ou outro breakpoint de sua preferência) */
-@media (max-width: 767px) {
-  .before-after-slider {
-    display: none !important; /* MUDANÇA: Oculta o container principal do slider */
-  }
-}
+
 
