@@ -203,6 +203,14 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "custom_Udx8hc": {
+      "type": "custom",
+      "name": "Comparador de Imagens",
+      "settings": {
+        "imagem_antes": "shopify://shop_images/3_4da02e32-55fb-452d-8a68-d72a9793d2cf.png",
+        "imagem_depois": "shopify://shop_images/2_c183389d-d598-44d9-b8ea-f8c5de5cd4aa.png"
+      }
     }
   },
   "order": [
@@ -217,6 +225,7 @@
     "video_N3ptFW",
     "image_banner_zyji7q",
     "featured_blog_KPygWW",
-    "custom_liquid_7eDYX6"
+    "custom_liquid_7eDYX6",
+    "custom_Udx8hc"
   ]
 }
