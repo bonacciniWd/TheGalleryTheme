@@ -193,6 +193,22 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "comparador_gwQJ3K": {
+      "type": "comparador",
+      "name": "Comparação de Imagens (Slider de Fundo)",
+      "settings": {
+        "heading": "Veja a Diferença!",
+        "image_before": "shopify://shop_images/2_e3699074-1825-45f9-a32f-cfa426f17274.png",
+        "image_after": "shopify://shop_images/4_2163cab9-5746-4ffb-83f7-1be7ed19ed98.png",
+        "initial_slider_position": 50,
+        "max_width": 900,
+        "aspect_ratio": 1.3,
+        "background_color": "#f5f5f7",
+        "text_color": "#333333",
+        "slider_line_color": "#007aff",
+        "slider_handle_color": "#007aff"
+      }
     }
   },
   "order": [
@@ -206,6 +222,7 @@
     "custom_liquid_tEVPYf",
     "video_N3ptFW",
     "image_banner_zyji7q",
-    "featured_blog_KPygWW"
+    "featured_blog_KPygWW",
+    "comparador_gwQJ3K"
   ]
 }
