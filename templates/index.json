@@ -199,9 +199,7 @@
       "name": "Parallax Personalizado",
       "settings": {
         "heading": "Descubra o Futuro",
-        "image_before": "shopify://shop_images/6_e3edb0f8-3129-4dfa-9c72-0b15e0f1a953.png",
         "label_before": "Série Anterior",
-        "image_after": "shopify://shop_images/1_3b366fe1-f367-4722-aab8-eef36f9b5544.png",
         "label_after": "Série Nova",
         "initial_slider_position": 50,
         "max_width": 1400,
