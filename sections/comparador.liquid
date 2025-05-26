@@ -1,6 +1,87 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
-{% endschema %}
+<div class="image-comparator">
+  <div class="image-comparator__wrapper">
+    <img src="{{ 'image1.png' | asset_url }}" alt="Modelo A" class="image-comparator__image">
+
+    <div class="image-comparator__overlay">
+      <img src="{{ 'image2.png' | asset_url }}" alt="Modelo B" class="image-comparator__image">
+    </div>
+
+    <input type="range" min="0" max="100" value="50" class="image-comparator__slider" aria-label="Comparar modelos">
+  </div>
+  
+  <div class="image-comparator__labels">
+    <span>Modelo A</span>
+    <span>Modelo B</span>
+  </div>
+</div>
+
+<style>
+.image-comparator {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.image-comparator__wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.image-comparator__image {
+  width: 100%;
+  display: block;
+}
+
+.image-comparator__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  width: 50%;
+  transition: width 0.3s ease;
+}
+
+.image-comparator__slider {
+  width: 100%;
+  margin-top: 15px;
+  appearance: none;
+  height: 6px;
+  background: #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.image-comparator__slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #007aff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.image-comparator__labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const comparator = document.querySelector('.image-comparator');
+  const slider = comparator.querySelector('.image-comparator__slider');
+  const overlay = comparator.querySelector('.image-comparator__overlay');
+
+  slider.addEventListener('input', function() {
+    overlay.style.width = this.value + '%';
+  });
+});
+</script>
