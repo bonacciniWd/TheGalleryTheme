@@ -1,12 +1,180 @@
-<section class="parallax-advanced" style="height: {{ section.settings.height }}vh;">
-  <div class="parallax-layer parallax-bg" style="background-image: url({{ section.settings.background_image | img_url: '2048x' }});"></div>
-  
-  <div class="parallax-layer parallax-fg">
-    <img src="{{ section.settings.foreground_image | img_url: '800x' }}" alt="Primeiro Plano">
+{% comment %}
+  Seção de Parallax Personalizada para Shopify
+  Este arquivo Liquid cria uma seção de parallax configurável no editor de temas.
+  Permite definir imagem de fundo, texto, botão e velocidade do parallax.
+  Os estilos dinâmicos (cores, imagem, altura) permanecem aqui.
+  Os estilos estáticos estão em assets/global.css.
+  O JavaScript está em assets/config.js.
+{% endcomment %}
+
+<style>
+  /* Estilos dinâmicos para a seção parallax (dependem das configurações do schema) */
+  .parallax-section-{{ section.id }} {
+    height: {{ section.settings.section_height }}vh; /* Altura da seção em VH (Viewport Height) */
+    background-color: {{ section.settings.background_color }}; /* Cor de fundo da seção */
+  }
+
+  .parallax-bg-{{ section.id }} {
+    /* Fallback para imagem de fundo caso a definida no schema não carregue */
+    background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
+    background-image: -webkit-image-set(
+      url('{{ section.settings.background_image | img_url: 'master' }}') 1x,
+      url('{{ section.settings.background_image | img_url: '2x' }}') 2x
+    );
+    background-color: #cccccc; /* Cor de fundo de fallback para depuração se a imagem não carregar */
+  }
+
+  /* Estilos para o texto */
+  .parallax-content-{{ section.id }} h1,
+  .parallax-content-{{ section.id }} h2 {
+    color: {{ section.settings.heading_color }};
+  }
+
+  .parallax-content-{{ section.id }} p {
+    color: {{ section.settings.subheading_color }};
+  }
+
+  /* Fundo semi-transparente para melhor legibilidade do texto */
+  .parallax-content-{{ section.id }} {
+    background-color: {{ section.settings.content_bg_color }};
+  }
+
+  /* Estilos para o botão */
+  .btn-primary-{{ section.id }} {
+      color: {{ section.settings.button_text_color }};
+      background-color: {{ section.settings.button_bg_color }};
+  }
+
+  .btn-primary-{{ section.id }}:hover {
+      background-color: {{ section.settings.button_hover_bg_color }};
+  }
+</style>
+
+<section class="parallax-section-{{ section.id }} js-parallax-section">
+  <div class="parallax-bg-{{ section.id }} js-parallax-bg"
+       data-parallax-speed="{{ section.settings.parallax_speed }}">
   </div>
-  
-  <div class="parallax-content">
-    <h1>{{ section.settings.heading }}</h1>
-    <p>{{ section.settings.subheading }}</p>
+  <div class="parallax-content-{{ section.id }}">
+    {% if section.settings.heading != blank %}
+      <h1 class="text-5xl font-bold mb-4 js-fade-element">{{ section.settings.heading }}</h1>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="text-xl mb-8 js-fade-element">{{ section.settings.subheading }}</p>
+    {% endif %}
+    {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+      <a href="{{ section.settings.button_url }}" class="btn-primary-{{ section.id }} js-fade-element">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
   </div>
 </section>
+
+
+{% schema %}
+{
+  "name": "Parallax Personalizado",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Imagem de Fundo",
+      "info": "Escolha uma imagem para o fundo da seção parallax."
+    },
+    {
+      "type": "range",
+      "id": "parallax_speed",
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.1,
+      "unit": "x",
+      "label": "Velocidade do Parallax",
+      "default": 0.3,
+      "info": "Controla a velocidade de rolagem da imagem de fundo (0 = parado, 1 = velocidade normal)."
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Altura da Seção",
+      "default": 100,
+      "info": "Altura da seção em relação à altura da tela (viewport height)."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Cor de Fundo da Seção",
+      "default": "#f5f5f7"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Descubra o Futuro"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Cor do Título",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "Tecnologia inovadora ao seu alcance."
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Cor do Subtítulo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Cor de Fundo do Conteúdo",
+      "default": "rgba(0,0,0,0.4)",
+      "info": "Fundo semi-transparente para o bloco de texto."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Texto do Botão",
+      "default": "Saiba Mais"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link do Botão",
+      "default": "/collections/all"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Cor de Fundo do Botão",
+      "default": "#007aff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Cor de Fundo do Botão (Hover)",
+      "default": "#005bb5"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Cor do Texto do Botão",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Parallax Personalizado",
+      "category": "Imagens e Vídeos"
+    }
+  ]
+}
+{% endschema %}

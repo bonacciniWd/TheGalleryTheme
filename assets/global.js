@@ -1268,25 +1268,4 @@ if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
 
-document.addEventListener('scroll', () => {
-  const sections = document.querySelectorAll('.parallax-advanced');
-
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-
-    if (rect.bottom >= 0 && rect.top <= windowHeight) {
-      const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
-
-      const bg = section.querySelector('.parallax-bg');
-      const fgImg = section.querySelector('.parallax-fg img');
-
-      // Movimento sutil do fundo
-      bg.style.transform = `translateY(${scrollProgress * 20}px) scale(${1 + scrollProgress * 0.05})`;
-
-      // Movimento mais acentuado do foreground
-      fgImg.style.transform = `translateY(${scrollProgress * -50}px) scale(${1 + scrollProgress * 0.1})`;
-    }
-  });
-});
 
