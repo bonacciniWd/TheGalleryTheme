@@ -1,210 +1,62 @@
 {% comment %}
   Seção de Comparação de Imagens com Slider de Fundo
   Baseado no código fornecido, utilizando background-image e um input type="range".
+  Estilos dinâmicos permanecem aqui. Estilos estáticos em assets/global.css.
+  JavaScript em assets/config.js.
 {% endcomment %}
 
 <style>
-  /* Estilos para a seção principal */
+  /* Estilos dinâmicos para a seção principal (dependem das configurações do schema) */
   .section-image-comparison-background-slider-{{ section.id }} {
-    position: relative;
-    width: 100%;
     max-width: {{ section.settings.max_width }}px;
-    margin: 2rem auto; /* Adiciona margem para melhor visualização */
     background-color: {{ section.settings.background_color }};
-    padding: 2rem 0;
-    box-sizing: border-box;
-    font-family: sans-serif; /* Ou sua fonte de tema padrão */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
   /* Título da seção (opcional) */
   .image-comparison-background-slider-heading-{{ section.id }} {
     color: {{ section.settings.text_color }};
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-align: center;
   }
 
   /* Container principal da comparação */
   #comparison-{{ section.id }} {
-    width: 100%; /* Ocupa a largura total da seção (até max_width) */
-    /* Calcula a altura com base no aspect ratio para imagens responsivas */
     padding-top: {{ 100 | divided_by: section.settings.aspect_ratio }}%;
     max-width: {{ section.settings.max_width }}px;
-    overflow: hidden;
-    position: relative; /* Importante para o posicionamento dos filhos */
-    border-radius: 1rem;
-    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.3);
-    border: 2px solid blue; /* DEBUG: Borda do container principal */
   }
 
   /* Figure - Imagem 'Antes' (fica como background-image) */
   #comparison-{{ section.id }} figure {
     background-image: url("{% if section.settings.image_before != blank %}{{ section.settings.image_before | img_url: 'master' }}{% else %}https://placehold.co/1200x900/E0E0E0/333333?text=ANTES{% endif %}");
-    background-size: cover;
-    background-position: center; /* Centraliza a imagem antes */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    font-size: 0; /* Remove espaço de elementos inline */
-    z-index: 1; /* Garante que a imagem 'antes' esteja no fundo */
-    border: 2px solid red; /* DEBUG: Borda da imagem 'antes' */
   }
 
   /* Divisor - Imagem 'Depois' (fica como background-image dentro do divisor) */
   #divisor-{{ section.id }} {
     background-image: url("{% if section.settings.image_after != blank %}{{ section.settings.image_after | img_url: 'master' }}{% else %}https://placehold.co/1200x900/A0A0A0/FFFFFF?text=DEPOIS{% endif %}");
-    background-size: cover;
-    background-position: left center; /* CRÍTICO: Mantém a imagem 'depois' alinhada à esquerda */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%; /* Largura inicial, será controlada pelo JS */
-    height: 100%;
-    overflow: hidden; /* Garante que a imagem 'depois' seja recortada */
-    z-index: 2; /* Garante que o divisor esteja acima da imagem 'antes' */
-    border: 2px solid green; /* DEBUG: Borda do divisor */
-  }
-
-  /* Estilos para o slider nativo */
-  #slider-{{ section.id }} {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: absolute; /* Posicionado sobre as imagens */
-    bottom: -1rem; /* Ajuste para posicionar abaixo da comparação visual */
-    left: 0%; /* Ajuste a posição horizontal */
-    width: 100%;
-    height: 15px; /* Altura da trilha para facilitar o clique */
-    background-color: rgba(255, 255, 255, 0.1);
-    outline: none;
-    cursor: ew-resize;
-    z-index: 10; /* Garante que o slider esteja acima das imagens */
-    transform: translateY(-50%); /* Ajusta o posicionamento vertical */
   }
 
   /* Estilos específicos para o thumb (handle) do slider */
   #slider-{{ section.id }}::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 30px; /* Altura maior para facilitar arrastar */
     background: {{ section.settings.slider_handle_color }};
-    border-radius: 0;
-    cursor: grab;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border: 2px solid {{ section.settings.slider_line_color }}; /* Para simular a linha do slider */
-    margin-top: -8px; /* Ajusta a posição vertical do thumb */
-  }
-
-  #slider-{{ section.id }}::-moz-range-thumb {
-    -moz-appearance: none;
-    width: 20px;
-    height: 30px;
-    background: {{ section.settings.slider_handle_color }};
-    border-radius: 0;
-    cursor: grab;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     border: 2px solid {{ section.settings.slider_line_color }};
   }
 
-  /* Estilos para a trilha do slider */
-  #slider-{{ section.id }}::-webkit-slider-runnable-track {
-    background: rgba(255, 255, 255, 0.2);
-    height: 4px; /* Linha mais fina */
-    border-radius: 2px;
-  }
-
-  #slider-{{ section.id }}::-moz-range-track {
-    background: rgba(255, 255, 255, 0.2);
-    height: 4px;
-    border-radius: 2px;
-  }
-
-  #slider-{{ section.id }}:focus::-webkit-slider-thumb {
-    background: rgba(255, 255, 255, 0.7);
-  }
-  #slider-{{ section.id }}:focus::-moz-range-thumb {
-    background: rgba(255, 255, 255, 0.7);
-  }
-
-  /* Ajustes responsivos */
-  @media (max-width: 768px) {
-    .image-comparison-background-slider-heading-{{ section.id }} {
-      font-size: 2rem;
-    }
-    #slider-{{ section.id }} {
-      bottom: -0.5rem;
-    }
-    #slider-{{ section.id }}::-webkit-slider-thumb,
-    #slider-{{ section.id }}::-moz-range-thumb {
-      width: 15px;
-      height: 25px;
-    }
+  #slider-{{ section.id }}::-moz-range-thumb {
+    background: {{ section.settings.slider_handle_color }};
+    border: 2px solid {{ section.settings.slider_line_color }};
   }
 </style>
 
-<section class="section-image-comparison-background-slider-{{ section.id }}">
+<section class="section-image-comparison-background-slider-{{ section.id }} comparison-section">
   {% if section.settings.heading != blank %}
     <h2 class="image-comparison-background-slider-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
   {% endif %}
 
-  <div id="comparison-{{ section.id }}">
-    <figure>
-      <div id="divisor-{{ section.id }}"></div>
+  <div id="comparison-{{ section.id }}" class="comparison-container">
+    <figure class="comparison-figure">
+      <div id="divisor-{{ section.id }}" class="comparison-divisor"></div>
     </figure>
-    <input type="range" min="0" max="100" value="{{ section.settings.initial_slider_position }}" id="slider-{{ section.id }}" aria-label="Slider de comparação de imagens">
+    <input type="range" min="0" max="100" value="{{ section.settings.initial_slider_position }}" id="slider-{{ section.id }}" class="comparison-slider" aria-label="Slider de comparação de imagens">
   </div>
 </section>
-
-<script>
-  // Script para a seção {{ section.id }}
-  document.addEventListener('DOMContentLoaded', function() {
-    const sectionId = '{{ section.id }}';
-    const divisor = document.getElementById(`divisor-${sectionId}`);
-    const slider = document.getElementById(`slider-${sectionId}`);
-    const comparisonContainer = document.getElementById(`comparison-${sectionId}`);
-
-    // Adiciona logs para depuração
-    console.log(`[Background Slider ${sectionId}] Inicializando...`);
-    console.log(`[Background Slider ${sectionId}] Divisor:`, divisor);
-    console.log(`[Background Slider ${sectionId}] Slider Input:`, slider);
-    console.log(`[Background Slider ${sectionId}] Comparison Container:`, comparisonContainer);
-
-    if (!divisor || !slider || !comparisonContainer) {
-      console.error(`[Background Slider ${sectionId}] ERRO: Um ou mais elementos essenciais não foram encontrados. O slider não funcionará.`);
-      return;
-    }
-
-    function moveDivisor() {
-      // O valor do slider (0-100) é diretamente a largura do divisor em porcentagem
-      divisor.style.width = slider.value + "%";
-      console.log(`[Background Slider ${sectionId}] Slider Value: ${slider.value}%, Divisor Width: ${divisor.style.width}`);
-    }
-
-    // Atribui o evento 'input' ao slider
-    slider.addEventListener('input', moveDivisor);
-
-    // Define a posição inicial do slider ao carregar e redimensionar
-    function setInitialPosition() {
-        // Dispara o evento 'input' para garantir que a posição inicial seja aplicada
-        // Isto é importante para o editor de temas e carregamento inicial
-        slider.dispatchEvent(new Event('input'));
-        console.log(`[Background Slider ${sectionId}] Posição inicial aplicada: ${slider.value}%`);
-    }
-
-    window.addEventListener('load', setInitialPosition);
-    window.addEventListener('resize', setInitialPosition);
-
-    // Chama a função uma vez para garantir o estado inicial correto (para o editor de temas)
-    setInitialPosition();
-  });
-</script>
 
 {% schema %}
 {
