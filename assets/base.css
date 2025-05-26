@@ -3788,7 +3788,7 @@ details-disclosure > details {
   }
 
   .before-after-slider .after {
-    width: 80px !important; /* linha menor inicialmente */
+    width: 20px !important; /* linha menor inicialmente */
   }
 
   #scroller {
