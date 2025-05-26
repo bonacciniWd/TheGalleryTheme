@@ -194,13 +194,13 @@
         "padding_bottom": 36
       }
     },
-    "parallax_banner_DjgcKR": {
+    "parallax_banner_izGg7L": {
       "type": "parallax-banner",
       "name": "Parallax Avançado",
       "settings": {
-        "heading": "",
-        "subheading": "",
-        "height": 150
+        "background_image": "shopify://shop_images/10256900.jpg",
+        "heading": "Seu Título Aqui",
+        "subheading": ""
       }
     }
   },
@@ -216,6 +216,6 @@
     "video_N3ptFW",
     "image_banner_zyji7q",
     "featured_blog_KPygWW",
-    "parallax_banner_DjgcKR"
+    "parallax_banner_izGg7L"
   ]
 }
