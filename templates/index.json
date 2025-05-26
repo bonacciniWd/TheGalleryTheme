@@ -198,8 +198,6 @@
       "type": "parallax-banner",
       "name": "Parallax Avançado",
       "settings": {
-        "background_image": "shopify://shop_images/10256900.jpg",
-        "foreground_image": "shopify://shop_images/next.svg",
         "heading": "",
         "subheading": "",
         "height": 150
