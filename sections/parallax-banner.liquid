@@ -1,11 +1,16 @@
 {% schema %}
 {
-  "name": "Parallax Banner",
+  "name": "Parallax Avançado",
   "settings": [
     {
       "type": "image_picker",
       "id": "background_image",
       "label": "Imagem de Fundo"
+    },
+    {
+      "type": "image_picker",
+      "id": "foreground_image",
+      "label": "Imagem de Primeiro Plano"
     },
     {
       "type": "text",
@@ -21,16 +26,16 @@
     {
       "type": "range",
       "id": "height",
-      "label": "Altura da Seção (em vh)",
-      "min": 30,
-      "max": 100,
-      "step": 5,
-      "default": 60
+      "label": "Altura da Seção (vh)",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "default": 100
     }
   ],
   "presets": [
     {
-      "name": "Parallax Banner",
+      "name": "Parallax Avançado",
       "category": "Banner"
     }
   ]
@@ -38,11 +43,17 @@
 {% endschema %}
 
 <section 
-  class="parallax-banner" 
-  style="
-    background-image: url({{ section.settings.background_image | img_url: '2048x' }});
-    height: {{ section.settings.height }}vh;
-  ">
+  class="parallax-advanced" 
+  style="height: {{ section.settings.height }}vh;">
+
+  <div class="parallax-layer parallax-bg" 
+       style="background-image: url({{ section.settings.background_image | img_url: '2048x' }});">
+  </div>
+
+  <div class="parallax-layer parallax-fg">
+    <img src="{{ section.settings.foreground_image | img_url: '800x' }}" alt="Primeiro Plano">
+  </div>
+
   <div class="parallax-content">
     <h1>{{ section.settings.heading }}</h1>
     <p>{{ section.settings.subheading }}</p>
