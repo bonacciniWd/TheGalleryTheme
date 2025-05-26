@@ -3600,24 +3600,21 @@ details-disclosure > details {
 /* Container principal */
 .before-after-slider {
   width: 100%;
-  height: 600px; /* Será ajustado pelas media queries */
+  height: 600px;
   position: relative;
   user-select: none;
-  overflow: hidden; /* MUDANÇA: Oculta o que vaza para garantir que as imagens fiquem dentro do container */
+  overflow: visible;
 }
 
 /* Wrapper centralizado */
 .before-after-slider .wrapper {
-  width: 900px; /* Será ajustado pelas media queries */
-  height: 600px; /* Será ajustado pelas media queries */
+  width: 900px;
+  height: 600px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden; /* MUDANÇA: Oculta o que vaza dentro do wrapper também */
-  display: flex; /* Adicionado para centralizar e gerenciar o layout interno */
-  justify-content: center; /* Centraliza horizontalmente as imagens */
-  align-items: center; /* Centraliza verticalmente as imagens */
+  overflow: visible;
 }
 
 /* Imagem antes */
@@ -3632,11 +3629,8 @@ details-disclosure > details {
 }
 
 .before-after-slider .before .content-image {
-  width: 100%; /* Garante que a imagem preencha a largura */
   height: 100%;
   display: block;
-  object-fit: cover; /* MUDANÇA: Redimensiona a imagem para cobrir o container, cortando se necessário */
-  object-position: center; /* Centraliza a imagem dentro do container */
 }
 
 /* Imagem depois */
@@ -3651,11 +3645,8 @@ details-disclosure > details {
 }
 
 .before-after-slider .after .content-image {
-  width: 100%; /* Garante que a imagem preencha a largura dentro do "after" */
   height: 100%;
   display: block;
-  object-fit: cover; /* MUDANÇA: Redimensiona a imagem para cobrir o container, cortando se necessário */
-  object-position: center; /* Centraliza a imagem dentro do container */
 }
 
 /* Botão scroller */
@@ -3676,7 +3667,7 @@ details-disclosure > details {
 
   z-index: 10;
 
-  transition: left 0.6s ease, right 0.6s ease; /* Adiciona transição para 'right' também */
+  transition: left 0.6s ease;
 }
 
 /* Texto dentro do botão */
@@ -3706,7 +3697,7 @@ details-disclosure > details {
 
 /* Quando toggled = right (lado direito), texto muda lado */
 #scroller.right {
-  left: auto; /* MUDANÇA: Garante que 'left' seja resetado quando 'right' é ativo */
+  left: auto;
   right: 100px;
   transform: translateY(-50%);
 }
@@ -3755,7 +3746,7 @@ details-disclosure > details {
 
   .before-after-slider .wrapper {
     width: 90vw;
-    height: 300px; /* Mantém uma altura razoável, se as imagens forem muito largas, serão cortadas */
+    height: 300px;
   }
 
   #scroller {
@@ -3788,42 +3779,44 @@ details-disclosure > details {
 /* Ajustes para telas muito pequenas, ex: iPhone SE (320-375px) */
 @media (max-width: 375px) {
   .before-after-slider {
-    height: 250px; /* MUDANÇA: Altura um pouco menor, para ser mais proporcional ao width: 95vw */
+    height: 300px; /* menor altura */
   }
 
   .before-after-slider .wrapper {
-    width: 95vw;
-    height: 250px; /* MUDANÇA: Fixa a altura para garantir que as imagens se ajustem com object-fit */
+    width: 95vw; /* quase toda largura da tela */
+    height: auto;
   }
 
   .before-after-slider .after {
-    width: 60px !important; /* MUDANÇA: Linha inicial menor para não ocupar tanto espaço */
+    width: 80px !important; /* linha menor inicialmente */
   }
 
   #scroller {
     width: 45px;
     height: 30px;
-    left: 15px !important; /* MUDANÇA: Posiciona mais próximo da borda para dar espaço */
+    left: 20px !important;
   }
 
   #scroller.right {
-    right: 15px !important; /* MUDANÇA: Posiciona mais próximo da borda */
+    right: 20px !important;
   }
 
   #text {
-    font-size: 10px; /* MUDANÇA: Texto menor para caber */
-    margin-right: 2px; /* MUDANÇA: Margens menores */
-    margin-left: 2px; /* MUDANÇA: Margens menores */
+    font-size: 12px;
+    margin-right: 4px;
+    margin-left: 4px;
   }
 
   #icon-wrapper {
-    width: 30px; /* MUDANÇA: Ícone menor */
-    height: 30px; /* MUDANÇA: Ícone menor */
+    width: 35px;
+    height: 30px;
   }
 
   #star-svg {
-    width: 25px !important; /* MUDANÇA: SVG menor */
-    height: 25px !important; /* MUDANÇA: SVG menor */
+    width: 30px !important;
+    height: 30px !important;
   }
 }
+
+
 
