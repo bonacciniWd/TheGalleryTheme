@@ -1,155 +1,428 @@
+{% comment %}
+  Seção de Comparação de Imagens Estilo Apple para Shopify
+  Recria o efeito de slider de comparação de imagens visto no site da Apple.
+  Permite definir as imagens, textos descritivos, e a posição inicial do slider.
+{% endcomment %}
+
+<style>
+  /* Estilos essenciais para a seção de comparação de imagens */
+  .image-comparison-section-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    max-width: {{ section.settings.max_width }}px; /* Largura máxima da seção */
+    margin: 0 auto;
+    background-color: {{ section.settings.background_color }};
+    padding: 2rem 0; /* Adiciona padding vertical */
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-comparison-container-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    /* padding-top para manter o aspect ratio da imagem */
+    padding-top: {{ 100 | divided_by: section.settings.aspect_ratio }}%;
+    overflow: hidden; /* Importante para o recorte */
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 2rem;
+    cursor: ew-resize; /* Cursor para indicar arrastar horizontalmente */
+  }
+
+  /* Imagem 'Antes' - sempre visível no fundo */
+  .image-comparison-before-{{ section.id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Abaixo da imagem 'depois' e do slider */
+  }
+
+  .image-comparison-before-{{ section.id }} img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
+    pointer-events: none; /* Impede que a imagem seja arrastada */
+  }
+
+  /* Container da imagem 'Depois' - atua como uma MÁSCARA de recorte (clipper) */
+  .image-comparison-after-clipper-{{ section.id }} {
+    position: absolute;
+    top: 0;
+    left: 0; /* A largura e a posição 'left' serão controladas pelo JS */
+    height: 100%;
+    overflow: hidden; /* ESSENCIAL para o recorte */
+    z-index: 2; /* Acima da imagem 'before' */
+    /* width will be set by JS */
+  }
+
+  /* A IMAGEM 'Depois' em si (a tag <img> dentro do clipper) */
+  /* Ela deve ter a largura total do container principal e sua posição 'left' ajustada pelo JS */
+  .image-comparison-after-clipper-{{ section.id }} img {
+    position: absolute;
+    top: 0;
+    left: 0; /* A posição 'left' será ajustada pelo JS para alinhamento */
+    /* A largura será definida pelo JS para ser igual à largura do container principal */
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
+    pointer-events: none;
+  }
+
+  /* Linha do Slider */
+  .image-comparison-slider-line-{{ section.id }} {
+    position: absolute;
+    left: 50%; /* Posição inicial, será ajustada pelo JS */
+    top: 0;
+    bottom: 0;
+    width: 2px; /* Espessura da linha */
+    background-color: {{ section.settings.slider_line_color }};
+    z-index: 3; /* Acima das imagens */
+    transform: translateX(-50%); /* Centraliza a linha no ponto do slider */
+  }
+
+  /* Handle do Slider */
+  .image-comparison-slider-handle-{{ section.id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Posição inicial, será ajustada pelo JS */
+    width: 40px; /* Largura do handle */
+    height: 40px; /* Altura do handle */
+    background-color: {{ section.settings.slider_handle_color }};
+    border: 2px solid {{ section.settings.slider_line_color }};
+    border-radius: 50%;
+    cursor: grab;
+    z-index: 4; /* Acima da linha */
+    transform: translate(-50%, -50%); /* Centraliza o handle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    user-select: none; /* Impede seleção de texto ao arrastar */
+  }
+
+  .image-comparison-slider-handle-{{ section.id }}:active {
+    cursor: grabbing;
+  }
+
+  /* Estilos para os textos descritivos */
+  .image-comparison-label-wrapper-{{ section.id }} {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: {{ section.settings.max_width }}px;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .image-comparison-label-{{ section.id }} {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: {{ section.settings.text_color }};
+    text-align: center;
+    flex: 1;
+  }
+
+  .image-comparison-label-{{ section.id }}.left {
+    text-align: left;
+  }
+
+  .image-comparison-label-{{ section.id }}.right {
+    text-align: right;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .image-comparison-slider-handle-{{ section.id }} {
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+    }
+    .image-comparison-label-{{ section.id }} {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<section class="image-comparison-section-{{ section.id }}">
+  {% if section.settings.heading != blank %}
+    <h2 style="color: {{ section.settings.text_color }}; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="image-comparison-label-wrapper-{{ section.id }}">
+    {% if section.settings.label_before != blank %}
+      <span class="image-comparison-label-{{ section.id }} left">{{ section.settings.label_before }}</span>
+    {% endif %}
+    {% if section.settings.label_after != blank %}
+      <span class="image-comparison-label-{{ section.id }} right">{{ section.settings.label_after }}</span>
+    {% endif %}
+  </div>
+
+  <div class="image-comparison-container-{{ section.id }}">
+    <div class="image-comparison-before-{{ section.id }}">
+      {% if section.settings.image_before != blank %}
+        <img src="{{ section.settings.image_before | img_url: 'master' }}"
+             srcset="{{ section.settings.image_before | img_url: '400x' }} 400w,
+                     {{ section.settings.image_before | img_url: '800x' }} 800w,
+                     {{ section.settings.image_before | img_url: '1200x' }} 1200w"
+             sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
+             alt="{{ section.settings.label_before | default: 'Imagem Antes' }}">
+      {% else %}
+        <img src="https://placehold.co/800x600/E0E0E0/333333?text=Imagem+Antes" alt="Placeholder Imagem Antes">
+      {% endif %}
+    </div>
+
+    <div class="image-comparison-after-clipper-{{ section.id }}">
+      {% if section.settings.image_after != blank %}
+        <img class="image-comparison-after-image-{{ section.id }}"
+             src="{{ section.settings.image_after | img_url: 'master' }}"
+             srcset="{{ section.settings.image_after | img_url: '400x' }} 400w,
+                     {{ section.settings.image_after | img_url: '800x' }} 800w,
+                     {{ section.settings.image_after | img_url: '1200x' }} 1200w"
+             sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
+             alt="{{ section.settings.label_after | default: 'Imagem Depois' }}">
+      {% else %}
+        <img class="image-comparison-after-image-{{ section.id }}"
+             src="https://placehold.co/800x600/A0A0A0/FFFFFF?text=Imagem+Depois" alt="Placeholder Imagem Depois">
+      {% endif %}
+    </div>
+
+    <div class="image-comparison-slider-line-{{ section.id }}"></div>
+    <div class="image-comparison-slider-handle-{{ section.id }}">
+      &#x2194; </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sectionId = '{{ section.id }}';
+    const container = document.querySelector(`.image-comparison-container-${sectionId}`);
+    const afterImageClipper = document.querySelector(`.image-comparison-after-clipper-${sectionId}`);
+    const afterImgElement = afterImageClipper ? afterImageClipper.querySelector('.image-comparison-after-image-' + sectionId) : null; // A tag <img> real
+    const sliderLine = document.querySelector(`.image-comparison-slider-line-${sectionId}`);
+    const sliderHandle = document.querySelector(`.image-comparison-slider-handle-${sectionId}`);
+
+    // Adiciona logs para depuração
+    console.log(`[Slider ${sectionId}] Inicializando...`);
+    console.log(`[Slider ${sectionId}] Container:`, container);
+    console.log(`[Slider ${sectionId}] After Clipper:`, afterImageClipper);
+    console.log(`[Slider ${sectionId}] After Img Element:`, afterImgElement);
+    console.log(`[Slider ${sectionId}] Slider Line:`, sliderLine);
+    console.log(`[Slider ${sectionId}] Slider Handle:`, sliderHandle);
+
+
+    if (!container || !afterImageClipper || !afterImgElement || !sliderLine || !sliderHandle) {
+      console.error(`[Slider ${sectionId}] ERRO: Um ou mais elementos essenciais não foram encontrados. O slider não funcionará.`);
+      return;
+    }
+
+    let isDragging = false;
+
+    // Função para atualizar a posição do slider e o recorte da imagem 'after'
+    function updateSlider(e) {
+      const containerRect = container.getBoundingClientRect();
+      let clientX;
+
+      if (e.touches && e.touches.length > 0) { // Para eventos de toque
+        clientX = e.touches[0].clientX;
+      } else { // Para eventos de mouse
+        clientX = e.clientX;
+      }
+
+      let x = clientX - containerRect.left; // Posição X relativa ao container
+
+      // Limita o movimento do slider dentro do container
+      if (x < 0) x = 0;
+      if (x > containerRect.width) x = containerRect.width;
+
+      // Atualiza a largura do container de recorte da imagem 'after'
+      afterImageClipper.style.width = `${x}px`;
+      // A imagem 'depois' dentro do clipper deve ter a largura total do container principal
+      afterImgElement.style.width = `${containerRect.width}px`;
+      // Atualiza a posição da imagem 'depois' dentro do seu container de recorte
+      // Isso é crucial para manter a imagem 'depois' alinhada com a 'antes'
+      afterImgElement.style.left = `-${x}px`;
+
+      // Atualiza a posição da linha e do handle do slider
+      sliderLine.style.left = `${x}px`;
+      sliderHandle.style.left = `${x}px`;
+
+      // console.log(`[Slider ${sectionId}] X: ${x}, Clipper Width: ${x}, After Left: ${-x}`); // Para depuração do movimento
+    }
+
+    // Eventos de mouse
+    sliderHandle.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      sliderHandle.style.cursor = 'grabbing';
+      e.preventDefault(); // Previne arrastar a imagem ou seleção de texto
+      console.log(`[Slider ${sectionId}] Mousedown: Arrasto iniciado.`);
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        sliderHandle.style.cursor = 'grab';
+        console.log(`[Slider ${sectionId}] Mouseup: Arrasto finalizado.`);
+      }
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault(); // Previne seleção de texto ou outras ações padrão
+      updateSlider(e);
+    });
+
+    // Eventos de toque
+    sliderHandle.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      sliderHandle.style.cursor = 'grabbing';
+      // e.preventDefault(); // Comentado para permitir rolagem se o toque não for um arrasto do handle
+      console.log(`[Slider ${sectionId}] Touchstart: Arrasto iniciado.`);
+    }, { passive: false }); // passive: false para permitir preventDefault
+
+    document.addEventListener('touchend', () => {
+      if (isDragging) {
+        isDragging = false;
+        sliderHandle.style.cursor = 'grab';
+        console.log(`[Slider ${sectionId}] Touchend: Arrasto finalizado.`);
+      }
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault(); // Previne rolagem da página ao arrastar o handle
+      updateSlider(e);
+    }, { passive: false }); // passive: false para permitir preventDefault
+
+    // Define a posição inicial do slider ao carregar e redimensionar
+    function setInitialPosition() {
+      const initialPercentage = parseFloat('{{ section.settings.initial_slider_position }}') / 100;
+      const containerWidth = container.getBoundingClientRect().width;
+      const initialX = containerWidth * initialPercentage;
+
+      // Aplica a posição inicial
+      afterImageClipper.style.width = `${initialX}px`;
+      afterImgElement.style.width = `${containerWidth}px`; // Garante que a imagem 'depois' tenha a largura total
+      afterImgElement.style.left = `-${initialX}px`; // Alinha a imagem 'depois'
+      sliderLine.style.left = `${initialX}px`;
+      sliderHandle.style.left = `${initialX}px`;
+      console.log(`[Slider ${sectionId}] Posição inicial definida para ${initialPercentage * 100}% (${initialX}px).`);
+    }
+
+    // Adiciona listeners para garantir que a posição inicial seja definida corretamente
+    window.addEventListener('load', setInitialPosition);
+    window.addEventListener('resize', setInitialPosition);
+
+    // Chama a função uma vez para garantir o estado inicial correto mesmo antes do load (para o editor de temas)
+    setInitialPosition();
+  });
+</script>
+
+
 {% schema %}
 {
-  "name": "Image Comparator",
+  "name": "Comparação",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "image_a",
-      "label": "Imagem A"
-    },
-    {
       "type": "text",
-      "id": "text_a",
-      "label": "Texto da Imagem A",
-      "default": "Modelo A"
+      "id": "heading",
+      "label": "Título da Seção",
+      "default": "Compare a Evolução"
     },
     {
       "type": "image_picker",
-      "id": "image_b",
-      "label": "Imagem B"
+      "id": "image_before",
+      "label": "Imagem 'Antes'",
+      "info": "A imagem original ou 'antes'."
     },
     {
       "type": "text",
-      "id": "text_b",
-      "label": "Texto da Imagem B",
-      "default": "Modelo B"
+      "id": "label_before",
+      "label": "Texto 'Antes'",
+      "default": "Série Anterior"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_after",
+      "label": "Imagem 'Depois'",
+      "info": "A imagem nova ou 'depois'."
+    },
+    {
+      "type": "text",
+      "id": "label_after",
+      "label": "Texto 'Depois'",
+      "default": "Série Nova"
+    },
+    {
+      "type": "range",
+      "id": "initial_slider_position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Posição Inicial do Slider",
+      "default": 50,
+      "info": "Define a posição inicial do slider em porcentagem (0% = todo 'depois', 100% = todo 'antes')."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 300,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Largura Máxima do Slider",
+      "default": 1000,
+      "info": "Largura máxima do container de comparação de imagens."
+    },
+    {
+      "type": "range",
+      "id": "aspect_ratio",
+      "min": 0.5,
+      "max": 2.0,
+      "step": 0.1,
+      "label": "Proporção da Imagem (Largura/Altura)",
+      "default": 1.3,
+      "info": "Define a proporção da imagem (ex: 1.3 para 4:3, 1.7 para 16:9). Ajuste para a proporção das suas imagens."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Cor de Fundo da Seção",
+      "default": "#f5f5f7"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Cor do Texto",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "slider_line_color",
+      "label": "Cor da Linha do Slider",
+      "default": "#007aff"
+    },
+    {
+      "type": "color",
+      "id": "slider_handle_color",
+      "label": "Cor do Handle do Slider",
+      "default": "#007aff"
     }
   ],
   "presets": [
     {
-      "name": "Comparador de Imagens"
+      "name": "Comparação de Imagens (Apple)",
+      "category": "Imagens e Vídeos"
     }
   ]
 }
 {% endschema %}
-
-<div class="image-comparator" data-id="{{ section.id }}">
-  <div class="image-comparator__wrapper">
-    {% if section.settings.image_a %}
-      <img src="{{ section.settings.image_a | image_url: width: 1200 }}" alt="{{ section.settings.text_a }}" class="image-comparator__image">
-    {% endif %}
-    
-    <div class="image-comparator__overlay">
-      {% if section.settings.image_b %}
-        <img src="{{ section.settings.image_b | image_url: width: 1200 }}" alt="{{ section.settings.text_b }}" class="image-comparator__image">
-      {% endif %}
-    </div>
-
-    <input type="range" min="0" max="100" value="50" class="image-comparator__slider" aria-label="Comparar modelos" title="Arraste para comparar os modelos">
-    
-    <button type="button" class="image-comparator__reset" aria-label="Resetar comparação">Reset</button>
-  </div>
-
-  <div class="image-comparator__labels">
-    <span>{{ section.settings.text_a }}</span>
-    <span>{{ section.settings.text_b }}</span>
-  </div>
-</div>
-
-<style>
-.image-comparator {
-  max-width: 800px;
-  margin: 20px auto;
-  font-family: Arial, sans-serif;
-}
-
-.image-comparator__wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-.image-comparator__image {
-  width: 100%;
-  display: block;
-}
-
-.image-comparator__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  overflow: hidden;
-  width: 50%;
-  transition: width 0.3s ease;
-}
-
-.image-comparator__slider {
-  width: 100%;
-  margin-top: 15px;
-  appearance: none;
-  height: 6px;
-  background: #ddd;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.image-comparator__slider::-webkit-slider-thumb {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #007aff;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-
-.image-comparator__labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #555;
-}
-
-.image-comparator__reset {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: #007aff;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: background 0.3s ease;
-}
-
-.image-comparator__reset:hover {
-  background: #005bb5;
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.image-comparator').forEach(function(comparator) {
-    const slider = comparator.querySelector('.image-comparator__slider');
-    const overlay = comparator.querySelector('.image-comparator__overlay');
-    const resetBtn = comparator.querySelector('.image-comparator__reset');
-
-    function updateOverlay() {
-      overlay.style.width = slider.value + '%';
-    }
-
-    slider.addEventListener('input', updateOverlay);
-
-    resetBtn.addEventListener('click', function() {
-      slider.value = 50;
-      updateOverlay();
-    });
-  });
-});
-</script>
