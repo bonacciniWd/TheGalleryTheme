@@ -3777,7 +3777,7 @@ details-disclosure > details {
 }
 
 /* Ajustes para telas muito pequenas, ex: iPhone SE (320-375px) */
-@media (max-width: 400px) {
+@media (max-width: 375px) {
   .before-after-slider {
     height: 300px; /* menor altura */
   }
