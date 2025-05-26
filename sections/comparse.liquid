@@ -154,62 +154,13 @@
 </style>
 
 <section class="image-comparison-section-{{ section.id }}">
-  {% if section.settings.heading != blank %}
-    <h2 style="color: {{ section.settings.text_color }}; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">{{ section.settings.heading }}</h2>
-  {% endif %}
-
-  <div class="image-comparison-label-wrapper-{{ section.id }}">
-    {% if section.settings.label_before != blank %}
-      <span class="image-comparison-label-{{ section.id }} left">{{ section.settings.label_before }}</span>
-    {% endif %}
-    {% if section.settings.label_after != blank %}
-      <span class="image-comparison-label-{{ section.id }} right">{{ section.settings.label_after }}</span>
-    {% endif %}
+  <div class="image-comparison">
+  <div class="comparison-container">
+    <img src="{{ 'imagem1.png' | asset_url }}" alt="Imagem Antes" class="comparison-img img-before">
+    <img src="{{ 'imagem2.png' | asset_url }}" alt="Imagem Depois" class="comparison-img img-after">
+    <input type="range" min="0" max="100" value="50" class="slider" aria-label="Comparação de Imagens">
   </div>
-
-  <div class="image-comparison-container-{{ section.id }}">
-    <div class="image-comparison-before-{{ section.id }}">
-      {% if section.settings.image_before != blank %}
-        <img src="{{ section.settings.image_before | img_url: 'master' }}"
-             width="{{ section.settings.image_before.width }}"
-             height="{{ section.settings.image_before.height }}"
-             srcset="{{ section.settings.image_before | img_url: '400x' }} 400w,
-                     {{ section.settings.image_before | img_url: '800x' }} 800w,
-                     {{ section.settings.image_before | img_url: '1200x' }} 1200w"
-             sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
-             alt="{{ section.settings.label_before | default: 'Imagem Antes' }}">
-      {% else %}
-        <img src="https://placehold.co/800x600/E0E0E0/333333?text=Imagem+Antes"
-             width="800"
-             height="600"
-             alt="Placeholder Imagem Antes">
-      {% endif %}
-    </div>
-
-    <div class="image-comparison-after-clipper-{{ section.id }}">
-      {% if section.settings.image_after != blank %}
-        <img class="image-comparison-after-image-{{ section.id }}"
-             src="{{ section.settings.image_after | img_url: 'master' }}"
-             width="{{ section.settings.image_after.width }}"
-             height="{{ section.settings.image_after.height }}"
-             srcset="{{ section.settings.image_after | img_url: '400x' }} 400w,
-                     {{ section.settings.image_after | img_url: '800x' }} 800w,
-                     {{ section.settings.image_after | img_url: '1200x' }} 1200w"
-             sizes="(max-width: 768px) 100vw, {{ section.settings.max_width }}px"
-             alt="{{ section.settings.label_after | default: 'Imagem Depois' }}">
-      {% else %}
-        <img class="image-comparison-after-image-{{ section.id }}"
-             src="https://placehold.co/800x600/A0A0A0/FFFFFF?text=Imagem+Depois"
-             width="800"
-             height="600"
-             alt="Placeholder Imagem Depois">
-      {% endif %}
-    </div>
-
-    <div class="image-comparison-slider-line-{{ section.id }}"></div>
-    <div class="image-comparison-slider-handle-{{ section.id }}">
-      &#x2194; </div>
-  </div>
+</div>
 </section>
 
 <script>
