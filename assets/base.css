@@ -3598,35 +3598,25 @@ details-disclosure > details {
 
 .before-after-slider {
   height: 280px;
-  padding: 0 20px; /* padding horizontal para espaçar */
-  box-sizing: border-box; /* garantir que o padding não aumente a largura total */
 }
 
 .before-after-slider .wrapper {
   width: 90vw;
-  max-width: 900px;
   height: 230px;
-  margin: 0 auto; /* centralizar */
-  position: relative;
-  overflow: visible;
 }
 
 .before-after-slider .before img,
 .before-after-slider .after img {
   height: 100%;
-  max-width: 100%;
   object-fit: cover;
-  display: block;
 }
 
-/* ajustar a largura da área "after" (parte que revela a imagem nova) */
 .before-after-slider .after {
   width: 60px !important;
   overflow: hidden;
   pointer-events: none;
 }
 
-/* botão scroller */
 #scroller {
   width: 40px !important;
   height: 35px !important;
@@ -3642,7 +3632,6 @@ details-disclosure > details {
   z-index: 10;
 }
 
-/* texto do botão */
 #text {
   font-weight: 900;
   font-size: 10px !important;
@@ -3651,7 +3640,6 @@ details-disclosure > details {
   user-select: none;
 }
 
-/* container do ícone */
 #icon-wrapper {
   width: 30px !important;
   height: 30px !important;
@@ -3660,7 +3648,6 @@ details-disclosure > details {
   justify-content: center;
 }
 
-/* SVG da estrela */
 #star-svg {
   width: 30px !important;
   height: 30px !important;
@@ -3672,7 +3659,6 @@ details-disclosure > details {
 @media (max-width: 320px) {
   .before-after-slider {
     height: 250px;
-    padding: 0 10px;
   }
 
   .before-after-slider .wrapper {
