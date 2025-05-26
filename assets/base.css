@@ -3595,3 +3595,25 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+.parallax-banner {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-content {
+  color: white;
+  z-index: 2;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
