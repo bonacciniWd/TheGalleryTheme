@@ -3755,7 +3755,9 @@ details-disclosure > details {
     left: 30px;
   }
 
- 
+  #scroller.right {
+    right: 30px;
+  }
 
   #text {
     font-size: 14px;
