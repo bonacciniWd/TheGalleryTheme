@@ -68,7 +68,6 @@
     },
     "custom_liquid_7eDYX6": {
       "type": "custom-liquid",
-      "disabled": true,
       "custom_css": [],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
