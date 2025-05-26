@@ -3597,48 +3597,129 @@ details-disclosure > details {
 }
 
 
-.parallax-advanced {
-  position: relative;
-  overflow: hidden;
+/* Estilos estáticos para a seção de comparação de imagens */
+.comparison-section {
+    position: relative;
+    width: 100%;
+    padding: 2rem 0;
+    box-sizing: border-box;
+    font-family: sans-serif; /* Ou sua fonte de tema padrão */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.parallax-layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  will-change: transform;
-  pointer-events: none;
+.comparison-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-.parallax-bg {
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
+/* Container principal da comparação */
+.comparison-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: 0 5px 10px -2px rgba(0,0,0,0.3);
 }
 
-.parallax-fg {
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Figure - Imagem 'Antes' (fica como background-image) */
+.comparison-figure {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 0;
+    z-index: 1; /* Garante que a imagem 'antes' esteja no fundo */
 }
 
-.parallax-fg img {
-  max-width: 80%;
-  height: auto;
-  transform-origin: center;
-  transition: transform 0.1s ease-out;
+/* Divisor - Imagem 'Depois' (fica como background-image dentro do divisor) */
+.comparison-divisor {
+    background-size: cover;
+    background-position: left center; /* CRÍTICO: Mantém a imagem 'depois' alinhada à esquerda */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2; /* Garante que o divisor esteja acima da imagem 'antes' */
 }
 
-.parallax-content {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  color: white;
-  top: 50%;
-  transform: translateY(-50%);
+/* Estilos para o slider nativo */
+.comparison-slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    bottom: -1rem;
+    left: 0%;
+    width: 100%;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    outline: none;
+    cursor: ew-resize;
+    z-index: 10;
+    transform: translateY(-50%);
 }
 
+/* Estilos específicos para o thumb (handle) do slider */
+.comparison-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 30px;
+    border-radius: 0;
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-top: -8px;
+}
+
+.comparison-slider::-moz-range-thumb {
+    -moz-appearance: none;
+    width: 20px;
+    height: 30px;
+    border-radius: 0;
+    cursor: grab;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Estilos para a trilha do slider */
+.comparison-slider::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.2);
+    height: 4px;
+    border-radius: 2px;
+}
+
+.comparison-slider::-moz-range-track {
+    background: rgba(255, 255, 255, 0.2);
+    height: 4px;
+    border-radius: 2px;
+}
+
+.comparison-slider:focus::-webkit-slider-thumb {
+    background: rgba(255, 255, 255, 0.7);
+}
+.comparison-slider:focus::-moz-range-thumb {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .comparison-section h2 {
+      font-size: 2rem;
+    }
+    .comparison-slider {
+      bottom: -0.5rem;
+    }
+    .comparison-slider::-webkit-slider-thumb,
+    .comparison-slider::-moz-range-thumb {
+      width: 15px;
+      height: 25px;
+    }
+}
 
