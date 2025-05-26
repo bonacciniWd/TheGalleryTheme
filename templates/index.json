@@ -194,30 +194,15 @@
         "padding_bottom": 36
       }
     },
-    "parallax_banner_9DWckX": {
+    "parallax_banner_hDRBxh": {
       "type": "parallax-banner",
-      "name": "Parallax Personalizado",
-      "settings": {
-        "heading": "Descubra o Futuro",
-        "label_before": "Série Anterior",
-        "label_after": "Série Nova",
-        "initial_slider_position": 50,
-        "max_width": 1400,
-        "aspect_ratio": 1.4,
-        "background_color": "#f5f5f7",
-        "text_color": "#333333",
-        "slider_line_color": "#007aff",
-        "slider_handle_color": "#007aff"
-      }
-    },
-    "parallax_banner_bdBH7a": {
-      "type": "parallax-banner",
-      "name": "Comparação de Imagens",
+      "name": "Comparação de Imagens (Apple)",
       "settings": {
         "heading": "Compare a Evolução",
-        "image_before": "shopify://shop_images/1_3b366fe1-f367-4722-aab8-eef36f9b5544.png",
-        "label_before": "",
-        "label_after": "",
+        "image_before": "shopify://shop_images/4_de15de6b-7d6e-4ee0-8262-6c51c81a4700.png",
+        "label_before": "Série Anterior",
+        "image_after": "shopify://shop_images/6_46a8bf0c-5bd7-4f4d-8c2d-cd0721adf100.png",
+        "label_after": "Série Nova",
         "initial_slider_position": 50,
         "max_width": 1000,
         "aspect_ratio": 1.3,
@@ -240,7 +225,6 @@
     "video_N3ptFW",
     "image_banner_zyji7q",
     "featured_blog_KPygWW",
-    "parallax_banner_9DWckX",
-    "parallax_banner_bdBH7a"
+    "parallax_banner_hDRBxh"
   ]
 }
