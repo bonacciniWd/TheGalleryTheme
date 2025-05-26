@@ -3596,227 +3596,99 @@ details-disclosure > details {
   }
 }
 
-
-/* Container principal */
 .before-after-slider {
-  width: 100%;
-  height: 600px;
-  position: relative;
-  user-select: none;
-  overflow: visible;
+  height: 280px;
 }
 
-/* Wrapper centralizado */
 .before-after-slider .wrapper {
-  width: 900px;
-  height: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: visible;
+  width: 90vw;
+  height: 230px;
 }
 
-/* Imagem antes */
-.before-after-slider .before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.before-after-slider .before img,
+.before-after-slider .after img {
   height: 100%;
-  overflow: hidden;
-  pointer-events: none;
+  object-fit: cover;
 }
 
-.before-after-slider .before .content-image {
-  height: 100%;
-  display: block;
-}
-
-/* Imagem depois */
 .before-after-slider .after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 125px; /* posição inicial */
-  height: 100%;
+  width: 60px !important;
   overflow: hidden;
   pointer-events: none;
 }
 
-.before-after-slider .after .content-image {
-  height: 100%;
-  display: block;
-}
-
-/* Botão scroller */
 #scroller {
-  width: 70px;
-  height: 50px;
-  position: absolute;
-  left: 100px; /* posição inicial */
-  top: 50%;
+  width: 40px !important;
+  height: 35px !important;
+  left: 15px !important;
+  top: 50% !important;
   transform: translateY(-50%);
   background: transparent;
   border: none;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   z-index: 10;
-
-  transition: left 0.6s ease;
 }
 
-/* Texto dentro do botão */
 #text {
   font-weight: 900;
-  font-size: 18px;
+  font-size: 10px !important;
   color: #000;
-  margin-right: 10px;
+  margin-right: 6px;
   user-select: none;
-  white-space: nowrap;
 }
 
-/* Wrapper do ícone SVG */
 #icon-wrapper {
-  width: 60px;
-  height: 50px;
+  width: 30px !important;
+  height: 30px !important;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Animação da estrela: usa JS, mas coloca transição para suavizar */
 #star-svg {
+  width: 30px !important;
+  height: 30px !important;
   user-select: none;
   transition: transform 0.6s ease;
 }
 
-/* Quando toggled = right (lado direito), texto muda lado */
-#scroller.right {
-  left: auto;
-  right: 100px;
-  transform: translateY(-50%);
-}
-
-#scroller.right #text {
-  margin-right: 0;
-  margin-left: 10px;
-}
-
-/* Media queries para responsividade */
-@media (max-width: 1024px) {
-  .before-after-slider .wrapper {
-    width: 700px;
-    height: 450px;
-  }
-
-  #scroller {
-    width: 60px;
-    height: 40px;
-    left: 80px;
-  }
-
-  #scroller.right {
-    right: 80px;
-  }
-
-  #text {
-    font-size: 16px;
-  }
-
-  #icon-wrapper {
-    width: 50px;
-    height: 40px;
-  }
-
-  #star-svg {
-    width: 50px !important;
-    height: 50px !important;
-  }
-}
-
-@media (max-width: 600px) {
+/* Media Query ultra pequena (até 320px) */
+@media (max-width: 320px) {
   .before-after-slider {
-    height: 400px;
+    height: 250px;
   }
 
   .before-after-slider .wrapper {
-    width: 90vw;
-    height: 300px;
-  }
-
-  #scroller {
-    width: 50px;
-    height: 35px;
-    left: 30px;
-  }
-
-  #scroller.right {
-    right: 30px;
-  }
-
-  #text {
-    font-size: 14px;
-    margin-right: 6px;
-    margin-left: 6px;
-  }
-
-  #icon-wrapper {
-    width: 40px;
-    height: 35px;
-  }
-
-  #star-svg {
-    width: 40px !important;
-    height: 40px !important;
-  }
-}
-
-/* Ajustes para telas muito pequenas, ex: iPhone SE (320-375px) */
-@media (max-width: 375px) {
-  .before-after-slider {
-    height: 300px; /* menor altura */
-  }
-
-  .before-after-slider .wrapper {
-    width: 95vw; /* quase toda largura da tela */
-    height: auto;
+    width: 95vw;
+    height: 200px;
   }
 
   .before-after-slider .after {
-    width: 80px !important; /* linha menor inicialmente */
+    width: 50px !important;
   }
 
   #scroller {
-    width: 45px;
-    height: 30px;
-    left: 20px !important;
-  }
-
-  #scroller.right {
-    right: 20px !important;
+    width: 35px !important;
+    height: 30px !important;
+    left: 10px !important;
   }
 
   #text {
-    font-size: 12px;
+    font-size: 9px !important;
     margin-right: 4px;
-    margin-left: 4px;
   }
 
   #icon-wrapper {
-    width: 35px;
-    height: 30px;
+    width: 25px !important;
+    height: 25px !important;
   }
 
   #star-svg {
-    width: 30px !important;
-    height: 30px !important;
+    width: 25px !important;
+    height: 25px !important;
   }
 }
-
-
 
