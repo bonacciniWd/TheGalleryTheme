@@ -1267,3 +1267,21 @@ class BulkAdd extends HTMLElement {
 if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
+
+document.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('.parallax-advanced');
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const scrollProgress = Math.min(Math.max((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0), 1);
+
+    const bg = section.querySelector('.parallax-bg');
+    const fg = section.querySelector('.parallax-fg img');
+
+    // Fundo move menos
+    bg.style.transform = `translateY(${scrollProgress * 20}px) scale(${1 + scrollProgress * 0.05})`;
+
+    // Primeiro plano move mais
+    fg.style.transform = `translateY(${scrollProgress * -50}px) scale(${1 + scrollProgress * 0.1})`;
+  });
+});
