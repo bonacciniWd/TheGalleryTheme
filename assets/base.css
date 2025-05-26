@@ -3752,7 +3752,7 @@ details-disclosure > details {
   #scroller {
     width: 50px;
     height: 35px;
-    left: 30px;
+    left: 10px;
   }
 
   #scroller.right {
