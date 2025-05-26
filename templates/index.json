@@ -199,7 +199,9 @@
       "name": "Comparação de Imagens (Apple)",
       "settings": {
         "heading": "Compare a Evolução",
+        "image_before": "shopify://shop_images/model-laughs-barefoot.jpg",
         "label_before": "Série Anterior",
+        "image_after": "shopify://shop_images/bright-floral-womens-summer-fashion.jpg",
         "label_after": "Série Nova",
         "initial_slider_position": 50,
         "max_width": 1000,
