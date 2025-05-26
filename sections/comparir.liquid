@@ -216,11 +216,10 @@
     const sectionId = '{{ section.id }}';
     const container = document.querySelector(`.image-comparison-container-${sectionId}`);
     const afterImageClipper = document.querySelector(`.image-comparison-after-clipper-${sectionId}`);
-    const afterImgElement = afterImageClipper ? afterImageClipper.querySelector('.image-comparison-after-image-' + sectionId) : null; // A tag <img> real
+    const afterImgElement = afterImageClipper ? afterImageClipper.querySelector('.image-comparison-after-image-' + sectionId) : null;
     const sliderLine = document.querySelector(`.image-comparison-slider-line-${sectionId}`);
     const sliderHandle = document.querySelector(`.image-comparison-slider-handle-${sectionId}`);
 
-    // Adiciona logs para depuração
     console.log(`[Slider ${sectionId}] Inicializando...`);
     console.log(`[Slider ${sectionId}] Container:`, container);
     console.log(`[Slider ${sectionId}] After Clipper:`, afterImageClipper);
@@ -236,43 +235,51 @@
 
     let isDragging = false;
 
-    // Função para atualizar a posição do slider e o recorte da imagem 'after'
     function updateSlider(e) {
       const containerRect = container.getBoundingClientRect();
       let clientX;
 
-      if (e.touches && e.touches.length > 0) { // Para eventos de toque
+      if (e.touches && e.touches.length > 0) {
         clientX = e.touches[0].clientX;
-      } else { // Para eventos de mouse
+      } else {
         clientX = e.clientX;
       }
 
-      let x = clientX - containerRect.left; // Posição X relativa ao container
+      let x = clientX - containerRect.left;
 
       // Limita o movimento do slider dentro do container
       if (x < 0) x = 0;
       if (x > containerRect.width) x = containerRect.width;
 
-      // Atualiza a largura do container de recorte da imagem 'after'
+      // Adicionando logs detalhados para depuração do movimento
+      console.log(`[Slider ${sectionId} - Movimento]`);
+      console.log(`  clientX: ${clientX}`);
+      console.log(`  containerRect.left: ${containerRect.left}`);
+      console.log(`  containerRect.width: ${containerRect.width}`);
+      console.log(`  Calculated X: ${x}`);
+      console.log(`  Clipper Width (before update): ${afterImageClipper.style.width}`);
+      console.log(`  After Image Left (before update): ${afterImgElement.style.left}`);
+
+
       afterImageClipper.style.width = `${x}px`;
-      // A imagem 'depois' dentro do clipper deve ter a largura total do container principal
-      afterImgElement.style.width = `${containerRect.width}px`; // <--- Adicionado ou garantido aqui
-      // Atualiza a posição da imagem 'depois' dentro do seu container de recorte
-      // Isso é crucial para manter a imagem 'depois' alinhada com a 'antes'
+      afterImgElement.style.width = `${containerRect.width}px`;
       afterImgElement.style.left = `-${x}px`;
 
-      // Atualiza a posição da linha e do handle do slider
       sliderLine.style.left = `${x}px`;
       sliderHandle.style.left = `${x}px`;
 
-      // console.log(`[Slider ${sectionId}] X: ${x}, Clipper Width: ${x}, After Left: ${-x}`); // Para depuração do movimento
+      console.log(`  Clipper Width (after update): ${afterImageClipper.style.width}`);
+      console.log(`  After Image Left (after update): ${afterImgElement.style.left}`);
+      console.log(`  Slider Line Left: ${sliderLine.style.left}`);
+      console.log(`  Slider Handle Left: ${sliderHandle.style.left}`);
+      console.log('---');
     }
 
     // Eventos de mouse
     sliderHandle.addEventListener('mousedown', (e) => {
       isDragging = true;
       sliderHandle.style.cursor = 'grabbing';
-      e.preventDefault(); // Previne arrastar a imagem ou seleção de texto
+      e.preventDefault();
       console.log(`[Slider ${sectionId}] Mousedown: Arrasto iniciado.`);
     });
 
@@ -286,7 +293,7 @@
 
     document.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
-      e.preventDefault(); // Previne seleção de texto ou outras ações padrão
+      e.preventDefault();
       updateSlider(e);
     });
 
@@ -294,9 +301,9 @@
     sliderHandle.addEventListener('touchstart', (e) => {
       isDragging = true;
       sliderHandle.style.cursor = 'grabbing';
-      e.preventDefault(); // <--- DESCOMENTADO: Essencial para evitar rolagem e garantir o arrasto
+      e.preventDefault();
       console.log(`[Slider ${sectionId}] Touchstart: Arrasto iniciado.`);
-    }, { passive: false }); // passive: false para permitir preventDefault
+    }, { passive: false });
 
     document.addEventListener('touchend', () => {
       if (isDragging) {
@@ -308,38 +315,40 @@
 
     document.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
-      e.preventDefault(); // Previne rolagem da página ao arrastar o handle
+      e.preventDefault();
       updateSlider(e);
-    }, { passive: false }); // passive: false para permitir preventDefault
+    }, { passive: false });
 
-    // Define a posição inicial do slider ao carregar e redimensionar
     function setInitialPosition() {
       const initialPercentage = parseFloat('{{ section.settings.initial_slider_position }}') / 100;
       const containerWidth = container.getBoundingClientRect().width;
       const initialX = containerWidth * initialPercentage;
 
-      // Aplica a posição inicial
+      console.log(`[Slider ${sectionId} - Initial Position]`);
+      console.log(`  Initial Percentage Setting: ${section.settings.initial_slider_position}%`);
+      console.log(`  Parsed Initial Percentage: ${initialPercentage}`);
+      console.log(`  Container Width for Initial Position: ${containerWidth}`);
+      console.log(`  Calculated Initial X: ${initialX}`);
+
       afterImageClipper.style.width = `${initialX}px`;
-      afterImgElement.style.width = `${containerWidth}px`; // Garante que a imagem 'depois' tenha a largura total
-      afterImgElement.style.left = `-${initialX}px`; // Alinha a imagem 'depois'
+      afterImgElement.style.width = `${containerWidth}px`;
+      afterImgElement.style.left = `-${initialX}px`;
       sliderLine.style.left = `${initialX}px`;
       sliderHandle.style.left = `${initialX}px`;
       console.log(`[Slider ${sectionId}] Posição inicial definida para ${initialPercentage * 100}% (${initialX}px).`);
+      console.log('---');
     }
 
-    // Adiciona listeners para garantir que a posição inicial seja definida corretamente
     window.addEventListener('load', setInitialPosition);
     window.addEventListener('resize', setInitialPosition);
-
-    // Chama a função uma vez para garantir o estado inicial correto mesmo antes do load (para o editor de temas)
-    setInitialPosition();
+    setInitialPosition(); // Chama para o editor de temas e carregamento inicial rápido
   });
 </script>
 
 
 {% schema %}
 {
-  "name": "Comparação ",
+  "name": "Comparação)",
   "settings": [
     {
       "type": "text",
