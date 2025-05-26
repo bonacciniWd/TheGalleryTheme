@@ -198,9 +198,20 @@
       "type": "parallax-banner",
       "name": "Parallax Avançado",
       "settings": {
-        "background_image": "shopify://shop_images/6_01c5b9ee-99dc-41f0-9f98-37dccff0f50f.png",
-        "heading": "",
-        "subheading": ""
+        "background_image": "shopify://shop_images/1_3b366fe1-f367-4722-aab8-eef36f9b5544.png",
+        "parallax_speed": 0.3,
+        "section_height": 100,
+        "background_color": "#121212",
+        "heading": "Parallax",
+        "heading_color": "#ffffff",
+        "subheading": "Parallax",
+        "subheading_color": "#ffffff",
+        "content_bg_color": "#121212",
+        "button_text": "Saiba Mais",
+        "button_url": "shopify://collections/all",
+        "button_bg_color": "#007aff",
+        "button_hover_bg_color": "#005bb5",
+        "button_text_color": "#ffffff"
       }
     }
   },
