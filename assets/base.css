@@ -3779,26 +3779,26 @@ details-disclosure > details {
 /* Ajustes para telas muito pequenas, ex: iPhone SE (320-375px) */
 @media (max-width: 375px) {
   .before-after-slider {
-    height: 300px; /* menor altura */
+    height: 200px; /* menor altura */
   }
 
   .before-after-slider .wrapper {
-    width: 95vw; /* quase toda largura da tela */
+    width: 75vw; /* quase toda largura da tela */
     height: auto;
   }
 
   .before-after-slider .after {
-    width: 80px !important; /* linha menor inicialmente */
+    width: 10px !important; /* linha menor inicialmente */
   }
 
   #scroller {
     width: 45px;
     height: 30px;
-    left: 20px !important;
+    left: 10px !important;
   }
 
   #scroller.right {
-    right: 20px !important;
+    right: 10px !important;
   }
 
   #text {
