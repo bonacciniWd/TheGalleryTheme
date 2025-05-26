@@ -3779,11 +3779,11 @@ details-disclosure > details {
 /* Ajustes para telas muito pequenas, ex: iPhone SE (320-375px) */
 @media (max-width: 375px) {
   .before-after-slider {
-    height: 200px; /* menor altura */
+    height: 300px; /* menor altura */
   }
 
   .before-after-slider .wrapper {
-    width: 95vw; /* quase toda largura da tela */
+    width: 75vw; /* quase toda largura da tela */
     height: 250px;
   }
 
