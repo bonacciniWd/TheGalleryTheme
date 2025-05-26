@@ -8,9 +8,21 @@
       "label": "Imagem A"
     },
     {
+      "type": "text",
+      "id": "text_a",
+      "label": "Texto da Imagem A",
+      "default": "Modelo A"
+    },
+    {
       "type": "image_picker",
       "id": "image_b",
       "label": "Imagem B"
+    },
+    {
+      "type": "text",
+      "id": "text_b",
+      "label": "Texto da Imagem B",
+      "default": "Modelo B"
     }
   ],
   "presets": [
@@ -22,35 +34,46 @@
 {% endschema %}
 
 <div class="image-comparator" data-id="{{ section.id }}">
-  <div class="image-comparator__container">
+  <div class="image-comparator__wrapper">
     {% if section.settings.image_a %}
-      <img src="{{ section.settings.image_a | image_url: width: 1200 }}" alt="Imagem A" class="image-comparator__image">
+      <img src="{{ section.settings.image_a | image_url: width: 1200 }}" alt="{{ section.settings.text_a }}" class="image-comparator__image">
     {% endif %}
     
     <div class="image-comparator__overlay">
       {% if section.settings.image_b %}
-        <img src="{{ section.settings.image_b | image_url: width: 1200 }}" alt="Imagem B" class="image-comparator__image">
+        <img src="{{ section.settings.image_b | image_url: width: 1200 }}" alt="{{ section.settings.text_b }}" class="image-comparator__image">
       {% endif %}
     </div>
 
-    <input type="range" min="0" max="100" value="50" class="image-comparator__slider" aria-label="Comparar imagens">
+    <input type="range" min="0" max="100" value="50" class="image-comparator__slider" aria-label="Comparar modelos" title="Arraste para comparar os modelos">
+    
+    <button type="button" class="image-comparator__reset" aria-label="Resetar comparação">Reset</button>
+  </div>
+
+  <div class="image-comparator__labels">
+    <span>{{ section.settings.text_a }}</span>
+    <span>{{ section.settings.text_b }}</span>
   </div>
 </div>
 
 <style>
-.image-comparator__container {
+.image-comparator {
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.image-comparator__wrapper {
   position: relative;
   width: 100%;
-  max-width: 800px;
   overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .image-comparator__image {
-  display: block;
   width: 100%;
-  height: auto;
+  display: block;
 }
 
 .image-comparator__overlay {
@@ -58,17 +81,14 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 50%;
   overflow: hidden;
-  transition: width 0.25s ease;
+  width: 50%;
+  transition: width 0.3s ease;
 }
 
 .image-comparator__slider {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
+  width: 100%;
+  margin-top: 15px;
   appearance: none;
   height: 6px;
   background: #ddd;
@@ -80,10 +100,36 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #000;
+  background: #007aff;
   border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  border: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.image-comparator__labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.image-comparator__reset {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #007aff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s ease;
+}
+
+.image-comparator__reset:hover {
+  background: #005bb5;
 }
 </style>
 
@@ -92,12 +138,18 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.image-comparator').forEach(function(comparator) {
     const slider = comparator.querySelector('.image-comparator__slider');
     const overlay = comparator.querySelector('.image-comparator__overlay');
+    const resetBtn = comparator.querySelector('.image-comparator__reset');
 
     function updateOverlay() {
       overlay.style.width = slider.value + '%';
     }
 
     slider.addEventListener('input', updateOverlay);
+
+    resetBtn.addEventListener('click', function() {
+      slider.value = 50;
+      updateOverlay();
+    });
   });
 });
 </script>
