@@ -3596,13 +3596,14 @@ details-disclosure > details {
   }
 }
 
+
 /* Container principal */
 .before-after-slider {
   width: 100%;
   height: 600px;
   position: relative;
   user-select: none;
-  overflow: hidden; /* MUDANÇA: 'hidden' para evitar vazamento de imagem */
+  overflow: visible;
 }
 
 /* Wrapper centralizado */
@@ -3613,11 +3614,7 @@ details-disclosure > details {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden; /* MUDANÇA: 'hidden' também no wrapper */
-  /* Adicione flexbox para centralizar as imagens, se necessário */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: visible;
 }
 
 /* Imagem antes */
@@ -3632,11 +3629,8 @@ details-disclosure > details {
 }
 
 .before-after-slider .before .content-image {
-  width: 100%; /* MUDANÇA: Garante que a imagem preencha a largura */
   height: 100%;
   display: block;
-  object-fit: cover; /* MUDANÇA: Redimensiona para cobrir o container */
-  object-position: center; /* MUDANÇA: Centraliza a imagem */
 }
 
 /* Imagem depois */
@@ -3644,18 +3638,15 @@ details-disclosure > details {
   position: absolute;
   top: 0;
   left: 0;
-  /* width: 125px; /* Posição inicial será controlada pelo JS */
+  width: 125px; /* posição inicial */
   height: 100%;
   overflow: hidden;
   pointer-events: none;
 }
 
 .before-after-slider .after .content-image {
-  width: 100%; /* MUDANÇA: Garante que a imagem preencha a largura dentro do 'after' */
   height: 100%;
   display: block;
-  object-fit: cover; /* MUDANÇA: Redimensiona para cobrir o container */
-  object-position: center; /* MUDANÇA: Centraliza a imagem */
 }
 
 /* Botão scroller */
@@ -3663,7 +3654,7 @@ details-disclosure > details {
   width: 70px;
   height: 50px;
   position: absolute;
-  /* left: 100px; /* Posição inicial será controlada pelo JS */
+  left: 100px; /* posição inicial */
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
@@ -3676,7 +3667,7 @@ details-disclosure > details {
 
   z-index: 10;
 
-  transition: left 0.6s ease, right 0.6s ease; /* Adiciona transição para 'right' */
+  transition: left 0.6s ease;
 }
 
 /* Texto dentro do botão */
@@ -3706,7 +3697,7 @@ details-disclosure > details {
 
 /* Quando toggled = right (lado direito), texto muda lado */
 #scroller.right {
-  left: auto; /* MUDANÇA: Garante que 'left' seja resetado */
+  left: auto;
   right: 100px;
   transform: translateY(-50%);
 }
@@ -3726,7 +3717,7 @@ details-disclosure > details {
   #scroller {
     width: 60px;
     height: 40px;
-    /* left: 80px; /* Removido, controlado pelo JS */
+    left: 80px;
   }
 
   #scroller.right {
@@ -3761,7 +3752,7 @@ details-disclosure > details {
   #scroller {
     width: 50px;
     height: 35px;
-    /* left: 30px; /* Removido, controlado pelo JS */
+    left: 30px;
   }
 
   #scroller.right {
@@ -3793,17 +3784,17 @@ details-disclosure > details {
 
   .before-after-slider .wrapper {
     width: 100vw; /* quase toda largura da tela */
-    height: auto; /* Mantenha auto se object-fit estiver funcionando bem */
+    height: auto;
   }
 
   .before-after-slider .after {
-    /* width: 0px !important; /* Removido, controlado pelo JS */
+    width: 0px !important; /* linha menor inicialmente */
   }
 
   #scroller {
     width: 45px;
     height: 30px;
-    /* left: 10px !important; /* Removido, controlado pelo JS */
+    left: 10px !important;
   }
 
   #scroller.right {
@@ -3826,3 +3817,6 @@ details-disclosure > details {
     height: 30px !important;
   }
 }
+
+
+
