@@ -1268,20 +1268,62 @@ if (!customElements.get('bulk-add')) {
   customElements.define('bulk-add', BulkAdd);
 }
 
-document.addEventListener('scroll', () => {
-  const sections = document.querySelectorAll('.parallax-advanced');
+// JavaScript Global para Parallax
+// Este script inicializa e gerencia o efeito parallax para todas as seções com a classe 'js-parallax-section'.
 
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    const scrollProgress = Math.min(Math.max((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0), 1);
+document.addEventListener('DOMContentLoaded', function() {
+  const parallaxSections = document.querySelectorAll('.js-parallax-section');
 
-    const bg = section.querySelector('.parallax-bg');
-    const fg = section.querySelector('.parallax-fg img');
+  if (parallaxSections.length === 0) {
+    console.warn('Parallax: Nenhuma seção com a classe "js-parallax-section" encontrada.');
+    return;
+  }
 
-    // Fundo move menos
-    bg.style.transform = `translateY(${scrollProgress * 20}px) scale(${1 + scrollProgress * 0.05})`;
+  // Função principal para aplicar o efeito parallax
+  function applyParallaxEffects() {
+    const scrollPosition = window.pageYOffset;
+    // console.log('Scroll Position:', scrollPosition); // Para depuração
 
-    // Primeiro plano move mais
-    fg.style.transform = `translateY(${scrollProgress * -50}px) scale(${1 + scrollProgress * 0.1})`;
-  });
+    parallaxSections.forEach(sectionElement => {
+      const parallaxBg = sectionElement.querySelector('.js-parallax-bg');
+      const fadeElements = sectionElement.querySelectorAll('.js-fade-element');
+
+      if (!parallaxBg) {
+        console.error('Parallax: Fundo parallax não encontrado para a seção:', sectionElement);
+        return; // Pula para a próxima seção se o fundo não for encontrado
+      }
+
+      const parallaxSpeed = parseFloat(parallaxBg.dataset.parallaxSpeed);
+      // console.log('Section ID:', sectionElement.className, 'Speed:', parallaxSpeed); // Para depuração
+
+      // Parallax para o fundo
+      const yPos = -(scrollPosition * parallaxSpeed);
+      parallaxBg.style.transform = `translateY(${yPos}px)`;
+
+      // Efeito de desvanecimento para o conteúdo
+      const sectionTop = sectionElement.offsetTop;
+      const sectionHeight = sectionElement.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const visibilityThreshold = 0.5; // A seção está visível se pelo menos 50% dela estiver na tela
+
+      const isVisible = (scrollPosition + windowHeight * visibilityThreshold > sectionTop) &&
+                        (scrollPosition < sectionTop + sectionHeight * (1 - visibilityThreshold));
+
+      fadeElements.forEach(el => {
+        if (isVisible) {
+          el.classList.add('is-visible');
+        } else {
+          el.classList.remove('is-visible');
+        }
+      });
+    });
+  }
+
+  // Adiciona listener de rolagem e chama a função no carregamento
+  window.addEventListener('scroll', applyParallaxEffects);
+  window.addEventListener('load', applyParallaxEffects);
+
+  // Chama a função uma vez para garantir o estado inicial correto ao carregar a página
+  applyParallaxEffects();
 });
+
