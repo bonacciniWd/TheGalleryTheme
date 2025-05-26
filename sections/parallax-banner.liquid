@@ -1,6 +1,50 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Parallax Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Imagem de Fundo"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Seu Título Aqui"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Altura da Seção (em vh)",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Parallax Banner",
+      "category": "Banner"
+    }
+  ]
+}
 {% endschema %}
+
+<section 
+  class="parallax-banner" 
+  style="
+    background-image: url({{ section.settings.background_image | img_url: '2048x' }});
+    height: {{ section.settings.height }}vh;
+  ">
+  <div class="parallax-content">
+    <h1>{{ section.settings.heading }}</h1>
+    <p>{{ section.settings.subheading }}</p>
+  </div>
+</section>
