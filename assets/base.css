@@ -3685,7 +3685,7 @@ details-disclosure > details {
 }
 
 #text {
-  font-family: 'Exile-Regular'; /* MUDANÇA: Aplica a fonte Exile Regular */
+  font-family: 'Exile-Regular', sans-serif; /* MUDANÇA: Aplica a fonte Exile Regular */
   font-weight: 400; /* MUDANÇA: Conforme o peso da fonte Exile Regular */
   font-size: 32px;
   color: #FFFFFF; /* MUDANÇA: Cor do texto branca */
