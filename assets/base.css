@@ -74,6 +74,19 @@
   --shadow-visible: var(--media-shadow-visible);
 }
 
+@font-face {
+  font-family: 'Exile-Regular'; /* Ou 'Exile Regular' */
+  src: url('Exile-Regular.eot'); /* Para compatibilidade com IE mais antigos */
+  src: url('Exile-Regular.eot?#iefix') format('embedded-opentype'),
+       url('Exile-Regular.woff2') format('woff2'),
+       url('Exile-Regular.woff') format('woff'),
+       url('Exile-Regular.ttf') format('truetype'),
+       url('Exile-Regular.svg#Exile-Regular') format('svg');
+  font-weight: normal; /* Ou 400 */
+  font-style: normal;
+  font-display: swap;
+}
+
 
 /* base */
 
@@ -3673,6 +3686,8 @@ details-disclosure > details {
 }
 
 #text {
+  font-family: 'Exile-Regular'; 
+  font-weight: 400;
   margin-right: 10px;
   user-select: none;
   white-space: nowrap;
