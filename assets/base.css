@@ -3599,7 +3599,7 @@ details-disclosure > details {
 
 
 @font-face {
-  font-family: 'Exile Regular'; /* MUDANÇA: Nome da família da fonte */
+  font-family: 'Exile-Regular'; /* MUDANÇA: Nome da família da fonte */
   src: url({{ 'Exile-Regular.ttf' | asset_url }}) format('truetype'); /* MUDANÇA: Usando o arquivo .ttf e o formato truetype */
   font-weight: 400; /* MUDANÇA: Geralmente "Regular" é 400 */
   font-style: normal;
@@ -3680,7 +3680,7 @@ details-disclosure > details {
 }
 
 #text {
-  font-family: 'Exile Regular', sans-serif; /* MUDANÇA: Aplica a fonte Exile Regular */
+  font-family: 'Exile-Regular', sans-serif; /* MUDANÇA: Aplica a fonte Exile Regular */
   font-weight: 400; /* MUDANÇA: Conforme o peso da fonte Exile Regular */
   font-size: 32px;
   color: #FFFFFF; /* MUDANÇA: Cor do texto branca */
