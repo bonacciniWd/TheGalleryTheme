@@ -3607,6 +3607,15 @@ details-disclosure > details {
 }
 
 
+@font-face {
+  font-family: 'Luckiest Guy'; /* Nome que você usará no CSS */
+  src: url({{ 'LuckiestGuy-Regular.woff2' | asset_url }}) format('woff2'),
+       url({{ 'LuckiestGuy-Regular.woff' | asset_url }}) format('woff'); /* Ajuste os nomes dos arquivos conforme você fez upload */
+  font-weight: 400; /* O peso da fonte 'Luckiest Guy' é 400 (Regular) */
+  font-style: normal;
+  font-display: swap; /* Para melhor desempenho de carregamento da fonte */
+}
+
 /* Container principal */
 .before-after-slider {
   width: 100%;
@@ -3680,14 +3689,20 @@ details-disclosure > details {
   transition: left 0.6s ease;
 }
 
-/* Texto dentro do botão */
 #text {
-  font-weight: 900;
+  font-family: 'Luckiest Guy', cursive; /* MUDANÇA: Aplica a fonte Luckiest Guy */
+  font-weight: 400; /* MUDANÇA: Conforme o peso da fonte Luckiest Guy */
   font-size: 18px;
-  color: #000;
+  color: #FFFFFF; /* MUDANÇA: Cor do texto branca */
   margin-right: 10px;
   user-select: none;
   white-space: nowrap;
+  /* MUDANÇA: Borda preta usando text-shadow */
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 /* Wrapper do ícone SVG */
