@@ -3686,14 +3686,19 @@ details-disclosure > details {
 }
 
 #text {
-  font-family: 'Exile-Regular'; 
-  font-weight: 400;
+  font-family: 'Exile-Regular', sans-serif; /* Use o nome exato da sua fonte */
+  font-weight: 400; /* Use 'normal' ou o peso que a regra @font-face indicar */
+  font-size: 32px;
+  color: #FFFFFF;
   margin-right: 10px;
   user-select: none;
   white-space: nowrap;
-  /* MUDANÇA: Borda preta usando text-shadow */
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
-
 
 /* Wrapper do ícone SVG */
 #icon-wrapper {
