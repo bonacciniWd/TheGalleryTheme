@@ -3609,7 +3609,7 @@ details-disclosure > details {
 
 @font-face {
   font-family: 'Exile-Regular'; /* Nome que você usará no CSS */
-  src: url({{ 'Exile-Regular.ttf' | asset_url }}) format('ttf'),
+  src: url({{ 'Exile-Regular.ttf' | asset_url }}) format('truetype'),
        url({{ 'LuckiestGuy-Regular.woff' | asset_url }}) format('woff'); /* Ajuste os nomes dos arquivos conforme você fez upload */
   font-weight: 400; /* O peso da fonte 'Luckiest Guy' é 400 (Regular) */
   font-style: normal;
