@@ -3607,13 +3607,23 @@ details-disclosure > details {
 }
 
 
+/* Definição da fonte customizada (hospedada localmente na Shopify) */
+@font-face {
+  font-family: 'Luckiest Guy'; /* Nome que você usará no CSS */
+  src: url({{ 'LuckiestGuy-Regular.woff2' | asset_url }}) format('woff2'),
+       url({{ 'LuckiestGuy-Regular.woff' | asset_url }}) format('woff'); /* Ajuste os nomes dos arquivos conforme você fez upload */
+  font-weight: 400; /* O peso da fonte 'Luckiest Guy' é 400 (Regular) */
+  font-style: normal;
+  font-display: swap; /* Para melhor desempenho de carregamento da fonte */
+}
+
 /* Container principal */
 .before-after-slider {
   width: 100%;
   height: 600px;
   position: relative;
   user-select: none;
-  overflow: visible;
+  overflow: hidden; /* MUDANÇA: 'hidden' para evitar vazamento de imagem */
 }
 
 /* Wrapper centralizado */
@@ -3624,7 +3634,10 @@ details-disclosure > details {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: visible;
+  overflow: hidden; /* MUDANÇA: 'hidden' também no wrapper */
+  display: flex; /* MUDANÇA: Adicionado para ajudar a centralizar imagens */
+  justify-content: center; /* MUDANÇA: Adicionado para ajudar a centralizar imagens */
+  align-items: center; /* MUDANÇA: Adicionado para ajudar a centralizar imagens */
 }
 
 /* Imagem antes */
@@ -3639,8 +3652,11 @@ details-disclosure > details {
 }
 
 .before-after-slider .before .content-image {
+  width: 100%; /* MUDANÇA: Garante que a imagem preencha a largura */
   height: 100%;
   display: block;
+  object-fit: cover; /* MUDANÇA: Redimensiona para cobrir o container */
+  object-position: center; /* MUDANÇA: Centraliza a imagem */
 }
 
 /* Imagem depois */
@@ -3648,15 +3664,18 @@ details-disclosure > details {
   position: absolute;
   top: 0;
   left: 0;
-  width: 125px; /* posição inicial */
+  /* width: 125px; Removido - agora controlado pelo JS */
   height: 100%;
   overflow: hidden;
   pointer-events: none;
 }
 
 .before-after-slider .after .content-image {
+  width: 100%; /* MUDANÇA: Garante que a imagem preencha a largura dentro do 'after' */
   height: 100%;
   display: block;
+  object-fit: cover; /* MUDANÇA: Redimensiona para cobrir o container */
+  object-position: center; /* MUDANÇA: Centraliza a imagem */
 }
 
 /* Botão scroller */
@@ -3664,7 +3683,7 @@ details-disclosure > details {
   width: 70px;
   height: 50px;
   position: absolute;
-  left: 100px; /* posição inicial */
+  /* left: 100px; Removido - agora controlado pelo JS */
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
@@ -3677,17 +3696,24 @@ details-disclosure > details {
 
   z-index: 10;
 
-  transition: left 0.6s ease;
+  transition: left 0.6s ease, right 0.6s ease; /* MUDANÇA: Adicionado transição para 'right' */
 }
 
 /* Texto dentro do botão */
 #text {
-  font-weight: 900;
+  font-family: 'Luckiest Guy', cursive; /* MUDANÇA: Aplica a fonte Luckiest Guy */
+  font-weight: 400; /* MUDANÇA: Conforme o peso da fonte Luckiest Guy */
   font-size: 18px;
-  color: #000;
+  color: #FFFFFF; /* MUDANÇA: Cor do texto branca */
   margin-right: 10px;
   user-select: none;
   white-space: nowrap;
+  /* MUDANÇA: Borda preta usando text-shadow */
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 /* Wrapper do ícone SVG */
@@ -3707,7 +3733,7 @@ details-disclosure > details {
 
 /* Quando toggled = right (lado direito), texto muda lado */
 #scroller.right {
-  left: auto;
+  left: auto; /* MUDANÇA: Garante que 'left' seja resetado quando 'right' estiver ativo */
   right: 100px;
   transform: translateY(-50%);
 }
@@ -3727,7 +3753,7 @@ details-disclosure > details {
   #scroller {
     width: 60px;
     height: 40px;
-    left: 80px;
+    /* left: 80px; Removido - agora controlado pelo JS */
   }
 
   #scroller.right {
@@ -3762,7 +3788,7 @@ details-disclosure > details {
   #scroller {
     width: 50px;
     height: 35px;
-    left: 30px;
+    /* left: 30px; Removido - agora controlado pelo JS */
   }
 
   #scroller.right {
@@ -3798,13 +3824,13 @@ details-disclosure > details {
   }
 
   .before-after-slider .after {
-    width: 0px !important; /* linha menor inicialmente */
+    /* width: 0px !important; Removido - agora controlado pelo JS */
   }
 
   #scroller {
     width: 45px;
     height: 30px;
-    left: 10px !important;
+    /* left: 10px !important; Removido - agora controlado pelo JS */
   }
 
   #scroller.right {
@@ -3827,6 +3853,5 @@ details-disclosure > details {
     height: 30px !important;
   }
 }
-
 
 
