@@ -3691,7 +3691,7 @@ details-disclosure > details {
 
 #text {
   font-family: 'Luckiest Guy', cursive; /* MUDANÇA: Aplica a fonte Luckiest Guy */
-  font-weight: 400; /* MUDANÇA: Conforme o peso da fonte Luckiest Guy */
+  font-weight: bold; /* MUDANÇA: Conforme o peso da fonte Luckiest Guy */
   font-size: 18px;
   color: #FFFFFF; /* MUDANÇA: Cor do texto branca */
   margin-right: 10px;
