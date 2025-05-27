@@ -69,7 +69,7 @@
     "custom_liquid_7eDYX6": {
       "type": "custom-liquid",
       "custom_css": [
-        "#text {font-family: \"Exile-Regular\", sans-serif; font-weight: 400; font-size: 32px; color: #ffffff; margin-right: 10px; user-select: none; white-space: nowrap; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}"
+        "#text {font-family: \"Exile-Regular\", sans-serif; font-weight: 400; font-size: 30px; color: #ffffff; margin-right: 10px; user-select: none; white-space: nowrap; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;}"
       ],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
