@@ -3677,11 +3677,6 @@ details-disclosure > details {
   user-select: none;
   white-space: nowrap;
   /* MUDANÇA: Borda preta usando text-shadow */
-  text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
 }
 
 
