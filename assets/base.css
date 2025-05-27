@@ -74,15 +74,6 @@
   --shadow-visible: var(--media-shadow-visible);
 }
 
-@font-face {
-  font-family: 'Exile-Regular'; /* Nome que você usará no CSS */
-  src: url({{ 'LuckiestGuy-Regular.woff2' | asset_url }}) format('woff2'),
-       url({{ 'LuckiestGuy-Regular.woff' | asset_url }}) format('woff'),
-       url({{ 'Exile-Regular.ttf' | asset_url }}) format('truetype'); /* Inclua os formatos que você subiu */
-  font-weight: 400; /* Ou o peso específico da sua fonte */
-  font-style: normal;
-  font-display: swap; /* Importante para o desempenho: mostra um fallback até a fonte carregar */
-}
 
 /* base */
 
