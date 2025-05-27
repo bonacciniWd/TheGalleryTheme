@@ -3687,7 +3687,7 @@ details-disclosure > details {
 #text {
   font-family: 'Exile-Regular', sans-serif; /* Use o nome exato da sua fonte */
   font-weight: 400; /* Use 'normal' ou o peso que a regra @font-face indicar */
-  font-size: 32px;
+  font-size: 20px;
   color: #FFFFFF;
   margin-right: 10px;
   user-select: none;
