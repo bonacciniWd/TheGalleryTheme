@@ -3689,8 +3689,8 @@ details-disclosure > details {
 }
 
 #text {
-  font-family: 'Exile-Regular', cursive; /* MUDANÇA: Aplica a fonte Luckiest Guy */
-  font-weight: 400; /* MUDANÇA: Conforme o peso da fonte Luckiest Guy */
+  font-family: 'Exile Regular', sans-serif; /* MUDANÇA: Aplica a fonte Exile Regular */
+  font-weight: 400; /* MUDANÇA: Conforme o peso da fonte Exile Regular */
   font-size: 18px;
   color: #FFFFFF; /* MUDANÇA: Cor do texto branca */
   margin-right: 10px;
@@ -3703,6 +3703,7 @@ details-disclosure > details {
     -1px  1px 0 #000,
      1px  1px 0 #000;
 }
+
 
 /* Wrapper do ícone SVG */
 #icon-wrapper {
