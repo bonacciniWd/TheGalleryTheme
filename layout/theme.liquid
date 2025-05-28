@@ -512,32 +512,37 @@
     });
   });
 </script>
-
-<div id="newsletter-popup" style="display: none;">
+<div id="newsletter-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 16px; padding: 20px; max-width: 90%; width: 90%; color: #fff; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
   
-  <div class="close-button">
-    <button id="close-popup">&times;</button>
+  <div style="text-align: right;">
+    <button id="close-popup" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">&times;</button>
   </div>
 
-  <div class="popup-image">
-    <img src="{{ 'fundo-popup.jpg' | asset_url }}" alt="Promoção">
+  <div style="margin-bottom: 15px; text-align: center;">
+    <img src="{{ 'fundo-popup.jpg' | asset_url }}" alt="Promoção" 
+         style="max-width: 70%; height: auto; border-radius: 8px;">
   </div>
 
-  <h2>Bem-vindo!</h2>
-  <p>
+  <h2 style="color: #ff0000; font-size: 28px; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Bem-vindo!</h2>
+  <p style="margin-bottom: 15px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
     Cadastre seu WhatsApp e ganhe <strong>10% OFF</strong> com o cupom!
   </p>
 
   <form id="newsletter-form">
-    <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required>
-    <button type="submit">Receber Cupom</button>
+    <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required
+      style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 8px;">
+    <button type="submit"
+      style="width: 100%; padding: 10px; background: #ff0000; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+      Receber Cupom
+    </button>
   </form>
 
-  <div id="coupon-message">
-    <strong>Parabéns!</strong> Use o cupom: <span class="coupon-code">10NOVO</span>
+  <div id="coupon-message" style="display: none; margin-top: 15px; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 8px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
+    <strong>Parabéns!</strong> Use o cupom: <span style="color: #ff0000;">10NOVO</span>
   </div>
 
 </div>
+
 
 
   </body>
