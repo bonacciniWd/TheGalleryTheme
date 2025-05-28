@@ -3846,10 +3846,25 @@ details-disclosure > details {
    background-blend-mode: overlay;
 }
 
+#newsletter-popup img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 @media (max-width: 768px) {
   #newsletter-popup {
-    max-width: 90%;
     padding: 15px;
   }
+
+  #newsletter-popup h2 {
+    font-size: 20px;
+  }
+
+  #newsletter-popup p {
+    font-size: 14px;
+  }
 }
+
 
