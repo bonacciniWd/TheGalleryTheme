@@ -3847,8 +3847,8 @@ details-disclosure > details {
 }
 
 #newsletter-popup img {
-  max-width: 100%;
-  height: auto;
+    max-width: auto;
+  height: 300px;
   display: block;
   margin: 0 auto;
 }
