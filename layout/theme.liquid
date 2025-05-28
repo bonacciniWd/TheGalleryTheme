@@ -484,6 +484,62 @@
         });
       });
     </script>
-    
+    <div id="newsletter-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 16px; padding: 20px; max-width: 400px; width: 90%; color: #fff; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); background-image: url('{{ "fundo-popup.png" | asset_url }}'); background-size: cover; background-position: center;">
+  <div style="text-align: right;">
+    <button id="close-popup" style="background: none; border: none; color: #fff; font-size: 20px; cursor: pointer;">&times;</button>
+  </div>
+  <h2 style="color: #ff0000; font-size: 24px; margin-bottom: 10px;">Bem-vindo!</h2>
+  <p style="margin-bottom: 15px;">Cadastre seu WhatsApp e ganhe <strong>10% OFF</strong> com o cupom!</p>
+  
+  <form id="newsletter-form">
+    <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required
+      style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 8px;">
+    <button type="submit"
+      style="width: 100%; padding: 10px; background: #ff0000; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+      Receber Cupom
+    </button>
+  </form>
+
+  <div id="coupon-message" style="display: none; margin-top: 15px; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 8px;">
+    <strong>Parabéns!</strong> Use o cupom: <span style="color: #ff0000;">10NOVO</span>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById('newsletter-popup');
+    const closeBtn = document.getElementById('close-popup');
+    const form = document.getElementById('newsletter-form');
+    const couponMsg = document.getElementById('coupon-message');
+
+    if (!localStorage.getItem('newsletterShown')) {
+      popup.style.display = 'block';
+    }
+
+    closeBtn.addEventListener('click', function () {
+      popup.style.display = 'none';
+      localStorage.setItem('newsletterShown', 'true');
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const whatsapp = form.whatsapp.value.trim();
+
+      if (!whatsapp) {
+        alert('Por favor, informe seu WhatsApp!');
+        return;
+      }
+
+      console.log('WhatsApp cadastrado:', whatsapp);
+
+      // Aqui você pode enviar o número para sua plataforma, por ex. via fetch.
+
+      form.style.display = 'none';
+      couponMsg.style.display = 'block';
+
+      localStorage.setItem('newsletterShown', 'true');
+    });
+  });
+</script>
+
   </body>
 </html>
