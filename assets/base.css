@@ -3840,5 +3840,78 @@ details-disclosure > details {
   }
 }
 
+/* Botão de fechar */
+#newsletter-popup .close-button {
+  text-align: right;
+}
+
+#newsletter-popup #close-popup {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Imagem dentro do popup */
+#newsletter-popup .popup-image {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#newsletter-popup .popup-image img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Título */
+#newsletter-popup h2 {
+  color: #ff0000;
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Parágrafo */
+#newsletter-popup p {
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Input */
+#newsletter-popup input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Botão */
+#newsletter-popup button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Mensagem de cupom */
+#newsletter-popup #coupon-message {
+  display: none;
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 8px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+#newsletter-popup #coupon-message .coupon-code {
+  color: #ff0000;
+}
 
 
