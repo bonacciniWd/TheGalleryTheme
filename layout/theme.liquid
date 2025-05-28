@@ -512,17 +512,27 @@
     });
   });
 </script>
-<div id="newsletter-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 16px; padding: 20px; max-width: 40%; width: 40%; color: #fff; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
-  
+<div id="newsletter-popup" style="display: none; position: fixed; top: 50%; left: 50%;
+transform: translate(-50%, -50%); z-index: 9999; backdrop-filter: blur(10px);
+background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.3);
+border-radius: 16px; padding: 20px; width: 90%; max-width: 400px;
+color: #fff; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+
   <div style="text-align: right;">
-    <button id="close-popup" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">&times;</button>
+    <button id="close-popup" style="background: none; border: none; color: #fff;
+    font-size: 24px; cursor: pointer; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">&times;</button>
   </div>
 
   <div style="margin-bottom: 15px; text-align: center;">
-    <h2 style="color: #ff0000; font-size: 28px; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Bem-vindo!</h2>
-    <img src="{{ 'fundo-popup.jpg' | asset_url }}" alt="Promoção" 
-         style="max-width: 90%; height: auto; border-radius: 8px;">
+    <video autoplay muted loop playsinline
+      style="width: 100%; max-width: 300px; height: auto; border-radius: 8px;">
+      <source src="https://res.cloudinary.com/dmzyxoy2o/video/upload/v1748455294/fundo-popup_uhimlh.mp4" type="video/mp4">
+      Seu navegador não suporta o vídeo.
+    </video>
   </div>
+
+  <h2 style="color: #ff0000; font-size: 28px; margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Bem-vindo!</h2>
 
   <p style="margin-bottom: 15px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
     Cadastre seu WhatsApp e ganhe <strong>10% OFF</strong> com o cupom!
@@ -530,14 +540,18 @@
 
   <form id="newsletter-form">
     <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required
-      style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 8px;">
+      style="width: 100%; padding: 10px; margin-bottom: 10px; border: none;
+      border-radius: 8px;">
     <button type="submit"
-      style="width: 100%; padding: 10px; background: #ff0000; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+      style="width: 100%; padding: 10px; background: #ff0000; color: #fff;
+      border: none; border-radius: 8px; cursor: pointer;">
       Receber Cupom
     </button>
   </form>
 
-  <div id="coupon-message" style="display: none; margin-top: 15px; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 8px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
+  <div id="coupon-message" style="display: none; margin-top: 15px; padding: 10px;
+  background: rgba(0,0,0,0.5); border-radius: 8px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">
     <strong>Parabéns!</strong> Use o cupom: <span style="color: #ff0000;">10NOVO</span>
   </div>
 
