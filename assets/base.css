@@ -3847,7 +3847,7 @@ details-disclosure > details {
 }
 
 #newsletter-popup img {
-  max-width: 80%;
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -3855,7 +3855,7 @@ details-disclosure > details {
 
 @media (min-width: 768px) {
   #newsletter-popup {
-    max-width: 600px;
+    max-width: 450px; /* Ajustado para um tamanho mais confortável */
   }
 }
 
@@ -3872,5 +3872,3 @@ details-disclosure > details {
     font-size: 14px;
   }
 }
-
-
