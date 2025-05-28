@@ -484,5 +484,49 @@
         });
       });
     </script>
+    <div id="newsletter-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 16px; padding: 20px; max-width: 400px; width: 90%; color: #fff; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+  <div style="text-align: right;">
+    <button id="close-popup" style="background: none; border: none; color: #fff; font-size: 20px; cursor: pointer;">&times;</button>
+  </div>
+  <h2 style="color: #ff0000; font-size: 24px; margin-bottom: 10px;">Bem-vindo!</h2>
+  <p style="margin-bottom: 15px;">Cadastre-se na nossa newsletter e receba <strong>10% OFF</strong> com o cupom <strong>10NOVO</strong>!</p>
+  <form id="newsletter-form">
+    <input type="email" name="email" placeholder="Seu e-mail" required
+      style="width: 100%; padding: 10px; margin-bottom: 10px; border: none; border-radius: 8px;">
+    <button type="submit"
+      style="width: 100%; padding: 10px; background: #ff0000; color: #fff; border: none; border-radius: 8px; cursor: pointer;">
+      Inscrever-se
+    </button>
+  </form>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById('newsletter-popup');
+    const closeBtn = document.getElementById('close-popup');
+    const form = document.getElementById('newsletter-form');
+
+    if (!localStorage.getItem('newsletterShown')) {
+      popup.style.display = 'block';
+    }
+
+    closeBtn.addEventListener('click', function () {
+      popup.style.display = 'none';
+      localStorage.setItem('newsletterShown', 'true');
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = form.email.value;
+
+      // Aqui você pode substituir pela lógica de envio via API de newsletter.
+      console.log('E-mail cadastrado:', email);
+
+      alert('Obrigado por se cadastrar! Use o cupom: 10NOVO');
+      popup.style.display = 'none';
+      localStorage.setItem('newsletterShown', 'true');
+    });
+  });
+</script>
+
   </body>
 </html>
