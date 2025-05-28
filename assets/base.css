@@ -3853,7 +3853,13 @@ details-disclosure > details {
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  #newsletter-popup {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 767px) {
   #newsletter-popup {
     padding: 15px;
   }
