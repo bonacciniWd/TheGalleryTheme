@@ -3841,4 +3841,14 @@ details-disclosure > details {
 }
 
 
+#newsletter-popup {
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  #newsletter-popup {
+    max-width: 90%;
+    padding: 15px;
+  }
+}
 
