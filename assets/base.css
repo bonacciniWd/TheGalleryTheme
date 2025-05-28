@@ -3844,12 +3844,10 @@ details-disclosure > details {
 #newsletter-popup {
   transition: all 0.3s ease-in-out;
    background-blend-mode: overlay;
-  max-width: 500px;
 }
 
 #newsletter-popup img {
-    max-width: auto;
-  height: 300px;
+  
   display: block;
   margin: 0 auto;
 }
