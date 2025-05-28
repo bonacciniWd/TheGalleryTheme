@@ -3841,30 +3841,4 @@ details-disclosure > details {
 }
 
 
-#newsletter-popup img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  #newsletter-popup {
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 767px) {
-  #newsletter-popup {
-    padding: 15px;
-  }
-
-  #newsletter-popup h2 {
-    font-size: 20px;
-  }
-
-  #newsletter-popup p {
-    font-size: 14px;
-  }
-}
 
