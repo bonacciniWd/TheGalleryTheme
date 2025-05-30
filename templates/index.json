@@ -41,7 +41,7 @@
     "featured_collection_xKC49E": {
       "type": "featured-collection",
       "settings": {
-        "title": "<em>Melhores marcas</em>",
+        "title": "",
         "heading_size": "h2",
         "description": "<h2><em><strong>Adidas</strong></em></h2>",
         "show_description": false,
@@ -70,9 +70,9 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Nike",
+        "title": "",
         "heading_size": "h1",
-        "description": "",
+        "description": "<h2><em><strong>Nike</strong></em></h2>",
         "show_description": false,
         "description_style": "body",
         "collection": "nike-1",
@@ -99,10 +99,10 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "New Balance",
+        "title": "",
         "heading_size": "h2",
-        "description": "",
-        "show_description": true,
+        "description": "<h2><em><strong>New Balance</strong></em><br/></h2>",
+        "show_description": false,
         "description_style": "body",
         "collection": "new-balance-1",
         "products_to_show": 25,
@@ -128,9 +128,9 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Mizuno",
+        "title": "",
         "heading_size": "h1",
-        "description": "",
+        "description": "<h2><em><strong>Mizuno</strong></em></h2>",
         "show_description": false,
         "description_style": "body",
         "collection": "mizuno",
