@@ -40,6 +40,7 @@
     },
     "featured_collection_xKC49E": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "<em>Melhores marcas</em>",
         "heading_size": "h2",
@@ -80,6 +81,7 @@
     },
     "featured_collection_6R476x": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
