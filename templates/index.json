@@ -268,36 +268,7 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Vans",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "vans",
-        "products_to_show": 25,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection_RqCRrb": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "Coleção em destaque",
+        "title": "",
         "heading_size": "h2",
         "description": "<h2><em><strong>Vans</strong></em></h2>",
         "show_description": false,
@@ -338,7 +309,6 @@
     "video_N3ptFW",
     "image_banner_zyji7q",
     "featured_blog_KPygWW",
-    "featured_collection_HCrcK9",
-    "featured_collection_RqCRrb"
+    "featured_collection_HCrcK9"
   ]
 }
