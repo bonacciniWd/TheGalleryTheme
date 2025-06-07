@@ -134,7 +134,7 @@
         "description": "<h2><em><strong>Puma</strong></em></h2>",
         "show_description": false,
         "description_style": "body",
-        "collection": "new-balance",
+        "collection": "puma",
         "products_to_show": 25,
         "columns_desktop": 5,
         "full_width": false,
