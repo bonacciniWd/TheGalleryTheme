@@ -46,7 +46,7 @@
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #ff4b2b;
+  border: 2.5px solid #ff4b2b;
   padding: 1px;
   transition: border 0.3s, transform 0.3s;
 }
