@@ -20,6 +20,10 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.stories-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 .story-item {
   display: flex;
   flex-direction: column;
