@@ -412,7 +412,8 @@
       ".body {overflow-x: hidden;}",
       "@keyframes spin {from {transform: rotate(0deg); } to {transform: rotate(-360deg); }}",
       ".spin {animation: spin 10s linear infinite;}",
-      ".parcelamento {font-size: 14px; color: #ff4b2b; font-weight: 500; margin-top: -10px;}"
+      ".parcelamento {font-size: 14px; color: #ff4b2b; font-weight: 500; margin-top: -10px;}",
+      ".header {max-height: 80px;}"
     ]
   }
 }
