@@ -40,29 +40,33 @@
   text-decoration: none;
 }
 
+/* Gradiente de borda estilo Instagram */
 .story-avatar-gradient {
-  padding: 4px;
+  padding: 4px; /* espaço entre gradiente e imagem */
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   display: inline-block;
-  overflow: hidden; /* Essencial para conter o hover */
-  transition: transform 0.3s;
+  overflow: hidden; /* importante para o arredondamento */
+  transition: transform 0.3s ease;
+  /* cursor já aplicado em .story-item, mas pode repetir aqui se preferir */
 }
 
-/* Hover aplicado no container para crescer borda + imagem */
+/* Ao passar o mouse, aumenta gradiente + imagem */
 .story-avatar-gradient:hover {
   transform: scale(1.05);
 }
 
+/* Imagem dentro do gradiente */
 .story-avatar-gradient img,
 .story-avatar-gradient video {
   width: 64px;
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  background-color: #000; /* Cor de fundo interna */
+  background-color: #000; /* fundo para evitar espaços vazios */
   display: block;
-  transition: none; /* Sem transformação aqui para evitar conflito */
+  border: 2px solid white; /* borda branca fina estilo Instagram */
+  transition: none; /* sem transform para evitar conflito */
 }
 
 .story-title {
@@ -130,6 +134,7 @@
   .story-avatar-gradient video {
     width: 80px;
     height: 80px;
+    border-width: 3px; /* opcional: borda branca um pouco maior em desktop */
   }
   .story-title {
     font-size: 14px;
