@@ -40,19 +40,17 @@
   text-decoration: none;
 }
 
-/* Gradiente no contêiner, que segura a imagem/vídeo com overflow:hidden */
 .story-avatar-gradient {
   padding: 2px;
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   display: inline-block;
-  overflow: hidden;
+  overflow: hidden; /* Essencial para conter o hover */
   transition: transform 0.3s;
 }
 
-/* Zoom no hover, só da imagem/vídeo dentro do gradiente */
-.story-avatar-gradient:hover img,
-.story-avatar-gradient:hover video {
+/* Hover aplicado no container para crescer borda + imagem */
+.story-avatar-gradient:hover {
   transform: scale(1.05);
 }
 
@@ -62,17 +60,10 @@
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  background-color: #000; /* fundo interno */
+  background-color: #000; /* Cor de fundo interna */
   display: block;
-  transition: transform 0.3s;
+  transition: none; /* Sem transformação aqui para evitar conflito */
 }
-
-/* Remove hover direto na imagem/vídeo, para evitar conflito com o gradiente */
-/* .story-item:hover img,
-.story-item:hover video {
-  border-color: #ff0080;
-  transform: scale(1.05);
-} */
 
 .story-title {
   font-size: 12px;
