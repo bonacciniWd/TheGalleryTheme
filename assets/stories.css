@@ -48,6 +48,10 @@
   overflow: hidden; /* ESSENCIAL para conter o hover */
 }
 
+.story-avatar-gradient:hover img {
+  transform: scale(1.05);
+}
+
 .story-avatar-gradient img,
 .story-avatar-gradient video {
   width: 64px;
