@@ -411,7 +411,8 @@
       ".banner__media {width: 100%; height: 90vh; object-fit: cover; animation: zoomInOut 8s ease-in-out infinite;}",
       ".body {overflow-x: hidden;}",
       "@keyframes spin {from {transform: rotate(0deg); } to {transform: rotate(-360deg); }}",
-      ".spin {animation: spin 10s linear infinite;}"
+      ".spin {animation: spin 10s linear infinite;}",
+      ".parcelamento {font-size: 14px; color: #FF4B2B; font-weight: 500; margin-top: -10px;}"
     ]
   }
 }
