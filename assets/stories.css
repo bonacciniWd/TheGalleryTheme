@@ -131,6 +131,7 @@
 @media (min-width: 768px) {
   .story-item {
     width: 80px;
+    gap: 10px;
   }
   .story-avatar-gradient img,
   .story-avatar-gradient video {
