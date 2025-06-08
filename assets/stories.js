@@ -1,34 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
   const stories = document.querySelectorAll(".story-item");
+  const viewer = document.querySelector(".story-viewer-overlay");
+  const viewerContent = document.querySelector(".story-media-container");
+  const viewerTitle = document.querySelector(".story-title-overlay");
+  const closeBtn = document.querySelector(".close-viewer");
+
   if (!stories.length) return;
 
-  let current = 0;
-  let timer;
-
-  function activateStory(index) {
-    stories.forEach((el, i) => {
-      el.classList.toggle("active", i === index);
-    });
-    const duration = parseInt(stories[index].dataset.duration || "5000", 10);
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      nextStory();
-    }, duration);
-  }
-
-  function nextStory() {
-    current = (current + 1) % stories.length;
-    activateStory(current);
-    stories[current].scrollIntoView({ behavior: "smooth", inline: "center" });
-  }
-
-  activateStory(current);
-
-  stories.forEach((story, index) => {
+  stories.forEach(story => {
     story.addEventListener("click", (e) => {
       e.preventDefault();
-      current = index;
-      activateStory(index);
+      const img = story.querySelector("img");
+      const video = story.querySelector("video");
+      const title = story.querySelector(".story-title")?.textContent || "";
+
+      viewerContent.innerHTML = "";
+
+      if (img) {
+        const cloneImg = img.cloneNode();
+        viewerContent.appendChild(cloneImg);
+      } else if (video) {
+        const cloneVideo = video.cloneNode();
+        cloneVideo.controls = true;
+        cloneVideo.autoplay = true;
+        viewerContent.appendChild(cloneVideo);
+      }
+
+      viewerTitle.textContent = title;
+      viewer.style.display = "flex";
     });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    viewer.style.display = "none";
+    viewerContent.innerHTML = "";
+  });
+
+  viewer.addEventListener("click", (e) => {
+    if (e.target === viewer) {
+      viewer.style.display = "none";
+      viewerContent.innerHTML = "";
+    }
   });
 });
