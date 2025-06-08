@@ -3920,11 +3920,27 @@ details-disclosure > details {
   }
 
 .subnav {
-  background-color: #f8f8f8;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
   overflow-x: auto;
   white-space: nowrap;
+  padding: 0.5rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.subnav::-webkit-scrollbar {
+  height: 6px;
+}
+
+.subnav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.subnav::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
 }
 
 .subnav__list {
@@ -3932,14 +3948,19 @@ details-disclosure > details {
   gap: 2rem;
   list-style: none;
   margin: 0;
-  padding: 0.75rem 1rem;
+  padding: 0 1rem;
 }
 
 .subnav__list li a {
   text-decoration: none;
   color: #333;
-  font-weight: 500;
-  padding: 0.25rem 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 4px;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .subnav__list li a:hover {
