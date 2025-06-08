@@ -22,7 +22,7 @@
   align-items: center;
   flex: 0 0 auto;
   width: 80px;
-  z-index: 99999;
+  margin-top: 10px;
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s;
