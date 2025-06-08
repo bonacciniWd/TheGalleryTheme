@@ -3941,8 +3941,8 @@ details-disclosure > details {
 
 .subnav__list li a {
   position: relative;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: lightblue;
   color: #333;
   text-decoration: none;
   padding: 0.5rem 1rem;
