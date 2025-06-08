@@ -36,7 +36,7 @@
   cursor: pointer;
   scroll-snap-align: start;
   transition: transform 0.3s;
-  color: #fff;
+  color: #000;
   text-decoration: none;
 }
 
