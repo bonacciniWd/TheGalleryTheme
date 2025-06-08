@@ -44,6 +44,7 @@
 .story-item video {
   width: 64px;
   height: 64px;
+  background: conic-gradient(#f09433, #e6683c, #dc2743, #cc2366, #bc1888);
   border-radius: 50%;
   object-fit: cover;
   border: 3.3px solid #ff4b2b;
