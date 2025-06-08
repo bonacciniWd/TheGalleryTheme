@@ -99,3 +99,22 @@
   text-transform: uppercase;
   color: rgba(var(--color-foreground), 0.7);
 }
+
+.custom-installments {
+  font-size: 14px;
+  color: #ff4b2b;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-installments {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .custom-installments {
+    font-size: 16px;
+  }
+}
