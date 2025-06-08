@@ -1,12 +1,12 @@
 .custom-stories-carousel {
   width: 100%;
-  height: auto;
-  z-index: 9999;
+  height: 130px;
   overflow-x: auto;
   background-color: #000;
-  padding: 20px 10px;
-  margin-bottom: 20px;
-    
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 .stories-wrapper {
@@ -25,6 +25,8 @@
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s;
+  color: #fff;
+  text-decoration: none;
 }
 
 .story-item img,
@@ -46,7 +48,7 @@
 .story-title {
   font-size: 12px;
   margin-top: 4px;
-  color: #333;
+  color: #fff;
 }
 
 .no-stories {
@@ -54,6 +56,49 @@
   color: #999;
   font-style: italic;
   margin-top: 20px;
+}
+
+/* Modal */
+.story-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.story-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  background: #111;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+}
+
+.story-modal-content img,
+.story-modal-content video {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 8px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
 }
 
 /* Responsivo */
