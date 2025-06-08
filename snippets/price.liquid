@@ -90,25 +90,44 @@
           </span>
         {%- endif -%}
       </div>
-     <div class="price__sale">
-  {%- unless product.price_varies == false and product.compare_at_price_varies %}
-    <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-    <span>
-      <s class="price-item price-item--regular">
-        {% if settings.currency_code_enabled %}
-          {{ compare_at_price | money_with_currency }}
-        {% else %}
-          {{ compare_at_price | money }}
-        {% endif %}
-      </s>
-    </span>
-  {%- endunless -%}
+      <div class="price__sale">
+        {%- unless product.price_varies == false and product.compare_at_price_varies %}
+          <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
+          <span>
+            <s class="price-item price-item--regular">
+              {% if settings.currency_code_enabled %}
+                {{ compare_at_price | money_with_currency }}
+              {% else %}
+                {{ compare_at_price | money }}
+              {% endif %}
+            </s>
+          </span>
+        {%- endunless -%}
+        <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
+        <span class="price-item price-item--sale price-item--last">
+          {{ money_price }}
+        </span>
+      </div>
+      <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+        <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+        <span class="price-item price-item--last">
+          <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
+          <span aria-hidden="true">/</span>
+          <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+          <span>
+            {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+              {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
+            {%- endif -%}
+            {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+          </span>
+        </span>
+      </small>
+    </div> <!-- fecha price__container -->
 
-  <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
-  <span class="price-item price-item--sale price-item--last">
+   <div class="price-wrapper">
+  <div class="price" style="font-size: 20px; font-weight: bold;">
     {{ money_price }}
-  </span>
-
+  </div>
   {%- if price > 0 -%}
     {% assign parcelas = 10 %}
     {% assign preco_parcela = price | divided_by: parcelas | round: 2 %}
@@ -117,22 +136,6 @@
     </div>
   {%- endif -%}
 </div>
-
-<small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
-  <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-  <span class="price-item price-item--last">
-    <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
-    <span aria-hidden="true">/</span>
-    <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
-    <span>
-      {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
-        {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
-      {%- endif -%}
-      {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
-    </span>
-  </span>
-</small>
-
     {%- if show_badges -%}
       <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
         {{ 'products.product.on_sale' | t }}
