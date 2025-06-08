@@ -40,14 +40,15 @@
   text-decoration: none;
 }
 
-.story-ring img,
-.story-ring video {
-  display: block;
+.story-item img,
+.story-item video {
   width: 64px;
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  background: #000;
+  border: 3.3px solid #ff4b2b;
+  padding: 1px;
+  transition: border 0.3s, transform 0.3s;
 }
 
 .story-item:hover img,
