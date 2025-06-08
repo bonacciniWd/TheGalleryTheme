@@ -3985,5 +3985,5 @@ details-disclosure > details {
 }
 
 .header {
-  z-index: 100;
+  z-index: 9999;
 }
