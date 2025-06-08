@@ -3983,3 +3983,7 @@ details-disclosure > details {
   background-color: #ccc;
   border-radius: 2px;
 }
+
+.header {
+  z-index: 100;
+}
