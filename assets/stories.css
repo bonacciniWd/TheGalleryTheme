@@ -13,6 +13,7 @@
   display: flex;
   gap: 16px;
   margin-left: 15px;
+  margin-right: 15px;
   scroll-behavior: smooth;
   overflow-x: auto;
     scroll-snap-type: x mandatory;
