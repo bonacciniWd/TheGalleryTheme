@@ -117,3 +117,32 @@
     font-size: 14px;
   }
 }
+.stories-wrapper {
+  display: flex;
+  gap: 16px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+
+  /* NOVO */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.stories-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  /* NOVO */
+  scroll-snap-align: start;
+}
