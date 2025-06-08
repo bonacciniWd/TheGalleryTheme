@@ -36,7 +36,7 @@
         "custom_liquid_N7bVEH": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign preco = product.price | money_without_currency | replace: ',', '.' | times: 1 %}\n{% assign parcelas = 10 %}\n{% assign valor_parcela = preco | divided_by: parcelas %}\n\n<p class=\"parcelamento\">\n  ou {{ parcelas }}x de R$ {{ valor_parcela }} sem juros\n</p>"
+            "custom_liquid": ""
           }
         },
         "variant_picker": {
