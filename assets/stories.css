@@ -40,30 +40,15 @@
   text-decoration: none;
 }
 
-.story-item img,
-.story-item video {
+.story-ring img,
+.story-ring video {
+  display: block;
   width: 64px;
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  padding: 2px; /* Espaço entre conteúdo e a "borda" */
-  background: conic-gradient(
-    from 180deg,
-    #f09433,
-    #e6683c,
-    #dc2743,
-    #cc2366,
-    #bc1888,
-    #f09433
-  );
-  -webkit-mask: 
-    radial-gradient(circle closest-side, #000 98%, transparent 100%);
-  mask: 
-    radial-gradient(circle closest-side, #000 98%, transparent 100%);
-  transition: transform 0.3s;
-  border: none; /* Remove borda sólida antiga */
+  background: #000;
 }
-
 
 .story-item:hover img,
 .story-item:hover video {
