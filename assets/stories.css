@@ -130,13 +130,12 @@
 /* Responsivo */
 @media (min-width: 768px) {
   .story-item {
-    width: 80px;
-    gap: 10px;
+    width: 100px;
   }
   .story-avatar-gradient img,
   .story-avatar-gradient video {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-width: 3px; /* opcional: borda branca um pouco maior em desktop */
   }
   .story-title {
