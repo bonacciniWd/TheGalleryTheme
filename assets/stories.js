@@ -1,34 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
   const stories = document.querySelectorAll(".story-item");
+  const modal = document.getElementById("story-modal");
+  const modalMedia = document.getElementById("story-media");
+  const modalTitle = document.getElementById("story-modal-title");
+  const closeModalBtn = document.getElementById("close-modal");
+
   if (!stories.length) return;
 
-  let current = 0;
-  let timer;
-
-  function activateStory(index) {
-    stories.forEach((el, i) => {
-      el.classList.toggle("active", i === index);
-    });
-    const duration = parseInt(stories[index].dataset.duration || "5000", 10);
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      nextStory();
-    }, duration);
-  }
-
-  function nextStory() {
-    current = (current + 1) % stories.length;
-    activateStory(current);
-    stories[current].scrollIntoView({ behavior: "smooth", inline: "center" });
-  }
-
-  activateStory(current);
-
-  stories.forEach((story, index) => {
+  stories.forEach(story => {
     story.addEventListener("click", (e) => {
       e.preventDefault();
-      current = index;
-      activateStory(index);
+      const title = story.querySelector(".story-title").textContent;
+
+      // Tenta pegar imagem ou vídeo dentro do item
+      const imgEl = story.querySelector("img");
+      const videoEl = story.querySelector("video");
+
+      modalTitle.textContent = title;
+      modalMedia.innerHTML = "";
+
+      if (videoEl && videoEl.src) {
+        const video = document.createElement("video");
+        video.src = videoEl.src;
+        video.controls = true;
+        video.autoplay = true;
+        video.muted = true;
+        video.playsInline = true;
+        modalMedia.appendChild(video);
+      } else if (imgEl && imgEl.src) {
+        const img = document.createElement("img");
+        img.src = imgEl.src;
+        modalMedia.appendChild(img);
+      }
+
+      modal.style.display = "flex";
     });
+  });
+
+  closeModalBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    modalMedia.innerHTML = "";
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modalMedia.innerHTML = "";
+    }
   });
 });
