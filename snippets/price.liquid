@@ -122,7 +122,16 @@
           </span>
         </span>
       </small>
-    </div>
+    </div> <!-- fecha price__container -->
+
+    {%- if price > 0 -%}
+      {% assign parcelas = 10 %}
+      {% assign preco_parcela = price | divided_by: parcelas | round: 2 %}
+      <div class="installments" style="font-size: 0.875rem; color: #666; margin-top: 0.25rem;">
+        ou {{ parcelas }}x de <strong>{{ preco_parcela | money }}</strong> sem juros
+      </div>
+    {%- endif -%}
+
     {%- if show_badges -%}
       <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
         {{ 'products.product.on_sale' | t }}
