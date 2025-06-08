@@ -3,6 +3,8 @@
   height: 150px;
   overflow-x: auto;
   background-color: #000;
+  border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
   padding: 10px 0;
   position: sticky;
   top: 0;
