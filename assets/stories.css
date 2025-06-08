@@ -127,19 +127,4 @@
   }
 }
 
-.story-ring {
-  padding: 2px; /* "Espaçamento" entre a imagem e o gradiente */
-  border-radius: 50%;
-  background: conic-gradient(#f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  display: inline-block;
-}
 
-.story-ring img,
-.story-ring video {
-  display: block;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  background: #000;
-}
