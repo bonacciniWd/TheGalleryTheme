@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Design_sem_nome.svg",
-    "logo_width": 80,
+    "logo": "shopify://shop_images/Amaterasu_Co..svg",
+    "logo_width": 160,
     "favicon": "shopify://shop_images/next.svg",
     "type_header_font": "montserrat_n4",
     "heading_scale": 100,
@@ -412,7 +412,7 @@
       ".body {overflow-x: hidden;}",
       "@keyframes spin {from {transform: rotate(0deg); } to {transform: rotate(-360deg); }}",
       ".spin {animation: spin 10s linear infinite;}",
-      ".parcelamento {font-size: 14px; color: #FF4B2B; font-weight: 500; margin-top: -10px;}"
+      ".parcelamento {font-size: 14px; color: #ff4b2b; font-weight: 500; margin-top: -10px;}"
     ]
   }
 }
