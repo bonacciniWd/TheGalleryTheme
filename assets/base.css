@@ -3922,7 +3922,7 @@ details-disclosure > details {
 .subnav {
   width: 100%;
   overflow-x: auto;
-  background-color: #f0f0f0;
+  background-color: #f1f1f1;
   border-bottom: 1px solid #e5e5e5;
   padding: 1rem 0;
   scroll-behavior: smooth;
