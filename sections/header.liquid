@@ -280,7 +280,7 @@
       </a>
     </div>
   </header>
-  <nav class="subnav">
+  <div class="subnav">
   <ul class="subnav__list">
     {% for collection in collections %}
       <li>
@@ -288,7 +288,7 @@
       </li>
     {% endfor %}
   </ul>
-</nav>
+</div>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 
 {%- if settings.cart_type == "notification" -%}
