@@ -3925,6 +3925,7 @@ details-disclosure > details {
   background-color: #f1f1f1;
   border-bottom: 1px solid #e5e5e5;
   padding: 1rem 0;
+  z-index: 100;
   scroll-behavior: smooth;
 }
 
