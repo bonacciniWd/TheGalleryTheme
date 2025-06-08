@@ -33,6 +33,7 @@
   margin-top: 10px;
   text-align: center;
   cursor: pointer;
+   scroll-snap-align: start;
   transition: transform 0.3s;
   color: #fff;
   text-decoration: none;
