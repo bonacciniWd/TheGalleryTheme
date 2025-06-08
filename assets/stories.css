@@ -65,7 +65,7 @@
   object-fit: cover;
   background-color: #000; /* fundo para evitar espaços vazios */
   display: block;
-  border: 2px solid white; /* borda branca fina estilo Instagram */
+  border: 2px solid black; /* borda branca fina estilo Instagram */
   transition: none; /* sem transform para evitar conflito */
 }
 
