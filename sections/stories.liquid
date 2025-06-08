@@ -19,12 +19,24 @@
     <div class="stories-wrapper">
       {% for story in stories %}
         <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="5000">
-          <img 
-            src="{{ story.imagem | image_url: width: 80, height: 80 }}" 
-            alt="{{ story.title | escape }}" 
-            loading="lazy" 
-            width="80" 
-            height="80">
+          {% if story.imagem %}
+            <img 
+              src="{{ story.imagem | image_url: width: 80, height: 80 }}" 
+              alt="{{ story.title | escape }}" 
+              loading="lazy" 
+              width="80" 
+              height="80">
+          {% elsif story.video %}
+            <video 
+              src="{{ story.video }}" 
+              loading="lazy" 
+              width="80" 
+              height="80" 
+              muted
+              playsinline
+              preload="metadata"
+              ></video>
+          {% endif %}
           <span class="story-title">{{ story.title }}</span>
         </a>
       {% endfor %}
@@ -32,6 +44,15 @@
   {% else %}
     <p class="no-stories">Nenhum story disponível no momento.</p>
   {% endif %}
+</div>
+
+<!-- Modal para stories -->
+<div id="story-modal" class="story-modal" style="display:none;">
+  <div class="story-modal-content">
+    <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
+    <div id="story-media"></div>
+    <h2 id="story-modal-title"></h2>
+  </div>
 </div>
 
 {{ 'stories.css' | asset_url | stylesheet_tag }}
