@@ -48,4 +48,15 @@ document.addEventListener("DOMContentLoaded", () => {
       modalMedia.innerHTML = "";
     }
   });
+    // ⚠️ Scroll horizontal com a roda do mouse no desktop
+  wrapper.addEventListener("wheel", (e) => {
+    // Só funciona se tiver deltaY (ou seja, roda do mouse)
+    if (e.deltaY !== 0) {
+      e.preventDefault();
+      wrapper.scrollBy({
+        left: e.deltaY,
+        behavior: "smooth"
+      });
+    }
+  }, { passive: false });
 });
