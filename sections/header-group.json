@@ -26,7 +26,9 @@
         "d4709907-66e5-4fee-a7e7-b82cfafe8c77"
       ],
       "disabled": true,
-      "custom_css": [],
+      "custom_css": [
+        "header {z-index: 100;}"
+      ],
       "settings": {
         "color_scheme": "accent-1",
         "show_line_separator": false,
