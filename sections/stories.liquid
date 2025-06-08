@@ -18,28 +18,29 @@
   {% if stories.size > 0 %}
     <div class="stories-wrapper">
       {% for story in stories %}
-        <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="5000">
+        <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="5000" tabindex="0" aria-label="Abrir story {{ story.title | escape }}">
           {% if story.imagem %}
-          <div class="story-avatar-gradient">
-            <img 
-              src="{{ story.imagem | image_url: width: 80, height: 80 }}" 
-              alt="{{ story.title | escape }}" 
-              loading="lazy" 
-              width="80" 
-              height="80">
-          </div> 
+            <div class="story-avatar-gradient">
+              <img 
+                src="{{ story.imagem | image_url: width: 80, height: 80 }}" 
+                alt="{{ story.title | escape }}" 
+                loading="lazy" 
+                width="80" 
+                height="80"
+                />
+            </div> 
           {% elsif story.video %}
-           <div class="story-avatar-gradient"> 
-            <video 
-              src="{{ story.video }}" 
-              loading="lazy" 
-              width="80" 
-              height="80" 
-              muted
-              playsinline
-              preload="metadata"
+            <div class="story-avatar-gradient"> 
+              <video 
+                src="{{ story.video }}" 
+                loading="lazy" 
+                width="80" 
+                height="80" 
+                muted
+                playsinline
+                preload="metadata"
               ></video>
-           </div  
+            </div>
           {% endif %}
           <span class="story-title">{{ story.title }}</span>
         </a>
@@ -51,7 +52,7 @@
 </div>
 
 <!-- Modal para stories -->
-<div id="story-modal" class="story-modal" style="display:none;">
+<div id="story-modal" class="story-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="story-modal-title">
   <div class="story-modal-content">
     <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
     <div id="story-media"></div>
