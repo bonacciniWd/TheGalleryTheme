@@ -27,7 +27,7 @@
       ],
       "disabled": true,
       "custom_css": [
-        "header {z-index: 100;}"
+        ".header {z-index: 100;}"
       ],
       "settings": {
         "color_scheme": "accent-1",
