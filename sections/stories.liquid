@@ -13,23 +13,24 @@
 {% endschema %}
 
 <div class="custom-stories-carousel">
-  {% assign stories = shop.metafields.custom.stories.value %}
-  {% if stories and stories.size > 0 %}
-    <div class="stories-wrapper">
-      {% for story in stories %}
-        <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="{{ story.duration | default: 5000 }}">
-          {% if story.image_url contains '.mp4' %}
-            <video src="{{ story.image_url }}" muted playsinline></video>
-          {% else %}
-            <img width="80" height="80" src="{{ story.image_url }}" alt="{{ story.title | escape }}" loading="lazy">
-          {% endif %}
-          <span class="story-title">{{ story.title }}</span>
-        </a>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="no-stories">Nenhum story disponível no momento.</p>
-  {% endif %}
+{% assign stories = shop.metaobjects.stories.values %}
+
+{% if stories.size > 0 %}
+  <div class="stories-wrapper">
+    {% for story in stories %}
+      <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="5000">
+        <img src="{{ story.imagem | image_url: width: 80, height: 80 }}" 
+             alt="{{ story.title | escape }}" 
+             loading="lazy" 
+             width="80" 
+             height="80">
+        <span class="story-title">{{ story.title }}</span>
+      </a>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="no-stories">Nenhum story disponível no momento.</p>
+{% endif %}
 </div>
 
 {{ 'stories.css' | asset_url | stylesheet_tag }}
