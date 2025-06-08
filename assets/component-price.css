@@ -101,7 +101,7 @@
 }
 
 .custom-installments {
-  font-size: 4px;
+  font-size: 14px;
   color: #ff4b2b;
   font-weight: 500;
   margin-top: 6px;
@@ -109,7 +109,7 @@
 
 @media screen and (max-width: 767px) {
   .custom-installments {
-    font-size: 2px;
+    font-size: 10px;
   }
 }
 
