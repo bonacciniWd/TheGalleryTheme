@@ -3976,9 +3976,9 @@ details-disclosure > details {
 
 /* Scrollbar opcional */
 .subnav::-webkit-scrollbar {
-  height: 8px;
+  height: 4px;
 }
 .subnav::-webkit-scrollbar-thumb {
   background-color: #ff0000;
-  border-radius: 4px;
+  border-radius: 2px;
 }
