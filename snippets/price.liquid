@@ -122,7 +122,7 @@
       {%- if price > 0 -%}
         {% assign parcelas = 10 %}
         {% assign preco_parcela = price | divided_by: parcelas | round: 2 %}
-        <div class="installments" style="font-size: 12px; color: #ff4b2b; font-weight: 400; margin-top: 6px; ">
+        <div class="installments custom-installments" style="font-size: 12px; color: #ff4b2b; font-weight: 400; margin-top: 6px; ">
           ou {{ parcelas }}x de <strong>{{ preco_parcela | money }}</strong> sem juros
         </div>
       {%- endif -%}
