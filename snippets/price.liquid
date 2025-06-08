@@ -123,7 +123,7 @@
         {% assign parcelas = 10 %}
         {% assign preco_parcela = price | divided_by: parcelas | round: 2 %}
         <div class="custom-installments">
-          ou {{ parcelas }}x de <strong>{{ preco_parcela | money }}</strong> sem juros
+          ou {{ parcelas }}x de <strong>{{ preco_parcela | money }}
         </div>
       {%- endif -%}
     </div> <!-- fecha price__container -->
