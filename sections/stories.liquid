@@ -21,7 +21,7 @@
           {% if story.image_url contains '.mp4' %}
             <video src="{{ story.image_url }}" muted playsinline></video>
           {% else %}
-            <img src="{{ story.image_url }}" alt="{{ story.title | escape }}" loading="lazy">
+            <img width="80" height="80" src="{{ story.image_url }}" alt="{{ story.title | escape }}" loading="lazy">
           {% endif %}
           <span class="story-title">{{ story.title }}</span>
         </a>
