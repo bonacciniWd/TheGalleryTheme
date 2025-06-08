@@ -3979,6 +3979,6 @@ details-disclosure > details {
   height: 4px;
 }
 .subnav::-webkit-scrollbar-thumb {
-  background-color: #ff0000;
+  background-color: #ccc;
   border-radius: 2px;
 }
