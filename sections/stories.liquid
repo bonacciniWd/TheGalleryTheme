@@ -13,29 +13,18 @@
 {% endschema %}
 
 <div class="custom-stories-carousel">
-  {% assign stories = shop.metaobjects.stories.values %}
+  {% assign stories = shop.metaobjects.stories.values | sort: "title" %}
 
   {% if stories.size > 0 %}
     <div class="stories-wrapper">
       {% for story in stories %}
-        {% assign extension = story.imagem | split: '.' | last | downcase %}
-
         <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="5000">
-          {% if extension == 'mp4' %}
-            <video src="{{ story.imagem | file_url }}"
-                   muted
-                   playsinline
-                   width="80"
-                   height="80"
-                   style="border-radius: 50%; object-fit: cover; border: 3px solid #ff4b2b;"></video>
-          {% else %}
-            <img src="{{ story.imagem | image_url: width: 80, height: 80 }}"
-                 alt="{{ story.title | escape }}"
-                 loading="lazy"
-                 width="80"
-                 height="80"
-                 style="border-radius: 50%; object-fit: cover; border: 3px solid #ff4b2b;">
-          {% endif %}
+          <img 
+            src="{{ story.imagem | image_url: width: 80, height: 80 }}" 
+            alt="{{ story.title | escape }}" 
+            loading="lazy" 
+            width="80" 
+            height="80">
           <span class="story-title">{{ story.title }}</span>
         </a>
       {% endfor %}
