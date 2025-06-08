@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Amaterasu_Co..svg",
+    "logo": "shopify://shop_images/Amaterasu_Co._79e0d3ef-d2a5-48dc-b2e9-ff81f69a1e2b.svg",
     "logo_width": 300,
     "favicon": "shopify://shop_images/next.svg",
     "type_header_font": "montserrat_n4",
@@ -413,7 +413,7 @@
       "@keyframes spin {from {transform: rotate(0deg); } to {transform: rotate(-360deg); }}",
       ".spin {animation: spin 10s linear infinite;}",
       ".parcelamento {font-size: 14px; color: #ff4b2b; font-weight: 500; margin-top: -10px;}",
-      ".header {max-height: 80px; background-color: #f2f2f2; margin-top: -20px;}"
+      ".header {max-height: 80px; background-color: #f2f2f2; margin-top: -10px;}"
     ]
   }
 }
