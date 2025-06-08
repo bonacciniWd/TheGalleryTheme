@@ -42,7 +42,7 @@
 
 /* Gradiente de borda estilo Instagram */
 .story-avatar-gradient {
-  padding: 4px; /* espaço entre gradiente e imagem */
+  padding: 2px; /* espaço entre gradiente e imagem */
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   display: inline-block;
