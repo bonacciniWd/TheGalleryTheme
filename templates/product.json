@@ -33,6 +33,12 @@
           "type": "price",
           "settings": {}
         },
+        "custom_liquid_cexH48": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign preco = product.price | money_without_currency | replace: ',', '.' | times: 1 %}\n{% assign parcelas = 10 %}\n{% assign valor_parcela = product.price | divided_by: parcelas %}\n\n<p class=\"parcelamento\">\n  ou {{ parcelas }}x de {{ valor_parcela | money }} sem juros\n</p>"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -43,12 +49,6 @@
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
-        },
-        "custom_liquid_cexH48": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": ""
-          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -79,9 +79,9 @@
         "vendor",
         "title",
         "price",
+        "custom_liquid_cexH48",
         "variant_picker",
         "quantity_selector",
-        "custom_liquid_cexH48",
         "buy_buttons",
         "custom_liquid_zJQnMp",
         "description",
@@ -97,7 +97,7 @@
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "columns",
-        "media_position": "left",
+        "media_position": "right",
         "image_zoom": "lightbox",
         "mobile_thumbnails": "show",
         "hide_variants": true,
