@@ -20,14 +20,16 @@
       {% for story in stories %}
         <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="5000">
           {% if story.imagem %}
-            
+          <div class="story-avatar-gradient">
             <img 
               src="{{ story.imagem | image_url: width: 80, height: 80 }}" 
               alt="{{ story.title | escape }}" 
               loading="lazy" 
               width="80" 
               height="80">
+          </div> 
           {% elsif story.video %}
+           <div class="story-avatar-gradient"> 
             <video 
               src="{{ story.video }}" 
               loading="lazy" 
@@ -37,6 +39,7 @@
               playsinline
               preload="metadata"
               ></video>
+           </div  
           {% endif %}
           <span class="story-title">{{ story.title }}</span>
         </a>
