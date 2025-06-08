@@ -3,8 +3,6 @@
   height: 150px;
   overflow-x: auto;
   background-color: #000;
-  border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
   padding: 10px 0;
   position: sticky;
   top: 0;
@@ -32,7 +30,7 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  width: 60px;
+  width: 80px;
   margin-top: 10px;
   text-align: center;
   cursor: pointer;
@@ -134,8 +132,8 @@
   }
   .story-avatar-gradient img,
   .story-avatar-gradient video {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-width: 3px; /* opcional: borda branca um pouco maior em desktop */
   }
   .story-title {
