@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   const stories = document.querySelectorAll(".story-item");
+  const wrapper = document.querySelector(".stories-wrapper"); // 🔧 Adicionado
   const modal = document.getElementById("story-modal");
   const modalMedia = document.getElementById("story-media");
   const modalTitle = document.getElementById("story-modal-title");
   const closeModalBtn = document.getElementById("close-modal");
 
-  if (!stories.length) return;
+  if (!stories.length || !wrapper) return;
 
   stories.forEach(story => {
     story.addEventListener("click", (e) => {
       e.preventDefault();
       const title = story.querySelector(".story-title").textContent;
 
-      // Tenta pegar imagem ou vídeo dentro do item
       const imgEl = story.querySelector("img");
       const videoEl = story.querySelector("video");
 
@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
       modalMedia.innerHTML = "";
     }
   });
-    // ⚠️ Scroll horizontal com a roda do mouse no desktop
+
+  // ⚠️ Scroll horizontal com a roda do mouse no desktop
   wrapper.addEventListener("wheel", (e) => {
-    // Só funciona se tiver deltaY (ou seja, roda do mouse)
     if (e.deltaY !== 0) {
       e.preventDefault();
       wrapper.scrollBy({
