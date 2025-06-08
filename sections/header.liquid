@@ -280,6 +280,15 @@
       </a>
     </div>
   </header>
+  <nav class="subnav">
+  <ul class="subnav__list">
+    {% for collection in collections %}
+      <li>
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 
 {%- if settings.cart_type == "notification" -%}
