@@ -40,15 +40,22 @@
   text-decoration: none;
 }
 
-.story-item img,
-.story-item video {
+.story-avatar-gradient {
+  padding: 2px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); /* gradiente da esquerda para direita */
+  display: inline-block;
+}
+
+.story-avatar-gradient img,
+.story-avatar-gradient video {
   width: 64px;
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3.3px solid #ff4b2b;
-  padding: 2px;
-  transition: border 0.3s, transform 0.3s;
+  background-color: #000; /* cor de fundo interna */
+  display: block;
+  transition: transform 0.3s;
 }
 
 .story-item:hover img,
