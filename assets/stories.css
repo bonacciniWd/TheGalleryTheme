@@ -130,7 +130,7 @@
 /* Responsivo */
 @media (min-width: 768px) {
   .story-item {
-    width: 100px;
+    width: 80px;
   }
   .story-avatar-gradient img,
   .story-avatar-gradient video {
