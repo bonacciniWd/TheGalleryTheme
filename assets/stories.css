@@ -59,8 +59,8 @@
 /* Imagem dentro do gradiente */
 .story-avatar-gradient img,
 .story-avatar-gradient video {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
   background-color: #000; /* fundo para evitar espaços vazios */
