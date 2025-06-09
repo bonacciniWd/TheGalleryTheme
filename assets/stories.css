@@ -22,13 +22,25 @@
   box-sizing: border-box; /* Inclui padding na largura */
 }
 
+/* MODIFICAÇÃO AQUI: Aplicando o gradiente e a borda ao logo da loja no modal */
+.story-store-logo-wrapper { /* Criaremos um wrapper no Liquid para isso */
+  padding: 2px; /* Espessura do "gradiente" da borda */
+  border-radius: 50%;
+  background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .story-store-logo {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 50%; /* Faz a imagem ser redonda */
   object-fit: cover;
-  border: 2px solid white;
+  border: 2px solid black; /* Borda interna para contraste com o gradiente */
+  display: block; /* Para remover espaços indesejados abaixo da imagem */
 }
+
 
 .story-store-name {
   font-weight: bold;
@@ -190,37 +202,40 @@
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  padding: 20px;
+  padding: 20px; /* Mantém o padding para não colar nas bordas da tela */
   box-sizing: border-box;
 }
 
 .story-modal-content {
-  position: relative; /* Essencial para posicionar elementos filhos absolutamente */
+  position: relative;
   width: 360px;
   height: 640px;
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 90vw; /* Limita a largura máxima a 90% da viewport */
+  max-height: 90vh; /* Limita a altura máxima a 90% da viewport */
   background: #111;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; (Removido, pois os elementos agora são posicionados mais livremente) */
-  align-items: center;
+  /* A remoção de justify-content: space-between; aqui ajuda o conteúdo a seguir o fluxo */
+  align-items: center; /* Centraliza itens ao longo do eixo cruzado (horizontalmente) */
   text-align: center;
   color: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  /* Adicionado min-width e min-height para evitar que o modal fique muito pequeno */
+  min-width: 280px; 
+  min-height: 500px;
 }
 
 .story-modal-content #story-media {
-  flex-grow: 1; /* Permite que ocupe o espaço restante */
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* Padding top e bottom para que o conteúdo não fique sob o header e footer */
-  padding: 10px 0 70px 0; /* Ajuste o 70px conforme a altura do seu footer */
+  padding: 10px 0; /* Padding lateral zero para que a mídia ocupe toda a largura */
   box-sizing: border-box;
+  /* A altura da mídia será flexível, ocupando o espaço restante */
 }
 
 .story-modal-content img,
@@ -240,7 +255,7 @@
   color: #fff;
   font-size: 30px;
   cursor: pointer;
-  z-index: 10003; /* Acima dos botões de navegação e do conteúdo */
+  z-index: 10003;
   padding: 5px;
   border-radius: 50%;
   transition: background-color 0.2s ease;
@@ -255,7 +270,6 @@
   outline-offset: 2px;
 }
 
-/* Ocultar visualmente, mas manter para leitores de tela */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -272,37 +286,35 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   border: none;
   padding: 10px 15px;
   font-size: 24px;
   cursor: pointer;
-  z-index: 10002; /* Acima do conteúdo da story */
-  border-radius: 50%; /* Botão redondo */
-  width: 50px; /* Largura para garantir que seja um círculo */
-  height: 50px; /* Altura para garantir que seja um círculo */
-  display: flex; /* Para centralizar o ícone */
+  z-index: 10002;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
-  /* Ocultar por padrão e mostrar via JS/media query */
-  display: none;
+  display: none; /* Ocultar por padrão e mostrar via JS/media query */
 }
 
 .story-nav-btn:hover {
-  background: rgba(0, 0, 0, 0.8); /* Fundo mais escuro ao passar o mouse */
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .story-nav-btn--prev {
-  left: 10px; /* Posição à esquerda */
+  left: 10px;
 }
 
 .story-nav-btn--next {
-  right: 10px; /* Posição à direita */
+  right: 10px;
 }
 
-/* Estilos de foco para acessibilidade */
 .story-nav-btn:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
@@ -325,14 +337,14 @@
 
   /* Ajustes para o modal em desktop */
   .story-modal-content {
-    width: 480px; /* Largura maior para desktop */
-    height: 853px; /* Altura maior para desktop (proporção de story 9:16) */
-    max-width: 80vw; /* Limites maiores para telas muito grandes */
+    width: 480px;
+    height: 853px; /* Proporção de story 9:16 */
+    max-width: 80vw;
     max-height: 90vh;
   }
 
   /* Mostrar os botões de navegação apenas em desktop */
   .story-nav-btn {
-    display: flex; /* Mostra os botões em desktop */
+    display: flex;
   }
 }
