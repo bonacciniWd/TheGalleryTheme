@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function startProgress(duration) {
     progressFill.style.transition = 'none';
     progressFill.style.width = '0%';
-    void progressFill.offsetWidth; // Força o reflow
+    void progressFill.offsetWidth; // Força o reflow para resetar a transição
     progressFill.style.transition = `width ${duration}ms linear`;
     progressFill.style.width = '100%';
   }
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
       video.src = videoUrl;
       video.controls = false;
       video.autoplay = true;
-      video.muted = false;
+      video.muted = false; // Mantenha false para ter som, se desejado
       video.playsInline = true;
       video.preload = "metadata";
       video.style.maxWidth = "100%";
@@ -163,17 +163,19 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     }
 
+    // Abertura do modal - usando estilo inline para garantir a sobrescrita
     modal.style.display = "flex";
     modal.focus(); // Coloca o foco no modal para acessibilidade
 
-    // Lógica para mostrar/ocultar as setas de navegação (desktop)
-    if (prevStoryBtn && nextStoryBtn) { // Verifica se os botões existem
-        // Apenas mostrar em desktop (maior que 767px, como definido no CSS)
-        // Isso será controlado principalmente pelo CSS @media, mas esta lógica garante o estado inicial e de transição
-        if (window.innerWidth >= 768) {
-            prevStoryBtn.style.display = (currentIndex > 0) ? 'flex' : 'none';
-            nextStoryBtn.style.display = (currentIndex < stories.length - 1) ? 'flex' : 'none';
-        } else {
+    // **Lógica para mostrar/ocultar as setas de navegação - AGORA VAI APARECER EM MOBILE TAMBÉM**
+    if (prevStoryBtn && nextStoryBtn) {
+        // Esconder o botão "Anterior" se for a primeira história (currentIndex é 0)
+        prevStoryBtn.style.display = (currentIndex > 0) ? 'flex' : 'none';
+        // Esconder o botão "Próximo" se for a última história
+        nextStoryBtn.style.display = (currentIndex < stories.length - 1) ? 'flex' : 'none';
+
+        // Ocultar ambos os botões se houver apenas uma história
+        if (stories.length <= 1) {
             prevStoryBtn.style.display = 'none';
             nextStoryBtn.style.display = 'none';
         }
@@ -181,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeModal() {
-    modal.style.display = "none";
+    modal.style.display = "none"; // Volta para display: none
     modalMedia.innerHTML = "";
     resetProgress();
     clearTimeout(timer);
@@ -221,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.addEventListener("click", (e) => {
     // Adiciona uma condição para não fechar ao clicar nos botões de navegação
     if (e.target === modal || e.target === closeModalBtn || e.target === prevStoryBtn || e.target === nextStoryBtn) {
-        // Não fazer nada se clicar nos botões de navegação ou fechar
         return;
     }
     // Se o clique foi no background do modal, fechar
@@ -232,14 +233,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Tecla ESC fecha modal
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.style.display === "block") {
+    if (e.key === "Escape" && modal.style.display === "flex") { // Verifica style.display
       closeModal();
     }
   });
 
   // Navegação com setas do teclado
   document.addEventListener("keydown", (e) => {
-    if (modal.style.display === "block") {
+    if (modal.style.display === "flex") { // Verifica style.display
       if (e.key === "ArrowRight") {
         e.preventDefault(); // Previne rolagem da página
         showStory(currentIndex + 1);
@@ -301,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const swipeDistanceX = touchEndX - touchStartX;
     const swipeDistanceY = Math.abs(touchEndY - touchStartY); // Usar valor absoluto para a distância vertical
 
-    if (modal.style.display === "block") {
+    if (modal.style.display === "flex") { // Verifica style.display
       // Se a movimentação vertical for muito grande, não é um swipe horizontal de navegação de story
       if (swipeDistanceY > maxVerticalScroll) {
           // É mais um scroll vertical, pode reiniciar o timer se quiser
