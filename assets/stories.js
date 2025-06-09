@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // PEGUE O LINK EXTERNO CONFIGURADO NO METACAMPO AQUI
     currentShareExternalUrl = story.getAttribute("data-external-link");
+     console.log("DEBUG: Valor de data-external-link lido pelo JS:", currentShareExternalUrl); // ADICIONE ESTA LINHA
 
 
     modalTitle.textContent = title;
