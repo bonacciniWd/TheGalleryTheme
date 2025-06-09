@@ -213,7 +213,6 @@
   background: #111;
   border-radius: 12px;
   overflow: hidden;
-  display: flex !important;
   flex-direction: column;
   align-items: center; /* Centraliza itens ao longo do eixo cruzado (horizontalmente) */
   text-align: center;
@@ -225,7 +224,6 @@
 
 .story-modal-content #story-media {
   flex-grow: 1;
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
