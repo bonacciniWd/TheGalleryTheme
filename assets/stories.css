@@ -22,23 +22,24 @@
   box-sizing: border-box; /* Inclui padding na largura */
 }
 
-.story-store-logo-wrapper {
-  padding: 2px;
+/* MODIFICAÇÃO AQUI: Aplicando o gradiente e a borda ao logo da loja no modal */
+.story-store-logo-wrapper { /* Criaremos um wrapper no Liquid para isso */
+  padding: 2px; /* Espessura do "gradiente" da borda */
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  display: flex;
-  overflow: hidden;
+  display: inline-block; /* Para que o padding se aplique corretamente e o elemento ocupe o espaço necessário */
+  overflow: hidden; /* IMPORTANTE: Garante que a imagem se ajuste ao border-radius do wrapper */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .story-store-logo {
   width: 40px;
-  height: 40px;
-  border-radius: 50%; /* <<<<< ADICIONADO NOVAMENTE AQUI! */
-  object-fit: cover;
-  border: 2px solid black;
-  display: flex;
+  height: 40px; /* FAZ A IMAGEM SER REDONDA */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  border: 2px solid black; /* Borda interna para contraste com o gradiente */
+  display: block; /* Para remover espaços indesejados abaixo da imagem */
 }
+
 
 .story-store-name {
   font-weight: bold;
@@ -66,7 +67,7 @@
 
 /* Footer: curtida e visualizações */
 .story-footer {
-  position: absolute;
+  position: absolute; /* Posição absoluta para ficar no final do modal */
   bottom: 15px;
   left: 15px;
   right: 15px;
@@ -75,8 +76,8 @@
   align-items: center;
   color: #fff;
   font-size: 16px;
-  width: calc(100% - 30px);
-  box-sizing: border-box;
+  width: calc(100% - 30px); /* Ajusta a largura para considerar o padding */
+  box-sizing: border-box; /* Inclui padding na largura */
 }
 
 #like-btn {
@@ -95,7 +96,7 @@
 }
 
 #like-btn.liked {
-  color: #e0245e;
+  color: #e0245e; /* cor de curtida (vermelho) */
 }
 
 #like-btn:focus-visible {
@@ -198,9 +199,9 @@
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  display: flex; /* <<<<< SEM O !IMPORTANT AQUI */
+  display: flex !important;
   z-index: 10000;
-  padding: 20px;
+  padding: 20px; /* Mantém o padding para não colar nas bordas da tela */
   box-sizing: border-box;
 }
 
@@ -208,14 +209,14 @@
   position: relative;
   width: 360px;
   height: 640px;
-  max-width: 90vw; /* Deixando 90vw / 90vh como estava, já que o padding no modal está de volta. */
-  max-height: 90vh; 
+  max-width: 90vw; /* Limita a largura máxima a 90% da viewport */
+  max-height: 90vh; /* Limita a altura máxima a 90% da viewport */
   background: #111;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Centraliza itens ao longo do eixo cruzado (horizontalmente) */
   text-align: center;
   color: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.9);
@@ -229,7 +230,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px 0; /* Padding lateral zero para que a mídia ocupe toda a largura */
   box-sizing: border-box;
 }
 
@@ -295,7 +296,7 @@
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
-  display: none;
+  display: none; /* Ocultar por padrão e mostrar via JS/media query */
 }
 
 .story-nav-btn:hover {
@@ -333,7 +334,7 @@
   /* Ajustes para o modal em desktop */
   .story-modal-content {
     width: 480px;
-    height: 853px;
+    height: 853px; /* Proporção de story 9:16 */
     max-width: 80vw;
     max-height: 90vh;
   }
