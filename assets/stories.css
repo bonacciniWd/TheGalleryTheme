@@ -20,6 +20,10 @@
   border-bottom: 1px solid #333;
   width: 100%; /* Garante que o header ocupe a largura total do modal */
   box-sizing: border-box; /* Inclui padding na largura */
+  position: absolute; /* Para que o header fique no topo do modal-content */
+  top: 0;
+  left: 0;
+  z-index: 10; /* Acima do conteúdo principal */
 }
 
 .story-store-logo {
@@ -41,10 +45,14 @@
   width: 100%;
   height: 4px;
   background: #333;
-  margin: 5px 0 10px 0;
+  /* Removido margin: 5px 0 10px 0; - Posicionamento absoluto abaixo do header */
   border-radius: 2px;
   overflow: hidden;
-  position: relative;
+  position: absolute; /* Posicionado dentro do modal-content */
+  top: 55px; /* Aproximadamente abaixo do header (10px padding top + 40px logo/nome + 5px padding bottom) */
+  left: 0;
+  right: 0;
+  z-index: 11; /* Acima do header */
 }
 
 #progress-fill {
@@ -56,17 +64,20 @@
 
 /* Footer: curtida e visualizações */
 .story-footer {
-  position: absolute; /* Posição absoluta para ficar no final do modal */
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
+  position: absolute; /* Posição absoluta para ficar no final do modal-content */
+  bottom: 0; /* Alinha na parte inferior do story-modal-content */
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fff;
   font-size: 16px;
-  width: calc(100% - 30px); /* Ajusta a largura para considerar o padding */
+  padding: 15px; /* Adiciona padding interno */
+  width: 100%; /* Ocupa a largura total do modal-content */
   box-sizing: border-box; /* Inclui padding na largura */
+  z-index: 10; /* Acima do conteúdo principal */
+  background: rgba(0,0,0,0.5); /* Fundo semi-transparente para melhor leitura */
 }
 
 #like-btn {
@@ -171,7 +182,7 @@
   color: #fff;
 }
 
-.no-stories {av
+.no-stories {
   text-align: center;
   color: #999;
   font-style: italic;
@@ -186,7 +197,7 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.85);
-  display: none;
+  display: none; /* MUITO IMPORTANTE: Começa como 'none' para esconder inicialmente */
   justify-content: center;
   align-items: center;
   z-index: 10000;
@@ -196,8 +207,8 @@
 
 .story-modal-content {
   position: relative; /* Essencial para posicionar elementos filhos absolutamente */
-  width: 360px;
-  height: 640px;
+  width: 360px; /* Largura padrão para mobile/tablet */
+  height: 640px; /* Altura padrão para mobile/desktop */
   max-width: 90vw;
   max-height: 90vh;
   background: #111;
@@ -205,7 +216,6 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; (Removido, pois os elementos agora são posicionados mais livremente) */
   align-items: center;
   text-align: center;
   color: #fff;
@@ -219,7 +229,8 @@
   align-items: center;
   width: 100%;
   /* Padding top e bottom para que o conteúdo não fique sob o header e footer */
-  padding: 10px 0 70px 0; /* Ajuste o 70px conforme a altura do seu footer */
+  /* Ajustado para considerar header (aprox 55px) e footer (aprox 60px de altura com padding) */
+  padding: 65px 0 75px 0;
   box-sizing: border-box;
 }
 
@@ -282,12 +293,11 @@
   border-radius: 50%; /* Botão redondo */
   width: 50px; /* Largura para garantir que seja um círculo */
   height: 50px; /* Altura para garantir que seja um círculo */
-  display: flex; /* Para centralizar o ícone */
+  display: flex; /* Para centralizar o ícone - AGORA VISÍVEL POR PADRÃO (JS fará o hide/show) */
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
-  /* Ocultar por padrão e mostrar via JS/media query */
-  display: none;
+  /* display: none; REMOVIDO DAQUI - O JS vai controlar a visibilidade total */
 }
 
 .story-nav-btn:hover {
@@ -309,6 +319,37 @@
 }
 
 /* Media Queries para responsividade */
+
+/* Ajustes para mobile/tablet (até 767px) - 10% menor que 640px = 576px */
+@media (max-width: 767px) {
+  .story-modal-content {
+    width: 90vw; /* Mais responsivo para larguras variadas */
+    height: 576px; /* 10% menor que 640px */
+    max-width: 450px; /* Limite para não ficar muito largo em tablets */
+    max-height: 85vh; /* Ajuste o max-height também */
+  }
+  /* Os botões de navegação (.story-nav-btn) já estão visíveis por padrão em mobile
+     e a lógica do JS vai esconder/mostrar conforme necessário. */
+}
+
+/* Para telas menores que 600px (smartphones menores) */
+@media (max-width: 600px) {
+  .story-modal-content {
+    height: 520px; /* Ajuste para telas menores */
+    width: 95vw; /* Ocupa mais largura */
+    max-height: 80vh;
+  }
+}
+
+/* Ajustes para telas muito pequenas, ex: iPhone SE (320-375px) */
+@media (max-width: 375px) {
+  .story-modal-content {
+    height: 480px; /* Ainda menor para telas minúsculas */
+    width: 98vw; /* Quase toda a largura */
+    max-height: 75vh;
+  }
+}
+
 @media (min-width: 768px) {
   .story-item {
     width: 100px;
@@ -331,8 +372,10 @@
     max-height: 90vh;
   }
 
-  /* Mostrar os botões de navegação apenas em desktop */
-  .story-nav-btn {
-    display: flex; /* Mostra os botões em desktop */
-  }
+  /* Não precisamos mais desta regra, pois o JS já lida com a visibilidade dos botões
+     e o display: flex já está na base do .story-nav-btn.
+     Se houver conflito, o JS aplicando display: flex/none prevalece sobre CSS. */
+  /* .story-nav-btn {
+     display: flex;
+  } */
 }
