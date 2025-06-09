@@ -43,7 +43,7 @@
            {% elsif story.video %}
              data-video="{{ story.video }}"
            {% endif %}
-           data-story-link="{{ shop.url }}{{ story.url }}" {# Add story link for sharing #}
+            data-story-link="{{ story.link.url }}" 
         >
           {% if story.imagem %}
             <div class="story-avatar-gradient">
