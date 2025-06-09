@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const stories = Array.from(document.querySelectorAll(".story-item"));
-  const wrapper = document.querySelector(".stories-wrapper");
+  const storiesContainer = document.querySelector(".stories-wrapper"); // Novo elemento para delegação
   const modal = document.getElementById("story-modal");
   const modalMedia = document.getElementById("story-media");
   const modalTitle = document.getElementById("story-modal-title");
@@ -10,12 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const likeCountSpan = document.getElementById("like-count");
   const viewCountSpan = document.getElementById("view-count");
 
+  // Verificar se os elementos essenciais existem antes de continuar
+  if (!storiesContainer || !modal) {
+    console.warn("Shopify Stories: Elementos essenciais não encontrados. O script não será inicializado.");
+    return;
+  }
+
+  const stories = Array.from(storiesContainer.querySelectorAll(".story-item")); // Pega os itens dentro do container
   let currentIndex = 0;
   let timer = null;
-  let progressInterval = null;
-  const storyDuration = 15000; // 15 segundos
-
-  if (!stories.length || !wrapper) return;
+  const storyDuration = 15000; // 15 segundos para imagens
 
   // Função para obter curtidas do localStorage
   function getLikes(id) {
@@ -38,16 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Atualiza o progresso da barra
-  function startProgress() {
-    let startTime = Date.now();
-
+  function startProgress(duration) {
     progressFill.style.transition = 'none';
     progressFill.style.width = '0%';
-
-    // Forçar reflow para aplicar a mudança de largura 0 antes de animar
-    void progressFill.offsetWidth;
-
-    progressFill.style.transition = `width ${storyDuration}ms linear`;
+    void progressFill.offsetWidth; // Força o reflow
+    progressFill.style.transition = `width ${duration}ms linear`;
     progressFill.style.width = '100%';
   }
 
@@ -55,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function resetProgress() {
     progressFill.style.transition = 'none';
     progressFill.style.width = '0%';
+    // Não precisa de reflow aqui, pois não estamos iniciando uma nova transição
   }
 
   // Atualiza o contador de curtidas e estado do botão
@@ -63,10 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
     likeCountSpan.textContent = likes;
     if (likes > 0) {
       likeBtn.classList.add("liked");
-      likeBtn.textContent = `❤️ ${likes}`;
+      likeBtn.innerHTML = `❤️ <span id="like-count">${likes}</span>`; // Atualiza o HTML para acessibilidade
     } else {
       likeBtn.classList.remove("liked");
-      likeBtn.textContent = `♡ ${likes}`;
+      likeBtn.innerHTML = `♡ <span id="like-count">${likes}</span>`; // Atualiza o HTML para acessibilidade
     }
   }
 
@@ -74,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateViewUI(id) {
     const views = getViews(id);
     viewCountSpan.textContent = `👁️ ${views}`;
+    // Pode-se adicionar aria-live="polite" ao viewCountSpan no HTML
   }
 
   // Incrementa visualizações
@@ -99,47 +99,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const storyId = story.getAttribute("data-index"); // usar índice como id
 
     modalTitle.textContent = title;
-    modalMedia.innerHTML = "";
+    modalMedia.innerHTML = ""; // Limpa conteúdo anterior
 
-    // Incrementa views só na primeira abertura da story no modal
+    // Incrementa views só na primeira abertura da story no modal (ou cada vez que é mostrada, dependendo da sua regra)
     incrementView(storyId);
 
     // Atualiza curtidas e visualizações
     updateLikeUI(storyId);
     updateViewUI(storyId);
 
+    clearTimeout(timer); // Limpa o timer anterior antes de iniciar um novo
+
     if (videoUrl) {
       const video = document.createElement("video");
       video.src = videoUrl;
       video.controls = false;
       video.autoplay = true;
-      video.muted = true;
+      video.muted = false; // Vídeos de story geralmente não são mudos por padrão, mas pode ser uma escolha de UX
       video.playsInline = true;
+      video.preload = "metadata";
       video.style.maxWidth = "100%";
       video.style.maxHeight = "70vh";
+      video.setAttribute("aria-label", `Conteúdo do story: ${title}`); // Acessibilidade para o vídeo
       modalMedia.appendChild(video);
 
-      // Controla o progresso pela duração do vídeo
       video.onloadedmetadata = () => {
-        clearTimeout(timer);
-        clearInterval(progressInterval);
-
         const duration = video.duration * 1000;
-
-        // Reseta e inicia progresso animado proporcional ao vídeo
-        resetProgress();
-        // anima largura progressFill em duração do video
-        progressFill.style.transition = `width ${duration}ms linear`;
-        progressFill.style.width = '100%';
-
+        startProgress(duration); // Inicia progresso com duração do vídeo
         timer = setTimeout(() => {
           showStory(currentIndex + 1);
         }, duration);
       };
 
       video.onended = () => {
-        clearTimeout(timer);
+        clearTimeout(timer); // Garante que o timer seja limpo se o vídeo terminar antes
         showStory(currentIndex + 1);
+      };
+
+      video.onerror = () => {
+        console.error(`Erro ao carregar vídeo: ${videoUrl}`);
+        showStory(currentIndex + 1); // Tenta ir para a próxima story em caso de erro
       };
 
     } else if (imageUrl) {
@@ -148,19 +147,22 @@ document.addEventListener("DOMContentLoaded", () => {
       img.alt = title;
       img.style.maxWidth = "100%";
       img.style.maxHeight = "70vh";
+      img.setAttribute("aria-label", `Conteúdo do story: ${title}`); // Acessibilidade para a imagem
       modalMedia.appendChild(img);
 
-      clearTimeout(timer);
-      clearInterval(progressInterval);
-      resetProgress();
-      startProgress();
-
+      startProgress(storyDuration); // Inicia progresso com duração padrão para imagens
       timer = setTimeout(() => {
         showStory(currentIndex + 1);
       }, storyDuration);
+
+      img.onerror = () => {
+        console.error(`Erro ao carregar imagem: ${imageUrl}`);
+        showStory(currentIndex + 1); // Tenta ir para a próxima story em caso de erro
+      };
     }
 
     modal.style.display = "block";
+    modal.focus(); // Coloca o foco no modal para acessibilidade
   }
 
   function closeModal() {
@@ -168,15 +170,18 @@ document.addEventListener("DOMContentLoaded", () => {
     modalMedia.innerHTML = "";
     resetProgress();
     clearTimeout(timer);
-    clearInterval(progressInterval);
+    // Remove o foco do modal para o elemento anterior que abriu, ou um elemento padrão
+    document.querySelector(`.story-item[data-index="${currentIndex}"]`)?.focus();
   }
 
-  // Evento clique em story na lista para abrir modal
-  stories.forEach((story, i) => {
-    story.addEventListener("click", (e) => {
+  // Delegação de eventos para cliques nas stories
+  storiesContainer.addEventListener("click", (e) => {
+    const storyItem = e.target.closest(".story-item");
+    if (storyItem) {
       e.preventDefault();
-      showStory(i);
-    });
+      const index = parseInt(storyItem.getAttribute("data-index"));
+      showStory(index);
+    }
   });
 
   // Fechar modal
@@ -184,13 +189,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Curtir a story
   likeBtn.addEventListener("click", () => {
-    const storyId = currentIndex.toString();
+    const storyId = currentIndex.toString(); // Usar o índice como ID da story
     let likes = getLikes(storyId);
 
-    if (likes === 0) {
-      likes = 1;
+    if (likeBtn.classList.contains("liked")) {
+      likes = 0; // Se já está curtido, descurtir
     } else {
-      likes = 0; // toggle like off
+      likes = 1; // Se não está curtido, curtir
     }
 
     saveLikes(storyId, likes);
@@ -206,6 +211,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.style.display === "block") {
       closeModal();
+    }
+  });
+
+  // Navegação com setas do teclado (Opcional)
+  document.addEventListener("keydown", (e) => {
+    if (modal.style.display === "block") {
+      if (e.key === "ArrowRight") {
+        e.preventDefault(); // Previne rolagem da página
+        showStory(currentIndex + 1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault(); // Previne rolagem da página
+        showStory(currentIndex - 1);
+      }
     }
   });
 });
