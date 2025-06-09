@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const stories = Array.from(storiesContainer.querySelectorAll(".story-item"));
   let currentIndex = 0;
   let timer = null;
-  let currentShareUrl = ''; // A URL da loja com a âncora para a história atual
+  let currentShareExternalUrl = ''; // VAI ARMAZENAR O LINK EXTERNO DO SEU METACAMPO
   const storyDuration = 15000; // 15 segundos para imagens
 
   // Função para obter curtidas do localStorage
@@ -101,7 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageUrl = story.getAttribute("data-image");
     const videoUrl = story.getAttribute("data-video");
     const storyId = story.getAttribute("data-index"); // usar índice como id para likes/views
-    const storyIdForUrl = story.getAttribute("data-story-id-url"); // O handle ou índice para a URL
+    const storyIdForUrl = story.getAttribute("data-story-id-url"); // O handle ou índice para a URL interna
+    
+    // PEGUE O LINK EXTERNO CONFIGURADO NO METACAMPO AQUI
+    currentShareExternalUrl = story.getAttribute("data-external-link");
+
 
     modalTitle.textContent = title;
     modalMedia.innerHTML = "";
@@ -166,9 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "flex";
     modal.focus();
 
-    // Atualiza a URL na barra de endereços
-    currentShareUrl = `${window.location.origin}${window.location.pathname}#story-${storyIdForUrl}`;
-    history.replaceState(null, null, currentShareUrl);
+    // Atualiza a URL na barra de endereços APENAS PARA O CONTROLE INTERNO DO MODAL
+    history.replaceState(null, null, `${window.location.origin}${window.location.pathname}#story-${storyIdForUrl}`);
 
     if (prevStoryBtn && nextStoryBtn) {
       prevStoryBtn.style.display = (currentIndex > 0) ? 'flex' : 'none';
@@ -196,7 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function openShareModal() {
     shareModal.style.display = "flex";
     shareModal.focus();
-    whatsappShareBtn.href = `https://api.whatsapp.com/send?text=Confira esta história na nossa loja: ${encodeURIComponent(currentShareUrl)}`;
+    // AQUI USAMOS currentShareExternalUrl (O LINK DO METACAMPO)
+    whatsappShareBtn.href = `https://api.whatsapp.com/send?text=Confira este conteúdo: ${encodeURIComponent(currentShareExternalUrl)}`;
   }
 
   function closeShareModal() {
@@ -218,7 +222,8 @@ document.addEventListener("DOMContentLoaded", () => {
   closeShareModalBtn.addEventListener("click", closeShareModal);
 
   copyLinkShareBtn.addEventListener("click", () => {
-    navigator.clipboard.writeText(currentShareUrl) // Copia a URL da história com a âncora
+    // AQUI USAMOS currentShareExternalUrl (O LINK DO METACAMPO)
+    navigator.clipboard.writeText(currentShareExternalUrl)
       .then(() => {
         copyFeedback.textContent = 'Link copiado!';
         copyFeedback.classList.add('show');
@@ -346,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Nova lógica: Abrir história via URL com âncora ---
+  // --- Lógica para Abrir história via URL com âncora (controle interno) ---
   function openStoryFromHash() {
     const hash = window.location.hash;
     if (hash.startsWith("#story-")) {
