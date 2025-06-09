@@ -18,11 +18,11 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 .stories-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .story-item {
@@ -40,33 +40,29 @@
   text-decoration: none;
 }
 
-/* Gradiente de borda estilo Instagram */
 .story-avatar-gradient {
-  padding: 2px; /* espaço entre gradiente e imagem */
+  padding: 2px;
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
   display: inline-block;
-  overflow: hidden; /* importante para o arredondamento */
+  overflow: hidden;
   transition: transform 0.3s ease;
-  /* cursor já aplicado em .story-item, mas pode repetir aqui se preferir */
 }
 
-/* Ao passar o mouse, aumenta gradiente + imagem */
 .story-avatar-gradient:hover {
   transform: scale(1.05);
 }
 
-/* Imagem dentro do gradiente */
 .story-avatar-gradient img,
 .story-avatar-gradient video {
   width: 70px;
   height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  background-color: #000; /* fundo para evitar espaços vazios */
+  background-color: #000;
   display: block;
-  border: 2px solid black; /* borda branca fina estilo Instagram */
-  transition: none; /* sem transform para evitar conflito */
+  border: 2px solid black;
+  transition: none;
 }
 
 .story-title {
@@ -93,14 +89,14 @@
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  padding: 20px; /* evita que fique grudado nas bordas */
+  padding: 20px;
   box-sizing: border-box;
 }
 
 .story-modal-content {
   position: relative;
-  width: 360px;     /* tamanho base */
-  height: 640px;    /* 9:16 (width:height) */
+  width: 360px;
+  height: 640px;
   max-width: 90vw;
   max-height: 90vh;
   background: #111;
@@ -118,7 +114,7 @@
 .story-modal-content video {
   width: 100%;
   height: 100%;
-   object-fit: contain; /* mantém a proporção sem cortar */
+  object-fit: contain;
   border-radius: 12px;
 }
 
@@ -134,29 +130,19 @@
   z-index: 10001;
 }
 
-/* Responsivo */
-@media (min-width: 768px) {
-  .story-modal-content {
-    width: 480px;
-    height: 853px; /* mantém 9:16 */
-  }
-}
-
-
-/* Responsivo */
 @media (min-width: 768px) {
   .story-item {
     width: 100px;
   }
-   .story-modal-content {
+  .story-modal-content {
     width: 480px;
-    height: 853px; /* mantém 9:16 */
+    height: 853px;
   }
   .story-avatar-gradient img,
   .story-avatar-gradient video {
     width: 80px;
     height: 80px;
-    border-width: 3px; /* opcional: borda branca um pouco maior em desktop */
+    border-width: 3px;
   }
   .story-title {
     font-size: 14px;
