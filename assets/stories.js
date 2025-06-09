@@ -21,8 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const story = stories[index];
     const title = story.querySelector(".story-title").textContent;
-
-    // Pega as URLs originais do atributo data
     const imageUrl = story.getAttribute("data-image");
     const videoUrl = story.getAttribute("data-video");
 
@@ -42,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       modalMedia.appendChild(video);
 
-      // Quando o vídeo termina, avança para o próximo
       video.onended = () => {
         nextStory();
       };
@@ -56,6 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       clearTimeout(timer);
       timer = setTimeout(nextStory, 15000);
+    } else {
+      closeModal();
     }
 
     modal.style.display = "flex";
@@ -86,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Scroll horizontal com a roda do mouse no desktop
   wrapper.addEventListener("wheel", (e) => {
     if (e.deltaY !== 0) {
       e.preventDefault();
