@@ -101,6 +101,8 @@
   position: relative;
   width: 360px;     /* tamanho base */
   height: 640px;    /* 9:16 (width:height) */
+  max-width: 90vw;
+  max-height: 90vh;
   background: #111;
   border-radius: 12px;
   overflow: hidden;
