@@ -78,6 +78,7 @@
   margin-top: 20px;
 }
 
+/* Modal */
 .story-modal {
   position: fixed;
   top: 0;
@@ -103,9 +104,7 @@
   border-radius: 12px;
   overflow: hidden;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  flex-direction: column;
   color: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.9);
 }
@@ -113,11 +112,14 @@
 .story-modal-content img,
 .story-modal-content video {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 480px;
   object-fit: contain;
   border-radius: 12px;
+  user-select: none;
 }
 
+/* Close button */
 .close-modal {
   position: absolute;
   top: 10px;
@@ -128,6 +130,94 @@
   font-size: 30px;
   cursor: pointer;
   z-index: 10001;
+}
+
+/* Header da loja no modal */
+.story-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #333;
+  user-select: none;
+}
+
+.story-store-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid white;
+  background-color: #000;
+}
+
+.story-store-name {
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Barra de progresso */
+.story-progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #333;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 8px 0 12px 0;
+}
+
+.story-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  width: 0%;
+  transition: width linear 15s;
+}
+
+/* Footer do modal */
+.story-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #333;
+  color: #fff;
+  user-select: none;
+}
+
+/* Botão de curtir */
+.like-button {
+  background: none;
+  border: none;
+  color: #ff3b30;
+  font-size: 26px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.like-button.liked {
+  color: #ff2d55;
+}
+
+.like-button:hover {
+  color: #ff2d55;
+}
+
+/* Contador de curtidas */
+#like-count {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Contador de visualizações */
+.view-count {
+  font-size: 14px;
+  user-select: none;
+  color: #bbb;
 }
 
 @media (min-width: 768px) {
@@ -146,5 +236,18 @@
   }
   .story-title {
     font-size: 14px;
+  }
+  .story-store-logo {
+    width: 56px;
+    height: 56px;
+  }
+  #like-count {
+    font-size: 18px;
+  }
+  .like-button {
+    font-size: 32px;
+  }
+  .view-count {
+    font-size: 16px;
   }
 }
