@@ -34,8 +34,7 @@
 
 .story-store-logo {
   width: 40px;
-  height: 40px;
-  border-radius: 50%; /* FAZ A IMAGEM SER REDONDA */
+  height: 40px; /* FAZ A IMAGEM SER REDONDA */
   object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
   border: 2px solid black; /* Borda interna para contraste com o gradiente */
   display: block; /* Para remover espaços indesejados abaixo da imagem */
@@ -198,11 +197,11 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.85);
-  display: flex !important;
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  padding: 0; /* REMOVIDO PADDING AQUI - DEVE ESTAR NO CONTEÚDO SE NECESSÁRIO */
+  padding: 20px; /* Mantém o padding para não colar nas bordas da tela */
   box-sizing: border-box;
 }
 
@@ -210,14 +209,14 @@
   position: relative;
   width: 360px;
   height: 640px;
-  max-width: calc(100vw - 40px); /* Ajustado para considerar padding de 20px de cada lado da viewport */
-  max-height: calc(100vh - 40px); /* Ajustado para considerar padding de 20px de cada lado da viewport */
+  max-width: 90vw; /* Limita a largura máxima a 90% da viewport */
+  max-height: 90vh; /* Limita a altura máxima a 90% da viewport */
   background: #111;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Centraliza itens ao longo do eixo cruzado (horizontalmente) */
   text-align: center;
   color: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.9);
@@ -231,8 +230,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* Padding top e bottom para que o conteúdo não fique sob o header e footer - REVER ESSES VALORES */
-  padding: 10px 0 70px 0; /* Ajuste o 70px conforme a altura do seu footer */
+  padding: 10px 0; /* Padding lateral zero para que a mídia ocupe toda a largura */
   box-sizing: border-box;
 }
 
@@ -260,7 +258,7 @@
 }
 
 .close-modal:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #ff0000;
 }
 
 .close-modal:focus-visible {
