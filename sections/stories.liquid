@@ -32,7 +32,10 @@
   {% if stories.size > 0 %}
     <div class="stories-wrapper">
       {% for story in stories %}
-        <a href="{{ story.link }}"
+        {% comment %} Define um ID para a história. Prefere o handle se existir, senão usa o índice. {% endcomment %}
+        {% assign story_id_for_url = story.handle | default: forloop.index0 %}
+
+        <a href="{{ story.link.url }}"
            class="story-item"
            data-index="{{ forloop.index0 }}"
            data-duration="15000"
@@ -43,7 +46,8 @@
            {% elsif story.video %}
              data-video="{{ story.video }}"
            {% endif %}
-            data-story-link="{{ story.link.url }}" 
+           data-story-id-url="{{ story_id_for_url }}" {# Novo atributo para o identificador na URL #}
+           data-external-link="{{ story.link.url }}" {# O link original do metacampo, se for para um produto/página externa #}
         >
           {% if story.imagem %}
             <div class="story-avatar-gradient">
