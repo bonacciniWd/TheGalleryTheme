@@ -3989,5 +3989,5 @@ details-disclosure > details {
 }
 
 .element.style {
-    display: flex;
+    display: flex !important;
 }
