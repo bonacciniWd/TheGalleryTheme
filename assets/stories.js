@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     }
 
-    modal.style.display = "block";
+    modal.style.display = "flex";
     modal.focus(); // Coloca o foco no modal para acessibilidade
 
     // Lógica para mostrar/ocultar as setas de navegação (desktop)
