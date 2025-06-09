@@ -258,7 +258,7 @@
 }
 
 .close-modal:hover {
-  color: rgba(255, 255, 255, 0.1);
+  color: #ff0000ab;
 }
 
 .close-modal:focus-visible {
