@@ -44,6 +44,7 @@
 .story-progress-bar {
   width: 100%;
   height: 4px;
+  background: #333;
   /* Removido margin: 5px 0 10px 0; - Posicionamento absoluto abaixo do header */
   border-radius: 2px;
   overflow: hidden;
@@ -70,7 +71,7 @@
   display: flex;
   justify-content: space-between; /* Alinha os itens nas extremidades */
   align-items: center;
-  color: #fff;
+  
   font-size: 16px;
   padding: 15px; /* Adiciona padding interno */
   width: 100%; /* Ocupa a largura total do modal-content */
