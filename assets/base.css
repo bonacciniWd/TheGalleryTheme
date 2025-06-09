@@ -3987,3 +3987,7 @@ details-disclosure > details {
 .header {
   z-index: 9999;
 }
+
+.element.style {
+    display: flex;
+}
