@@ -27,16 +27,16 @@
   padding: 2px; /* Espessura do "gradiente" da borda */
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  display: inline-block;
-  overflow: hidden;
+  display: inline-block; /* Para que o padding se aplique corretamente e o elemento ocupe o espaço necessário */
+  overflow: hidden; /* IMPORTANTE: Garante que a imagem se ajuste ao border-radius do wrapper */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .story-store-logo {
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* Faz a imagem ser redonda */
-  object-fit: cover;
+  border-radius: 50%; /* FAZ A IMAGEM SER REDONDA */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
   border: 2px solid black; /* Borda interna para contraste com o gradiente */
   display: block; /* Para remover espaços indesejados abaixo da imagem */
 }
@@ -217,12 +217,10 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* A remoção de justify-content: space-between; aqui ajuda o conteúdo a seguir o fluxo */
   align-items: center; /* Centraliza itens ao longo do eixo cruzado (horizontalmente) */
   text-align: center;
   color: #fff;
   box-shadow: 0 0 20px rgba(0,0,0,0.9);
-  /* Adicionado min-width e min-height para evitar que o modal fique muito pequeno */
   min-width: 280px; 
   min-height: 500px;
 }
@@ -235,7 +233,6 @@
   width: 100%;
   padding: 10px 0; /* Padding lateral zero para que a mídia ocupe toda a largura */
   box-sizing: border-box;
-  /* A altura da mídia será flexível, ocupando o espaço restante */
 }
 
 .story-modal-content img,
