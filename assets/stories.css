@@ -171,7 +171,7 @@
   color: #fff;
 }
 
-.no-stories {
+.no-stories {av
   text-align: center;
   color: #999;
   font-style: italic;
@@ -186,25 +186,13 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.85);
-  display: flex; /* Mantém flex para o JS mudar */
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10000;
   padding: 20px;
   box-sizing: border-box;
-
-  /* **ADICIONADO/AJUSTADO PARA CONTROLAR A VISIBILIDADE INICIAL** */
-  opacity: 0;
-  visibility: hidden; /* Garante que não é interativo quando invisível */
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* Transição suave para fade in/out */
 }
-
-/* Classe que será adicionada/removida pelo JavaScript */
-.story-modal.is-active {
-  opacity: 1;
-  visibility: visible;
-}
-
 
 .story-modal-content {
   position: relative; /* Essencial para posicionar elementos filhos absolutamente */
