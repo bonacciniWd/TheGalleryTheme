@@ -30,7 +30,7 @@
   height: 40px;
   border-radius: 50% !important;
   object-fit: cover;
-  border: 2px solid red;
+  border: 2px linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
 }
 
 .story-store-name {
