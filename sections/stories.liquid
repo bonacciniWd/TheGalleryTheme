@@ -75,11 +75,6 @@
           <span class="story-title">{{ story.title }}</span>
         </a>
       {% endfor %}
-     <script>
-          console.log("LIQUID DEBUG - story.title:", {{ story.title | json }});
-          console.log("LIQUID DEBUG - story.link:", {{ story.link | json }});
-          console.log("LIQUID DEBUG - story.link.url:", {{ story.link.url | json }});
-        </script>
     </div>
   {% else %}
     <p class="no-stories">Nenhum story disponível no momento.</p>
