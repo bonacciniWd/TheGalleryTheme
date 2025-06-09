@@ -61,9 +61,7 @@
     },
     "stories_eebgyR": {
       "type": "stories",
-      "custom_css": [
-        "div {display: inline;}"
-      ],
+      "custom_css": [],
       "name": "Stories",
       "settings": {
         "store_logo": "shopify://shop_images/mini.jpg",
