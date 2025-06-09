@@ -7,7 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
   font-size: 1.2em;
   /* Você pode adicionar um ícone aqui usando pseudo-elementos se quiser */
 }
