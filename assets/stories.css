@@ -289,7 +289,6 @@
   cursor: pointer;
   z-index: 10003; /* Acima dos botões de navegação e do conteúdo */
   padding: 5px;
-  border-radius: 50%;
 }
 
 .close-modal:hover {
