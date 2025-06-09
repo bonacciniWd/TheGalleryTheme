@@ -21,7 +21,7 @@
         <a href="{{ story.link }}" 
            class="story-item" 
            data-index="{{ forloop.index0 }}" 
-           data-duration="5000" 
+           data-duration="15000" 
            tabindex="0" 
            aria-label="Abrir story {{ story.title | escape }}"
            {% if story.imagem %}
@@ -66,8 +66,27 @@
 <div id="story-modal" class="story-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="story-modal-title">
   <div class="story-modal-content">
     <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
+    
+    <!-- Miniatura e nome da loja -->
+    <div class="story-header">
+      <img src="{{ 'logo.jpg' | asset_url }}" alt="Amaterasu Company Logo" class="story-store-logo" />
+      <span class="story-store-name">Amaterasu Company</span>
+    </div>
+
+    <!-- Barra de progresso -->
+    <div class="story-progress-bar">
+      <div id="progress-fill"></div>
+    </div>
+
     <div id="story-media"></div>
+
     <h2 id="story-modal-title"></h2>
+
+    <!-- Curtida e visualizações -->
+    <div class="story-footer">
+      <button id="like-btn" aria-label="Curtir story">♡ <span id="like-count">0</span></button>
+      <span id="view-count" aria-label="Número de visualizações">👁️ 0</span>
+    </div>
   </div>
 </div>
 
