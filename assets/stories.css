@@ -34,8 +34,7 @@
 
 .story-store-logo {
   width: 40px;
-  height: 40px;
-  border-radius: 50% !important; /* FAZ A IMAGEM SER REDONDA */
+  height: 40px; /* FAZ A IMAGEM SER REDONDA */
   object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
   border: 2px solid black; /* Borda interna para contraste com o gradiente */
   display: block; /* Para remover espaços indesejados abaixo da imagem */
