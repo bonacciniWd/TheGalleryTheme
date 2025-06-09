@@ -22,15 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const story = stories[index];
     const title = story.querySelector(".story-title").textContent;
 
-    const imgEl = story.querySelector("img");
-    const videoEl = story.querySelector("video");
+    // Pega as URLs originais do atributo data
+    const imageUrl = story.getAttribute("data-image");
+    const videoUrl = story.getAttribute("data-video");
 
     modalTitle.textContent = title;
     modalMedia.innerHTML = "";
 
-    if (videoEl && videoEl.src) {
+    if (videoUrl) {
       const video = document.createElement("video");
-      video.src = videoEl.src;
+      video.src = videoUrl;
       video.controls = false;
       video.autoplay = true;
       video.muted = true;
@@ -41,17 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       modalMedia.appendChild(video);
 
-      // Quando o vídeo termina, vai pro próximo
+      // Quando o vídeo termina, avança para o próximo
       video.onended = () => {
         nextStory();
       };
 
-      // Se o vídeo tiver menos de 15s, avança mesmo assim
       clearTimeout(timer);
       timer = setTimeout(nextStory, 15000);
-    } else if (imgEl && imgEl.src) {
+    } else if (imageUrl) {
       const img = document.createElement("img");
-      img.src = imgEl.src;
+      img.src = imageUrl;
       modalMedia.appendChild(img);
 
       clearTimeout(timer);
