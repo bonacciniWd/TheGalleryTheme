@@ -113,6 +113,10 @@
   .story-item {
     width: 100px;
   }
+   .story-modal-content {
+    width: 480px;
+    height: 853px; /* mantém 9:16 */
+  }
   .story-avatar-gradient img,
   .story-avatar-gradient video {
     width: 80px;
