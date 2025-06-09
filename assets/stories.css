@@ -154,7 +154,7 @@
   padding: 2px;
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  display: flex;
+  display: inline-block;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
