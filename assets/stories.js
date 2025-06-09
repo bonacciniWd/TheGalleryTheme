@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const likeCountSpan = document.getElementById("like-count");
   const viewCountSpan = document.getElementById("view-count");
 
+    if (!stories.length || !wrapper) return;
+
   // Verificar se os elementos essenciais existem antes de continuar
   if (!storiesContainer || !modal) {
     console.warn("Shopify Stories: Elementos essenciais não encontrados. O script não será inicializado.");
@@ -226,9 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-   // ⚠️ Scroll horizontal com a roda do mouse no desktop
+  // ⚠️ Scroll horizontal com a roda do mouse no desktop
   wrapper.addEventListener("wheel", (e) => {
-    // Só funciona se tiver deltaY (ou seja, roda do mouse)
     if (e.deltaY !== 0) {
       e.preventDefault();
       wrapper.scrollBy({
