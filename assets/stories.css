@@ -1,3 +1,81 @@
+/* --- Seu CSS existente acima --- */
+
+.story-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px 5px 15px;
+  border-bottom: 1px solid #333;
+}
+
+.story-store-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.story-store-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+}
+
+/* Barra de progresso */
+.story-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #333;
+  margin: 5px 0 10px 0;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+#progress-fill {
+  background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  width: 0%;
+  height: 100%;
+  transition: width linear;
+}
+
+/* Footer: curtida e visualizações */
+.story-footer {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+#like-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+#like-btn.liked {
+  color: #e0245e; /* cor de curtida (vermelho) */
+}
+
+#like-btn:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+
 .custom-stories-carousel {
   width: 100%;
   height: auto;
