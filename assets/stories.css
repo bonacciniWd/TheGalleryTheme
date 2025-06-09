@@ -71,7 +71,7 @@
   display: flex;
   justify-content: space-between; /* Alinha os itens nas extremidades */
   align-items: center;
-  
+  color: #fff;
   font-size: 16px;
   padding: 15px; /* Adiciona padding interno */
   width: 100%; /* Ocupa a largura total do modal-content */
