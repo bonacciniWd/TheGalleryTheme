@@ -62,7 +62,7 @@
     "stories_eebgyR": {
       "type": "stories",
       "custom_css": [
-        ".div {display: flex !important;}"
+        "div {display: inline;}"
       ],
       "name": "Stories",
       "settings": {
