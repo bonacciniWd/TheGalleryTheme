@@ -62,7 +62,10 @@
     "stories_eebgyR": {
       "type": "stories",
       "name": "Stories",
-      "settings": {}
+      "settings": {
+        "store_logo": "shopify://shop_images/mini.jpg",
+        "store_name": "Amaterasu Co."
+      }
     }
   },
   "order": [
