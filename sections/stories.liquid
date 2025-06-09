@@ -81,7 +81,7 @@
     <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
 <div class="story-header">
   {% if section.settings.store_logo != blank %}
-    <div class="story-store-logo-wrapper"> {# ESTE WRAPPER É ESSENCIAL #}
+    <div class="story-store-logo-wrapper"> 
       <img height="40" width="40" src="{{ section.settings.store_logo | image_url: width: 40 }}" alt="{{ section.settings.store_name | escape }} Logo" class="story-store-logo" />
     </div>
   {% else %}
