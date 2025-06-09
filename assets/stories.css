@@ -69,7 +69,7 @@
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Alinha os itens nas extremidades */
   align-items: center;
   color: #fff;
   font-size: 16px;
@@ -78,6 +78,43 @@
   box-sizing: border-box; /* Inclui padding na largura */
   z-index: 10; /* Acima do conteúdo principal */
   background: rgba(0,0,0,0.5); /* Fundo semi-transparente para melhor leitura */
+}
+
+.story-stats-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espaço entre o botão de compartilhar e as visualizações */
+}
+
+/* Estilo para o botão de compartilhar */
+#share-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px; /* Tamanho da fonte para o texto "Compartilhar" */
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o ícone e o texto */
+  transition: color 0.3s, opacity 0.3s;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+#share-btn:hover {
+  opacity: 0.8;
+}
+
+#share-btn svg {
+  width: 20px; /* Tamanho do ícone de compartilhar */
+  height: 20px;
+  stroke: #fff;
+}
+
+#share-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 #like-btn {
@@ -318,6 +355,109 @@
   outline-offset: 2px;
 }
 
+/* --- Share Modal Styles --- */
+.share-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 10001; /* Above story modal, but below close button */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.share-modal-content {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  max-width: 90vw;
+  width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.share-modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+  color: #fff;
+}
+
+.share-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.share-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+.share-option:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+}
+
+.share-option img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.share-option svg {
+  width: 28px;
+  height: 28px;
+  stroke: #fff;
+}
+
+.share-option span {
+  flex-grow: 1; /* Allows text to take available space */
+  text-align: left;
+}
+
+.instagram-share-option .instagram-note {
+  font-size: 0.8em;
+  opacity: 0.7;
+  white-space: nowrap; /* Prevent line break */
+  margin-left: auto; /* Push note to the right */
+}
+
+.copy-feedback {
+  margin-top: 15px;
+  background-color: #4CAF50; /* Green background for feedback */
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.copy-feedback.show {
+  opacity: 1;
+}
+
 /* Media Queries para responsividade */
 
 /* Ajustes para mobile/tablet (até 767px) - 10% menor que 640px = 576px */
@@ -329,7 +469,7 @@
     max-height: 85vh; /* Ajuste o max-height também */
   }
   /* Os botões de navegação (.story-nav-btn) já estão visíveis por padrão em mobile
-     e a lógica do JS vai esconder/mostrar conforme necessário. */
+      e a lógica do JS vai esconder/mostrar conforme necessário. */
 }
 
 /* Para telas menores que 600px (smartphones menores) */
@@ -338,6 +478,12 @@
     height: 520px; /* Ajuste para telas menores */
     width: 95vw; /* Ocupa mais largura */
     max-height: 80vh;
+  }
+  .share-modal-content {
+    padding: 20px;
+  }
+  .share-option {
+    padding: 10px 15px;
   }
 }
 
@@ -373,9 +519,9 @@
   }
 
   /* Não precisamos mais desta regra, pois o JS já lida com a visibilidade dos botões
-     e o display: flex já está na base do .story-nav-btn.
-     Se houver conflito, o JS aplicando display: flex/none prevalece sobre CSS. */
+      e o display: flex já está na base do .story-nav-btn.
+      Se houver conflito, o JS aplicando display: flex/none prevalece sobre CSS. */
   /* .story-nav-btn {
-     display: flex;
+      display: flex;
   } */
 }
