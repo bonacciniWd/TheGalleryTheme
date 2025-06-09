@@ -1,150 +1,226 @@
+/* Container do carrossel */
 .custom-stories-carousel {
-  width: 100%;
-  height: auto;
-  overflow-x: auto;
+  padding: 16px;
   background-color: #000;
-  padding: 10px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none; /* Firefox */
+}
+.custom-stories-carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Edge */
 }
 
+/* Wrapper dos stories */
 .stories-wrapper {
   display: flex;
   gap: 16px;
-  margin-left: 15px;
-  margin-right: 15px;
-  scroll-behavior: smooth;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  padding-bottom: 12px;
 }
 
-.stories-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
+/* Cada story item */
 .story-item {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
-  flex: 0 0 auto;
-  width: 80px;
-  margin-top: 10px;
-  text-align: center;
-  cursor: pointer;
-  scroll-snap-align: start;
-  transition: transform 0.3s;
-  color: #000;
   text-decoration: none;
+  color: white;
+  cursor: pointer;
+  width: 80px;
+  outline-offset: 2px;
+  outline: none;
+}
+.story-item:focus {
+  outline: 2px solid #feda75;
+  outline-offset: 4px;
 }
 
+/* Círculo com degradê tipo Instagram */
 .story-avatar-gradient {
-  padding: 2px;
+  background: conic-gradient(from 180deg at 50% 50%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #feda75);
   border-radius: 50%;
-  background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  display: inline-block;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  padding: 2px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.story-avatar-gradient:hover {
-  transform: scale(1.05);
-}
-
+/* Imagem ou vídeo do story */
 .story-avatar-gradient img,
 .story-avatar-gradient video {
-  width: 70px;
-  height: 70px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
-  background-color: #000;
-  display: block;
-  border: 2px solid black;
-  transition: none;
+  background: black;
 }
 
+/* Nome do story abaixo da imagem */
 .story-title {
+  margin-top: 6px;
   font-size: 12px;
-  margin-top: 4px;
-  color: #fff;
-}
-
-.no-stories {
+  max-width: 80px;
   text-align: center;
-  color: #999;
-  font-style: italic;
-  margin-top: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* Texto quando não há stories */
+.no-stories {
+  color: #aaa;
+  font-style: italic;
+  padding: 10px;
+}
+
+/* Modal */
 .story-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.85);
+  background-color: rgba(0,0,0,0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10000;
+  flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
+  user-select: none;
 }
 
+/* Conteúdo interno do modal */
 .story-modal-content {
   position: relative;
-  width: 360px;
-  height: 640px;
-  max-width: 90vw;
-  max-height: 90vh;
-  background: #111;
+  max-width: 420px;
+  width: 100%;
+  background-color: #111;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  flex-direction: column;
+  height: 600px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
 
-.story-modal-content img,
-.story-modal-content video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
+/* Botão fechar modal */
 .close-modal {
   position: absolute;
   top: 10px;
-  right: 15px;
-  background: transparent;
+  right: 12px;
+  font-size: 28px;
+  color: white;
+  background: none;
   border: none;
-  color: #fff;
-  font-size: 30px;
   cursor: pointer;
-  z-index: 10001;
+  user-select: none;
+  z-index: 10;
+  padding: 0 6px;
+  line-height: 1;
 }
 
-@media (min-width: 768px) {
-  .story-item {
-    width: 100px;
-  }
-  .story-modal-content {
-    width: 480px;
-    height: 853px;
-  }
-  .story-avatar-gradient img,
-  .story-avatar-gradient video {
-    width: 80px;
-    height: 80px;
-    border-width: 3px;
-  }
-  .story-title {
-    font-size: 14px;
-  }
+/* Header do modal: logo e nome da loja */
+.story-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  background-color: #111;
+  border-bottom: 1px solid #333;
+  color: #fff;
+}
+
+.story-store-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid white;
+}
+
+.story-store-name {
+  font-weight: 600;
+  font-size: 16px;
+  user-select: none;
+}
+
+/* Área onde vai aparecer a imagem ou vídeo do story */
+#story-media {
+  flex: 1;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#story-media img,
+#story-media video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  user-select: none;
+}
+
+/* Barra de progresso do story */
+.story-progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #333;
+  border-radius: 2px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+
+.story-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  width: 0%;
+  transition: width linear;
+}
+
+/* Footer do modal: botão curtir e contador de visualizações */
+.story-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #111;
+  border-top: 1px solid #333;
+  color: #fff;
+  user-select: none;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  color: #ff3b30;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.like-button.liked {
+  color: #ff2d55;
+}
+
+.like-button:hover {
+  color: #ff2d55;
+}
+
+#like-count {
+  font-weight: 600;
+}
+
+.view-count {
+  font-size: 14px;
+  user-select: none;
 }
