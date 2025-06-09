@@ -18,7 +18,19 @@
   {% if stories.size > 0 %}
     <div class="stories-wrapper">
       {% for story in stories %}
-        <a href="{{ story.link }}" class="story-item" data-index="{{ forloop.index0 }}" data-duration="5000" tabindex="0" aria-label="Abrir story {{ story.title | escape }}">
+        <a href="{{ story.link }}" 
+           class="story-item" 
+           data-index="{{ forloop.index0 }}" 
+           data-duration="5000" 
+           tabindex="0" 
+           aria-label="Abrir story {{ story.title | escape }}"
+           {% if story.imagem %}
+             data-image="{{ story.imagem | img_url: 'master' }}"
+           {% endif %}
+           {% if story.video %}
+             data-video="{{ story.video }}"
+           {% endif %}
+        >
           {% if story.imagem %}
             <div class="story-avatar-gradient">
               <img 
@@ -51,14 +63,6 @@
   {% endif %}
 </div>
 
-<!-- Modal para stories -->
-<div id="story-modal" class="story-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="story-modal-title">
-  <div class="story-modal-content">
-    <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
-    <div id="story-media"></div>
-    <h2 id="story-modal-title"></h2>
-  </div>
-</div>
 
 {{ 'stories.css' | asset_url | stylesheet_tag }}
 {{ 'stories.js' | asset_url | script_tag }}
