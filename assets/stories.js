@@ -1,382 +1,147 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const storiesContainer = document.querySelector(".stories-wrapper");
-  const modal = document.getElementById("story-modal");
-  const modalMedia = document.getElementById("story-media");
-  const modalTitle = document.getElementById("story-modal-title");
-  const closeModalBtn = document.getElementById("close-modal");
-  const progressFill = document.getElementById("progress-fill");
-  const likeBtn = document.getElementById("like-btn");
-  const likeCountSpan = document.getElementById("like-count");
-  const viewCountSpan = document.getElementById("view-count");
-
-  // Novos elementos para as setas de navegação
-  const prevStoryBtn = document.getElementById("prev-story-btn");
-  const nextStoryBtn = document.getElementById("next-story-btn");
-
-  // Novos elementos para o compartilhamento
-  const shareBtn = document.getElementById("share-btn");
-  const shareModal = document.getElementById("share-modal");
-  const closeShareModalBtn = document.getElementById("close-share-modal");
-  const whatsappShareBtn = document.getElementById("whatsapp-share");
-  const instagramShareBtn = document.getElementById("instagram-share");
-  const copyLinkShareBtn = document.getElementById("copy-link-share");
-  const copyFeedback = document.getElementById("copy-feedback");
-
-  // Verificar se os elementos essenciais existem antes de continuar
-  if (!storiesContainer || !modal) {
-    console.warn("Shopify Stories: Elementos essenciais não encontrados. O script não será inicializado.");
-    return;
-  }
-
-  const stories = Array.from(storiesContainer.querySelectorAll(".story-item"));
-  let currentIndex = 0;
-  let timer = null;
-  let currentStoryUrl = ''; // Para armazenar o link da história atual
-  const storyDuration = 15000; // 15 segundos para imagens
-
-  // Função para obter curtidas do localStorage
-  function getLikes(id) {
-    return parseInt(localStorage.getItem(`story-like-${id}`)) || 0;
-  }
-
-  // Função para salvar curtidas no localStorage
-  function saveLikes(id, count) {
-    localStorage.setItem(`story-like-${id}`, count);
-  }
-
-  // Função para obter visualizações do localStorage
-  function getViews(id) {
-    return parseInt(localStorage.getItem(`story-view-${id}`)) || 0;
-  }
-
-  // Função para salvar visualizações no localStorage
-  function saveViews(id, count) {
-    localStorage.setItem(`story-view-${id}`, count);
-  }
-
-  // Atualiza o progresso da barra
-  function startProgress(duration) {
-    progressFill.style.transition = 'none';
-    progressFill.style.width = '0%';
-    void progressFill.offsetWidth; // Força o reflow para resetar a transição
-    progressFill.style.transition = `width ${duration}ms linear`;
-    progressFill.style.width = '100%';
-  }
-
-  // Para o progresso
-  function resetProgress() {
-    progressFill.style.transition = 'none';
-    progressFill.style.width = '0%';
-  }
-
-  // Atualiza o contador de curtidas e estado do botão
-  function updateLikeUI(id) {
-    const likes = getLikes(id);
-    likeCountSpan.textContent = likes;
-    if (likes > 0) {
-      likeBtn.classList.add("liked");
-      likeBtn.innerHTML = `❤️ <span id="like-count">${likes}</span>`;
-    } else {
-      likeBtn.classList.remove("liked");
-      likeBtn.innerHTML = `♡ <span id="like-count">${likes}</span>`;
-    }
-  }
-
-  // Atualiza o contador de visualizações
-  function updateViewUI(id) {
-    const views = getViews(id);
-    viewCountSpan.textContent = `👁️ ${views}`;
-  }
-
-  // Incrementa visualizações
-  function incrementView(id) {
-    let views = getViews(id);
-    views++;
-    saveViews(id, views);
-    updateViewUI(id);
-  }
-
-  function showStory(index) {
-    if (index < 0 || index >= stories.length) {
-      closeModal();
-      return;
-    }
-
-    currentIndex = index;
-
-    const story = stories[index];
-    const title = story.querySelector(".story-title").textContent;
-    const imageUrl = story.getAttribute("data-image");
-    const videoUrl = story.getAttribute("data-video");
-    const storyId = story.getAttribute("data-index"); // usar índice como id
-    currentStoryUrl = story.getAttribute("data-story-link"); // Define o link da história atual
-
-    modalTitle.textContent = title;
-    modalMedia.innerHTML = ""; // Limpa conteúdo anterior
-
-    // Incrementa views só na primeira abertura da story no modal (ou cada vez que é mostrada)
-    incrementView(storyId);
-
-    // Atualiza curtidas e visualizações
-    updateLikeUI(storyId);
-    updateViewUI(storyId);
-
-    clearTimeout(timer); // Limpa o timer anterior antes de iniciar um novo
-
-    if (videoUrl) {
-      const video = document.createElement("video");
-      video.src = videoUrl;
-      video.controls = false;
-      video.autoplay = true;
-      video.muted = false; // Mantenha false para ter som, se desejado
-      video.playsInline = true;
-      video.preload = "metadata";
-      video.style.maxWidth = "100%";
-      video.style.maxHeight = "70vh";
-      video.setAttribute("aria-label", `Conteúdo do story: ${title}`);
-      modalMedia.appendChild(video);
-
-      video.onloadedmetadata = () => {
-        const duration = video.duration * 1000;
-        startProgress(duration); // Inicia progresso com duração do vídeo
-        timer = setTimeout(() => {
-          showStory(currentIndex + 1);
-        }, duration);
-      };
-
-      video.onended = () => {
-        clearTimeout(timer); // Garante que o timer seja limpo se o vídeo terminar antes
-        showStory(currentIndex + 1);
-      };
-
-      video.onerror = () => {
-        console.error(`Erro ao carregar vídeo: ${videoUrl}`);
-        showStory(currentIndex + 1); // Tenta ir para a próxima story em caso de erro
-      };
-
-    } else if (imageUrl) {
-      const img = document.createElement("img");
-      img.src = imageUrl;
-      img.alt = title;
-      img.style.maxWidth = "100%";
-      img.style.maxHeight = "70vh";
-      img.setAttribute("aria-label", `Conteúdo do story: ${title}`);
-      modalMedia.appendChild(img);
-
-      startProgress(storyDuration); // Inicia progresso com duração padrão para imagens
-      timer = setTimeout(() => {
-        showStory(currentIndex + 1);
-      }, storyDuration);
-
-      img.onerror = () => {
-        console.error(`Erro ao carregar imagem: ${imageUrl}`);
-        showStory(currentIndex + 1); // Tenta ir para a próxima story em caso de erro
-      };
-    }
-
-    // Abertura do modal - usando estilo inline para garantir a sobrescrita
-    modal.style.display = "flex";
-    modal.focus(); // Coloca o foco no modal para acessibilidade
-
-    // **Lógica para mostrar/ocultar as setas de navegação**
-    if (prevStoryBtn && nextStoryBtn) {
-      prevStoryBtn.style.display = (currentIndex > 0) ? 'flex' : 'none';
-      nextStoryBtn.style.display = (currentIndex < stories.length - 1) ? 'flex' : 'none';
-
-      if (stories.length <= 1) {
-        prevStoryBtn.style.display = 'none';
-        nextStoryBtn.style.display = 'none';
+{% schema %}
+  {
+    "name": "Stories Custom",
+    "tag": "section",
+    "class": "section-stories",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "store_logo",
+        "label": "Logo da Loja no Modal",
+        "info": "Selecione a imagem do logo da sua loja para o modal de stories."
+      },
+      {
+        "type": "text",
+        "id": "store_name",
+        "label": "Nome da Loja no Modal",
+        "default": "Sua Loja",
+        "info": "Define o nome da loja exibido no modal de stories."
       }
-    }
-  }
-
-  function closeModal() {
-    modal.style.display = "none"; // Volta para display: none
-    modalMedia.innerHTML = "";
-    resetProgress();
-    clearTimeout(timer);
-    // Remove o foco do modal para o elemento anterior que abriu, ou um elemento padrão
-    document.querySelector(`.story-item[data-index="${currentIndex}"]`)?.focus();
-  }
-
-  function openShareModal() {
-    shareModal.style.display = "flex";
-    shareModal.focus();
-    // Preenche os links de compartilhamento
-    whatsappShareBtn.href = `https://api.whatsapp.com/send?text=Confira esta história na nossa loja: ${currentStoryUrl}`;
-    // Para Instagram, apenas copiar o link é o mais prático para web
-    // Não há uma URL direta para abrir o app e compartilhar uma imagem/vídeo do navegador para o Story/Feed do Instagram.
-    // O ideal seria usar a API do Instagram Graph para aplicativos autorizados, o que não é o caso aqui.
-  }
-
-  function closeShareModal() {
-    shareModal.style.display = "none";
-    // Volta o foco para o botão de compartilhar na story modal
-    shareBtn.focus();
-  }
-
-  // Delegação de eventos para cliques nas stories
-  storiesContainer.addEventListener("click", (e) => {
-    const storyItem = e.target.closest(".story-item");
-    if (storyItem) {
-      e.preventDefault();
-      const index = parseInt(storyItem.getAttribute("data-index"));
-      showStory(index);
-    }
-  });
-
-  // Fechar modal principal
-  closeModalBtn.addEventListener("click", closeModal);
-
-  // Abrir modal de compartilhamento
-  shareBtn.addEventListener("click", openShareModal);
-
-  // Fechar modal de compartilhamento
-  closeShareModalBtn.addEventListener("click", closeShareModal);
-
-  // Copiar link para área de transferência
-  copyLinkShareBtn.addEventListener("click", () => {
-    navigator.clipboard.writeText(currentStoryUrl)
-      .then(() => {
-        copyFeedback.textContent = 'Link copiado!';
-        copyFeedback.classList.add('show');
-        setTimeout(() => {
-          copyFeedback.classList.remove('show');
-        }, 2000);
-      })
-      .catch(err => {
-        console.error('Erro ao copiar link: ', err);
-        copyFeedback.textContent = 'Erro ao copiar!';
-        copyFeedback.classList.add('show');
-        setTimeout(() => {
-          copyFeedback.classList.remove('show');
-        }, 2000);
-      });
-  });
-
-  // Curtir a story
-  likeBtn.addEventListener("click", () => {
-    const storyId = currentIndex.toString(); // Usar o índice como ID da story
-    let likes = getLikes(storyId);
-
-    if (likeBtn.classList.contains("liked")) {
-      likes = 0; // Se já está curtido, descurtir
-    } else {
-      likes = 1; // Se não está curtido, curtir
-    }
-
-    saveLikes(storyId, likes);
-    updateLikeUI(storyId);
-  });
-
-  // Fechar modal principal ao clicar fora da área
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) { // Se o clique foi no background do modal, fechar
-      closeModal();
-    }
-  });
-
-  // Fechar modal de compartilhamento ao clicar fora da área
-  shareModal.addEventListener("click", (e) => {
-    if (e.target === shareModal) { // Se o clique foi no background do modal de compartilhamento, fechar
-      closeShareModal();
-    }
-  });
-
-
-  // Tecla ESC fecha modal (principal ou de compartilhamento)
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      if (shareModal.style.display === "flex") {
-        closeShareModal();
-      } else if (modal.style.display === "flex") {
-        closeModal();
+    ],
+    "presets": [
+      {
+        "name": "Stories"
       }
-    }
-  });
-
-  // Navegação com setas do teclado
-  document.addEventListener("keydown", (e) => {
-    if (modal.style.display === "flex" && shareModal.style.display !== "flex") { // Apenas navega se o modal de share não estiver aberto
-      if (e.key === "ArrowRight") {
-        e.preventDefault(); // Previne rolagem da página
-        showStory(currentIndex + 1);
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault(); // Previne rolagem da página
-        showStory(currentIndex - 1);
-      }
-    }
-  });
-
-  // Scroll horizontal com a roda do mouse no desktop
-  if (storiesContainer) { // Adiciona verificação para evitar erro
-    storiesContainer.addEventListener("wheel", (e) => {
-      if (e.deltaY !== 0) {
-        e.preventDefault();
-        storiesContainer.scrollBy({
-          left: e.deltaY,
-          behavior: "smooth"
-        });
-      }
-    }, { passive: false });
+    ]
   }
+{% endschema %}
 
-  // Adicionar eventos para as setas de navegação no modal
-  if (prevStoryBtn) {
-    prevStoryBtn.addEventListener("click", () => showStory(currentIndex - 1));
-  }
-  if (nextStoryBtn) {
-    nextStoryBtn.addEventListener("click", () => showStory(currentIndex + 1));
-  }
+<div class="custom-stories-carousel">
+  {% assign stories = shop.metaobjects.stories.values | sort: "title" %}
 
-  // --- Gesto de Handler (Mobile) ---
-  let touchStartX = 0;
-  let touchEndX = 0;
-  let touchStartY = 0; // Para verificar se é um scroll vertical
-  let touchEndY = 0;
-  const minSwipeDistance = 50; // Distância mínima horizontal para considerar um swipe
-  const maxVerticalScroll = 30; // Distância vertical máxima para ainda considerar um swipe horizontal
+  {% if stories.size > 0 %}
+    <div class="stories-wrapper">
+      {% for story in stories %}
+        {% comment %} Define um ID para a história. Prefere o handle se existir, senão usa o índice. {% endcomment %}
+        {% assign story_id_for_url = story.handle | default: forloop.index0 %}
 
-  modalMedia.addEventListener('touchstart', (e) => {
-    // Apenas permitir um dedo para evitar conflitos com zoom multi-touch
-    if (e.touches.length === 1) {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      // Pausar timer para evitar auto-avanço durante o swipe
-      clearTimeout(timer);
-      resetProgress();
-    }
-  }, { passive: true });
+        <a href="{{ story.link.url }}"
+           class="story-item"
+           data-index="{{ forloop.index0 }}"
+           data-duration="15000"
+           tabindex="0"
+           aria-label="Abrir story {{ story.title | escape }}"
+           {% if story.imagem %}
+             data-image="{{ story.imagem | image_url: width: 800 }}"
+           {% elsif story.video %}
+             data-video="{{ story.video }}"
+           {% endif %}
+           data-story-id-url="{{ story_id_for_url }}" {# Novo atributo para o identificador na URL #}
+           data-external-link="{{ story.link.url }}" {# O link original do metacampo, se for para um produto/página externa #}
+        >
+          {% if story.imagem %}
+            <div class="story-avatar-gradient">
+              <img
+                src="{{ story.imagem | image_url: width: 80, height: 80 }}"
+                alt="{{ story.title | escape }}"
+                loading="lazy"
+                width="80"
+                height="80"
+              />
+            </div>
+          {% elsif story.video %}
+            <div class="story-avatar-gradient">
+              <video
+                src="{{ story.video }}"
+                loading="lazy"
+                width="80"
+                height="80"
+                muted
+                playsinline
+                preload="metadata"
+              ></video>
+            </div>
+          {% endif %}
+          <span class="story-title">{{ story.title }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="no-stories">Nenhum story disponível no momento.</p>
+  {% endif %}
+</div>
 
-  modalMedia.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 1) {
-      touchEndX = e.touches[0].clientX;
-      touchEndY = e.touches[0].clientY;
-    }
-  }, { passive: true });
+<div id="story-modal" class="story-modal" role="dialog" aria-modal="true" aria-labelledby="story-modal-title">
+  <div class="story-modal-content">
+    <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
+    <div class="story-header">
+      {% if section.settings.store_logo != blank %}
+        <div class="story-store-logo-wrapper">
+          <img height="40" width="40" src="{{ section.settings.store_logo | image_url: width: 40 }}" alt="{{ section.settings.store_name | escape }} Logo" class="story-store-logo" />
+        </div>
+      {% else %}
+        <span class="story-store-logo-placeholder"></span>
+      {% endif %}
+      <span class="story-store-name">{{ section.settings.store_name }}</span>
+    </div>
 
-  modalMedia.addEventListener('touchend', () => {
-    const swipeDistanceX = touchEndX - touchStartX;
-    const swipeDistanceY = Math.abs(touchEndY - touchStartY); // Usar valor absoluto para a distância vertical
+    <div class="story-progress-bar">
+      <div id="progress-fill"></div>
+    </div>
 
-    if (modal.style.display === "flex" && shareModal.style.display !== "flex") { // Só permite swipe se o modal de share não estiver aberto
-      // Se a movimentação vertical for muito grande, não é um swipe horizontal de navegação de story
-      if (swipeDistanceY > maxVerticalScroll) {
-        // É mais um scroll vertical, pode reiniciar o timer se quiser
-        startProgress(storyDuration); // ou retomar do ponto de pausa
-        return;
-      }
+    <button id="prev-story-btn" class="story-nav-btn story-nav-btn--prev" aria-label="Story anterior" style="display:none;">&#10094;</button>
+    <button id="next-story-btn" class="story-nav-btn story-nav-btn--next" aria-label="Próxima story" style="display:none;">&#10095;</button>
 
-      if (swipeDistanceX > minSwipeDistance) {
-        // Swipe para a direita (anterior)
-        showStory(currentIndex - 1);
-      } else if (swipeDistanceX < -minSwipeDistance) {
-        // Swipe para a esquerda (próximo)
-        showStory(currentIndex + 1);
-      } else {
-        // Se não for um swipe suficiente, e for um toque simples, pode retomar o timer
-        startProgress(storyDuration); // ou retomar do ponto de pausa
-      }
-    }
-  });
-});
+    <div id="story-media"></div>
+
+    <h2 id="story-modal-title" class="visually-hidden"></h2>
+
+    <div class="story-footer">
+      <div class="story-stats-left">
+        <button id="share-btn" aria-label="Compartilhar story">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          <span class="share-text">Compartilhar</span>
+        </button>
+        <span id="view-count" aria-label="Número de visualizações">👁️ 0</span>
+      </div>
+      <button id="like-btn" aria-label="Curtir story">♡ <span id="like-count">0</span></button>
+    </div>
+  </div>
+</div>
+
+{# Share Modal HTML #}
+<div id="share-modal" class="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-modal-title" style="display: none;">
+  <div class="share-modal-content">
+    <button id="close-share-modal" class="close-modal" aria-label="Fechar modal de compartilhamento">×</button>
+    <h3 id="share-modal-title">Compartilhar Story</h3>
+    <div class="share-options">
+      <a href="#" id="whatsapp-share" target="_blank" rel="noopener noreferrer" class="share-option">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
+        <span>WhatsApp</span>
+      </a>
+      <a href="#" id="instagram-share" target="_blank" rel="noopener noreferrer" class="share-option instagram-share-option">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" width="40" height="40">
+        <span>Instagram</span>
+        <span class="instagram-note">(Copiar link)</span>
+      </a>
+      <button id="copy-link-share" class="share-option">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <span>Copiar Link</span>
+      </button>
+    </div>
+    <div id="copy-feedback" class="copy-feedback" style="display:none;">Link copiado!</div>
+  </div>
+</div>
+
+{{ 'stories.css' | asset_url | stylesheet_tag }}
+{{ 'stories.js' | asset_url | script_tag }}
