@@ -26,7 +26,7 @@
   padding: 2px;
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  display: inline-block;
+  display: flex;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -37,7 +37,7 @@
   border-radius: 50%; /* <<<<< ADICIONADO NOVAMENTE AQUI! */
   object-fit: cover;
   border: 2px solid black;
-  display: block;
+  display: flex;
 }
 
 .story-store-name {
@@ -154,7 +154,7 @@
   padding: 2px;
   border-radius: 50%;
   background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  display: inline-block;
+  display: flex;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
