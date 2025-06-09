@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const storiesContainer = document.querySelector(".stories-wrapper"); // Novo elemento para delegação
+  const storiesContainer = document.querySelector(".stories-wrapper");
   const modal = document.getElementById("story-modal");
   const modalMedia = document.getElementById("story-media");
   const modalTitle = document.getElementById("story-modal-title");
@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const likeBtn = document.getElementById("like-btn");
   const likeCountSpan = document.getElementById("like-count");
   const viewCountSpan = document.getElementById("view-count");
-  
+
+  // Novos elementos para as setas de navegação
+  const prevStoryBtn = document.getElementById("prev-story-btn");
+  const nextStoryBtn = document.getElementById("next-story-btn");
 
   // Verificar se os elementos essenciais existem antes de continuar
   if (!storiesContainer || !modal) {
@@ -16,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const stories = Array.from(storiesContainer.querySelectorAll(".story-item")); // Pega os itens dentro do container
+  const stories = Array.from(storiesContainer.querySelectorAll(".story-item"));
   let currentIndex = 0;
   let timer = null;
   const storyDuration = 15000; // 15 segundos para imagens
@@ -54,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function resetProgress() {
     progressFill.style.transition = 'none';
     progressFill.style.width = '0%';
-    // Não precisa de reflow aqui, pois não estamos iniciando uma nova transição
   }
 
   // Atualiza o contador de curtidas e estado do botão
@@ -63,10 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
     likeCountSpan.textContent = likes;
     if (likes > 0) {
       likeBtn.classList.add("liked");
-      likeBtn.innerHTML = `❤️ <span id="like-count">${likes}</span>`; // Atualiza o HTML para acessibilidade
+      likeBtn.innerHTML = `❤️ <span id="like-count">${likes}</span>`;
     } else {
       likeBtn.classList.remove("liked");
-      likeBtn.innerHTML = `♡ <span id="like-count">${likes}</span>`; // Atualiza o HTML para acessibilidade
+      likeBtn.innerHTML = `♡ <span id="like-count">${likes}</span>`;
     }
   }
 
@@ -74,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateViewUI(id) {
     const views = getViews(id);
     viewCountSpan.textContent = `👁️ ${views}`;
-    // Pode-se adicionar aria-live="polite" ao viewCountSpan no HTML
   }
 
   // Incrementa visualizações
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalTitle.textContent = title;
     modalMedia.innerHTML = ""; // Limpa conteúdo anterior
 
-    // Incrementa views só na primeira abertura da story no modal (ou cada vez que é mostrada, dependendo da sua regra)
+    // Incrementa views só na primeira abertura da story no modal (ou cada vez que é mostrada)
     incrementView(storyId);
 
     // Atualiza curtidas e visualizações
@@ -116,12 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
       video.src = videoUrl;
       video.controls = false;
       video.autoplay = true;
-      video.muted = false; // Vídeos de story geralmente não são mudos por padrão, mas pode ser uma escolha de UX
+      video.muted = false;
       video.playsInline = true;
       video.preload = "metadata";
       video.style.maxWidth = "100%";
       video.style.maxHeight = "70vh";
-      video.setAttribute("aria-label", `Conteúdo do story: ${title}`); // Acessibilidade para o vídeo
+      video.setAttribute("aria-label", `Conteúdo do story: ${title}`);
       modalMedia.appendChild(video);
 
       video.onloadedmetadata = () => {
@@ -148,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
       img.alt = title;
       img.style.maxWidth = "100%";
       img.style.maxHeight = "70vh";
-      img.setAttribute("aria-label", `Conteúdo do story: ${title}`); // Acessibilidade para a imagem
+      img.setAttribute("aria-label", `Conteúdo do story: ${title}`);
       modalMedia.appendChild(img);
 
       startProgress(storyDuration); // Inicia progresso com duração padrão para imagens
@@ -164,6 +165,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modal.style.display = "block";
     modal.focus(); // Coloca o foco no modal para acessibilidade
+
+    // Lógica para mostrar/ocultar as setas de navegação (desktop)
+    if (prevStoryBtn && nextStoryBtn) { // Verifica se os botões existem
+        // Apenas mostrar em desktop (maior que 767px, como definido no CSS)
+        // Isso será controlado principalmente pelo CSS @media, mas esta lógica garante o estado inicial e de transição
+        if (window.innerWidth >= 768) {
+            prevStoryBtn.style.display = (currentIndex > 0) ? 'flex' : 'none';
+            nextStoryBtn.style.display = (currentIndex < stories.length - 1) ? 'flex' : 'none';
+        } else {
+            prevStoryBtn.style.display = 'none';
+            nextStoryBtn.style.display = 'none';
+        }
+    }
   }
 
   function closeModal() {
@@ -205,7 +219,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fechar modal ao clicar fora da área
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
+    // Adiciona uma condição para não fechar ao clicar nos botões de navegação
+    if (e.target === modal || e.target === closeModalBtn || e.target === prevStoryBtn || e.target === nextStoryBtn) {
+        // Não fazer nada se clicar nos botões de navegação ou fechar
+        return;
+    }
+    // Se o clique foi no background do modal, fechar
+    if (e.target === modal) {
+        closeModal();
+    }
   });
 
   // Tecla ESC fecha modal
@@ -215,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Navegação com setas do teclado (Opcional)
+  // Navegação com setas do teclado
   document.addEventListener("keydown", (e) => {
     if (modal.style.display === "block") {
       if (e.key === "ArrowRight") {
@@ -227,14 +249,76 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-  // ⚠️ Scroll horizontal com a roda do mouse no desktop
-  wrapper.addEventListener("wheel", (e) => {
-    if (e.deltaY !== 0) {
-      e.preventDefault();
-      wrapper.scrollBy({
-        left: e.deltaY,
-        behavior: "smooth"
-      });
+
+  // Scroll horizontal com a roda do mouse no desktop
+  if (storiesContainer) { // Adiciona verificação para evitar erro
+    storiesContainer.addEventListener("wheel", (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        storiesContainer.scrollBy({
+          left: e.deltaY,
+          behavior: "smooth"
+        });
+      }
+    }, { passive: false });
+  }
+
+  // Adicionar eventos para as setas de navegação no modal
+  if (prevStoryBtn) {
+    prevStoryBtn.addEventListener("click", () => showStory(currentIndex - 1));
+  }
+  if (nextStoryBtn) {
+    nextStoryBtn.addEventListener("click", () => showStory(currentIndex + 1));
+  }
+
+  // --- Gesto de Handler (Mobile) ---
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0; // Para verificar se é um scroll vertical
+  let touchEndY = 0;
+  const minSwipeDistance = 50; // Distância mínima horizontal para considerar um swipe
+  const maxVerticalScroll = 30; // Distância vertical máxima para ainda considerar um swipe horizontal
+
+  modalMedia.addEventListener('touchstart', (e) => {
+    // Apenas permitir um dedo para evitar conflitos com zoom multi-touch
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      // Pausar timer para evitar auto-avanço durante o swipe
+      clearTimeout(timer);
+      resetProgress();
     }
-  }, { passive: false });
+  }, { passive: true });
+
+  modalMedia.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 1) {
+      touchEndX = e.touches[0].clientX;
+      touchEndY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  modalMedia.addEventListener('touchend', () => {
+    const swipeDistanceX = touchEndX - touchStartX;
+    const swipeDistanceY = Math.abs(touchEndY - touchStartY); // Usar valor absoluto para a distância vertical
+
+    if (modal.style.display === "block") {
+      // Se a movimentação vertical for muito grande, não é um swipe horizontal de navegação de story
+      if (swipeDistanceY > maxVerticalScroll) {
+          // É mais um scroll vertical, pode reiniciar o timer se quiser
+          startProgress(storyDuration); // ou retomar do ponto de pausa
+          return;
+      }
+
+      if (swipeDistanceX > minSwipeDistance) {
+        // Swipe para a direita (anterior)
+        showStory(currentIndex - 1);
+      } else if (swipeDistanceX < -minSwipeDistance) {
+        // Swipe para a esquerda (próximo)
+        showStory(currentIndex + 1);
+      } else {
+        // Se não for um swipe suficiente, e for um toque simples, pode retomar o timer
+        startProgress(storyDuration); // ou retomar do ponto de pausa
+      }
+    }
+  });
 });
