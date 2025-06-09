@@ -24,135 +24,123 @@
       }
     ]
   }
-  {% endschema %}
-  <div class="custom-stories-carousel">
-  {% assign stories = shop.metaobjects.stories.values | sort: "title" %}
+{% endschema %}
 
-  {# NOVO DEBUG: Verifique se a lista 'stories' não está vazia #}
-  <script>
-    console.log("LIQUID DEBUG - Array de Stories:", {{ stories | json }});
-  </script>
+<div class="custom-stories-carousel">
+  {% assign stories = shop.metaobjects.stories.values | sort: "title" %}
 
-  {% if stories.size > 0 %}
-    <div class="stories-wrapper">
-      {% for story in stories %}
-        {% comment %} Define um ID para a história. Prefere o handle se existir, senão usa o índice. {% endcomment %}
-        {% assign story_id_for_url = story.handle | default: forloop.index0 %}
+  {% if stories.size > 0 %}
+    <div class="stories-wrapper">
+      {% for story in stories %}
+        {% comment %} Define um ID para a história. Prefere o handle se existir, senão usa o índice. {% endcomment %}
+        {% assign story_id_for_url = story.handle | default: forloop.index0 %}
 
-        <a href="{{ story.link.url }}"
-           class="story-item"
-           data-index="{{ forloop.index0 }}"
-           data-duration="15000"
-           tabindex="0"
-           aria-label="Abrir story {{ story.title | escape }}"
-           {% if story.imagem %}
-             data-image="{{ story.imagem | image_url: width: 800 }}"
-           {% elsif story.video %}
-             data-video="{{ story.video }}"
-           {% endif %}
-           data-story-id-url="{{ story_id_for_url }}" {# ID para controle interno da URL e abertura do modal #}
-            data-external-link="{{ story.link.url }}"
-        >
-          {# DEBUG DO LIQUID DENTRO DO LOOP - MANTENHA ISSO AQUI #}
-          <script>
-            console.log("LIQUID DEBUG (dentro do loop) - story.title:", {{ story.title | json }});
-            console.log("LIQUID DEBUG (dentro do loop) - story.link:", {{ story.link | json }});
-            console.log("LIQUID DEBUG (dentro do loop) - story.link.url:", {{ story.link.url | json }});
-          </script>
-          {# FIM DAS LINHAS DE DEPURACAO LIQUID #}
-
-          {% if story.imagem %}
-            <div class="story-avatar-gradient">
-              <img
-                src="{{ story.imagem | image_url: width: 80, height: 80 }}"
-                alt="{{ story.title | escape }}"
-                loading="lazy"
-                width="80"
-                height="80"
-              />
-            </div>
-          {% elsif story.video %}
-            <div class="story-avatar-gradient">
-              <video
-                src="{{ story.video }}"
-                loading="lazy"
-                width="80"
-                height="80"
-                muted
-                playsinline
-                preload="metadata"
-              ></video>
-            </div>
-          {% endif %}
-          <span class="story-title">{{ story.title }}</span>
-        </a>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p class="no-stories">Nenhum story disponível no momento.</p>
-  {% endif %}
+        <a href="{{ story.link.url }}"
+           class="story-item"
+           data-index="{{ forloop.index0 }}"
+           data-duration="15000"
+           tabindex="0"
+           aria-label="Abrir story {{ story.title | escape }}"
+           {% if story.imagem %}
+             data-image="{{ story.imagem | image_url: width: 800 }}"
+           {% elsif story.video %}
+             data-video="{{ story.video }}"
+           {% endif %}
+           data-story-id-url="{{ story_id_for_url }}" {# ID para controle interno da URL e abertura do modal #}
+            data-external-link="{{ story.link.url }}"
+        >
+          {% if story.imagem %}
+            <div class="story-avatar-gradient">
+              <img
+                src="{{ story.imagem | image_url: width: 80, height: 80 }}"
+                alt="{{ story.title | escape }}"
+                loading="lazy"
+                width="80"
+                height="80"
+              />
+            </div>
+          {% elsif story.video %}
+            <div class="story-avatar-gradient">
+              <video
+                src="{{ story.video }}"
+                loading="lazy"
+                width="80"
+                height="80"
+                muted
+                playsinline
+                preload="metadata"
+              ></video>
+            </div>
+          {% endif %}
+          <span class="story-title">{{ story.title }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="no-stories">Nenhum story disponível no momento.</p>
+  {% endif %}
 </div>
 
 <div id="story-modal" class="story-modal" role="dialog" aria-modal="true" aria-labelledby="story-modal-title">
-  <div class="story-modal-content">
-    <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
-    <div class="story-header">
-      {% if section.settings.store_logo != blank %}
-        <div class="story-store-logo-wrapper">
-          <img height="40" width="40" src="{{ section.settings.store_logo | image_url: width: 40 }}" alt="{{ section.settings.store_name | escape }} Logo" class="story-store-logo" />
-        </div>
-      {% else %}
-        <span class="story-store-logo-placeholder"></span>
-      {% endif %}
-      <span class="story-store-name">{{ section.settings.store_name }}</span>
-    </div>
+  <div class="story-modal-content">
+    <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
+    <div class="story-header">
+      {% if section.settings.store_logo != blank %}
+        <div class="story-store-logo-wrapper">
+          <img height="40" width="40" src="{{ section.settings.store_logo | image_url: width: 40 }}" alt="{{ section.settings.store_name | escape }} Logo" class="story-store-logo" />
+        </div>
+      {% else %}
+        <span class="story-store-logo-placeholder"></span>
+      {% endif %}
+      <span class="story-store-name">{{ section.settings.store_name }}</span>
+    </div>
 
-    <div class="story-progress-bar">
-      <div id="progress-fill"></div>
-    </div>
+    <div class="story-progress-bar">
+      <div id="progress-fill"></div>
+    </div>
 
-    <button id="prev-story-btn" class="story-nav-btn story-nav-btn--prev" aria-label="Story anterior" style="display:none;">&#10094;</button>
-    <button id="next-story-btn" class="story-nav-btn story-nav-btn--next" aria-label="Próxima story" style="display:none;">&#10095;</button>
+    <button id="prev-story-btn" class="story-nav-btn story-nav-btn--prev" aria-label="Story anterior" style="display:none;">&#10094;</button>
+    <button id="next-story-btn" class="story-nav-btn story-nav-btn--next" aria-label="Próxima story" style="display:none;">&#10095;</button>
 
-    <div id="story-media"></div>
+    <div id="story-media"></div>
 
-    <h2 id="story-modal-title" class="visually-hidden"></h2>
+    <h2 id="story-modal-title" class="visually-hidden"></h2>
 
-    <div class="story-footer">
-      <div class="story-stats-left">
-        <button id="share-btn" aria-label="Compartilhar story">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-          <span class="share-text">Compartilhar</span>
-        </button>
-        <span id="view-count" aria-label="Número de visualizações">👁️ 0</span>
-      </div>
-      <button id="like-btn" aria-label="Curtir story">♡ <span id="like-count">0</span></button>
-    </div>
-  </div>
+    <div class="story-footer">
+      <div class="story-stats-left">
+        <button id="share-btn" aria-label="Compartilhar story">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share-2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          <span class="share-text">Compartilhar</span>
+        </button>
+        <span id="view-count" aria-label="Número de visualizações">👁️ 0</span>
+      </div>
+      <button id="like-btn" aria-label="Curtir story">♡ <span id="like-count">0</span></button>
+    </div>
+  </div>
 </div>
 
 {# Share Modal HTML #}
 <div id="share-modal" class="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-modal-title" style="display: none;">
-  <div class="share-modal-content">
-    <button id="close-share-modal" class="close-modal" aria-label="Fechar modal de compartilhamento">×</button>
-    <h3 id="share-modal-title">Compartilhar Story</h3>
-    <div class="share-options">
-      <a href="#" id="whatsapp-share" target="_blank" rel="noopener noreferrer" class="share-option">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
-        <span>WhatsApp</span>
-      </a>
-      <a href="#" id="instagram-share" target="_blank" rel="noopener noreferrer" class="share-option instagram-share-option">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" width="40" height="40">
-        <span>Instagram</span>
-        <span class="instagram-note">(Copiar link)</span>
-      </a>
-      <button id="copy-link-share" class="share-option">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-        <span>Copiar Link</span>
-      </button>
-    </div>
-    <div id="copy-feedback" class="copy-feedback" style="display:none;">Link copiado!</div>
-  </div>
+  <div class="share-modal-content">
+    <button id="close-share-modal" class="close-modal" aria-label="Fechar modal de compartilhamento">×</button>
+    <h3 id="share-modal-title">Compartilhar Story</h3>
+    <div class="share-options">
+      <a href="#" id="whatsapp-share" target="_blank" rel="noopener noreferrer" class="share-option">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="40" height="40">
+        <span>WhatsApp</span>
+      </a>
+      <a href="#" id="instagram-share" target="_blank" rel="noopener noreferrer" class="share-option instagram-share-option">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" width="40" height="40">
+        <span>Instagram</span>
+        <span class="instagram-note">(Copiar link)</span>
+      </a>
+      <button id="copy-link-share" class="share-option">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <span>Copiar Link</span>
+      </button>
+    </div>
+    <div id="copy-feedback" class="copy-feedback" style="display:none;">Link copiado!</div>
+  </div>
 </div>
 
 {{ 'stories.css' | asset_url | stylesheet_tag }}
