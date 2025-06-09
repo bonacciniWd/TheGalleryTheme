@@ -8,8 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const likeBtn = document.getElementById("like-btn");
   const likeCountSpan = document.getElementById("like-count");
   const viewCountSpan = document.getElementById("view-count");
-
-    if (!stories.length || !wrapper) return;
+  
 
   // Verificar se os elementos essenciais existem antes de continuar
   if (!storiesContainer || !modal) {
