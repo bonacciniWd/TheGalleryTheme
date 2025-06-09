@@ -249,16 +249,16 @@
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   z-index: 10003;
-  padding: 20px;
+  padding: 5px;
   border-radius: 50%;
   transition: background-color 0.2s ease;
 }
 
 .close-modal:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.1);
 }
 
 .close-modal:focus-visible {
