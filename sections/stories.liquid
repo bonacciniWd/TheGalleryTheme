@@ -41,13 +41,14 @@
            data-duration="15000"
            tabindex="0"
            aria-label="Abrir story {{ story.title | escape }}"
+           {% comment %} Correção: Usar file_url para vídeos nos atributos data-video e src do thumbnail {% endcomment %}
            {% if story.imagem %}
              data-image="{{ story.imagem | image_url: width: 800 }}"
            {% elsif story.video %}
-             data-video="{{ story.video }}"
+             data-video="{{ story.video | file_url }}" {# AGORA COM file_url PARA O ATRIBUTO data-video #}
            {% endif %}
            data-story-id-url="{{ story_id_for_url }}" {# ID para controle interno da URL e abertura do modal #}
-            data-external-link="{{ story.link.url }}"
+           data-external-link="{{ story.link.url }}"
         >
           {% if story.imagem %}
             <div class="story-avatar-gradient">
@@ -62,7 +63,8 @@
           {% elsif story.video %}
             <div class="story-avatar-gradient">
               <video
-                src="{{ story.video }}"
+                src="{{ story.video | file_url }}" {# AQUI TAMBÉM COM file_url PARA O THUMBNAIL DO VÍDEO #}
+                poster="{{ story.imagem | image_url: width: 80, height: 80 }}" {# Opcional: usar o campo 'imagem' como poster se existir, senão o navegador tentará um frame inicial. Ou crie um novo campo 'video_thumbnail' no metaobjeto. #}
                 loading="lazy"
                 width="80"
                 height="80"
