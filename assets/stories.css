@@ -199,7 +199,7 @@
   background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  display: flex;
+  display: flex !important;
   z-index: 10000;
   padding: 20px; /* Mantém o padding para não colar nas bordas da tela */
   box-sizing: border-box;
