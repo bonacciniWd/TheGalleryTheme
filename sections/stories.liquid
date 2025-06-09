@@ -46,8 +46,8 @@
            {% elsif story.video %}
              data-video="{{ story.video }}"
            {% endif %}
-           data-story-id-url="{{ story_id_for_url }}" {# Novo atributo para o identificador na URL #}
-           data-external-link="{{ story.link.url }}" {# O link original do metacampo, se for para um produto/página externa #}
+           data-story-id-url="{{ story_id_for_url }}" {# ID para controle interno da URL e abertura do modal #}
+           data-external-link="{{ story.link.url }}" {# O link original do metacampo, para compartilhamento externo #}
         >
           {% if story.imagem %}
             <div class="story-avatar-gradient">
