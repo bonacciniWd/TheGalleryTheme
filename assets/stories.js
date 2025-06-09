@@ -13,6 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevStoryBtn = document.getElementById("prev-story-btn");
   const nextStoryBtn = document.getElementById("next-story-btn");
 
+  // Novos elementos para o compartilhamento
+  const shareBtn = document.getElementById("share-btn");
+  const shareModal = document.getElementById("share-modal");
+  const closeShareModalBtn = document.getElementById("close-share-modal");
+  const whatsappShareBtn = document.getElementById("whatsapp-share");
+  const instagramShareBtn = document.getElementById("instagram-share");
+  const copyLinkShareBtn = document.getElementById("copy-link-share");
+  const copyFeedback = document.getElementById("copy-feedback");
+
   // Verificar se os elementos essenciais existem antes de continuar
   if (!storiesContainer || !modal) {
     console.warn("Shopify Stories: Elementos essenciais não encontrados. O script não será inicializado.");
@@ -22,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const stories = Array.from(storiesContainer.querySelectorAll(".story-item"));
   let currentIndex = 0;
   let timer = null;
+  let currentStoryUrl = ''; // Para armazenar o link da história atual
   const storyDuration = 15000; // 15 segundos para imagens
 
   // Função para obter curtidas do localStorage
@@ -99,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageUrl = story.getAttribute("data-image");
     const videoUrl = story.getAttribute("data-video");
     const storyId = story.getAttribute("data-index"); // usar índice como id
+    currentStoryUrl = story.getAttribute("data-story-link"); // Define o link da história atual
 
     modalTitle.textContent = title;
     modalMedia.innerHTML = ""; // Limpa conteúdo anterior
@@ -167,18 +178,15 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "flex";
     modal.focus(); // Coloca o foco no modal para acessibilidade
 
-    // **Lógica para mostrar/ocultar as setas de navegação - AGORA VAI APARECER EM MOBILE TAMBÉM**
+    // **Lógica para mostrar/ocultar as setas de navegação**
     if (prevStoryBtn && nextStoryBtn) {
-        // Esconder o botão "Anterior" se for a primeira história (currentIndex é 0)
-        prevStoryBtn.style.display = (currentIndex > 0) ? 'flex' : 'none';
-        // Esconder o botão "Próximo" se for a última história
-        nextStoryBtn.style.display = (currentIndex < stories.length - 1) ? 'flex' : 'none';
+      prevStoryBtn.style.display = (currentIndex > 0) ? 'flex' : 'none';
+      nextStoryBtn.style.display = (currentIndex < stories.length - 1) ? 'flex' : 'none';
 
-        // Ocultar ambos os botões se houver apenas uma história
-        if (stories.length <= 1) {
-            prevStoryBtn.style.display = 'none';
-            nextStoryBtn.style.display = 'none';
-        }
+      if (stories.length <= 1) {
+        prevStoryBtn.style.display = 'none';
+        nextStoryBtn.style.display = 'none';
+      }
     }
   }
 
@@ -191,6 +199,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(`.story-item[data-index="${currentIndex}"]`)?.focus();
   }
 
+  function openShareModal() {
+    shareModal.style.display = "flex";
+    shareModal.focus();
+    // Preenche os links de compartilhamento
+    whatsappShareBtn.href = `https://api.whatsapp.com/send?text=Confira esta história na nossa loja: ${currentStoryUrl}`;
+    // Para Instagram, apenas copiar o link é o mais prático para web
+    // Não há uma URL direta para abrir o app e compartilhar uma imagem/vídeo do navegador para o Story/Feed do Instagram.
+    // O ideal seria usar a API do Instagram Graph para aplicativos autorizados, o que não é o caso aqui.
+  }
+
+  function closeShareModal() {
+    shareModal.style.display = "none";
+    // Volta o foco para o botão de compartilhar na story modal
+    shareBtn.focus();
+  }
+
   // Delegação de eventos para cliques nas stories
   storiesContainer.addEventListener("click", (e) => {
     const storyItem = e.target.closest(".story-item");
@@ -201,8 +225,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Fechar modal
+  // Fechar modal principal
   closeModalBtn.addEventListener("click", closeModal);
+
+  // Abrir modal de compartilhamento
+  shareBtn.addEventListener("click", openShareModal);
+
+  // Fechar modal de compartilhamento
+  closeShareModalBtn.addEventListener("click", closeShareModal);
+
+  // Copiar link para área de transferência
+  copyLinkShareBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(currentStoryUrl)
+      .then(() => {
+        copyFeedback.textContent = 'Link copiado!';
+        copyFeedback.classList.add('show');
+        setTimeout(() => {
+          copyFeedback.classList.remove('show');
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Erro ao copiar link: ', err);
+        copyFeedback.textContent = 'Erro ao copiar!';
+        copyFeedback.classList.add('show');
+        setTimeout(() => {
+          copyFeedback.classList.remove('show');
+        }, 2000);
+      });
+  });
 
   // Curtir a story
   likeBtn.addEventListener("click", () => {
@@ -219,28 +269,35 @@ document.addEventListener("DOMContentLoaded", () => {
     updateLikeUI(storyId);
   });
 
-  // Fechar modal ao clicar fora da área
+  // Fechar modal principal ao clicar fora da área
   modal.addEventListener("click", (e) => {
-    // Adiciona uma condição para não fechar ao clicar nos botões de navegação
-    if (e.target === modal || e.target === closeModalBtn || e.target === prevStoryBtn || e.target === nextStoryBtn) {
-        return;
-    }
-    // Se o clique foi no background do modal, fechar
-    if (e.target === modal) {
-        closeModal();
+    if (e.target === modal) { // Se o clique foi no background do modal, fechar
+      closeModal();
     }
   });
 
-  // Tecla ESC fecha modal
+  // Fechar modal de compartilhamento ao clicar fora da área
+  shareModal.addEventListener("click", (e) => {
+    if (e.target === shareModal) { // Se o clique foi no background do modal de compartilhamento, fechar
+      closeShareModal();
+    }
+  });
+
+
+  // Tecla ESC fecha modal (principal ou de compartilhamento)
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal.style.display === "flex") { // Verifica style.display
-      closeModal();
+    if (e.key === "Escape") {
+      if (shareModal.style.display === "flex") {
+        closeShareModal();
+      } else if (modal.style.display === "flex") {
+        closeModal();
+      }
     }
   });
 
   // Navegação com setas do teclado
   document.addEventListener("keydown", (e) => {
-    if (modal.style.display === "flex") { // Verifica style.display
+    if (modal.style.display === "flex" && shareModal.style.display !== "flex") { // Apenas navega se o modal de share não estiver aberto
       if (e.key === "ArrowRight") {
         e.preventDefault(); // Previne rolagem da página
         showStory(currentIndex + 1);
@@ -302,12 +359,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const swipeDistanceX = touchEndX - touchStartX;
     const swipeDistanceY = Math.abs(touchEndY - touchStartY); // Usar valor absoluto para a distância vertical
 
-    if (modal.style.display === "flex") { // Verifica style.display
+    if (modal.style.display === "flex" && shareModal.style.display !== "flex") { // Só permite swipe se o modal de share não estiver aberto
       // Se a movimentação vertical for muito grande, não é um swipe horizontal de navegação de story
       if (swipeDistanceY > maxVerticalScroll) {
-          // É mais um scroll vertical, pode reiniciar o timer se quiser
-          startProgress(storyDuration); // ou retomar do ponto de pausa
-          return;
+        // É mais um scroll vertical, pode reiniciar o timer se quiser
+        startProgress(storyDuration); // ou retomar do ponto de pausa
+        return;
       }
 
       if (swipeDistanceX > minSwipeDistance) {
