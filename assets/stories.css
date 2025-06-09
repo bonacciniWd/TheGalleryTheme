@@ -28,8 +28,9 @@
 .story-store-logo {
   width: 40px;
   height: 40px;
-  border-radius: 50px !important;
+  border-radius: 50% !important;
   object-fit: cover;
+  border: 2px solid red;
 }
 
 .story-store-name {
