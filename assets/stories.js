@@ -115,4 +115,97 @@ document.addEventListener("DOMContentLoaded", () => {
       video.autoplay = true;
       video.muted = true;
       video.playsInline = true;
-      video
+      video.style.maxWidth = "100%";
+      video.style.maxHeight = "70vh";
+      modalMedia.appendChild(video);
+
+      // Controla o progresso pela duração do vídeo
+      video.onloadedmetadata = () => {
+        clearTimeout(timer);
+        clearInterval(progressInterval);
+
+        const duration = video.duration * 1000;
+
+        // Reseta e inicia progresso animado proporcional ao vídeo
+        resetProgress();
+        // anima largura progressFill em duração do video
+        progressFill.style.transition = `width ${duration}ms linear`;
+        progressFill.style.width = '100%';
+
+        timer = setTimeout(() => {
+          showStory(currentIndex + 1);
+        }, duration);
+      };
+
+      video.onended = () => {
+        clearTimeout(timer);
+        showStory(currentIndex + 1);
+      };
+
+    } else if (imageUrl) {
+      const img = document.createElement("img");
+      img.src = imageUrl;
+      img.alt = title;
+      img.style.maxWidth = "100%";
+      img.style.maxHeight = "70vh";
+      modalMedia.appendChild(img);
+
+      clearTimeout(timer);
+      clearInterval(progressInterval);
+      resetProgress();
+      startProgress();
+
+      timer = setTimeout(() => {
+        showStory(currentIndex + 1);
+      }, storyDuration);
+    }
+
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+    modalMedia.innerHTML = "";
+    resetProgress();
+    clearTimeout(timer);
+    clearInterval(progressInterval);
+  }
+
+  // Evento clique em story na lista para abrir modal
+  stories.forEach((story, i) => {
+    story.addEventListener("click", (e) => {
+      e.preventDefault();
+      showStory(i);
+    });
+  });
+
+  // Fechar modal
+  closeModalBtn.addEventListener("click", closeModal);
+
+  // Curtir a story
+  likeBtn.addEventListener("click", () => {
+    const storyId = currentIndex.toString();
+    let likes = getLikes(storyId);
+
+    if (likes === 0) {
+      likes = 1;
+    } else {
+      likes = 0; // toggle like off
+    }
+
+    saveLikes(storyId, likes);
+    updateLikeUI(storyId);
+  });
+
+  // Fechar modal ao clicar fora da área
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Tecla ESC fecha modal
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.style.display === "block") {
+      closeModal();
+    }
+  });
+});
