@@ -76,26 +76,22 @@
   {% endif %}
 </div>
 
-<div id="story-modal" class="story-modal" display="" role="dialog" aria-modal="true" aria-labelledby="story-modal-title">
+<div id="story-modal" class="story-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="story-modal-title">
   <div class="story-modal-content">
     <button id="close-modal" class="close-modal" aria-label="Fechar modal">×</button>
-<div class="story-header">
-  {% if section.settings.store_logo != blank %}
-    <div class="story-store-logo-wrapper"> 
-      <img height="40" width="40" src="{{ section.settings.store_logo | image_url: width: 40 }}" alt="{{ section.settings.store_name | escape }} Logo" class="story-store-logo" />
+
+    <div class="story-header">
+      {% if section.settings.store_logo != blank %}
+        <img height="40" width="40" src="{{ section.settings.store_logo | image_url: width: 40 }}" alt="{{ section.settings.store_name | escape }} Logo" class="story-store-logo" />
+      {% else %}
+        <span class="story-store-logo-placeholder"></span> 
+      {% endif %}
+      <span class="story-store-name">{{ section.settings.store_name }}</span>
     </div>
-  {% else %}
-    <span class="story-store-logo-placeholder"></span>
-  {% endif %}
-  <span class="story-store-name">{{ section.settings.store_name }}</span>
-</div>
 
     <div class="story-progress-bar">
       <div id="progress-fill"></div>
     </div>
-
-    <button id="prev-story-btn" class="story-nav-btn story-nav-btn--prev" aria-label="Story anterior" style="display:none;">&#10094;</button> 
-    <button id="next-story-btn" class="story-nav-btn story-nav-btn--next" aria-label="Próxima story" style="display:none;">&#10095;</button> 
 
     <div id="story-media"></div>
 
