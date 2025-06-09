@@ -104,6 +104,7 @@
   max-width: 90vw;
   max-height: 90vh;
   background: #111;
+   object-fit: contain; /* mantém a proporção sem cortar */
   border-radius: 12px;
   overflow: hidden;
   display: flex;
