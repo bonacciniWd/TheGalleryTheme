@@ -490,7 +490,6 @@
       <div class="ava-coin-conversion">
         <h2>Conversor de Pontos</h2>
         {% assign ava_coin = customer.metafields.custom.ava_coin.value | default: 0 %}
-        {# Calcula quantos pontos da loja serão ganhos. Certifique-se de que a lógica de conversão (100 AVA-COIN = 1 Ponto da Loja) está correta aqui. #}
         {% assign loja_pontos_a_converter = ava_coin | divided_by: 100 | floor %}
 
         <p>Você possui <strong>{{ ava_coin }}</strong> AVA-COIN.</p>
@@ -500,9 +499,9 @@
         {# A condição de 1000 AVA-COIN para converter parece ser a mínima #}
         {% if ava_coin >= 1000 %}
           <button class="button convert-button"
-                  data-ava-coin-current="{{ ava_coin }}" {# Valor atual de AVA-COIN para ser processado pela API #}
+                  data-ava-coin-current="{{ ava_coin }}" 
                   data-loja-pontos-to-add="{{ loja_pontos_a_converter }}" {# Valor de pontos da loja a ser adicionado #}
-                  data-customer-id="{{ customer.id }}"> {# Adiciona o ID do cliente diretamente ao botão #}
+                  data-customer-id="{{ customer.id }}"> 
             Converter Meus AVA-COIN!
           </button>
         {% else %}
