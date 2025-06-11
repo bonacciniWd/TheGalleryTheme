@@ -13,11 +13,11 @@
     }
   }
 
-  /* --- Estilos Adicionais para a UI da Conta --- */
+  /* Estilos para a UI da Conta */
   .customer.account {
     display: flex;
-    flex-direction: column; /* Coloca o cabeçalho acima do conteúdo principal */
-    gap: 10px; /* Espaço entre as seções principais */
+    flex-direction: column;
+    gap: 10px;
   }
 
   .customer__header {
@@ -30,15 +30,15 @@
   }
 
   .customer__main-content {
-    display: grid; /* Usa grid para o layout principal */
-    grid-template-columns: 1fr; /* Coluna única em mobile */
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
   @media screen and (min-width: 750px) {
     .customer__main-content {
-      grid-template-columns: 2fr 1fr; /* Duas colunas em desktop: Histórico de Pedidos e Info da Conta/Pontos */
-      gap: 10px; /* Mais espaço em desktop */
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
     }
   }
 
@@ -48,9 +48,9 @@
     gap: 30px;
   }
 
-  /* Estilo base para os cards de informação (agora apenas para o card de endereço) */
+  /* Estilo base para cards de informação */
   .account-info-box {
-    background-color: #ffffff; /* Fundo branco puro */
+    background-color: #ffffff;
     border: 1px solid #ff0000;
     border-radius: 8px;
     padding: 25px;
@@ -64,10 +64,10 @@
     color: #333;
   }
 
-  /* ESTILO DO CARD DE PONTUAÇÃO (RESTAURADO E AJUSTADO) */
+  /* ESTILO DO CARD DE PONTUAÇÃO */
   .customer-points-card {
     background: radial-gradient(49% 81% at 45% 47%, #FFE20345 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #FF5A00FF 1%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #FFDB00FF 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #FF0049FF 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #FF7000FF 0%, #FF0000FF 100%);
-    color: white; /* Texto branco RESTAURADO */
+    color: white;
     padding: 25px;
     border-radius: 8px;
     text-align: center;
@@ -75,78 +75,76 @@
   }
 
   .customer-points-card h2 {
-    color: white; /* Título branco */
+    color: white;
     font-size: 1.5em;
     margin-bottom: 10px;
   }
 
   .customer-points-value {
-    font-size: 3em; /* Tamanho grande para os pontos */
+    font-size: 3em;
     font-weight: bold;
     margin-bottom: 10px;
-    color: white; /* Pontos brancos para contraste com o fundo escuro do gradiente */
+    color: white;
   }
 
   .customer-points-message {
     font-size: 0.9em;
     opacity: 0.9;
-    margin-bottom: 20px; /* Espaço antes do botão */
+    margin-bottom: 20px;
   }
 
   /* ESTILO DO BOTÃO DENTRO DO CARD DE PONTOS */
   .customer-points-card .button {
     display: inline-block;
     padding: 12px 20px;
-    background-color: #D32F2F;  
+    background-color: #D32F2F;
     color: white;
     border-radius: 15px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Adicionei a transição para hover */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .customer-points-card .button:hover {
-    background-color: #000; /* Um tom ainda mais escuro no hover */
-    border-color: white; /* Borda sólida branca no hover */
+    background-color: #000;
+    border-color: white;
     text-decoration: none;
     color: white;
   }
 
-  /* Definição da animação de zoom da imagem de fundo */
+  /* Animação de zoom da imagem de fundo */
   @keyframes backgroundZoom {
     0% {
-      background-size: 100%; /* Começa com o tamanho original (cover) */
+      background-size: cover; /* Começa com o tamanho original (cover) */
     }
     100% {
       background-size: 110%; /* Termina com um zoom de 10% */
     }
   }
 
-  /* NOVO: Estilos para o bloco de conversão AVA-COIN - AGORA COM IMAGEM DE FUNDO E ZOOMA AUTOMÁTICO */
+  /* Estilos do card de conversão AVA-COIN */
   .ava-coin-conversion {
     background-image: url('https://res.cloudinary.com/dmzyxoy2o/image/upload/v1749644189/whisk_storyboard335239e278a148b3969c6a044cd18e_lwslzc.png');
-    background-size: cover; /* Inicialmente cobre o card */
-    background-repeat: no-repeat; /* Para não repetir a imagem */
-    background-position: center center; /* Centraliza a imagem */
-    color: white; /* Texto branco padrão */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: white;
     padding: 25px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra mais forte para o card, para destacar */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     margin-top: 0px;
-    overflow: hidden; /* Garante que a imagem de fundo não vaze ao aplicar zoom */
-    position: relative; /* Necessário para posicionar o overlay, se usado */
-
-    /* Aplica a animação de zoom */
-    animation: backgroundZoom 10s ease-in-out infinite alternate; /* 10s de duração, suave, infinito, alternando entre 0% e 100% */
+    overflow: hidden;
+    position: relative;
+    animation: backgroundZoom 10s ease-in-out infinite alternate;
+    display: flex; /* Adicionado para facilitar o controle de layout interno */
+    flex-direction: column; /* Conteúdo em coluna por padrão */
+    justify-content: center; /* Centraliza verticalmente o conteúdo */
+    align-items: center; /* Centraliza horizontalmente o conteúdo */
   }
 
-  
-   .ava-coin-conversion:hover {
-    transform: scale(1.00);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  } */
-  
+  /* Overlay semi-transparente para melhorar a legibilidade do texto (descomente se necessário) */
+  /*
   .ava-coin-conversion::before {
     content: '';
     position: absolute;
@@ -165,32 +163,31 @@
   .ava-coin-conversion .button,
   .ava-coin-conversion strong {
     position: relative;
-    z-index: 2; /* Acima do overlay */
+    z-index: 2;
   }
 
   .ava-coin-conversion h2 {
-    color: white; /* Título branco */
+    color: white;
     font-size: 1.5em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra preta para o título */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   }
 
   .ava-coin-conversion p {
     margin-bottom: 10px;
     font-size: 1em;
-    opacity: 0.95; /* Aumentei a opacidade para o texto normal */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Sombra preta para o parágrafo */
+    opacity: 0.95;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   }
 
   .ava-coin-conversion p strong {
-    color: #FFE000; /* Cor um pouco dourada para o forte para destacar */
+    color: #FFE000;
     font-size: 1.1em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Sombra preta para o strong */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
   }
 
-
   .convert-button {
-    background-color: #4CAF50; /* Verde vibrante */
+    background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -202,7 +199,7 @@
   }
 
   .convert-button:hover {
-    background-color: #388E3C; /* Um verde mais escuro no hover */
+    background-color: #388E3C;
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
@@ -215,8 +212,7 @@
     transform: none;
   }
 
-
-  /* ESTILIZAÇÃO DA TABELA DE HISTÓRICO DE PEDIDOS */
+  /* Estilização da tabela de histórico de pedidos */
   .order-history {
     width: 100%;
     border-collapse: collapse;
@@ -228,14 +224,14 @@
     padding: 12px 15px;
     border: 1px solid #e0e0e0;
     text-align: left;
-    font-size: 0.85em; /* Fonte ligeiramente menor para caber melhor */
+    font-size: 0.85em;
     line-height: 1.3;
   }
 
   .order-history th {
     background-color: #f2f2f2;
     font-weight: 600;
-    white-space: nowrap; /* Impede que os cabeçalhos quebrem em múltiplas linhas */
+    white-space: nowrap;
   }
 
   .order-history tbody tr:nth-child(even) {
@@ -243,7 +239,7 @@
   }
 
   .order-history a {
-    color: var(--color-link, #007bff); /* Usa a variável do tema, com fallback */
+    color: var(--color-link, #007bff);
     text-decoration: none;
   }
 
@@ -251,7 +247,7 @@
     text-decoration: underline;
   }
 
-  /* RESPONSIVIDADE DA TABELA PARA MOBILE */
+  /* Responsividade da tabela para mobile */
   @media screen and (max-width: 749px) {
     .order-history, .order-history tbody, .order-history tr, .order-history td {
       display: block;
@@ -259,7 +255,7 @@
     }
 
     .order-history thead {
-      display: none; /* Esconde o cabeçalho da tabela em mobile */
+      display: none;
     }
 
     .order-history tr {
@@ -269,34 +265,33 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      background-color: #fff; /* Fundo branco para cada linha em mobile */
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Sombra para destacar as linhas */
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
 
     .order-history td {
       text-align: right;
-      padding-left: 50%; /* Espaço para o label */
+      padding-left: 50%;
       position: relative;
       font-size: 0.9em;
-      border: none; /* Remove bordas internas entre as células */
+      border: none;
       padding-top: 8px;
       padding-bottom: 8px;
     }
 
     .order-history td:first-child {
-      padding-top: 15px; /* Mais padding no topo da primeira célula */
+      padding-top: 15px;
     }
     .order-history td:last-child {
-      padding-bottom: 15px; /* Mais padding na parte inferior da última célula */
-      border-bottom: none; /* Remove a borda inferior da última célula */
+      padding-bottom: 15px;
+      border-bottom: none;
     }
 
-
     .order-history td::before {
-      content: attr(data-label); /* Mostra o data-label como pseudo-elemento */
+      content: attr(data-label);
       position: absolute;
       left: 15px;
-      width: calc(50% - 30px); /* Largura do label */
+      width: calc(50% - 30px);
       padding-right: 10px;
       white-space: nowrap;
       overflow: hidden;
@@ -304,6 +299,38 @@
       font-weight: bold;
       text-align: left;
       color: #333;
+    }
+
+    /* Ajustes específicos para o card AVA-COIN em mobile */
+    .ava-coin-conversion {
+      padding: 15px;
+      min-height: 200px; /* Garante uma altura mínima para o card */
+      background-size: contain; /* Garante que a imagem de fundo caiba completamente */
+      background-position: center bottom; /* Posiciona a imagem na parte inferior central */
+      background-repeat: no-repeat; /* Evita repetição */
+      flex-direction: column; /* Garante que o conteúdo fique em coluna */
+      justify-content: space-between; /* Espalha o conteúdo verticalmente */
+    }
+
+    .ava-coin-conversion h2 {
+      font-size: 1.2em;
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+
+    .ava-coin-conversion p {
+      font-size: 0.9em;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .ava-coin-conversion p strong {
+      font-size: 1em;
+    }
+
+    .convert-button {
+      padding: 8px 15px;
+      font-size: 0.9em;
     }
   }
 
@@ -332,7 +359,6 @@
     height: 100%;
     fill: currentColor;
   }
-
 {%- endstyle -%}
 
 <div class="customer account section-{{ section.id }}-padding">
