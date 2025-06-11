@@ -112,11 +112,11 @@
   {%- assign hide_shop_login_button = true -%}
 {%- endif -%}
 
-<div class="customer login section-{{ section.id }}-padding"> {# Container principal com paddings e estilos do tema #}
-  <div class="login-page-background"> {# Novo container para o background e centralização #}
-    <div class="login-form-container"> {# Novo container para o formulário de login/recuperação #}
+<div class="customer login section-{{ section.id }}-padding"> 
+  <div class="login-page-background"> 
+    <div class="login-form-container"> 
 
-      {# Bloco de recuperação de senha #}
+     
       <h1 id="recover" tabindex="-1">
         {{ 'customer.recover_password.title' | t }}
       </h1>
@@ -160,13 +160,13 @@
             {{ 'customer.login_page.submit' | t }}
           </button>
 
-          <a href="#login" class="forgot-password"> {# Adicionei a classe forgot-password para estilização #}
+          <a href="#login" class="forgot-password">
             {{ 'customer.login_page.cancel' | t }}
           </a>
         {%- endform -%}
       </div>
 
-      {# Bloco de login #}
+    
       <h1 id="login" tabindex="-1">
         {{ 'customer.login_page.title' | t }}
       </h1>
@@ -239,7 +239,7 @@
               </label>
             </div>
 
-            <a href="#recover" class="forgot-password"> {# Adicionei a classe forgot-password para estilização #}
+            <a href="#recover" class="forgot-password"> 
               {{ 'customer.login_page.forgot_password' | t }}
             </a>
           {%- endif -%}
@@ -248,13 +248,13 @@
             {{ 'customer.login_page.sign_in' | t }}
           </button>
 
-          <a href="{{ routes.account_register_url }}" class="create-account"> {# Adicionei a classe create-account para estilização #}
+          <a href="{{ routes.account_register_url }}" class="create-account"> 
             {{ 'customer.login_page.create_account' | t }}
           </a>
         {%- endform -%}
       </div>
 
-      {# Bloco de login de convidado #}
+    
       {%- if shop.checkout.guest_login -%}
         <div>
           <hr>
@@ -267,9 +267,9 @@
           {%- endform -%}
         </div>
       {%- endif -%}
-    </div> {# Fim do login-form-container #}
-  </div> {# Fim do login-page-background #}
-</div> {# Fim do customer login section-{{ section.id }}-padding #}
+    </div> 
+  </div> 
+</div> 
 
 {% schema %}
 {
