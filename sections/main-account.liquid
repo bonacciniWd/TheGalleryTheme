@@ -97,11 +97,12 @@
   .customer-points-card .button {
     display: inline-block;
     padding: 12px 20px;
-    background-color: #D32F2F; 
+    background-color: #D32F2F;  
     color: white;
     border-radius: 15px;
     text-decoration: none;
     font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Adicionei a transição para hover */
   }
 
   .customer-points-card .button:hover {
@@ -109,6 +110,49 @@
     border-color: white; /* Borda sólida branca no hover */
     text-decoration: none;
     color: white;
+  }
+
+  /* NOVO: Estilos para o bloco de conversão AVA-COIN */
+  .ava-coin-conversion {
+    margin-top: 0px; /* Já está dentro de uma coluna com gap, então pode ser 0 */
+    text-align: center; /* Centraliza o conteúdo dentro do card */
+  }
+
+  .ava-coin-conversion p {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #555;
+  }
+
+  .ava-coin-conversion p strong {
+    color: #333;
+    font-size: 1.1em;
+  }
+
+  .convert-button {
+    background-color: #4CAF50; /* Verde vibrante */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .convert-button:hover {
+    background-color: #388E3C; /* Um verde mais escuro no hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .convert-button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
   }
 
 
@@ -364,7 +408,7 @@
     </div>
 
     <div class="customer__info-column">
-    
+      {# Cartão de Pontuação do Cliente #}
       <div class="customer-points-card">
         <h2>Suas Pontuações</h2>
         {% assign customer_points = customer.metafields.custom.customer_points.value %}
@@ -375,11 +419,29 @@
           <div class="customer-points-value">0</div>
           <p class="customer-points-message">Comece a comprar ou jogar para acumular pontos!</p>
         {% endif %}
-       
+        
         <a href="/pages/programa-de-fidelidade" class="button">Saiba mais sobre pontos</a>
       </div>
 
-      
+      {# NOVO: Menu de Conversão de AVA-COIN #}
+      <div class="account-info-box ava-coin-conversion">
+        <h2>Converter AVA-COIN em Pontos da Loja</h2>
+        {% assign ava_coin = customer.metafields.custom.ava_coin.value | default: 0 %}
+        {% assign loja_pontos_a_converter = ava_coin | divided_by: 100 | floor %} {# 1000 AVA-COIN = 10 pontos (dividir por 100) #}
+
+        <p>Você possui <strong style="color: #FF7000;">{{ ava_coin }}</strong> AVA-COIN.</p>
+        <p>A taxa de conversão é de **1000 AVA-COIN** para **10 Pontos da Loja**.</p>
+        <p>Com seus AVA-COIN, você pode converter em <strong style="color: #4CAF50;">{{ loja_pontos_a_converter }}</strong> Pontos da Loja.</p>
+        
+        {% if ava_coin >= 1000 %}
+          <button class="button convert-button" data-ava-coin="{{ ava_coin }}" data-loja-pontos="{{ loja_pontos_a_converter }}">Converter Meus AVA-COIN!</button>
+        {% else %}
+          <p>Você precisa de pelo menos 1000 AVA-COIN para realizar uma conversão.</p>
+          <button class="button convert-button" disabled>Pontos Insuficientes</button>
+        {% endif %}
+      </div>
+
+      {# Informações da Conta Existente #}
       <div class="account-info-box">
         <h2>{{ 'customer.account.details' | t }}</h2>
         {{ customer.default_address | format_address }}
@@ -390,6 +452,108 @@
     </div>
   </div>
 </div>
+
+{% comment %}
+  SCRIPT PARA OUVIR MENSAGENS DO IFRAME (JOGO) E ENVIAR PARA SEU SERVERLESS
+  Este script deve estar no final do seu arquivo .liquid ou em um arquivo .js separado.
+{% endcomment %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Listener para receber pontos do jogo no iframe
+      window.addEventListener('message', function(event) {
+          // *** IMPORTANTE: Substitua 'https://SEU-DOMINIO-VERCEL.vercel.app' pelo domínio real do seu jogo no Vercel ***
+          // Isso é uma medida de segurança para garantir que a mensagem vem do seu jogo.
+          if (event.origin !== 'https://SEU-DOMINIO-VERCEL.vercel.app') {
+              console.warn('Mensagem de origem desconhecida ignorada:', event.origin);
+              return;
+          }
+
+          const data = event.data;
+
+          if (data && data.type === 'GAME_POINTS_UPDATE') {
+              const game_ava_coin_gained = parseInt(data.avaCoin); // Supondo que o jogo envie a quantia de AVA-COIN ganha
+              const customerId = '{{ customer.id | default: null }}'; 
+              
+              if (customerId && !isNaN(game_ava_coin_gained) && game_ava_coin_gained > 0) {
+                  console.log('AVA-COIN recebidos do jogo:', game_ava_coin_gained, 'para cliente:', customerId);
+
+                  // *** IMPORTANTE: Substitua 'https://SUA-API-VERCEL.vercel.app/api/update-ava-coin' pela URL real da sua função Serverless que adiciona AVA-COIN ***
+                  fetch('https://SUA-API-VERCEL.vercel.app/api/update-ava-coin', { 
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({
+                          customerId: customerId,
+                          avaCoinGained: game_ava_coin_gained
+                      })
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      if (data.success) {
+                          console.log('AVA-COIN atualizados com sucesso no Shopify!');
+                          // Opcional: Recarregar a página para mostrar os AVA-COIN atualizados instantaneamente
+                          window.location.reload(); 
+                      } else {
+                          console.error('Falha ao atualizar AVA-COIN:', data.message);
+                          alert('Erro ao registrar AVA-COIN do jogo: ' + data.message);
+                      }
+                  })
+                  .catch(error => {
+                      console.error('Erro ao enviar AVA-COIN para o backend:', error);
+                      alert('Ocorreu um erro ao registrar AVA-COIN do jogo.');
+                  });
+
+              } else if (!customerId) {
+                  console.warn('Cliente não logado. Não é possível registrar AVA-COIN do jogo.');
+                  // Você pode notificar o usuário para fazer login
+              }
+          }
+      });
+
+      // Listener para o botão de conversão de AVA-COIN para Pontos da Loja
+      const convertButton = document.querySelector('.convert-button');
+
+      if (convertButton) {
+        convertButton.addEventListener('click', function() {
+          const avaCoin = parseInt(this.dataset.avaCoin);
+          const lojaPontos = parseInt(this.dataset.lojaPontos);
+          const customerId = '{{ customer.id | default: null }}';
+
+          if (customerId && !isNaN(avaCoin) && !isNaN(lojaPontos) && avaCoin >= 1000) {
+            // *** IMPORTANTE: Substitua 'https://SUA-API-VERCEL.vercel.app/api/convert-ava-coin' pela URL real da sua função Serverless de conversão ***
+            fetch('https://SUA-API-VERCEL.vercel.app/api/convert-ava-coin', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                customerId: customerId,
+                avaCoinToConvert: avaCoin,      // Total de AVA-COIN do cliente que serão zerados
+                lojaPointsToAdd: lojaPontos     // Pontos da loja a serem adicionados
+              })
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert('Conversão realizada com sucesso! ' + avaCoin + ' AVA-COIN convertidos em ' + lojaPontos + ' pontos da loja.');
+                window.location.reload(); // Recarrega a página para atualizar os pontos
+              } else {
+                alert('Erro na conversão: ' + data.message);
+              }
+            })
+            .catch(error => {
+              console.error('Erro ao enviar requisição de conversão:', error);
+              alert('Ocorreu um erro ao tentar converter AVA-COIN.');
+            });
+          } else {
+            console.warn('Condições para conversão não atendidas.');
+          }
+        });
+      }
+  });
+</script>
+
 
 {% schema %}
 {
