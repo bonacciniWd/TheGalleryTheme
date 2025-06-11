@@ -1,44 +1,31 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  /* Estilos para o background em tela cheia */
-  .login-page-full-screen-background {
-    background: url('{{ 'amaterasuu.jpg' | asset_url }}') no-repeat center center fixed;
-    background-size: cover;
-    position: fixed; /* Fixa o elemento na viewport */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Garante 100% da largura da viewport */
-    height: 100vh; /* Garante 100% da altura da viewport */
-    z-index: -1; /* Envia para o fundo */
-  }
-
-  /* Estilos para o container principal que centraliza o formulário */
-  .login-content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Garante que o wrapper ocupe a altura total para centralizar */
-    padding: 2rem; /* Adiciona um padding geral para telas menores */
-    position: relative; /* Garante que este conteúdo fique acima do fundo */
-    z-index: 1; /* Garante que este conteúdo fique acima do fundo */
-    /* Este div substituirá o customer login section-{{ section.id }}-padding para o posicionamento */
-  }
-
-  /* Estilos para o padding configurável via Theme Editor */
-  .login-form-padding-container {
+  /* Mantendo o CSS da seção original para padding */
+  .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-    .login-form-padding-container {
+    .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 
-  /* Estilos para o container do formulário (o box branco) */
+  /* Seus novos estilos customizados */
+  .login-page-background {
+    background: url('{{ 'amaterasuu.jpg' | asset_url }}') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh; /* Ajuste para preencher a altura da viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Removido o padding aqui para evitar duplicação com section-padding,
+       mas você pode reintroduzi-lo se quiser um padding extra dentro do background */
+  }
+
   .login-form-container {
     background: rgba(255, 255, 255, 0.9);
     padding: 2.5rem;
@@ -125,12 +112,11 @@
   {%- assign hide_shop_login_button = true -%}
 {%- endif -%}
 
-<div class="login-page-full-screen-background"></div>
+<div class="customer login section-{{ section.id }}-padding"> 
+  <div class="login-page-background"> 
+    <div class="login-form-container"> 
 
-<div class="customer login login-content-wrapper">
-  <div class="login-form-padding-container">
-    <div class="login-form-container">
-
+     
       <h1 id="recover" tabindex="-1">
         {{ 'customer.recover_password.title' | t }}
       </h1>
@@ -180,6 +166,7 @@
         {%- endform -%}
       </div>
 
+    
       <h1 id="login" tabindex="-1">
         {{ 'customer.login_page.title' | t }}
       </h1>
@@ -252,7 +239,7 @@
               </label>
             </div>
 
-            <a href="#recover" class="forgot-password">
+            <a href="#recover" class="forgot-password"> 
               {{ 'customer.login_page.forgot_password' | t }}
             </a>
           {%- endif -%}
@@ -261,12 +248,13 @@
             {{ 'customer.login_page.sign_in' | t }}
           </button>
 
-          <a href="{{ routes.account_register_url }}" class="create-account">
+          <a href="{{ routes.account_register_url }}" class="create-account"> 
             {{ 'customer.login_page.create_account' | t }}
           </a>
         {%- endform -%}
       </div>
 
+    
       {%- if shop.checkout.guest_login -%}
         <div>
           <hr>
@@ -279,9 +267,9 @@
           {%- endform -%}
         </div>
       {%- endif -%}
-    </div>
-  </div>
-</div>
+    </div> 
+  </div> 
+</div> 
 
 {% schema %}
 {
