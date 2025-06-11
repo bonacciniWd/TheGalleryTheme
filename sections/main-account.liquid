@@ -365,7 +365,7 @@
     </div>
 
     <div class="customer__info-column">
-      {# Cartão de Pontuação do Cliente #}
+    
       <div class="customer-points-card">
         <h2>Suas Pontuações</h2>
         {% assign customer_points = customer.metafields.custom.customer_points.value %}
@@ -376,11 +376,11 @@
           <div class="customer-points-value">0</div>
           <p class="customer-points-message">Comece a comprar ou jogar para acumular pontos!</p>
         {% endif %}
-        {# Adicione um link para a página de programa de fidelidade se tiver uma #}
+       
         <a href="/pages/programa-de-fidelidade" class="button">Saiba mais sobre pontos</a>
       </div>
 
-      {# Informações da Conta Existente #}
+      
       <div class="account-info-box">
         <h2>{{ 'customer.account.details' | t }}</h2>
         {{ customer.default_address | format_address }}
