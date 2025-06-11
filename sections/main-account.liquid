@@ -112,34 +112,70 @@
     color: white;
   }
 
-  /* NOVO: Estilos para o bloco de conversão AVA-COIN - AGORA ESTILIZADO COMO O CARD DE PONTOS */
+  /* NOVO: Estilos para o bloco de conversão AVA-COIN - AGORA COM IMAGEM DE FUNDO E MELHORIAS NO TEXTO E MOTION */
   .ava-coin-conversion {
-    background: url('https://res.cloudinary.com/dmzyxoy2o/image/upload/v1749644189/whisk_storyboard335239e278a148b3969c6a044cd18e_lwslzc.png');
-    color: white; /* Texto branco para contraste com o fundo escuro */
+    background-image: url('https://res.cloudinary.com/dmzyxoy2o/image/upload/v1749644189/whisk_storyboard335239e278a148b3969c6a044cd18e_lwslzc.png');
     background-size: cover; /* Para cobrir todo o card */
-   background-repeat: no-repeat; /* Para não repetir a imagem */
+    background-repeat: no-repeat; /* Para não repetir a imagem */
+    background-position: center center; /* Centraliza a imagem */
+    color: white; /* Texto branco padrão */
     padding: 25px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Sombra igual ao card de pontos */
-    margin-top: 0px; /* Já está dentro de uma coluna com gap */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra mais forte para o card, para destacar */
+    margin-top: 0px;
+    overflow: hidden; /* Garante que a imagem de fundo não vaze ao aplicar zoom */
+    position: relative; /* Necessário para posicionar o overlay, se usado */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transição para o zoom e sombra do card */
+  }
+
+  .ava-coin-conversion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-radius: 8px; 
+    z-index: 1; 
+  }
+  */
+
+  /* Move o conteúdo para cima do overlay (se o overlay estiver ativado) */
+  .ava-coin-conversion h2,
+  .ava-coin-conversion p,
+  .ava-coin-conversion .button,
+  .ava-coin-conversion strong {
+    position: relative;
+    z-index: 2; /* Acima do overlay */
+  }
+
+
+  /* Efeito de zoom na imagem de fundo e no card ao passar o mouse */
+  .ava-coin-conversion:hover {
+    transform: scale(1.02); /* Leve zoom no card inteiro */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4); /* Sombra mais intensa no hover */
   }
 
   .ava-coin-conversion h2 {
     color: white; /* Título branco */
     font-size: 1.5em;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra preta para o título */
   }
 
   .ava-coin-conversion p {
     margin-bottom: 10px;
     font-size: 1em;
-    opacity: 0.9; /* Deixa o texto do parágrafo um pouco menos forte que o título */
+    opacity: 0.95; /* Aumentei a opacidade para o texto normal */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Sombra preta para o parágrafo */
   }
 
   .ava-coin-conversion p strong {
-    color: white; /* Garante que o strong também seja branco */
+    color: #FFE000; /* Cor um pouco dourada para o forte para destacar */
     font-size: 1.1em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Sombra preta para o strong */
   }
 
 
