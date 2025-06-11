@@ -63,17 +63,19 @@
     color: #333;
   }
 
+  /* REFINAMENTOS AQUI */
   .customer-points-card {
-    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%); /* Gradiente verde chamativo */
-    color: white;
+    background: #fff; /* Fundo branco puro */
+    color: #333; /* Texto escuro para contraste no fundo branco */
     padding: 25px;
+    border: 1px solid #e0e0e0; /* Borda suave */
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra suave */
   }
 
   .customer-points-card h2 {
-    color: white;
+    color: #333; /* Título escuro no fundo branco */
     font-size: 1.5em;
     margin-bottom: 10px;
   }
@@ -82,11 +84,32 @@
     font-size: 3em; /* Tamanho grande para os pontos */
     font-weight: bold;
     margin-bottom: 10px;
+    color: #4CAF50; /* Cor de destaque para os pontos, pode ser uma cor do seu tema */
   }
 
   .customer-points-message {
     font-size: 0.9em;
-    opacity: 0.9;
+    color: #555; /* Cor de texto mais suave */
+    opacity: 1; /* Garante que o texto seja totalmente visível */
+    margin-bottom: 20px; /* Espaço antes do botão */
+  }
+
+  /* ESTILO PARA O BOTÃO "Saiba mais sobre pontos" */
+  .customer-points-card .button {
+    display: inline-block; /* Permite centralizar e aplicar padding */
+    padding: 10px 20px;
+    background-color: #007bff; /* Um azul padrão ou cor principal do seu tema */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .customer-points-card .button:hover {
+    background-color: #0056b3; /* Um tom mais escuro no hover */
+    text-decoration: none; /* Remove sublinhado no hover */
   }
 
   .order-history {
@@ -100,7 +123,53 @@
     padding: 12px 15px;
     border: 1px solid #e0e0e0;
     text-align: left;
+    font-size: 0.85em; /* Reduz o tamanho da fonte da tabela */
+    line-height: 1.3; /* Ajusta a altura da linha para melhor leitura */
   }
+
+  /* Adicionando responsividade para a tabela em telas menores */
+  @media screen and (max-width: 749px) {
+    .order-history, .order-history tbody, .order-history tr, .order-history td {
+      display: block;
+      width: 100%;
+    }
+
+    .order-history thead {
+      display: none; /* Esconde o cabeçalho da tabela em mobile */
+    }
+
+    .order-history tr {
+      margin-bottom: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff; /* Fundo branco para cada linha em mobile */
+    }
+
+    .order-history td {
+      text-align: right;
+      padding-left: 50%; /* Espaço para o label */
+      position: relative;
+      font-size: 0.9em;
+    }
+
+    .order-history td::before {
+      content: attr(data-label); /* Mostra o data-label como pseudo-elemento */
+      position: absolute;
+      left: 15px;
+      width: calc(50% - 30px); /* Largura do label */
+      padding-right: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: bold;
+      text-align: left;
+      color: #333;
+    }
+  }
+
 
   .order-history th {
     background-color: #f2f2f2;
@@ -112,7 +181,7 @@
   }
 
   .order-history a {
-    color: var(--color-link); /* Usa a variável do tema para links */
+    color: var(--color-link, #007bff); /* Usa a variável do tema para links, com fallback */
     text-decoration: none;
   }
 
@@ -130,7 +199,7 @@
     font-weight: 500;
   }
   .customer__header a:hover {
-    color: var(--color-link);
+    color: var(--color-link, #0056b3);
     text-decoration: underline;
   }
   .customer__header .svg-wrapper {
@@ -291,7 +360,7 @@
           <div class="customer-points-value">0</div>
           <p class="customer-points-message">Comece a comprar ou jogar para acumular pontos!</p>
         {% endif %}
-       
+        
         <a href="/pages/programa-de-fidelidade" class="button button--secondary">Saiba mais sobre pontos</a>
       </div>
 
