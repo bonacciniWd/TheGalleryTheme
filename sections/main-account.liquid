@@ -94,24 +94,39 @@
   }
 
   /* ESTILO DO BOTÃO DENTRO DO CARD DE PONTOS */
-  .customer-points-card .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #388E3C; /* Um verde mais escuro para o botão, harmonizando com o gradiente */
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3); /* Borda branca transparente */
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
+  ustomer-points-card .button {
+  display: inline-block;
+  padding: 12px 25px; /* Aumenta um pouco o padding para ser mais clicável */
+  background-color: #D32F2F; /* Um vermelho mais escuro, para harmonizar com o gradiente */
+  color: white;
+  border: none; /* Remove a borda transparente para um visual mais limpo */
+  border-radius: 8px; /* Arredonda um pouco mais as bordas */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em; /* Garante um bom tamanho de fonte */
+  cursor: pointer; /* Indica que é clicável */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Adiciona transição para sombra e transformação */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra inicial sutil */
+}
 
-  .customer-points-card .button:hover {
-    background-color: #2E7D32; /* Um tom ainda mais escuro no hover */
-    border-color: white; /* Borda sólida branca no hover */
-    text-decoration: none;
-  }
+.customer-points-card .button:hover {
+  background-color: #C23B22; /* Um tom de vermelho/laranja ainda mais escuro no hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Aumenta a sombra no hover */
+  transform: translateY(-2px); /* Efeito de "levantar" ligeiramente */
+  text-decoration: none; /* Garante que não haja sublinhado no hover */
+}
 
+/* Se você precisar de um "botão secundário" com a cor do gradiente laranja/vermelho */
+.customer-points-card .button--secondary { /* Use esta classe no seu HTML se quiser um estilo diferente */
+  background-color: #FF8C00; /* Laranja mais escuro */
+  border: 1px solid #FF8C00;
+  color: white;
+}
+
+.customer-points-card .button--secondary:hover {
+  background-color: #E65100; /* Laranja ainda mais escuro no hover */
+  border-color: #E65100;
+}
 
   /* ESTILIZAÇÃO DA TABELA DE HISTÓRICO DE PEDIDOS */
   .order-history {
