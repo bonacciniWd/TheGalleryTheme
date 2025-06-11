@@ -112,16 +112,6 @@
     color: white;
   }
 
-  /* Animação de zoom da imagem de fundo */
-  @keyframes backgroundZoom {
-    0% {
-      background-size: cover; /* Começa com o tamanho original (cover) */
-    }
-    100% {
-      background-size: 110%; /* Termina com um zoom de 10% */
-    }
-  }
-
   /* Estilos do card de conversão AVA-COIN */
   .ava-coin-conversion {
     background-image: url('https://res.cloudinary.com/dmzyxoy2o/image/upload/v1749644189/whisk_storyboard335239e278a148b3969c6a044cd18e_lwslzc.png');
@@ -136,11 +126,10 @@
     margin-top: 0px;
     overflow: hidden;
     position: relative;
-    animation: backgroundZoom 10s ease-in-out infinite alternate;
-    display: flex; /* Adicionado para facilitar o controle de layout interno */
-    flex-direction: column; /* Conteúdo em coluna por padrão */
-    justify-content: center; /* Centraliza verticalmente o conteúdo */
-    align-items: center; /* Centraliza horizontalmente o conteúdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   /* Overlay semi-transparente para melhorar a legibilidade do texto (descomente se necessário) */
@@ -304,12 +293,12 @@
     /* Ajustes específicos para o card AVA-COIN em mobile */
     .ava-coin-conversion {
       padding: 15px;
-      min-height: 200px; /* Garante uma altura mínima para o card */
+      min-height: 200px;
       background-size: contain; /* Garante que a imagem de fundo caiba completamente */
       background-position: center bottom; /* Posiciona a imagem na parte inferior central */
-      background-repeat: no-repeat; /* Evita repetição */
-      flex-direction: column; /* Garante que o conteúdo fique em coluna */
-      justify-content: space-between; /* Espalha o conteúdo verticalmente */
+      background-repeat: no-repeat;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .ava-coin-conversion h2 {
