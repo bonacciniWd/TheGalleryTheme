@@ -41,7 +41,6 @@
     },
     "header": {
       "type": "header",
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "logo_position": "top-left",
@@ -62,7 +61,6 @@
     },
     "stories_eebgyR": {
       "type": "stories",
-      "disabled": true,
       "custom_css": [],
       "name": "Stories",
       "settings": {
