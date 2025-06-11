@@ -1,59 +1,35 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  /* Reset de estilos de corpo e HTML para garantir que o fundo fixo funcione */
-  html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Temporariamente hidden no html/body para verificar se é a causa */
-    position: relative; /* Pode ajudar se o tema principal tiver posicionamento estranho */
-  }
-
-  /* Estilos para o background em tela cheia */
-  .login-page-full-screen-background {
-    background: url('{{ 'amaterasuu.jpg' | asset_url }}') no-repeat center center fixed;
-    background-size: cover;
-    position: fixed; /* Fixa o elemento na viewport */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Garante 100% da largura da viewport */
-    height: 100vh; /* Garante 100% da altura da viewport */
-    z-index: -1; /* Envia para o fundo */
-  }
-
-  /* Estilos para o container principal que centraliza o formulário */
-  .login-content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Garante que o wrapper ocupe a altura total para centralizar */
-    padding: 2rem; /* Adiciona um padding geral para telas menores */
-    position: relative; /* Garante que este conteúdo fique acima do fundo */
-    z-index: 1; /* Garante que este conteúdo fique acima do fundo */
-  }
-
-  /* Estilos para o padding configurável via Theme Editor */
-  .login-content-wrapper.section-{{ section.id }}-padding {
+  /* Mantendo o CSS da seção original para padding */
+  .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-    .login-content-wrapper.section-{{ section.id }}-padding {
+    .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 
-  /* Estilos para o container do formulário (o box branco) */
+  /* Seus novos estilos customizados */
+  .login-page-background {
+    background: url('{{ 'amaterasuu.jpg' | asset_url }}') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh; /* Ajuste para preencher a altura da viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Removido o padding aqui para evitar duplicação com section-padding,
+       mas você pode reintroduzi-lo se quiser um padding extra dentro do background */
+  }
+
   .login-form-container {
     background: rgba(255, 255, 255, 0.9);
     padding: 2.5rem;
     border-radius: 16px;
-    max-width: 420px;
-    width: 100%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     text-align: center;
   }
@@ -86,7 +62,7 @@
   .login-form-container button {
     padding: 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 15px;
     color: white;
     font-weight: bold;
     font-size: 1rem;
