@@ -427,7 +427,7 @@
       <div class="account-info-box ava-coin-conversion">
         <h2>Converter AVA-COIN em Pontos da Loja</h2>
         {% assign ava_coin = customer.metafields.custom.ava_coin.value | default: 0 %}
-        {% assign loja_pontos_a_converter = ava_coin | divided_by: 100 | floor %} {# 1000 AVA-COIN = 10 pontos (dividir por 100) #}
+        {% assign loja_pontos_a_converter = ava_coin | divided_by: 100 | floor %} 
 
         <p>Você possui <strong style="color: #FF7000;">{{ ava_coin }}</strong> AVA-COIN.</p>
         <p>A taxa de conversão é de **1000 AVA-COIN** para **10 Pontos da Loja**.</p>
