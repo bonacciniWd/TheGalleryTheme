@@ -48,7 +48,7 @@
     gap: 30px;
   }
 
-  /* Estilo base para os cards de informação */
+  /* Estilo base para os cards de informação (agora apenas para o card de endereço) */
   .account-info-box {
     background-color: #ffffff; /* Fundo branco puro */
     border: 1px solid #ff0000;
@@ -112,22 +112,34 @@
     color: white;
   }
 
-  /* NOVO: Estilos para o bloco de conversão AVA-COIN */
+  /* NOVO: Estilos para o bloco de conversão AVA-COIN - AGORA ESTILIZADO COMO O CARD DE PONTOS */
   .ava-coin-conversion {
-    margin-top: 0px; /* Já está dentro de uma coluna com gap, então pode ser 0 */
-    text-align: center; /* Centraliza o conteúdo dentro do card */
+    background: radial-gradient(49% 81% at 45% 47%, #FFE20345 0%, #073AFF00 100%),radial-gradient(113% 91% at 17% -2%, #FF5A00FF 1%, #FF000000 99%),radial-gradient(142% 91% at 83% 7%, #FFDB00FF 1%, #FF000000 99%),radial-gradient(142% 91% at -6% 74%, #FF0049FF 1%, #FF000000 99%),radial-gradient(142% 91% at 111% 84%, #FF7000FF 0%, #FF0000FF 100%);
+    color: white; /* Texto branco para contraste com o fundo escuro */
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Sombra igual ao card de pontos */
+    margin-top: 0px; /* Já está dentro de uma coluna com gap */
+  }
+
+  .ava-coin-conversion h2 {
+    color: white; /* Título branco */
+    font-size: 1.5em;
+    margin-bottom: 10px;
   }
 
   .ava-coin-conversion p {
     margin-bottom: 10px;
     font-size: 1em;
-    color: #555;
+    opacity: 0.9; /* Deixa o texto do parágrafo um pouco menos forte que o título */
   }
 
   .ava-coin-conversion p strong {
-    color: #333;
+    color: white; /* Garante que o strong também seja branco */
     font-size: 1.1em;
   }
+
 
   .convert-button {
     background-color: #4CAF50; /* Verde vibrante */
@@ -424,14 +436,14 @@
       </div>
 
       {# NOVO: Menu de Conversão de AVA-COIN #}
-      <div class="account-info-box ava-coin-conversion">
+      <div class="ava-coin-conversion"> {# Removi a classe 'account-info-box' pois ela tem estilos de borda vermelha #}
         <h2>Converter AVA-COIN em Pontos da Loja</h2>
         {% assign ava_coin = customer.metafields.custom.ava_coin.value | default: 0 %}
-        {% assign loja_pontos_a_converter = ava_coin | divided_by: 100 | floor %} 
+        {% assign loja_pontos_a_converter = ava_coin | divided_by: 100 | floor %} {# 1000 AVA-COIN = 10 pontos (dividir por 100) #}
 
-        <p>Você possui <strong style="color: #FF7000;">{{ ava_coin }}</strong> AVA-COIN.</p>
+        <p>Você possui <strong>{{ ava_coin }}</strong> AVA-COIN.</p>
         <p>A taxa de conversão é de **1000 AVA-COIN** para **10 Pontos da Loja**.</p>
-        <p>Com seus AVA-COIN, você pode converter em <strong style="color: #4CAF50;">{{ loja_pontos_a_converter }}</strong> Pontos da Loja.</p>
+        <p>Com seus AVA-COIN, você pode converter em <strong>{{ loja_pontos_a_converter }}</strong> Pontos da Loja.</p>
         
         {% if ava_coin >= 1000 %}
           <button class="button convert-button" data-ava-coin="{{ ava_coin }}" data-loja-pontos="{{ loja_pontos_a_converter }}">Converter Meus AVA-COIN!</button>
