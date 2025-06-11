@@ -1,14 +1,14 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  /* Mantendo o CSS da seção original para padding */
-  .section-{{ section.id }}-padding {
+  /* Mantendo o CSS da seção original para padding, mas aplicado ao container do formulário */
+  .login-form-wrapper-with-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
+    .login-form-wrapper-with-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
@@ -18,12 +18,23 @@
   .login-page-background {
     background: url('{{ 'amaterasuu.jpg' | asset_url }}') no-repeat center center fixed;
     background-size: cover;
-    min-height: 100vh; /* Ajuste para preencher a altura da viewport */
+    min-height: 100vh; /* Garante que o fundo ocupe a altura total da viewport */
+    width: 100vw; /* Garante que o fundo ocupe a largura total da viewport */
+    position: fixed; /* Fixa o fundo na viewport */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Garante que o background fique atrás do conteúdo */
+  }
+
+  /* Novo estilo para o container que vai centralizar o formulário */
+  .login-content-centered {
+    min-height: 100vh; /* Permite que o conteúdo seja centralizado verticalmente */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Removido o padding aqui para evitar duplicação com section-padding,
-       mas você pode reintroduzi-lo se quiser um padding extra dentro do background */
+    padding: 2rem; /* Um padding geral para garantir que o formulário não cole nas bordas em telas pequenas */
+    position: relative; /* Para que o z-index funcione e o conteúdo fique acima do background */
+    z-index: 1;
   }
 
   .login-form-container {
@@ -112,11 +123,13 @@
   {%- assign hide_shop_login_button = true -%}
 {%- endif -%}
 
-<div class="customer login section-{{ section.id }}-padding"> 
-  <div class="login-page-background"> 
-    <div class="login-form-container"> 
+<div class="login-page-background"></div> {# Este div agora é o fundo em tela cheia #}
 
-     
+<div class="customer login login-content-centered"> {# Este div centraliza o conteúdo sobre o fundo #}
+  <div class="login-form-wrapper-with-padding"> {# Novo div para aplicar o padding da seção #}
+    <div class="login-form-container"> {# Container branco do formulário #}
+
+      {# Bloco de recuperação de senha #}
       <h1 id="recover" tabindex="-1">
         {{ 'customer.recover_password.title' | t }}
       </h1>
@@ -166,7 +179,7 @@
         {%- endform -%}
       </div>
 
-    
+      {# Bloco de login #}
       <h1 id="login" tabindex="-1">
         {{ 'customer.login_page.title' | t }}
       </h1>
@@ -239,7 +252,7 @@
               </label>
             </div>
 
-            <a href="#recover" class="forgot-password"> 
+            <a href="#recover" class="forgot-password">
               {{ 'customer.login_page.forgot_password' | t }}
             </a>
           {%- endif -%}
@@ -248,13 +261,13 @@
             {{ 'customer.login_page.sign_in' | t }}
           </button>
 
-          <a href="{{ routes.account_register_url }}" class="create-account"> 
+          <a href="{{ routes.account_register_url }}" class="create-account">
             {{ 'customer.login_page.create_account' | t }}
           </a>
         {%- endform -%}
       </div>
 
-    
+      {# Bloco de login de convidado #}
       {%- if shop.checkout.guest_login -%}
         <div>
           <hr>
@@ -267,9 +280,10 @@
           {%- endform -%}
         </div>
       {%- endif -%}
-    </div> 
-  </div> 
-</div> 
+    </div> {# Fim do login-form-container #}
+  </div> {# Fim do login-form-wrapper-with-padding #}
+</div> {# Fim do login-content-centered #}
+
 
 {% schema %}
 {
