@@ -48,8 +48,9 @@
     gap: 30px;
   }
 
+  /* Estilo base para os cards de informação */
   .account-info-box {
-    background-color: #f8f8f8; /* Cor de fundo suave */
+    background-color: #ffffff; /* Fundo branco puro */
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     padding: 25px;
@@ -63,9 +64,10 @@
     color: #333;
   }
 
+  /* ESTILO DO CARD DE PONTUAÇÃO (RESTAURADO E AJUSTADO) */
   .customer-points-card {
-    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%); /* Gradiente verde chamativo */
-    color: white;
+    background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%); /* Gradiente verde RESTAURADO */
+    color: white; /* Texto branco RESTAURADO */
     padding: 25px;
     border-radius: 8px;
     text-align: center;
@@ -73,7 +75,7 @@
   }
 
   .customer-points-card h2 {
-    color: white;
+    color: white; /* Título branco */
     font-size: 1.5em;
     margin-bottom: 10px;
   }
@@ -82,13 +84,36 @@
     font-size: 3em; /* Tamanho grande para os pontos */
     font-weight: bold;
     margin-bottom: 10px;
+    color: white; /* Pontos brancos para contraste com o fundo escuro do gradiente */
   }
 
   .customer-points-message {
     font-size: 0.9em;
     opacity: 0.9;
+    margin-bottom: 20px; /* Espaço antes do botão */
   }
 
+  /* ESTILO DO BOTÃO DENTRO DO CARD DE PONTOS */
+  .customer-points-card .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #388E3C; /* Um verde mais escuro para o botão, harmonizando com o gradiente */
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3); /* Borda branca transparente */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .customer-points-card .button:hover {
+    background-color: #2E7D32; /* Um tom ainda mais escuro no hover */
+    border-color: white; /* Borda sólida branca no hover */
+    text-decoration: none;
+  }
+
+
+  /* ESTILIZAÇÃO DA TABELA DE HISTÓRICO DE PEDIDOS */
   .order-history {
     width: 100%;
     border-collapse: collapse;
@@ -100,11 +125,14 @@
     padding: 12px 15px;
     border: 1px solid #e0e0e0;
     text-align: left;
+    font-size: 0.85em; /* Fonte ligeiramente menor para caber melhor */
+    line-height: 1.3;
   }
 
   .order-history th {
     background-color: #f2f2f2;
     font-weight: 600;
+    white-space: nowrap; /* Impede que os cabeçalhos quebrem em múltiplas linhas */
   }
 
   .order-history tbody tr:nth-child(even) {
@@ -112,12 +140,68 @@
   }
 
   .order-history a {
-    color: var(--color-link); /* Usa a variável do tema para links */
+    color: var(--color-link, #007bff); /* Usa a variável do tema, com fallback */
     text-decoration: none;
   }
 
   .order-history a:hover {
     text-decoration: underline;
+  }
+
+  /* RESPONSIVIDADE DA TABELA PARA MOBILE */
+  @media screen and (max-width: 749px) {
+    .order-history, .order-history tbody, .order-history tr, .order-history td {
+      display: block;
+      width: 100%;
+    }
+
+    .order-history thead {
+      display: none; /* Esconde o cabeçalho da tabela em mobile */
+    }
+
+    .order-history tr {
+      margin-bottom: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff; /* Fundo branco para cada linha em mobile */
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Sombra para destacar as linhas */
+    }
+
+    .order-history td {
+      text-align: right;
+      padding-left: 50%; /* Espaço para o label */
+      position: relative;
+      font-size: 0.9em;
+      border: none; /* Remove bordas internas entre as células */
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .order-history td:first-child {
+      padding-top: 15px; /* Mais padding no topo da primeira célula */
+    }
+    .order-history td:last-child {
+      padding-bottom: 15px; /* Mais padding na parte inferior da última célula */
+      border-bottom: none; /* Remove a borda inferior da última célula */
+    }
+
+
+    .order-history td::before {
+      content: attr(data-label); /* Mostra o data-label como pseudo-elemento */
+      position: absolute;
+      left: 15px;
+      width: calc(50% - 30px); /* Largura do label */
+      padding-right: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: bold;
+      text-align: left;
+      color: #333;
+    }
   }
 
   /* Pequenas melhorias para o link de sair */
@@ -130,7 +214,7 @@
     font-weight: 500;
   }
   .customer__header a:hover {
-    color: var(--color-link);
+    color: var(--color-link, #0056b3);
     text-decoration: underline;
   }
   .customer__header .svg-wrapper {
@@ -281,6 +365,7 @@
     </div>
 
     <div class="customer__info-column">
+      {# Cartão de Pontuação do Cliente #}
       <div class="customer-points-card">
         <h2>Suas Pontuações</h2>
         {% assign customer_points = customer.metafields.custom.customer_points.value %}
@@ -291,10 +376,11 @@
           <div class="customer-points-value">0</div>
           <p class="customer-points-message">Comece a comprar ou jogar para acumular pontos!</p>
         {% endif %}
-       
-        <a href="/pages/programa-de-fidelidade" class="button button--secondary">Saiba mais sobre pontos</a>
+        {# Adicione um link para a página de programa de fidelidade se tiver uma #}
+        <a href="/pages/programa-de-fidelidade" class="button">Saiba mais sobre pontos</a>
       </div>
 
+      {# Informações da Conta Existente #}
       <div class="account-info-box">
         <h2>{{ 'customer.account.details' | t }}</h2>
         {{ customer.default_address | format_address }}
