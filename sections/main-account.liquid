@@ -502,7 +502,7 @@
       </div>
 
       <div class="ava-coin-conversion"> 
-        <h2>Converter AVA-COIN em Pontos da Loja</h2>
+        <h2>Conversor de Pontos</h2>
         {% assign ava_coin = customer.metafields.custom.ava_coin.value | default: 0 %}
         {% assign loja_pontos_a_converter = ava_coin | divided_by: 100 | floor %} 
 
