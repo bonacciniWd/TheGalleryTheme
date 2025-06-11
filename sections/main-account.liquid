@@ -294,11 +294,13 @@
     .ava-coin-conversion {
       padding: 15px;
       min-height: 200px;
-      background-size: contain; /* Garante que a imagem de fundo caiba completamente */
-      background-position: center bottom; /* Posiciona a imagem na parte inferior central */
+      background-size: cover; /* Garante que a imagem de fundo cubra completamente */
+      background-position: center center; /* Centraliza a imagem para cobrir melhor */
       background-repeat: no-repeat;
+      background-attachment: fixed; /* Tenta fixar a imagem de fundo */
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center; /* Centraliza o conteúdo verticalmente */
+      align-items: center; /* Centraliza o conteúdo horizontalmente */
     }
 
     .ava-coin-conversion h2 {
