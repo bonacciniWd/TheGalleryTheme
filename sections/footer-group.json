@@ -37,13 +37,20 @@
         "6d82cc96-5353-4a02-a976-ffec657e4e01": {
           "type": "link_list",
           "settings": {
-            "heading": "",
-            "menu": "main-menu"
+            "heading": "Guias Acessiveis",
+            "menu": "customer-account-main-menu"
+          }
+        },
+        "brand_information_n8xUUd": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
           }
         }
       },
       "block_order": [
-        "6d82cc96-5353-4a02-a976-ffec657e4e01"
+        "6d82cc96-5353-4a02-a976-ffec657e4e01",
+        "brand_information_n8xUUd"
       ],
       "custom_css": [
         ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}",
@@ -65,6 +72,21 @@
         "padding_bottom": 36
       }
     },
+    "17496980572b4c5d9a": {
+      "type": "apps",
+      "blocks": {
+        "google_youtube_automated_discounts_price_KLDQTT": {
+          "type": "shopify://apps/google-youtube/blocks/automated_discounts_price/14ec7bd0-ac77-49a9-9417-90752398bdff",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "google_youtube_automated_discounts_price_KLDQTT"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "custom_liquid_iwqQna": {
       "type": "custom-liquid",
       "settings": {
@@ -79,6 +101,7 @@
     "custom_liquid_x7PnLR",
     "custom_liquid_CWafVA",
     "footer",
+    "17496980572b4c5d9a",
     "custom_liquid_iwqQna"
   ]
 }
