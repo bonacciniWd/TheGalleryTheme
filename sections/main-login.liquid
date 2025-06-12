@@ -7,20 +7,20 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Temporariamente hidden no html/body para verificar se é a causa */
-    position: relative; /* Pode ajudar se o tema principal tiver posicionamento estranho */
+    overflow: hidden;
+    position: relative;
   }
 
   /* Estilos para o background em tela cheia */
   .login-page-full-screen-background {
     background: url('{{ 'amaterasuu.jpg' | asset_url }}') no-repeat center center fixed;
     background-size: cover;
-    position: fixed; /* Fixa o elemento na viewport */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* Garante 100% da largura da viewport */
-    height: 100vh; /* Garante 100% da altura da viewport */
-    z-index: 999; /* Envia para o fundo */
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
   }
 
   /* Estilos para o container principal que centraliza o formulário */
@@ -28,10 +28,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Garante que o wrapper ocupe a altura total para centralizar */
-    padding: 2rem; /* Adiciona um padding geral para telas menores */
-    position: relative; /* Garante que este conteúdo fique acima do fundo */
-    z-index: 1; /* Garante que este conteúdo fique acima do fundo */
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
   }
 
   /* Estilos para o padding configurável via Theme Editor */
@@ -56,6 +56,13 @@
     width: 100%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     text-align: center;
+  }
+
+  /* Novo estilo para a imagem de login */
+  .login-logo {
+    max-width: 200px; /* Ajuste conforme necessário para o tamanho da sua imagem */
+    height: auto;
+    margin-bottom: 1.5rem; /* Mantém o espaçamento que o h1 tinha */
   }
 
   .login-form-container h1 {
@@ -134,12 +141,14 @@
   {%- assign hide_shop_login_button = true -%}
 {%- endif -%}
 
-<div class="login-page-full-screen-background">
+<div class="login-page-full-screen-background"></div>
 
 <div class="customer login login-content-wrapper section-{{ section.id }}-padding">
   <div class="login-form-container">
 
-    <h1 id="recover" tabindex="-1">
+    <img src="{{ 'login.png' | asset_url }}" alt="Login" class="login-logo">
+
+    <h1 id="recover" tabindex="-1" style="display: none;">
       {{ 'customer.recover_password.title' | t }}
     </h1>
     <div>
@@ -188,7 +197,7 @@
       {%- endform -%}
     </div>
 
-    <h1 id="login" tabindex="-1">
+    <h1 id="login" tabindex="-1" style="display: none;">
       {{ 'customer.login_page.title' | t }}
     </h1>
     <div>
@@ -289,7 +298,6 @@
     {%- endif -%}
   </div>
 </div>
-  </div>
 
 {% schema %}
 {
