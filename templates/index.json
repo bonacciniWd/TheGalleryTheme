@@ -210,62 +210,6 @@
         "padding_bottom": 36
       }
     },
-    "resgate_de_pontos_3WbnzD": {
-      "type": "resgate-de-pontos",
-      "blocks": {
-        "loyalty_item_fGagYh": {
-          "type": "loyalty_item",
-          "settings": {
-            "icon_type": "custom_image",
-            "custom_icon_image": "shopify://shop_images/coin.png",
-            "item_heading": "Ganhe Pontos com Cada Compra",
-            "item_text": "A cada R$1,00 gasto, você ganha 1 ponto automaticamente. Fique de olho em promoções de pontos extras!"
-          }
-        },
-        "loyalty_item_dy6w64": {
-          "type": "loyalty_item",
-          "settings": {
-            "icon_type": "gift",
-            "item_heading": "Troque por Recompensas Incríveis",
-            "item_text": "Acumule pontos e resgate por descontos exclusivos, frete grátis, brindes especiais e muito mais!"
-          }
-        },
-        "loyalty_item_GCXMfU": {
-          "type": "loyalty_item",
-          "settings": {
-            "icon_type": "percent",
-            "item_heading": "Níveis de Fidelidade",
-            "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos e ofertas personalizadas."
-          }
-        }
-      },
-      "block_order": [
-        "loyalty_item_fGagYh",
-        "loyalty_item_dy6w64",
-        "loyalty_item_GCXMfU"
-      ],
-      "name": "Informações sobre Pontos de Fidelidade",
-      "settings": {
-        "heading": "Nosso Programa de Pontos de Fidelidade",
-        "subheading": "Ganhe pontos em cada compra e troque por descontos exclusivos, brindes e muito mais! Veja como funciona:",
-        "show_cta": true,
-        "cta_link": "/",
-        "cta_text": "Acessar Minha Conta",
-        "background_color": "#f8f8f8",
-        "text_color": "#333333",
-        "heading_color": "#1a1a1a",
-        "card_background_color": "#ffffff",
-        "card_text_color": "#444444",
-        "card_heading_color": "#1a1a1a",
-        "icon_background_color": "#ffe0b2",
-        "icon_color": "#e65100",
-        "button_background_color": "#e65100",
-        "button_text_color": "#ffffff",
-        "button_hover_color": "#ff8f00",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "custom_liquid_7eDYX6": {
       "type": "custom-liquid",
       "custom_css": [
@@ -389,7 +333,6 @@
     "featured_collection_xwWX7M",
     "featured_collection_YDzpVA",
     "featured_collection_dFPiH4",
-    "resgate_de_pontos_3WbnzD",
     "custom_liquid_7eDYX6",
     "featured_collection_6R476x",
     "custom_liquid_kgnPwV",
