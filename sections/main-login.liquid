@@ -138,8 +138,9 @@
 
 <div class="customer login login-content-wrapper section-{{ section.id }}-padding">
   <div class="login-form-container">
- <img src="{{ 'login.png' | asset_url }}" alt="Login" class="login-logo">
-   
+    <h1 id="recover" tabindex="-1">
+      {{ 'customer.recover_password.title' | t }}
+    </h1>
     <div>
       <p>
         {{ 'customer.recover_password.subtext' | t }}
@@ -186,9 +187,7 @@
       {%- endform -%}
     </div>
 
-    <h1 id="login" tabindex="-1">
-      {{ 'customer.login_page.title' | t }}
-    </h1>
+     <img src="{{ 'login.png' | asset_url }}" alt="Login" class="login-logo">
     <div>
       {%- if recover_success == true -%}
         <h3 class="form__message" tabindex="-1" autofocus>
