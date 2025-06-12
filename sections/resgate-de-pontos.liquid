@@ -1,200 +1,231 @@
-{{ 'section-hero-amaterasu-game.css' | asset_url | stylesheet_tag }}
+{{ 'section-loyalty-points-info.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .hero-amaterasu-game {
-    position: relative;
-    width: 100%;
-    min-height: {{ section.settings.section_min_height }}px; /* Altura mínima da seção */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  .loyalty-points-section {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background-color: {{ section.settings.background_color }};
     color: {{ section.settings.text_color }};
-    overflow: hidden; /* Garante que a imagem de fundo não vaze */
-    padding: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px 20px {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
   @media screen and (min-width: 750px) {
-    .hero-amaterasu-game {
-      padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    .loyalty-points-section {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 
-  .hero-amaterasu-game::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('{% if section.settings.background_image %}{{ section.settings.background_image | image_url: width: 1920 }}{% else %}{{ 'placeholder-amaterasu.jpg' | asset_url }}{% endif %}');
-    background-size: cover;
-    background-position: {{ section.settings.image_position }};
-    background-repeat: no-repeat;
-    filter: brightness({{ section.settings.overlay_brightness | divided_by: 100.0 }}); /* Escurecer/Clarear a imagem */
-    z-index: 1;
+  .loyalty-points-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
   }
 
-  .hero-amaterasu-game .content-wrapper {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, {{ section.settings.content_overlay_opacity | divided_by: 100.0 }}); /* Fundo para o texto */
-    border-radius: 8px;
-  }
-
-  .hero-amaterasu-game h2 {
-    font-size: 3.5em;
-    margin-bottom: 20px;
-    line-height: 1.1;
+  .loyalty-points-header h2 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
     color: {{ section.settings.heading_color }};
   }
 
-  .hero-amaterasu-game p {
-    font-size: 1.3em;
-    line-height: 1.5;
-    margin-bottom: 30px;
-    color: {{ section.settings.text_color }};
+  .loyalty-points-header p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    opacity: 0.8;
   }
 
-  .hero-amaterasu-game .hero-cta-button {
+  .loyalty-points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .loyalty-points-item {
+    background-color: {{ section.settings.card_background_color }};
+    color: {{ section.settings.card_text_color }};
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .loyalty-points-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  .loyalty-points-item .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background-color: {{ section.settings.icon_background_color }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .loyalty-points-item .icon-wrapper svg {
+    width: 30px;
+    height: 30px;
+    fill: {{ section.settings.icon_color }};
+  }
+
+  .loyalty-points-item .icon-wrapper img { /* Adicionado estilo para a imagem personalizada */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+  }
+
+  .loyalty-points-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: {{ section.settings.card_heading_color }};
+  }
+
+  .loyalty-points-item p {
+    font-size: 1em;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .loyalty-points-cta-wrapper {
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .loyalty-points-cta-button {
     display: inline-block;
     background-color: {{ section.settings.button_background_color }};
     color: {{ section.settings.button_text_color }};
-    padding: 15px 35px;
+    padding: 15px 30px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.1em;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none;
+    border: none; /* Remover borda padrão do botão */
     cursor: pointer;
   }
 
-  .hero-amaterasu-game .hero-cta-button:hover {
+  .loyalty-points-cta-button:hover {
     background-color: {{ section.settings.button_hover_color }};
     transform: translateY(-2px);
   }
 
   /* Responsividade */
-  @media (max-width: 990px) {
-    .hero-amaterasu-game h2 {
-      font-size: 2.8em;
-    }
-    .hero-amaterasu-game p {
-      font-size: 1.1em;
-    }
-  }
-
   @media (max-width: 768px) {
-    .hero-amaterasu-game {
-      min-height: 350px;
+    .loyalty-points-header h2 {
+      font-size: 2em;
     }
-    .hero-amaterasu-game h2 {
-      font-size: 2.2em;
-    }
-    .hero-amaterasu-game p {
+    .loyalty-points-header p {
       font-size: 1em;
     }
-    .hero-amaterasu-game .hero-cta-button {
+    .loyalty-points-grid {
+      grid-template-columns: 1fr;
+    }
+    .loyalty-points-item {
+      padding: 25px;
+    }
+    .loyalty-points-item h3 {
+      font-size: 1.3em;
+    }
+    .loyalty-points-cta-button {
+      font-size: 1em;
       padding: 12px 25px;
-      font-size: 1em;
-    }
-    .hero-amaterasu-game .content-wrapper {
-        padding: 15px;
     }
   }
 
   @media (max-width: 480px) {
-    .hero-amaterasu-game {
-      min-height: 300px;
-      padding-left: 15px;
-      padding-right: 15px;
+    .loyalty-points-section {
+      padding: 40px 15px;
     }
-    .hero-amaterasu-game h2 {
-      font-size: 1.8em;
+    .loyalty-points-container {
+      padding: 0 15px;
     }
   }
 {%- endstyle -%}
 
-<section class="hero-amaterasu-game">
-  <div class="content-wrapper">
-    {%- if section.settings.heading != blank -%}
-      <h2>{{ section.settings.heading | escape }}</h2>
-    {%- endif -%}
-    {%- if section.settings.subheading != blank -%}
-      <p>{{ section.settings.subheading | escape }}</p>
-    {%- endif -%}
-    {%- if section.settings.show_cta and section.settings.cta_link != blank -%}
-      <a href="{{ section.settings.cta_link }}" class="hero-cta-button">
-        {{ section.settings.cta_text | escape }}
-      </a>
+<section class="loyalty-points-section section-{{ section.id }}-padding">
+  <div class="loyalty-points-container">
+    <div class="loyalty-points-header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="loyalty-points-grid">
+      {% for block in section.blocks %}
+        <div class="loyalty-points-item">
+          <div class="icon-wrapper">
+            {% comment %} SVG Icons {% endcomment %}
+            {% case block.settings.icon_type %}
+              {% when 'star' %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L9.19 8.63L2 9.24L7.55 13.97L5.82 21L12 17.27L18.18 21L16.45 13.97L22 9.24L14.81 8.63L12 2Z"/></svg>
+              {% when 'coin' %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-2.5-1.41-4-4.71-4-7.93h2c0 2.21 1.49 4.86 4 6.96v.97zM15 12h2c0-2.21-1.49-4.86-4-6.96v-.97C17.52 4.07 19 6.77 19 10c0 3.22-1.5 6.52-4 7.93v-5.93zm-5 0v-2c0-2.21 1.49-4.86 4-6.96v-.97C6.48 4.07 5 6.77 5 10c0 3.22 1.5 6.52 4 7.93v-5.93zM12 4.07V3c2.5 1.41 4 4.71 4 7.93h-2c0-2.21-1.49-4.86-4-6.96z"/></svg>
+              {% when 'gift' %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9c0 1.63.38 3.19 1.05 4.59L3 21l4.41-1.05C8.81 20.62 10.37 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 16H8.86l-.76-.76c-.66-.66-1.12-1.46-1.39-2.31L7.5 14H11v5zM12 17.27c-1.63 0-3.19-.38-4.59-1.05L4.59 19 3 14.41l1.05-4.41C4.38 8.81 3.5 7.37 3.5 6c0-2.42 1.72-4.44 4-4.87v2.87c-1.38.46-2 1.84-2 3.13 0 1.35.65 2.5 1.76 3.19L12 11.5l.76-.76c.66-.66 1.12-1.46 1.39-2.31l-.75-.75c-1.38-.46-2-1.84-2-3.13 0-1.35.65-2.5 1.76-3.19L12 2.73c2.28.43 4 2.45 4 4.87 0 1.37-.88 2.65-2 3.42L12 11.5z"/></svg>
+              {% when 'percent' %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM6 10.5c.83 0 1.5-.67 1.5-1.5S6.83 7.5 6 7.5 4.5 8.17 4.5 9s.67 1.5 1.5 1.5zm-3 7l8.5-8.5 6 6L21 9V3h-6L9 11.5 3 5z"/></svg>
+              {% when 'ticket' %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11V8h4V4H6c-1.1 0-2 .9-2 2v5zm16 0V6c0-1.1-.9-2-2-2h-2v4h4zM4 13v5c0 1.1.9 2 2 2h2v-4H4zm16 0v4h-4v4h2c1.1 0 2-.9 2-2v-5zM12 4c-1.1 0-2 .9-2 2v2H8c-.55 0-1 .45-1 1s.45 1 1 1h2v2H7c-.55 0-1 .45-1 1s.45 1 1 1h3v2H8c-.55 0-1 .45-1 1s.45 1 1 1h2v2c0 1.1.9 2 2 2s2-.9 2-2v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2v-2h3c.55 0 1-.45 1-1s-.45-1-1-1h-3v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2V6c0-1.1-.9-2-2-2z"/></svg>
+              {% when 'custom_image' %}
+                {% if block.settings.custom_icon_image != blank %}
+                  <img src="{{ block.settings.custom_icon_image | image_url: width: 60 }}" alt="{{ block.settings.item_heading }}">
+                {% else %}
+      
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                {% endif %}
+              {% else %} {# Default or 'info' icon #}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            {% endcase %}
+          </div>
+          <h3>{{ block.settings.item_heading }}</h3>
+          <p>{{ block.settings.item_text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    {%- if section.settings.show_cta -%}
+      <div class="loyalty-points-cta-wrapper">
+        <a href="{{ section.settings.cta_link }}" class="loyalty-points-cta-button">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
     {%- endif -%}
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Hero - Amaterasu Game",
+  "name": "Fidelidade",
   "tag": "section",
-  "class": "section-hero-amaterasu-game",
+  "class": "section-loyalty-points",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Imagem de Fundo",
-      "info": "Imagem principal para a seção de hero."
-    },
-    {
-      "type": "select",
-      "id": "image_position",
-      "label": "Posição da Imagem",
-      "options": [
-        { "value": "top center", "label": "Topo Centro" },
-        { "value": "center center", "label": "Centro" },
-        { "value": "bottom center", "label": "Fundo Centro" }
-      ],
-      "default": "center center"
-    },
-    {
-      "type": "range",
-      "id": "overlay_brightness",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Brilho da Imagem de Fundo",
-      "default": 60,
-      "info": "Ajuste o brilho da imagem para melhorar a legibilidade do texto (0% = totalmente escuro, 100% = original)."
-    },
-    {
-      "type": "range",
-      "id": "content_overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Opacidade do Fundo do Texto",
-      "default": 30,
-      "info": "Adiciona um fundo semitransparente ao redor do texto para melhor contraste (0% = transparente, 100% = opaco)."
-    },
     {
       "type": "text",
       "id": "heading",
-      "label": "Título Principal",
-      "default": "Desafie-se no Amaterasu Game!"
+      "label": "Título da Seção",
+      "default": "Nosso Programa de Pontos de Fidelidade"
     },
     {
       "type": "textarea",
       "id": "subheading",
       "label": "Subtítulo/Descrição",
-      "default": "Descubra uma nova forma de ganhar pontos e recompensas! A cada 1000 pontos no jogo, troque por 10 pontos da loja."
+      "default": "Ganhe pontos em cada compra e troque por descontos exclusivos, brindes e muito mais! Veja como funciona:"
     },
     {
       "type": "checkbox",
       "id": "show_cta",
-      "label": "Mostrar botão CTA",
+      "label": "Mostrar botão de CTA",
       "default": true
     },
     {
@@ -207,7 +238,7 @@
       "type": "text",
       "id": "cta_text",
       "label": "Texto do botão CTA",
-      "default": "Jogue Agora!"
+      "default": "Acessar Minha Conta"
     },
     {
       "type": "header",
@@ -215,47 +246,73 @@
     },
     {
       "type": "color",
+      "id": "background_color",
+      "label": "Cor de fundo da seção",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
       "id": "text_color",
-      "label": "Cor do Texto",
-      "default": "#ffffff"
+      "label": "Cor do texto principal",
+      "default": "#333333"
     },
     {
       "type": "color",
       "id": "heading_color",
-      "label": "Cor do Título",
+      "label": "Cor do título da seção",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Cor de fundo dos cards",
       "default": "#ffffff"
     },
     {
       "type": "color",
+      "id": "card_text_color",
+      "label": "Cor do texto dos cards",
+      "default": "#444444"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Cor do título dos cards",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "icon_background_color",
+      "label": "Cor de fundo do ícone",
+      "default": "#ffe0b2"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Cor do ícone",
+      "default": "#e65100"
+    },
+    {
+      "type": "color",
       "id": "button_background_color",
-      "label": "Cor de Fundo do Botão",
-      "default": "#ff8800"
+      "label": "Cor de fundo do botão",
+      "default": "#e65100"
     },
     {
       "type": "color",
       "id": "button_text_color",
-      "label": "Cor do Texto do Botão",
+      "label": "Cor do texto do botão",
       "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "button_hover_color",
-      "label": "Cor do Botão (Hover)",
-      "default": "#e65100"
+      "label": "Cor de fundo do botão (hover)",
+      "default": "#ff8f00"
     },
     {
       "type": "header",
-      "content": "Espaçamento e Altura"
-    },
-    {
-      "type": "range",
-      "id": "section_min_height",
-      "min": 200,
-      "max": 800,
-      "step": 50,
-      "unit": "px",
-      "label": "Altura Mínima da Seção",
-      "default": 500
+      "content": "Espaçamento"
     },
     {
       "type": "range",
@@ -264,7 +321,7 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "Espaçamento superior (interno)",
+      "label": "Espaçamento superior",
       "default": 60
     },
     {
@@ -274,20 +331,91 @@
       "max": 100,
       "step": 4,
       "unit": "px",
-      "label": "Espaçamento inferior (interno)",
+      "label": "Espaçamento inferior",
       "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "loyalty_item",
+      "name": "Item de Informação",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Tipo de Ícone",
+          "options": [
+            { "value": "star", "label": "Estrela" },
+            { "value": "coin", "label": "Moeda" },
+            { "value": "gift", "label": "Presente" },
+            { "value": "percent", "label": "Porcentagem" },
+            { "value": "ticket", "label": "Ticket" },
+            { "value": "info", "label": "Informação (Padrão)" },
+            { "value": "custom_image", "label": "Imagem Personalizada" }
+          ],
+          "default": "star"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon_image",
+          "label": "Imagem de Ícone Personalizada",
+          "info": "Usado quando 'Tipo de Ícone' é 'Imagem Personalizada'."
+        },
+        {
+          "type": "text",
+          "id": "item_heading",
+          "label": "Título do Item",
+          "default": "Acumule Pontos Facilmente"
+        },
+        {
+          "type": "textarea",
+          "id": "item_text",
+          "label": "Texto do Item",
+          "default": "A cada R$1,00 gasto, você ganha 1 ponto. Pontos são automaticamente adicionados à sua conta após a confirmação do pagamento."
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Hero - Amaterasu Game",
-      "category": "Imagens e vídeo",
-      "settings": {
-        "heading": "Desafie-se no Amaterasu Game!",
-        "subheading": "Descubra uma nova forma de ganhar pontos e recompensas! A cada 1000 pontos no jogo, troque por 10 pontos da loja.",
-        "cta_text": "Jogue Agora!",
-        "cta_link": "/"
-      }
+      "name": "Informações sobre Pontos de Fidelidade",
+      "blocks": [
+        {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "coin",
+            "item_heading": "Ganhe Pontos com Cada Compra",
+            "item_text": "A cada R$1,00 gasto, você ganha 1 ponto automaticamente. Fique de olho em promoções de pontos extras!"
+          }
+        },
+        {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "gift",
+            "item_heading": "Troque por Recompensas Incríveis",
+            "item_text": "Acumule pontos e resgate por descontos exclusivos, frete grátis, brindes especiais e muito mais!"
+          }
+        },
+        {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "percent",
+            "item_heading": "Níveis de Fidelidade",
+            "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos e ofertas personalizadas."
+          }
+        },
+        {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "custom_image",
+            "item_heading": "Amaterasu Game: Troque Pontos!",
+            "item_text": "Desafie-se no Amaterasu Game! A cada 1000 pontos no jogo, você pode trocar por 10 pontos da loja. É interativo e desafiador!"
+            // Nota: Após adicionar este código, você precisará ir no editor de tema do Shopify,
+            // adicionar esta seção e, no bloco "Amaterasu Game: Troque Pontos!",
+            // selecionar a imagem 'ninja.png' que deve ser previamente carregada em seus assets.
+          }
+        }
+      ]
     }
   ]
 }
