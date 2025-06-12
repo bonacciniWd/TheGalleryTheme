@@ -93,23 +93,24 @@
   }
 
   .login-form-container button {
-    padding: 10px;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    max-width: 50%;
-    display: fixed;
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin-top: 0.9rem;
-    cursor: pointer;
-    background: radial-gradient(49% 81% at 45% 47%, #FFE20345 0%, #073AFF00 100%),
-                radial-gradient(113% 91% at 17% -2%, #FF5A00FF 1%, #FF000000 99%),
-                radial-gradient(142% 91% at 83% 7%, #FFDB00FF 1%, #FF000000 99%),
-                radial-gradient(142% 91% at -6% 74%, #FF0049FF 1%, #FF000000 99%),
-                radial-gradient(142% 91% at 111% 84%, #FF7000FF 0%, #FF0000FF 100%);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  max-width: 50%;
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin: 0.9rem auto 0 auto; /* top auto bottom auto */
+  cursor: pointer;
+  display: block; /* importante para que margin: auto funcione */
+  background: radial-gradient(49% 81% at 45% 47%, #FFE20345 0%, #073AFF00 100%),
+              radial-gradient(113% 91% at 17% -2%, #FF5A00FF 1%, #FF000000 99%),
+              radial-gradient(142% 91% at 83% 7%, #FFDB00FF 1%, #FF000000 99%),
+              radial-gradient(142% 91% at -6% 74%, #FF0049FF 1%, #FF000000 99%),
+              radial-gradient(142% 91% at 111% 84%, #FF7000FF 0%, #FF0000FF 100%);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
 
   .login-form-container button:hover {
     transform: scale(1.03);
