@@ -289,8 +289,8 @@
             "icon_type": "custom_image",
             "custom_icon_image": "shopify://shop_images/eth_150167a3-ed5a-4eee-8f52-9627ece7f466.svg",
             "lottie_json_url": "",
-            "item_heading": "Níveis de Fidelidade",
-            "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos e ofertas personalizadas."
+            "item_heading": "<strong>Níveis de Fidelidade</strong>",
+            "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos, promoções exclusivas e ofertas personalizadas."
           }
         }
       },
