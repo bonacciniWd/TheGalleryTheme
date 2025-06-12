@@ -260,6 +260,64 @@
         "padding_bottom": 52
       }
     },
+    "resgate_de_pontos_LWCWKi": {
+      "type": "resgate-de-pontos",
+      "blocks": {
+        "loyalty_item_ffWyCq": {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "coin",
+            "lottie_json_url": "https://cdn.shopify.com/s/files/1/0745/0974/6434/files/bau.json?v=1749763611",
+            "item_heading": "Ganhe Pontos com Cada Compra",
+            "item_text": "A cada R$1,00 gasto, você ganha 1 ponto automaticamente. Fique de olho em promoções de pontos extras!"
+          }
+        },
+        "loyalty_item_fX3GcP": {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "gift",
+            "lottie_json_url": "",
+            "item_heading": "Troque por Recompensas Incríveis",
+            "item_text": "Acumule pontos e resgate por descontos exclusivos, frete grátis, brindes especiais e muito mais!"
+          }
+        },
+        "loyalty_item_tLdyyP": {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "percent",
+            "lottie_json_url": "",
+            "item_heading": "Níveis de Fidelidade",
+            "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos e ofertas personalizadas."
+          }
+        }
+      },
+      "block_order": [
+        "loyalty_item_ffWyCq",
+        "loyalty_item_fX3GcP",
+        "loyalty_item_tLdyyP"
+      ],
+      "name": "Informações sobre Pontos de Fidelidade",
+      "settings": {
+        "heading": "Nosso Programa de Pontos de Fidelidade",
+        "subheading": "Ganhe pontos em cada compra e troque por descontos exclusivos, brindes e muito mais! Veja como funciona:",
+        "show_cta": true,
+        "cta_link": "/",
+        "cta_text": "Acessar Minha Conta",
+        "background_color": "#f8f8f8",
+        "text_color": "#333333",
+        "heading_color": "#1a1a1a",
+        "card_background_color": "#ffffff",
+        "card_text_color": "#444444",
+        "card_heading_color": "#1a1a1a",
+        "icon_background_color": "#ffe0b2",
+        "icon_color": "#e65100",
+        "button_background_color": "#e65100",
+        "button_text_color": "#ffffff",
+        "button_hover_color": "#ff8f00",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "video_N3ptFW": {
       "type": "video",
       "disabled": true,
@@ -314,7 +372,6 @@
     },
     "custom_liquid_eC4e3t": {
       "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<div class=\"only-desktop\">\n<div class=\"before-after-slider\">\n  <div class=\"wrapper\">\n\n    <div class=\"before\">\n      <img class=\"content-image\" src=\"{{ 'before.png' | asset_url }}\" draggable=\"false\" alt=\"Before Image\" />\n    </div>\n\n    <div class=\"after\">\n      <img class=\"content-image\" src=\"{{ 'after.png' | asset_url }}\" draggable=\"false\" alt=\"After Image\" />\n    </div>\n\n    <button id=\"scroller\">\n      <div id=\"text\">AMATERASU</div>\n      <div id=\"icon-wrapper\">\n       <img id=\"star-svg\" src=\"{{ 'yinh.svg' | asset_url }}\" />\n      </div>\n    </button>\n\n  </div>\n</div>\n</div>\n\n<script>\n  const wrapper = document.querySelector('.before-after-slider .wrapper');\n  const after = wrapper.querySelector('.after');\n  const scroller = document.getElementById('scroller');\n  const iconWrapper = document.getElementById('icon-wrapper');\n  const starSVG = document.getElementById('star-svg');\n  const text = document.getElementById('text');\n\n  let toggled = false;\n  const duration = 600;\n  let currentRotation = 0;\n\n  // Atualiza posições e tamanhos conforme container\n  function updateLineAndScroller(clampedX) {\n    const scrollerWidth = scroller.offsetWidth;\n    const iconWidth = iconWrapper.offsetWidth;\n    const linePosition = clampedX + (scrollerWidth - iconWidth / 2);\n    const maxLineWidth = wrapper.offsetWidth;\n    const lineWidthClamped = Math.min(linePosition, maxLineWidth);\n\n    after.style.width = lineWidthClamped + \"px\";\n    scroller.style.left = (clampedX - (scrollerWidth - iconWidth / 2)) + \"px\";\n  }\n\n  // Animação da linha e rotação\n  function animateLineAndRotateSVG(from, to, duration) {\n    let start = null;\n\n    function step(timestamp) {\n      if (!start) start = timestamp;\n      let progress = (timestamp - start) / duration;\n      if (progress > 1) progress = 1;\n\n      let currentX = from + (to - from) * progress;\n      updateLineAndScroller(currentX);\n\n      let rotationDeg = currentRotation + 360 * progress;\n      starSVG.style.transform = `rotate(${rotationDeg}deg)`;\n\n      if (progress < 1) {\n        requestAnimationFrame(step);\n      } else {\n        currentRotation += 360;\n        // Atualiza texto e posição ao fim da animação\n        if (toggled) {\n          text.textContent = \"COMPANY\";\n          scroller.classList.add('right');\n        } else {\n          text.textContent = \"AMATERASU\";\n          scroller.classList.remove('right');\n        }\n      }\n    }\n    requestAnimationFrame(step);\n  }\n\n  // Ajuste inicial e evento click\n  function init() {\n    // Posição inicial fixa\n    updateLineAndScroller(80);\n    text.textContent = \"AMATERASU\";\n    scroller.classList.remove('right');\n  }\n\n  scroller.addEventListener('click', () => {\n    toggled = !toggled;\n    const from = toggled ? 70 : wrapper.offsetWidth - (scroller.offsetWidth - iconWrapper.offsetWidth / 2);\n    const to = toggled ? wrapper.offsetWidth - (scroller.offsetWidth - iconWrapper.offsetWidth / 2) : 70;\n\n    animateLineAndRotateSVG(from, to, duration);\n  });\n\n  // Atualiza layout no resize\n  window.addEventListener('resize', () => {\n    if (toggled) {\n      updateLineAndScroller(wrapper.offsetWidth - (scroller.offsetWidth - iconWrapper.offsetWidth / 2));\n    } else {\n      updateLineAndScroller(70);\n    }\n  });\n\n  init();\n</script>",
         "color_scheme": "",
@@ -336,6 +393,7 @@
     "custom_liquid_7eDYX6",
     "featured_collection_6R476x",
     "custom_liquid_kgnPwV",
+    "resgate_de_pontos_LWCWKi",
     "video_N3ptFW",
     "image_banner_zyji7q",
     "featured_blog_KPygWW",
