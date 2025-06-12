@@ -71,6 +71,7 @@
     justify-content: center;
     margin-bottom: 20px;
     flex-shrink: 0;
+    overflow: hidden;
   }
 
   .loyalty-points-item .icon-wrapper svg {
@@ -79,10 +80,20 @@
     fill: {{ section.settings.icon_color }};
   }
 
-  .loyalty-points-item .icon-wrapper img { /* Adicionado estilo para a imagem personalizada */
+  .loyalty-points-item .icon-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Estilos específicos para o container Lottie */
+  .loyalty-points-item .icon-wrapper .lottie-animation {
+    width: 100%;
+    height: 100%;
+    display: flex; /* Para centralizar o SVG renderizado pelo Lottie */
+    align-items: center;
+    justify-content: center;
   }
 
   .loyalty-points-item h3 {
@@ -112,7 +123,7 @@
     font-weight: bold;
     font-size: 1.1em;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none; /* Remover borda padrão do botão */
+    border: none;
     cursor: pointer;
   }
 
@@ -121,7 +132,6 @@
     transform: translateY(-2px);
   }
 
-  /* Responsividade */
   @media (max-width: 768px) {
     .loyalty-points-header h2 {
       font-size: 2em;
@@ -165,7 +175,6 @@
       {% for block in section.blocks %}
         <div class="loyalty-points-item">
           <div class="icon-wrapper">
-            {% comment %} SVG Icons {% endcomment %}
             {% case block.settings.icon_type %}
               {% when 'star' %}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L9.19 8.63L2 9.24L7.55 13.97L5.82 21L12 17.27L18.18 21L16.45 13.97L22 9.24L14.81 8.63L12 2Z"/></svg>
@@ -177,8 +186,20 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM6 10.5c.83 0 1.5-.67 1.5-1.5S6.83 7.5 6 7.5 4.5 8.17 4.5 9s.67 1.5 1.5 1.5zm-3 7l8.5-8.5 6 6L21 9V3h-6L9 11.5 3 5z"/></svg>
               {% when 'ticket' %}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11V8h4V4H6c-1.1 0-2 .9-2 2v5zm16 0V6c0-1.1-.9-2-2-2h-2v4h4zM4 13v5c0 1.1.9 2 2 2h2v-4H4zm16 0v4h-4v4h2c1.1 0 2-.9 2-2v-5zM12 4c-1.1 0-2 .9-2 2v2H8c-.55 0-1 .45-1 1s.45 1 1 1h2v2H7c-.55 0-1 .45-1 1s.45 1 1 1h3v2H8c-.55 0-1 .45-1 1s.45 1 1 1h2v2c0 1.1.9 2 2 2s2-.9 2-2v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2v-2h3c.55 0 1-.45 1-1s-.45-1-1-1h-3v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2V6c0-1.1-.9-2-2-2z"/></svg>
+              {% when 'info' %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
               {% when 'custom_image' %}
-                
+                {% if block.settings.custom_icon_image != blank %}
+                  <img src="{{ block.settings.custom_icon_image | image_url: width: 60, height: 60, crop: 'center' }}" alt="{{ block.settings.item_heading | escape }}">
+                {% else %}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                {% endif %}
+              {% when 'lottie_animation' %}
+                {% if block.settings.lottie_json_url != blank %}
+                  <div class="lottie-animation" data-lottie-url="{{ block.settings.lottie_json_url }}"></div>
+                {% else %}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                {% endif %}
             {% endcase %}
           </div>
           <h3>{{ block.settings.item_heading }}</h3>
@@ -344,7 +365,8 @@
             { "value": "percent", "label": "Porcentagem" },
             { "value": "ticket", "label": "Ticket" },
             { "value": "info", "label": "Informação (Padrão)" },
-            { "value": "custom_image", "label": "Imagem Personalizada" }
+            { "value": "custom_image", "label": "Imagem Personalizada" },
+            { "value": "lottie_animation", "label": "Animação Lottie (.json)" }
           ],
           "default": "star"
         },
@@ -353,6 +375,12 @@
           "id": "custom_icon_image",
           "label": "Imagem de Ícone Personalizada",
           "info": "Usado quando 'Tipo de Ícone' é 'Imagem Personalizada'."
+        },
+        {
+          "type": "url",
+          "id": "lottie_json_url",
+          "label": "URL do arquivo Lottie (.json)",
+          "info": "Faça upload do seu arquivo .json em 'Conteúdo > Arquivos' no Admin da Shopify e cole a URL gerada aqui. Usado quando 'Tipo de Ícone' é 'Animação Lottie'."
         },
         {
           "type": "text",
@@ -396,10 +424,31 @@
             "item_heading": "Níveis de Fidelidade",
             "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos e ofertas personalizadas."
           }
-        },
-       
+        }
       ]
     }
   ]
 }
 {% endschema %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" integrity="sha512-lZ9SPsHqgLz6n7iG/sP4c+E6uJm8y92hG9i5E+6E6L1PjN9WJ+w4/uYQx9e8tQZ+5t+m8E3X1j+w+t8M2+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const lottieContainers = document.querySelectorAll('.lottie-animation');
+
+    lottieContainers.forEach(container => {
+      const lottieUrl = container.dataset.lottieUrl;
+
+      if (lottieUrl) {
+        lottie.loadAnimation({
+          container: container, // O elemento DOM onde a animação será renderizada
+          renderer: 'svg', // Ou 'canvas' ou 'html'
+          loop: true, // Se a animação deve repetir
+          autoplay: true, // Se a animação deve começar automaticamente
+          path: lottieUrl // O caminho para o arquivo JSON da animação
+        });
+      }
+    });
+  });
+</script>
