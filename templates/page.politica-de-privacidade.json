@@ -20,26 +20,16 @@
     "page_QDpiR4": {
       "type": "page",
       "settings": {
-        "page": "seja-um-revendedor",
+        "page": "privacidade",
         "heading_size": "h1",
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "custom_liquid_RbJpPQ": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"text-align: center; padding: 20px; background-color: #f5f5f5; border-radius: 10px; margin: 20px 0;\">\n  \n  <p style=\"font-size: 16px; color: #666; margin-bottom: 20px;\">Baixe nosso catálogo completo e comece a revender nossos produtos!</p>\n  <a href=\"https://drive.google.com/uc?export=download&id=1dgyjxUzsdtjHFhp1SMgXYOS3Ix7l9Brq\" style=\"background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 16px;\">Baixar Catálogo</a>\n</div>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
     }
   },
   "order": [
     "main",
-    "page_QDpiR4",
-    "custom_liquid_RbJpPQ"
+    "page_QDpiR4"
   ]
 }
