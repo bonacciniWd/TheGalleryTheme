@@ -267,9 +267,9 @@
           "type": "loyalty_item",
           "settings": {
             "icon_type": "custom_image",
-            "custom_icon_image": "shopify://shop_images/cloudflare.svg",
+            "custom_icon_image": "shopify://shop_images/master.svg",
             "lottie_json_url": "https://lottie.host/cd2b4eef-e441-4990-b877-c9bbb3551a92/rLsf9xg0mu.lottie",
-            "item_heading": "<strong>Amaterasu Points</strong>",
+            "item_heading": "Amaterasu Coins",
             "item_text": "A cada <strong>R$1,00</strong> gasto, você ganha <strong> 3 pontos</strong>.\n Fique de olho em promoções de pontos extras!\nOs pontos também são obtidos através do sistema de trocas usando <strong> AVA Coin</strong>, moeda obtida no <strong> Amaterasu Ninjas</strong>."
           }
         },
