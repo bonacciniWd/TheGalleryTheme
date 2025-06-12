@@ -16,74 +16,9 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
-    },
-    "resgate_de_pontos_YEy8pL": {
-      "type": "resgate-de-pontos",
-      "blocks": {
-        "loyalty_item_iDmt8b": {
-          "type": "loyalty_item",
-          "settings": {
-            "icon_type": "coin",
-            "item_heading": "Ganhe Pontos com Cada Compra",
-            "item_text": "A cada R$1,00 gasto, você ganha 1 ponto automaticamente. Fique de olho em promoções de pontos extras!"
-          }
-        },
-        "loyalty_item_HHQkF7": {
-          "type": "loyalty_item",
-          "settings": {
-            "icon_type": "gift",
-            "item_heading": "Troque por Recompensas Incríveis",
-            "item_text": "Acumule pontos e resgate por descontos exclusivos, frete grátis, brindes especiais e muito mais!"
-          }
-        },
-        "loyalty_item_DqPgHi": {
-          "type": "loyalty_item",
-          "settings": {
-            "icon_type": "percent",
-            "item_heading": "Níveis de Fidelidade",
-            "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos e ofertas personalizadas."
-          }
-        },
-        "loyalty_item_NP6CzW": {
-          "type": "loyalty_item",
-          "settings": {
-            "icon_type": "custom_image",
-            "item_heading": "Amaterasu Game: Troque Pontos!",
-            "item_text": "Desafie-se no Amaterasu Game! A cada 1000 pontos no jogo, você pode trocar por 10 pontos da loja. É interativo e desafiador!"
-          }
-        }
-      },
-      "block_order": [
-        "loyalty_item_iDmt8b",
-        "loyalty_item_HHQkF7",
-        "loyalty_item_DqPgHi",
-        "loyalty_item_NP6CzW"
-      ],
-      "name": "Informações sobre Pontos de Fidelidade",
-      "settings": {
-        "heading": "Nosso Programa de Pontos de Fidelidade",
-        "subheading": "Ganhe pontos em cada compra e troque por descontos exclusivos, brindes e muito mais! Veja como funciona:",
-        "show_cta": true,
-        "cta_link": "/",
-        "cta_text": "Acessar Minha Conta",
-        "background_color": "#f8f8f8",
-        "text_color": "#333333",
-        "heading_color": "#1a1a1a",
-        "card_background_color": "#ffffff",
-        "card_text_color": "#444444",
-        "card_heading_color": "#1a1a1a",
-        "icon_background_color": "#ffe0b2",
-        "icon_color": "#e65100",
-        "button_background_color": "#e65100",
-        "button_text_color": "#ffffff",
-        "button_hover_color": "#ff8f00",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
     }
   },
   "order": [
-    "main",
-    "resgate_de_pontos_YEy8pL"
+    "main"
   ]
 }
