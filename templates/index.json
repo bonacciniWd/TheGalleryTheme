@@ -277,7 +277,7 @@
           "type": "loyalty_item",
           "settings": {
             "icon_type": "custom_image",
-            "custom_icon_image": "shopify://shop_images/elo_22000adb-7c46-4243-8431-410f26d30001.svg",
+            "custom_icon_image": "shopify://shop_images/elo.svg",
             "lottie_json_url": "",
             "item_heading": "Troque por Recompensas Incríveis",
             "item_text": "Acumule pontos e resgate por descontos exclusivos, frete grátis, brindes especiais e muito mais!"
