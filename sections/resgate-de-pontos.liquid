@@ -79,6 +79,12 @@
     fill: {{ section.settings.icon_color }};
   }
 
+  .loyalty-points-item .icon-wrapper img { /* Adicionado estilo para a imagem personalizada */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+  }
+
   .loyalty-points-item h3 {
     font-size: 1.5em;
     margin-bottom: 15px;
@@ -173,7 +179,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11V8h4V4H6c-1.1 0-2 .9-2 2v5zm16 0V6c0-1.1-.9-2-2-2h-2v4h4zM4 13v5c0 1.1.9 2 2 2h2v-4H4zm16 0v4h-4v4h2c1.1 0 2-.9 2-2v-5zM12 4c-1.1 0-2 .9-2 2v2H8c-.55 0-1 .45-1 1s.45 1 1 1h2v2H7c-.55 0-1 .45-1 1s.45 1 1 1h3v2H8c-.55 0-1 .45-1 1s.45 1 1 1h2v2c0 1.1.9 2 2 2s2-.9 2-2v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2v-2h3c.55 0 1-.45 1-1s-.45-1-1-1h-3v-2h2c.55 0 1-.45 1-1s-.45-1-1-1h-2V6c0-1.1-.9-2-2-2z"/></svg>
               {% when 'custom_image' %}
                 {% if block.settings.custom_icon_image != blank %}
-                  <img src="{{ block.settings.custom_icon_image | image_url: width: 60 }}" alt="{{ block.settings.item_heading }}" style="width: 60px; height: 60px; object-fit: contain;">
+                  <img src="{{ block.settings.custom_icon_image | image_url: width: 60 }}" alt="{{ block.settings.item_heading }}">
                 {% else %}
                   {# Fallback to info icon if custom image is selected but not set #}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
@@ -200,7 +206,7 @@
 
 {% schema %}
 {
-  "name": "Informa",
+  "name": "Fidelidade",
   "tag": "section",
   "class": "section-loyalty-points",
   "settings": [
@@ -404,6 +410,9 @@
             "icon_type": "custom_image",
             "item_heading": "Amaterasu Game: Troque Pontos!",
             "item_text": "Desafie-se no Amaterasu Game! A cada 1000 pontos no jogo, você pode trocar por 10 pontos da loja. É interativo e desafiador!"
+            // Nota: Após adicionar este código, você precisará ir no editor de tema do Shopify,
+            // adicionar esta seção e, no bloco "Amaterasu Game: Troque Pontos!",
+            // selecionar a imagem 'ninja.png' que deve ser previamente carregada em seus assets.
           }
         }
       ]
