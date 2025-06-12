@@ -17,10 +17,10 @@
         "padding_bottom": 28
       }
     },
-    "resgate_de_pontos_TKmDRc": {
+    "resgate_de_pontos_YEy8pL": {
       "type": "resgate-de-pontos",
       "blocks": {
-        "loyalty_item_NRiHRz": {
+        "loyalty_item_iDmt8b": {
           "type": "loyalty_item",
           "settings": {
             "icon_type": "coin",
@@ -28,7 +28,7 @@
             "item_text": "A cada R$1,00 gasto, você ganha 1 ponto automaticamente. Fique de olho em promoções de pontos extras!"
           }
         },
-        "loyalty_item_JQkUL3": {
+        "loyalty_item_HHQkF7": {
           "type": "loyalty_item",
           "settings": {
             "icon_type": "gift",
@@ -36,19 +36,28 @@
             "item_text": "Acumule pontos e resgate por descontos exclusivos, frete grátis, brindes especiais e muito mais!"
           }
         },
-        "loyalty_item_yYXDbP": {
+        "loyalty_item_DqPgHi": {
           "type": "loyalty_item",
           "settings": {
             "icon_type": "percent",
             "item_heading": "Níveis de Fidelidade",
             "item_text": "Suba de nível e desbloqueie benefícios ainda maiores, como acesso antecipado a lançamentos e ofertas personalizadas."
           }
+        },
+        "loyalty_item_NP6CzW": {
+          "type": "loyalty_item",
+          "settings": {
+            "icon_type": "custom_image",
+            "item_heading": "Amaterasu Game: Troque Pontos!",
+            "item_text": "Desafie-se no Amaterasu Game! A cada 1000 pontos no jogo, você pode trocar por 10 pontos da loja. É interativo e desafiador!"
+          }
         }
       },
       "block_order": [
-        "loyalty_item_NRiHRz",
-        "loyalty_item_JQkUL3",
-        "loyalty_item_yYXDbP"
+        "loyalty_item_iDmt8b",
+        "loyalty_item_HHQkF7",
+        "loyalty_item_DqPgHi",
+        "loyalty_item_NP6CzW"
       ],
       "name": "Informações sobre Pontos de Fidelidade",
       "settings": {
@@ -75,6 +84,6 @@
   },
   "order": [
     "main",
-    "resgate_de_pontos_TKmDRc"
+    "resgate_de_pontos_YEy8pL"
   ]
 }
