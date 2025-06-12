@@ -17,18 +17,6 @@
         "padding_bottom": 28
       }
     },
-    "custom_liquid_eJi9rh": {
-      "type": "custom-liquid",
-      "custom_css": [
-        ".container {background-color: #000 !important;}"
-      ],
-      "settings": {
-        "custom_liquid": "",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "resgate_de_pontos_TKmDRc": {
       "type": "resgate-de-pontos",
       "blocks": {
@@ -87,7 +75,6 @@
   },
   "order": [
     "main",
-    "custom_liquid_eJi9rh",
     "resgate_de_pontos_TKmDRc"
   ]
 }
