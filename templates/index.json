@@ -269,14 +269,15 @@
             "icon_type": "custom_image",
             "custom_icon_image": "shopify://shop_images/cloudflare.svg",
             "lottie_json_url": "https://lottie.host/cd2b4eef-e441-4990-b877-c9bbb3551a92/rLsf9xg0mu.lottie",
-            "item_heading": "Ganhe Pontos com Cada Compra",
-            "item_text": "A cada R$1,00 gasto, você ganha 1 ponto automaticamente. Fique de olho em promoções de pontos extras!"
+            "item_heading": "Amaterasu Points",
+            "item_text": "A cada R$1,00 gasto, você ganha 3 pontos.\n Fique de olho em promoções de pontos extras!"
           }
         },
         "loyalty_item_fX3GcP": {
           "type": "loyalty_item",
           "settings": {
-            "icon_type": "gift",
+            "icon_type": "custom_image",
+            "custom_icon_image": "shopify://shop_images/elo_22000adb-7c46-4243-8431-410f26d30001.svg",
             "lottie_json_url": "",
             "item_heading": "Troque por Recompensas Incríveis",
             "item_text": "Acumule pontos e resgate por descontos exclusivos, frete grátis, brindes especiais e muito mais!"
