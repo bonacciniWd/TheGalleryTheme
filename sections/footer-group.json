@@ -41,6 +41,14 @@
             "menu": "customer-account-main-menu"
           }
         },
+        "image_tJtQ64": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ultrarealistic_japanese_style_illustration_of_Amaterasu_the_sun_deity_positioned_on_a_mountain_with_the_setting_sun_as_behind_focal_point_conveying_their_unity._Red_rays_emanate_from.jpg",
+            "image_width": 395,
+            "alignment": ""
+          }
+        },
         "brand_information_n8xUUd": {
           "type": "brand_information",
           "settings": {
@@ -50,6 +58,7 @@
       },
       "block_order": [
         "6d82cc96-5353-4a02-a976-ffec657e4e01",
+        "image_tJtQ64",
         "brand_information_n8xUUd"
       ],
       "custom_css": [
