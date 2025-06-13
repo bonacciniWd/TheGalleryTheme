@@ -1,6 +1,483 @@
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background-color: #724620;
+    font-family: 'Papyrus', cursive; /* Adicionado fallback 'cursive' */
+    height: 1000vh; /* Essencial para o scrolltrigger ter espaço */
+    overflow-x: hidden; /* Evita scroll horizontal indesejado */
+  }
+
+  div {
+    position: absolute;
+  }
+
+  *::before, *::after {
+    content: '';
+    position: absolute;
+  }
+
+  .scroll {
+    width: 800px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.65);
+    transform-origin: center;
+    position: fixed; /* Manter fixo na tela enquanto o corpo rola */
+    opacity: 0; /* Começa invisível para evitar FOUC (Flash of Unstyled Content) */
+    z-index: 10; /* Garante que fique acima de outros elementos se necessário */
+  }
+
+  .scroll .roll.left {
+    left: 0%;
+  }
+
+  .scroll .roll.right {
+    right: 0%;
+  }
+
+  .scroll .roll {
+    width: 20%;
+    height: 100%;
+  }
+
+  .scroll .roller {
+    width: 100%;
+    height: 10%;
+    z-index: 100;
+  }
+
+  .scroll .roller::before {
+    width: 80%;
+    height: 30%;
+    top: 0%;
+    left: 10%;
+    border-radius: 5px 5px 0 0;
+    background-color: brown;
+    background-image: linear-gradient(to left, brown 0%, #ff4444 62%, brown 100%);
+  }
+
+  .scroll .roller::after {
+    width: 100%;
+    height: 70%;
+    left: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: chocolate;
+    background-image: linear-gradient(to left, #ad7115 0%, #f9bd63 62%, #ad7115 100%);
+  }
+
+  .scroll .roller.top {
+    top: 0;
+  }
+
+  .scroll .roller.bottom {
+    bottom: 0;
+    transform: rotateY(180deg) rotateZ(180deg);
+  }
+
+  .scroll .roll .paper-roll {
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+  }
+
+  .scroll .roll .paper-roll::before {
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 100%;
+    background-color: #804516;
+    background-image: linear-gradient(to left, #532d0d 0%, #b35b14 62%, #532d0d 100%);
+  }
+
+  .scroll .roll .paper-roll .texture {
+    width: 100%;
+    height: 95%;
+    top: 2.2%;
+    left: -2%;
+    filter: url(#mild-texture); /* Depende do SVG filters no HTML */
+    background-image: linear-gradient(to left, #d8ac69 0%, #f2d8a7 62%, #dab278 100%);
+  }
+
+  .scroll .roll .paper-roll .texture::before {
+    top: -2%;
+    left: -2%;
+    width: 98%;
+    height: 10%;
+    filter: url(#strong-texture); /* Depende do SVG filters no HTML */
+    border-top: 1px solid #503b1d;
+    background-image: linear-gradient(to left, #d8ac69 0%, #f2d8a7 62%, #dab278 100%);
+  }
+
+  .scroll .roll .paper-roll .texture::after {
+    top: 96%;
+    left: -2%;
+    width: 98%;
+    height: 5%;
+    filter: url(#strong-texture); /* Depende do SVG filters no HTML */
+    transform: rotateX(180deg);
+    border-top: 1px solid #503b1d;
+    background-image: linear-gradient(to left, #d8ac69 0%, #f2d8a7 62%, #dab278 100%);
+  }
+
+  .scroll .roll .paper-roll .shadow {
+    width: 100%;
+    height: 90%;
+    top: 5.5%;
+    left: 95%;
+    box-shadow: inset 25px 0px 20px -20px rgb(107, 82, 19);
+  }
+
+  .scroll .roll.right .paper-roll .shadow {
+    left: -95%;
+    box-shadow: inset -25px 0px 20px -20px rgb(107, 82, 19);
+  }
+
+  .scroll .paper {
+    width: 70%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .scroll .paper .edges {
+    width: 100%;
+    height: 100%;
+    filter: url(#strong-texture); /* Depende do SVG filters no HTML */
+  }
+
+  .scroll .paper .texture {
+    width: 100%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f2d7a6;
+    background-image: linear-gradient(to right, #ecc170 5%, #f2d7a6, #f2d7a6, #ecc170 95%);
+    clip-path: polygon(
+      0% 0%, 16% 0, 19% 7%, 23% 0, 49% 0%, 52% 4%, 55% 0%, 82% 0%, 85% 8%, 89% 0%, 100% 0%,
+      100% 100%, 90% 100%, 88% 97%, 85% 98%, 83% 94%, 80% 100%, 60% 100%, 57.5% 96%, 55% 100%, 25% 100%, 24% 97%, 23% 91%, 20% 96%, 15% 100%, 0% 100%
+    );
+    border: 1px solid #503b1d;
+    box-shadow:
+      inset 0px 0px 10px 10px rgba(185, 142, 71, 0.4),
+      inset 0px 0px 20px 20px rgba(185, 142, 71, 0.4);
+  }
+
+  .scroll .paper .spell {
+    width: 100%;
+    height: 100%;
+  }
+
+  .lore {
+    top: 5%;
+    width: 100%;
+    height: 90%;
+    position: relative;
+    line-height: 1.8;
+    font-size: 18px;
+    color: rgb(54, 30, 1);
+    filter: url(#ink); /* Depende do SVG filters no HTML */
+  }
+
+  .lore p {
+    padding: 8% 10% 0 0;
+  }
+
+  .lore .background { /* Este é um SVG, então as propriedades de margin/float podem se comportar diferente */
+    margin-top: 20%;
+    margin-left: -30%;
+    width: 80%;
+    float: left;
+    transform: rotateZ(45deg);
+    position: relative;
+    opacity: 0.5;
+    /* shape-outside: circle(18% at 10% 40%); */ /* shape-outside não se aplica diretamente a SVGs */
+    /* filter: url(#glow); */ /* Depende do SVG filters no HTML */
+  }
+
+  .lore .magic-circle {
+    width: 40%;
+    height: 0; /* height: 0; e padding-top para manter a proporção */
+    padding-top: 45%;
+    margin-top: 14%;
+    margin-right: 9%;
+    position: relative;
+    float: right;
+    /* shape-outside: circle(49% at 50% 76%); */ /* shape-outside não se aplica diretamente a SVGs */
+    /* filter: url(#glow); */ /* Depende do SVG filters no HTML */
+  }
+
+  .lore .magic-circle .greensock {
+    width: 45%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  .lore .magic-circle .shapes {
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Estilos específicos para as linhas e caminhos dos SVGs */
+  .lore .background path {
+    fill: none;
+    stroke: black; /* Certifique-se de que a cor é visível no seu fundo */
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+  }
+
+  .magic-circle .greensock .gray-line{fill:none;stroke:black;stroke-width:3;stroke-miterlimit:10;}
+  .magic-circle .greensock .green-line{fill:none;stroke:black;stroke-width:3;stroke-miterlimit:10;}
+  .magic-circle .greensock .green-line-thin{fill:none;stroke:black;stroke-width:2;stroke-miterlimit:10;}
+
+  .magic-circle .shapes .circle-paths path {fill:none;stroke:black;stroke-width:1;stroke-miterlimit:10;}
+  .magic-circle .shapes .circle-text path {fill:none;stroke:black;stroke-width:0.5;stroke-miterlimit:10;}
+
+  /* Para esconder o texto do caminho inicial */
+  .circle-text textPath {
+      opacity: 0;
+  }
+
+</style>
+
+<section class="scroll-section">
+  <div class="scroll">
+    <div class="paper">
+      <div class="edges">
+        <div class="texture"></div>
+      </div>
+      <div class="spell">
+        <div class="lore">
+          <svg class="background" viewBox="0 0 450 200">
+            <style type="text/css">
+              .background path {fill:none;stroke:black;stroke-width:1;stroke-miterlimit:10;}
+            </style>
+            <g>
+              <path class="left" d="m175 100a70 70 0 0 1-70 70 70 70 0 0 1-70-70 70 70 0 0 1 70-70 70 70 0 0 1 70 70z" />
+              <path class="right" d="m180 97h198v6h-198z" />
+              <path class="left" d="m427 100a25 25 0 0 1-25 25 25 25 0 0 1-25-25 25 25 0 0 1 25-25 25 25 0 0 1 25 25z" />
+              <path class="right" d="m422 100a20 20 0 0 1-20 20 20 20 0 0 1-20-20 20 20 0 0 1 20-20 20 20 0 0 1 20 20" />
+              <path class="left" d="m180 100a75 75 0 0 1-75 75 75 75 0 0 1-75-75 75 75 0 0 1 75-75 75 75 0 0 1 75 75" />
+            </g>
+          </svg>
+          <div class="magic-circle">
+            <svg class="greensock" viewBox="0 0 409 409">
+              <style type="text/css">
+                .gray-line{fill:none;stroke:black;stroke-width:3;stroke-miterlimit:10;}
+                .green-line{fill:none;stroke:black;stroke-width:3;stroke-miterlimit:10;}
+                .green-line-thin{fill:none;stroke:black;stroke-width:2;stroke-miterlimit:10;}
+              </style>
+              <g id="lines">
+                <path class="gray-line" d="M223.2,391.63"></path>
+                <path class="gray-line" d="M185.58,386.53c0.01,0.17,0.03,0.34,0.04,0.51"></path>
+                <path class="gray-line" d="M50.11,179.8"></path>
+                <path class="gray-line" d="M68.56,127.49"></path>
+                <path class="gray-line" d="M189.29,78.11"></path>
+                <path class="gray-line" d="M309.62,371.11"></path>
+                <path class="gray-line" d="M260.77,388.33"></path>
+                <path class="gray-line" d="M309.62,371.11"></path>
+                <path class="gray-line" d="M280.86,10.67c-1.8-1.53-8.79-4.17-16.08-4.33c-7.28-0.17-17.16,2.5-19.89,4.33 c-2.73,1.83-3.76,19.45-1.41,30.06c2.35,10.61,3.24,15.62,7.54,18.99c4.3,3.37,17.43,3,19.87,1.89s8.05-3.43,9.97-12.11 C282.78,40.83,286.56,15.52,280.86,10.67z"></path>
+                <path class="gray-line" d="M282.35,72.5c0,0-0.4-10.86-1.58-22.62"></path>
+                <path class="gray-line" d="M244.9,47.04c-1.42,8.48-3.17,18.29-3.37,20.01"></path>
+                <path class="green-line" d="M282.35,72.5c1.9-1.33,4.73-2.87,7.56-2.35c2.83,0.52,6.99-0.07,13.83,8.56c0,0,4.66-2.12,8.08,3.71 c0,0,7.25-2.92,7.92,4.99l-10.31,0.72c0,0-4.92-4.26-8.23-5.73c-3.3-1.48-7.55-3.14-10.05-3.69c-2.5-0.54-14.92,3.54-19.17,3.54 c-4.25,0-17.03-4.09-20.97-4.38c-3.94-0.29-16.47,1.18-23.9,0.24s-10.05-3.96-19.46-4.53c-1.75-0.08-3.67,0-3.67,0 s5.56-6.8,10.33-6.33c4.77,0.47,6.42,2.17,6.42,2.17s3.88-10.1,20.78-2.36c-0.2,1.72,17.61,8.78,25.15,9.82 S275.37,76.83,282.35,72.5z"></path>
+                <path class="gray-line" d="M305.53,147.72c2.08,2.89,8.21,6.37,8.21,6.37c-1.25,1.73-1.07,10.17,0,12.67s6.34,9.44,6.34,9.44 s-4.75,1.23-7.67,0.81c-2.92-0.42-5,1.25-7.58,2.92c-2.58,1.67-3.02,4.93-3.02,4.93c0.38,4.47,1.65,14.03,1.65,14.03 c2.87,2.8,9.04,4.79,14.31,5.95c5.27,1.17,7.39-1.92,11.14-5.95c3.75-4.04,5.88-15.09,5.88-15.09c8.63-9.96,10.7-14.79,10.53-26.7 c-0.17-11.92-8-11.67-8-11.67l-6.25,2.58c1.58-0.83,5.92-2.42,7.08-4.39c4.92-14.8-5.58-22.2-5.58-22.2 c4.92-12.58,2.25-19.25-0.77-24.88c-3.3-6.16-10.35-8.6-12.06-8.99c-2-0.45-3.61-0.45-10.16,0.75"></path>
+                <path class="gray-line" d="M313.08,117.39c0.3,5.23,1.38,13.48-3.98,23.73c-5.35,10.25-6.53,8.68-7.98,33.66c0,0-20.01,3.22-32.38,1.72 c-12.37-1.5-33.62-10.88-33.62-10.88l-3.12-17.5c0,0-11.88-5.75-20.5-18.5"></path>
+                <path class="green-line" d="M70.29,167.87c2.17,3.54,12.21,6.79,14.71,26.63s3.25,32.33,12.71,44.83s22.13,15,30.46,16.67 c8.33,1.67,29.31-2.22,44.17,4c14.86,6.22,18.55,12.84,22.03,17c5.43,6.5,13.35,8.71,13.35,8.71"></path>
+                <line class="gray-line" x1="235.12" y1="165.62" x2="234.11" y2="176.59"></line>
+                <path class="gray-line" d="M224.69,202.02c0,0-4.19,13.48-6.19,23.85s-5.38,27.38-0.62,45.38c0,0-9,8.12-13.88,23.75s-4.62,40-4.75,46.38 s-1.51,17.7-1.51,17.7s12.05,3.15,22.17,2.27c0,0,0.6-12.74,2.83-21.59s9.74-16.9,12.25-27.12s2.58-23,2.58-23s4.54-2,6.29-11 c0,0,13.38-5.62,19.38-22.62s8.38-37.18,10.75-43.47"></path>
+                <path class="gray-line" d="M263.25,256c0,0,6.5,13.75,7,18.5s0,8.75,0,8.75s-11.6,2.29-14.92,16.3"></path>
+                <path class="gray-line" d="M296.32,299.69c0,0,0.68-3.94,3.15-11.44s0.91-15.88,0.91-15.88c8.62-11.75,8.38-21.38,8.12-36.62 s-1.75-18.88-4.25-32.21s-3.12-28.76-3.12-28.76"></path>
+                <path class="gray-line" d="M199.19,359.42c-1.08,1.92-4.02,5.17-5.1,8.42c-1.08,3.25-1.25,5.25-1.92,7.58c-0.67,2.33-6.93,6.39-6.59,11.11 c0.34,4.72,1.02,8.47,6.58,11.47s15.26,4.17,20.84,3.25s9.92-2.42,10.21-4.25c0.29-1.83,1.02-3.83-2.14-12.95 c-3.16-9.13,0.88-5.83,0.93-12.21c0.04-6.38-2.57-8.33-2.74-10.44"></path>
+                <path class="green-line-thin" d="M251.68,310.88c11.83,2.03,26.71,4.05,46.63-1.44"></path>
+                <path class="green-line-thin" d="M252.91,316.65c5.14,0.85,26.23,4.05,44.54-1.32"></path>
+                <path class="green-line-thin" d="M254.56,323.22c4.67,0.86,22.11,2.8,41.98-1.26"></path>
+                <path class="green-line-thin" d="M256.62,329.01c3.18,0.28,23.27,2.37,39.17-1.93"></path>
+                <path class="green-line-thin" d="M259.74,372.38c3.23,1.48,8.44,3.76,15.54,3.75c0,0-1.71,7.15,1.85,14.34"></path>
+                <path class="green-line-thin" d="M319.88,376.62c2.21,2.46,6.3,6.38,6.52,9.91c0.23,3.53-3.79,6.1-5.86,7.32"></path>
+                <path class="green-line" d="M189.29,78.11c-15.98,5.42-50.69,13.62-92.45,34.22S42.67,145,33.17,154.83c-9.5,9.83-19.67,26.27-23.33,38.72 c-3.67,12.45-4,15.28-3.67,17.78c0.33,2.5,2,2.61,6.67-1.95c4.67-4.55,27.17-24.8,54.67-40.43s87.12-42.81,93.27-45.91"></path>
+                <path class="green-line" d="M254.51,299.27c6.2,2.09,10.95,2.89,21.42,2.81c10.47-0.08,16.51-1.11,18.45-1.96s5.63-0.77,4.94,3.05 c-0.69,3.82-3.44,22.07-4.06,30.45s-0.49,25,0.54,28.68c1.03,3.68,13.59,8.31,17.34,10.63s11.65,6.39,17.76,8.23 c6.11,1.84,9.44,2.8,10.04,5.37c0.32,1.35-1.62,6.71-11.61,7.43c-10,0.73-17.31-1.77-30.84-2.8c-13.53-1.02-16.92-0.21-28.01-1.06 c-11.1-0.85-12.96-2.72-13.53-7.47c-0.57-4.75,2.93-9.25,4.81-15.62s1.88-17.62-0.12-25s-5.63-12.75-7.63-20.88 S247.89,297.05,254.51,299.27z"></path>
+                <path class="gray-line" d="M272,82.25c-4.25,0-17.03-4.09-20.97-4.38c-3.94-0.29-16.47,1.18-23.9,0.24s-10.05-3.96-19.46-4.53 c-1.75-0.08-3.67,0-3.67,0c-8.25,1.17-22.38,2.92-25.38,23.67c0,0-11.94-0.71-13.62,13.92s-9.08,14.24-10.54,18.35 c-1.46,4.11,0.66,20.86,13.91,29.36S196,174.5,200.12,177s7.59,5.41,7.59,5.41s-2.07,7.54,7.41,14.46c0,0-0.13,4.78,6.58,5.13 s8.8-3.26,10.92-5.13s9.23-7.42,9.55-9.21c0.32-1.79,0.09-4.77-4.92-8.39s-3.22-5.47-17.55-7.18c0,0-8.34-8.09-10.84-14.47 s-6.12-22-17.38-27.75l3.16,2.04c0.15,0.1,0.29,0.21,0.42,0.34l3.46,3.41c0,0,9.71-1.41,12.96-6.04s8.23-10.12,8.93-22l2.19-3.55 c0,0,14.26,11.67,23.26,11.05S267.5,110,274.62,110s19.62-0.83,31.63,4.62s12.14,3.38,12.69,2.5c0.55-0.88,2.6-7,1.14-12.5 c-1.46-5.5-10.64-16.5-10.64-16.5s-4.92-4.26-8.23-5.73c-3.3-1.48-7.55-3.14-10.05-3.69C288.67,78.17,276.25,82.25,272,82.25"></path>
+              </g>
+            </svg>
+            <svg class="shapes" viewBox="0 0 400 400">
+              <style type="text/css">
+                .circle-paths path {fill:none;stroke:black;stroke-width:1;stroke-miterlimit:10;}
+                .circle-text path {fill:none;stroke:black;stroke-width:0.5;stroke-miterlimit:10;}
+              </style>
+              <g class="circle-paths">
+                <path class="left" d="m390 200a190 190 0 0 1-190 190 190 190 0 0 1-190-190 190 190 0 0 1 190-190 190 190 0 0 1 190 190" />
+                <path class="right" d="m370 200a170 170 0 0 1-170 170 170 170 0 0 1-170-170 170 170 0 0 1 170-170 170 170 0 0 1 170 170" />
+                <path class="left" d="m315 200a115 115 0 0 1-115 115 115 115 0 0 1-115-115 115 115 0 0 1 115-115 115 115 0 0 1 115 115" />
+                <path class="right" d="m80 80h240v240h-240z" />
+                <path class="left" transform="rotate(45)" d="m163-121h240v240h-240z" />
+                <path class="right" transform="rotate(45)" d="m166-117h233v233h-233z" />
+                <path class="left" d="m84 84h233v233h-233z" />
+              </g>
+              <g class="circle-text" aria-label="GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK">
+                <text>
+                  <textPath href="#circlePathForText" startOffset="0%" class="circle-text-path">
+                    {{ section.settings.circle_text_content | escape }}
+                  </textPath>
+                </text>
+                <path id="circlePathForText" d="M200,200 m-170,0 a170,170 0 1,1 340,0 a170,170 0 1,1 -340,0" style="display:none;"></path>
+              </g>
+            </svg>
+          </div>
+          <p>{{ section.settings.lore_content }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="roll left">
+      <div class="roller top"></div> <div class="paper-roll">
+        <div class="shadow"></div>
+        <div class="texture"></div>
+      </div>
+      <div class="roller bottom"></div>
+    </div>
+    <div class="roll right">
+      <div class="roller top"></div> <div class="paper-roll">
+        <div class="shadow"></div>
+        <div class="texture"></div>
+      </div>
+      <div class="roller bottom"></div>
+    </div>
+  </div>
+
+  <svg width="0" height="0" style="position: absolute; display: none;">
+    <defs>
+      <filter id="strong-texture">
+        <feTurbulence in="SourceGraphic" baseFrequency='0.01' numOctaves="5" result='noise' stitchTiles="stitch" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" />
+      </filter>
+      <filter id="mild-texture">
+        <feTurbulence in="SourceGraphic" baseFrequency='0.006' numOctaves="1" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" />
+      </filter>
+      <filter id="ink">
+        <feTurbulence baseFrequency="0.05 0.01" type="fractalNoise" numOctaves="10" seed="0" result="noise" />
+        <feColorMatrix type="matrix" values=
+                        "0 0 0 0 0,
+                         0 0 0 0 0,
+                         0 0 0 0 0,
+                         0 0 0 -1.2 1.2"
+                        in="noise" result="texture" />
+        <feComposite in="SourceGraphic" in2="texture" operator="in"/>
+      </filter>
+      </defs>
+  </svg>
+</section>
+
+<script>
+  // Registrar plugins (se não registrados globalmente no theme.liquid)
+  // É melhor garantir que eles estão registrados.
+  gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Aumentar a altura do body para permitir o scroll da animação
+    // O CSS já define 1000vh, mas esta linha pode ser um fallback se houver conflito.
+    // document.body.style.height = '1000vh';
+
+    const loreParagraph = document.querySelector('.lore p');
+    let lore;
+
+    // Verificar se o SplitText é necessário e se o elemento existe
+    if (loreParagraph && typeof SplitText !== 'undefined') {
+      lore = new SplitText(loreParagraph, { type: 'chars,words', });
+    } else {
+      console.warn("Elemento '.lore p' não encontrado ou SplitText não carregado.");
+    }
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: 'body', // Dispara a animação com base no scroll do body
+        start: 'top top', // Começa quando o topo do body atinge o topo da viewport
+        end: 'bottom bottom', // Termina quando o fundo do body atinge o fundo da viewport
+        scrub: true, // Anima a linha do tempo conforme o scroll
+        // markers: true // Descomente para ver os marcadores do ScrollTrigger (útil para debug)
+      },
+    })
+    .from('.roll.left', {
+      duration: 4,
+      left: '30%',
+    }, 0)
+    .from('.roll.right', {
+      duration: 4,
+      right: '30%',
+    }, 0)
+    .from('.paper', {
+      duration: 4,
+      clipPath: 'polygon(40% 0%, 60% 0%, 60% 100%, 40% 100%)',
+    }, 0)
+    .from(lore ? lore.chars : [], { // Certifica-se que lore existe antes de usar .chars
+      duration: 1,
+      stagger: 0.1,
+      opacity: 0,
+    })
+    .fromTo('.greensock .gray-line, .greensock .green-line, .greensock .green-line-thin',
+      { drawSVG: 0 },
+      { duration: 10, drawSVG: '102%' },
+      20,
+    )
+    .fromTo('.shapes .circle-paths .left, .background .left', // Modificado para especificar o SVG pai
+      { drawSVG: '100% 100%' },
+      { duration: 10, drawSVG: '0% 102%' },
+      15,
+    )
+    .fromTo('.shapes .circle-paths .right, .background .right', // Modificado para especificar o SVG pai
+      { drawSVG: 0 },
+      { duration: 10, drawSVG: '102%' },
+      15,
+    )
+    .fromTo('.circle-text', // Assumindo que este é o <textPath> ou <div> dentro de .shapes
+      { opacity: 0 },
+      { duration: 10, opacity: 1 },
+      15,
+    );
+
+    // Fade-in inicial do elemento .scroll
+    requestAnimationFrame(() => {
+      const scrollElement = document.querySelector('.scroll');
+      if (scrollElement) {
+        scrollElement.style.opacity = 1;
+      }
+    });
+  });
+</script>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Animação de Scroll",
+    "tag": "section",
+    "class": "section-scroll-animation",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "lore_content",
+        "label": "Conteúdo do Pergaminho",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus felis est, convallis in consectetur a, tempus at. Phasellus et dignissim velit Lorem ipsum siit. <br><br>Sed porta ac lectus ut mattis. Praesent ante neque, venenatis non nulla non, ultricies vehicula lacus sem diam. Integer tempus sem diam, id tincidunt nisl viverra ut.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+      },
+      {
+        "type": "text",
+        "id": "circle_text_content",
+        "label": "Texto do Círculo",
+        "default": "GREENSOCK GREENSOCK GREENSOCK GREENSOCK GREENSOCK"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Animação de Scroll"
+      }
+    ]
   }
 {% endschema %}
