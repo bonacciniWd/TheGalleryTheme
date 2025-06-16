@@ -7,79 +7,14 @@
 
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
+    {% assign excluded_titles = 'Inicio, Entrar em contato, Todos os produtos, Quem somos' | split: ', ' %}
+    {% assign other_links_exist = false %}
+
+    {# Primeiro, renderize os links que NÃO devem estar no accordion #}
     {%- for link in section.settings.menu.links -%}
-      <li>
-        {%- if link.links != blank -%}
-          <header-menu>
-            <details id="Details-HeaderMenu-{{ forloop.index }}">
-              <summary
-                id="HeaderMenu-{{ link.handle }}"
-                class="header__menu-item list-menu__item link focus-inset"
-              >
-                <span
-                  {%- if link.child_active %}
-                    class="header__active-menu-item"
-                  {% endif %}
-                >
-                  {{- link.title | escape -}}
-                </span>
-                {{- 'icon-caret.svg' | inline_asset_content -}}
-              </summary>
-              <ul
-                id="HeaderMenu-MenuList-{{ forloop.index }}"
-                class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
-                role="list"
-                tabindex="-1"
-              >
-                {%- for childlink in link.links -%}
-                  <li>
-                    {%- if childlink.links == blank -%}
-                      <a
-                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                        href="{{ childlink.url }}"
-                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
-                        {% if childlink.current %}
-                          aria-current="page"
-                        {% endif %}
-                      >
-                        {{ childlink.title | escape }}
-                      </a>
-                    {%- else -%}
-                      <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
-                        <summary
-                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                          class="header__menu-item link link--text list-menu__item focus-inset caption-large"
-                        >
-                          <span>{{ childlink.title | escape }}</span>
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
-                        </summary>
-                        <ul
-                          id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                          class="header__submenu list-menu motion-reduce"
-                        >
-                          {%- for grandchildlink in childlink.links -%}
-                            <li>
-                              <a
-                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                href="{{ grandchildlink.url }}"
-                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
-                                {% if grandchildlink.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
-                                {{ grandchildlink.title | escape }}
-                              </a>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      </details>
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-              </ul>
-            </details>
-          </header-menu>
-        {%- else -%}
+      {%- assign link_title = link.title | strip -%}
+      {%- if excluded_titles contains link_title -%}
+        <li>
           <a
             id="HeaderMenu-{{ link.handle }}"
             href="{{ link.url }}"
@@ -96,8 +31,83 @@
               {{- link.title | escape -}}
             </span>
           </a>
-        {%- endif -%}
-      </li>
+        </li>
+      {%- else -%}
+        {# Se este link NÃO está na lista de excluídos, ele deve ir para o accordion #}
+        {%- assign other_links_exist = true -%}
+      {%- endif -%}
     {%- endfor -%}
+
+    {# Agora, crie o item do accordion se houver outros links #}
+    {%- if other_links_exist -%}
+      <li>
+        <header-menu>
+          <details id="Details-HeaderMenu-Accordion"> {# ID único para este accordion #}
+            <summary
+              id="HeaderMenu-Accordion-Summary"
+              class="header__menu-item list-menu__item link focus-inset"
+            >
+              <span>Categorias</span> {# Título do seu accordion, você pode mudar #}
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </summary>
+            <ul
+              id="HeaderMenu-MenuList-Accordion" {# ID único para a lista do accordion #}
+              class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+              role="list"
+              tabindex="-1"
+            >
+              {%- for link in section.settings.menu.links -%}
+                {%- assign link_title = link.title | strip -%}
+                {%- unless excluded_titles contains link_title -%}
+                  <li>
+                    {%- if link.links == blank -%}
+                      <a
+                        id="HeaderMenu-Accordion-{{ link.handle }}"
+                        href="{{ link.url }}"
+                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if link.current %} list-menu__item--active{% endif %}"
+                        {% if link.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{ link.title | escape }}
+                      </a>
+                    {%- else -%}
+                      <details id="Details-HeaderSubMenu-Accordion-{{ link.handle }}"> {# ID para sub-accordions #}
+                        <summary
+                          id="HeaderMenu-Accordion-{{ link.handle }}"
+                          class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                        >
+                          <span>{{ link.title | escape }}</span>
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </summary>
+                        <ul
+                          id="HeaderMenu-SubMenuList-Accordion-{{ link.handle }}" {# ID para lista de sub-accordion #}
+                          class="header__submenu list-menu motion-reduce"
+                        >
+                          {%- for childlink in link.links -%}
+                            <li>
+                              <a
+                                id="HeaderMenu-Accordion-{{ link.handle }}-{{ childlink.handle }}"
+                                href="{{ childlink.url }}"
+                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                                {% if childlink.current %}
+                                  aria-current="page"
+                                {% endif %}
+                              >
+                                {{ childlink.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </details>
+                    {%- endif -%}
+                  </li>
+                {%- endunless -%}
+              {%- endfor -%}
+            </ul>
+          </details>
+        </header-menu>
+      </li>
+    {%- endif -%}
   </ul>
 </nav>
