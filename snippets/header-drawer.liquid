@@ -18,6 +18,31 @@ Usage:
     </summary>
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
+        <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary
+      class="header__icon header__icon--menu header__icon--summary link focus-inset"
+      aria-label="{{ 'sections.header.menu' | t }}"
+    >
+      <span>
+        {{- 'icon-hamburger.svg' | inline_asset_content -}}
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          </div>
+
+        {# Adicione a sua seção de promoções AQUI, dentro do drawer #}
+        {% section 'header-drawer-promo' %}
+
+        <div class="menu-drawer__utility-links">
+          </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>
         <div class="menu-drawer__navigation-container">
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
@@ -46,31 +71,6 @@ Usage:
                           tabindex="-1"
                         >
                           <div class="menu-drawer__inner-submenu">
-                            <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
-  <details id="Details-menu-drawer-container" class="menu-drawer-container">
-    <summary
-      class="header__icon header__icon--menu header__icon--summary link focus-inset"
-      aria-label="{{ 'sections.header.menu' | t }}"
-    >
-      <span>
-        {{- 'icon-hamburger.svg' | inline_asset_content -}}
-        {{- 'icon-close.svg' | inline_asset_content -}}
-      </span>
-    </summary>
-    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
-      <div class="menu-drawer__inner-container">
-        <div class="menu-drawer__navigation-container">
-          </div>
-
-        {# Adicione a sua seção de promoções AQUI, dentro do drawer #}
-        {% section 'header-drawer-promo' %}
-
-        <div class="menu-drawer__utility-links">
-          </div>
-      </div>
-    </div>
-  </details>
-</header-drawer>
                             <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
                               <span class="svg-wrapper">
                                  {{- 'icon-arrow.svg' | inline_asset_content -}}
