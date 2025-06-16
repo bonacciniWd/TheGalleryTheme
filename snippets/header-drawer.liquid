@@ -23,7 +23,7 @@
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {% assign fixed_links = "Início,Entrar em contato,Todos os produtos,Quem somos" | split: ',' %}
 
-              {# Renderiza os links fixos primeiro #}
+            
               {%- for link in section.settings.menu.links -%}
                 {%- if fixed_links contains link.title -%}
                   <li>
@@ -139,7 +139,6 @@
                 {%- endif -%}
               {%- endfor -%}
 
-              {# Inicia o acordeão "Categorias" #}
               <li>
                 <details id="Details-menu-drawer-categories">
                   <summary
