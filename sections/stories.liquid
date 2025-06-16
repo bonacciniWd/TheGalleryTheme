@@ -71,7 +71,7 @@
               <div class="story-avatar-gradient">
                 <video
                   src="{{ story.video | file_url }}" 
-                  poster="{{ story.imagem | image_url: width: 80, height: 80 }}" {# Opcional: usar o campo 'imagem' como poster se existir, senão o navegador tentará um frame inicial. Ou crie um novo campo 'video_thumbnail' no metaobjeto. #}
+                  poster="{{ story.imagem | image_url: width: 60, height: 60 }}" 
                   loading="lazy"
                   width="80"
                   height="80"
