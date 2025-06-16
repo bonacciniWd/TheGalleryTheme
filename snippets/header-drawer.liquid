@@ -1,8 +1,8 @@
 {% comment %}
-  Renders a header drawer menu for mobile and desktop.
+Renders a header drawer menu for mobile and desktop.
 
-  Usage:
-  {% render 'header-drawer' %}
+Usage:
+{% render 'header-drawer' %}
 {% endcomment %}
 
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
@@ -23,7 +23,6 @@
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {% assign fixed_links = "Início,Entrar em contato,Todos os produtos,Quem somos,Pedidos" | split: ',' %}
 
-            
               {%- for link in section.settings.menu.links -%}
                 {%- if fixed_links contains link.title -%}
                   <li>
@@ -49,7 +48,7 @@
                           <div class="menu-drawer__inner-submenu">
                             <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
                               <span class="svg-wrapper">
-                                {{- 'icon-arrow.svg' | inline_asset_content -}}
+                                 {{- 'icon-arrow.svg' | inline_asset_content -}}
                               </span>
                               {{ link.title | escape }}
                             </button>
@@ -75,10 +74,10 @@
                                       >
                                         {{ childlink.title | escape }}
                                         <span class="svg-wrapper">
-                                          {{- 'icon-arrow.svg' | inline_asset_content -}}
+                                           {{- 'icon-arrow.svg' | inline_asset_content -}}
                                         </span>
                                         <span class="svg-wrapper">
-                                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                                           {{- 'icon-caret.svg' | inline_asset_content -}}
                                         </span>
                                       </summary>
                                       <div
@@ -90,7 +89,7 @@
                                           aria-expanded="true"
                                         >
                                           <span class="svg-wrapper">
-                                            {{- 'icon-arrow.svg' | inline_asset_content -}}
+                                             {{- 'icon-arrow.svg' | inline_asset_content -}}
                                           </span>
                                           {{ childlink.title | escape }}
                                         </button>
@@ -166,7 +165,7 @@
                         Categorias
                       </button>
                       <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
-                       
+
                         {%- for link in section.settings.menu.links -%}
                           {%- unless fixed_links contains link.title -%}
                             <li>
@@ -445,5 +444,4 @@
       </div>
     </div>
   </details>
-  
 </header-drawer>
