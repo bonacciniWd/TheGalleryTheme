@@ -1,6 +1,159 @@
+<div class="header-drawer-promo">
+  {%- assign promo_collection_handle = section.settings.promo_collection_handle -%}
+  {%- assign promo_collection = collections[promo_collection_handle] -%}
+
+  {%- if promo_collection.products.size > 0 -%}
+    {# Exibe produtos da coleção de promoções se houver #}
+    <div class="promo-products-grid">
+      {%- for product in promo_collection.products limit: section.settings.max_promo_products -%}
+        <a href="{{ product.url }}" class="promo-product-card" style="padding: 8px;">
+          {%- if product.featured_image -%}
+            <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.featured_image.alt | escape }}" style="width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
+          {%- endif -%}
+          <h3 class="promo-product-title">{{ product.title }}</h3>
+          <p class="promo-product-price">{{ product.price | money }}</p>
+        </a>
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    {# Exibe os cards estáticos se não houver produtos na coleção de promoções #}
+    <div class="featured-cards-grid">
+      {%- for block in section.blocks limit: section.settings.max_static_cards -%}
+        <a href="{{ block.settings.card_link }}" class="featured-card" style="padding: 8px;">
+          {%- if block.settings.card_image != blank -%}
+            <img src="{{ block.settings.card_image | img_url: 'medium' }}" alt="{{ block.settings.card_title | escape }}" style="width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;">
+          {%- endif -%}
+          <h3 class="card-title">{{ block.settings.card_title | escape }}</h3>
+        </a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Produtos em Promocao"
+    },
+    {
+      "type": "text",
+      "id": "promo_collection_handle",
+      "label": "Handle da Colecao",
+      "info": "Ex: 'promocoes'",
+      "default": "promocoes"
+    },
+    {
+      "type": "range",
+      "id": "max_promo_products",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "uni",
+      "label": "Max. produtos",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Cards Estaticos"
+    },
+    {
+      "type": "range",
+      "id": "max_static_cards",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "uni",
+      "label": "Max. cards",
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card Estatico",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Imagem"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Titulo",
+          "default": "Titulo do Card"
+        },
+        {
+          "type": "url",
+          "id": "card_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cards de Destaque / Promocao"
+    }
+  ]
+}
 {% endschema %}
+
+<style>
+  .header-drawer-promo {
+    margin-top: 16px; /* Espaçamento superior */
+    padding: 8px; /* Padding de 8px dos cantos */
+    text-align: center;
+  }
+
+  .featured-cards-grid,
+  .promo-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Ajusta o número de colunas automaticamente */
+    gap: 8px; /* Espaçamento entre os cards/produtos */
+    justify-items: center;
+  }
+
+  .featured-card,
+  .promo-product-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex; /* Para centralizar o conteúdo verticalmente */
+    flex-direction: column; /* Para empilhar imagem e texto */
+    align-items: center; /* Para centralizar horizontalmente */
+    width: 100%; /* Garante que os cards ocupem o espaço disponível */
+    max-width: 150px; /* Limite máximo para a largura de cada card */
+  }
+
+  .featured-card img,
+  .promo-product-card img {
+    display: block;
+    border-radius: 4px; /* Opcional: bordas arredondadas para as imagens */
+    object-fit: cover; /* Garante que a imagem cubra o espaço mantendo o aspect ratio */
+  }
+
+  .card-title,
+  .promo-product-title {
+    font-size: 0.9em;
+    margin-top: 4px;
+    word-break: break-word; /* Quebra de palavra para títulos longos */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .promo-product-price {
+    font-size: 0.8em;
+    color: #666;
+    text-align: center; /* Centraliza o preço */
+  }
+
+  /* Responsividade básica */
+  @media (min-width: 750px) {
+    .featured-cards-grid,
+    .promo-products-grid {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+  }
+</style>
