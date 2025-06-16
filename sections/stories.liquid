@@ -60,11 +60,11 @@
             {% if story.imagem %}
               <div class="story-avatar-gradient">
                 <img
-                  src="{{ story.imagem | image_url: width: 80, height: 80 }}"
+                  src="{{ story.imagem | image_url: width: 60, height: 60 }}"
                   alt="{{ story.title | escape }}"
                   loading="lazy"
-                  width="80"
-                  height="80"
+                  width="60"
+                  height="60"
                 />
               </div>
             {% elsif story.video %}
