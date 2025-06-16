@@ -1,4 +1,3 @@
-/* Novo estilo para o placeholder do logo da loja */
 .story-store-logo-placeholder {
   width: 40px;
   height: 40px;
@@ -23,6 +22,7 @@
   top: 0;
   left: 0;
   z-index: 10; /* Acima do conteúdo principal */
+  background: rgba(0,0,0,0.6); /* Adiciona um fundo para cobrir o conteúdo por trás */
 }
 
 .story-store-logo {
@@ -37,7 +37,7 @@
   font-weight: bold;
   font-size: 16px;
   color: #fff;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; REMOVIDO: O gap no header já cuida do espaçamento */
 }
 
 /* Barra de progresso */
@@ -45,11 +45,11 @@
   width: 100%;
   height: 4px;
   background: #333;
-  /* Removido margin: 5px 0 10px 0; - Posicionamento absoluto abaixo do header */
   border-radius: 2px;
   overflow: hidden;
   position: absolute; /* Posicionado dentro do modal-content */
-  top: 55px; /* Aproximadamente abaixo do header (10px padding top + 40px logo/nome + 5px padding bottom) */
+  /* Ajuste o top para que fique logo abaixo do header */
+  top: 55px; /* (padding-top: 10px) + (height: 40px) + (padding-bottom: 5px) = 55px */
   left: 0;
   right: 0;
   z-index: 11; /* Acima do header */
@@ -77,7 +77,7 @@
   width: 100%; /* Ocupa a largura total do modal-content */
   box-sizing: border-box; /* Inclui padding na largura */
   z-index: 10; /* Acima do conteúdo principal */
-  background: rgba(0,0,0,0.5); /* Fundo semi-transparente para melhor leitura */
+  background: rgba(0,0,0,0.6); /* Fundo semi-transparente para melhor leitura */
 }
 
 .story-stats-left {
@@ -145,7 +145,7 @@
   width: 100%;
   height: auto;
   overflow-x: auto;
- background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 10px 0;
   position: sticky;
   top: 0;
@@ -251,8 +251,8 @@
   background: #111;
   border-radius: 12px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: flex; /* MANTEM FLEX */
+  flex-direction: column; /* MANTEM COLUMN */
   align-items: center;
   text-align: center;
   color: #fff;
@@ -260,22 +260,25 @@
 }
 
 .story-modal-content #story-media {
-  flex-grow: 1; /* Permite que ocupe o espaço restante */
+  position: absolute; /* MUITO IMPORTANTE: Agora ele é posicionado absolutamente */
+  top: 59px; /* Altura do header (55px) + 4px da progress bar */
+  bottom: 70px; /* Altura aproximada do footer (padding 15+15=30 + altura do conteúdo ~40px = 70px) */
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* Padding top e bottom para que o conteúdo não fique sob o header e footer */
-  /* Ajustado para considerar header (aprox 55px) e footer (aprox 60px de altura com padding) */
-  padding: 65px 0 75px 0;
-  box-sizing: border-box;
+  height: auto; /* Deixa a altura ser calculada automaticamente */
+  box-sizing: border-box; /* Garante que padding e bordas sejam incluídos na dimensão */
+  background-color: #000; /* Fundo preto para o conteúdo da mídia */
 }
 
 .story-modal-content img,
 .story-modal-content video {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* Garante que a mídia seja contida dentro do espaço */
   border-radius: 0;
 }
 
@@ -328,11 +331,10 @@
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  display: flex; /* <-- MUITO IMPORTANTE: Defina como flex na base */
+  display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
-  /* Remova qualquer 'display: none;' ou 'display: flex;' aqui */
 }
 
 .story-nav-btn:hover {
@@ -467,7 +469,7 @@
     max-height: 85vh; /* Ajuste o max-height também */
   }
   /* Os botões de navegação (.story-nav-btn) já estão visíveis por padrão em mobile
-      e a lógica do JS vai esconder/mostrar conforme necessário. */
+       e a lógica do JS vai esconder/mostrar conforme necessário. */
 }
 
 /* Para telas menores que 600px (smartphones menores) */
