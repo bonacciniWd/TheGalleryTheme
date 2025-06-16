@@ -166,7 +166,7 @@
                         Categorias
                       </button>
                       <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
-                        {# Renderiza os links que NÃO são fixos dentro do acordeão "Categorias" #}
+                       
                         {%- for link in section.settings.menu.links -%}
                           {%- unless fixed_links contains link.title -%}
                             <li>
