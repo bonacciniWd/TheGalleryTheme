@@ -145,31 +145,23 @@
   width: 100%;
   height: auto;
   overflow-x: auto;
-  background-color: rgba(0, 0, 0, 0.6); /* Cor de fundo para toda a faixa do carrossel */
+  background-color: rgba(0, 0, 0, 1.0);
   padding: 10px 0;
   position: sticky;
   top: 0;
   z-index: 1;
-  /* Adicione display: flex; e justify-content para centralizar se houver poucos itens */
-  display: flex; /* Adicionado: Para centralizar o stories-wrapper se ele for menor que o carousel */
-  justify-content: center; /* Adicionado: Para centralizar o stories-wrapper horizontalmente */
 }
 
 .stories-wrapper {
   display: flex;
   gap: 12px;
-  /* Removido margin-left e margin-right para deixar o justify-content do pai fazer o trabalho */
-  /* margin-left: 15px; */
-  /* margin-right: 15px; */
+  margin-left: 15px;
+  margin-right: 15px;
   scroll-behavior: smooth;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  /* Adicionado: Mínimo de largura para garantir que a barra de rolagem funcione */
-  min-width: 100%; /* Garante que ele ocupe pelo menos 100% do pai */
-  /* Adicionado: Alinha os itens se não houver rolagem suficiente para preencher */
-  justify-content: flex-start; /* Ou space-between, center, dependendo do comportamento desejado para poucos itens */
 }
 
 .stories-wrapper::-webkit-scrollbar {
@@ -180,9 +172,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 0 0 auto; /* Importante: Impede que os itens se estiquem */
-  width: 80px; /* Largura fixa para cada item */
-  margin-top: 10px; /* Mantido para espaçamento superior */
+  flex: 0 0 auto;
+  width: 80px;
+  margin-top: 10px;
   text-align: center;
   cursor: pointer;
   scroll-snap-align: start;
@@ -192,10 +184,6 @@
   outline: none;
 }
 
-
-.stories-wrapper::-webkit-scrollbar {
-  display: none;
-}
 .story-item:focus-visible .story-avatar-gradient {
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 6px #4F5BD5;
 }
