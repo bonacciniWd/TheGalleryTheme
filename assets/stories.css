@@ -145,7 +145,7 @@
   width: 100%;
   height: auto;
   overflow-x: auto;
-  background-color: #000;
+ background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 0;
   position: sticky;
   top: 0;
