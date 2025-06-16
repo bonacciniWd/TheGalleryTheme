@@ -185,7 +185,7 @@
 }
 
 .story-item:focus-visible .story-avatar-gradient {
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.7), 0 0 0 6px #4F5BD5;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 6px #4F5BD5;
 }
 
 .story-avatar-gradient {
