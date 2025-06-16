@@ -516,10 +516,4 @@
     max-height: 90vh;
   }
 
-  /* Não precisamos mais desta regra, pois o JS já lida com a visibilidade dos botões
-      e o display: flex já está na base do .story-nav-btn.
-      Se houver conflito, o JS aplicando display: flex/none prevalece sobre CSS. */
-  /* .story-nav-btn {
-      display: flex;
-  } */
 }
