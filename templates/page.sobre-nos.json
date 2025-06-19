@@ -42,8 +42,9 @@
           "type": "about_item",
           "settings": {
             "item_title": "",
-            "item_description": "Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.",
-            "icon_character": "🥷"
+            "item_description": "Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente.\n Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.",
+            "icon_character": "🥷",
+            "item_image": "shopify://shop_images/semis21.jpg"
           }
         }
       },
