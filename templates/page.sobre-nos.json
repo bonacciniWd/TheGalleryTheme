@@ -19,21 +19,44 @@
     },
     "about_y83t34": {
       "type": "about",
+      "blocks": {
+        "about_item_VAt9AP": {
+          "type": "about_item",
+          "settings": {
+            "item_title": "Bem-vindo",
+            "item_description": "Onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.",
+            "icon_character": "🥷"
+          }
+        },
+        "about_item_JUYbhz": {
+          "type": "about_item",
+          "settings": {
+            "item_title": "Título Padrão",
+            "item_description": "Este é o texto de descrição para o seu item.",
+            "icon_character": "💡"
+          }
+        },
+        "about_item_kWY3xx": {
+          "type": "about_item",
+          "settings": {
+            "item_title": "Título Padrão",
+            "item_description": "Este é o texto de descrição para o seu item.",
+            "icon_character": "💡"
+          }
+        }
+      },
+      "block_order": [
+        "about_item_VAt9AP",
+        "about_item_JUYbhz",
+        "about_item_kWY3xx"
+      ],
       "name": "Sobre Nós",
       "settings": {
-        "main_heading": "Quem Somos Nós",
-        "accent_color": "#ff6f61",
-        "main_heading_color": "#333333",
-        "sub_heading_color": "#ff6f61",
-        "body_text_color": "#555555",
-        "heading_block1": "Nossa Essência",
-        "text_block1": "<p>Bem-vindo à Amaterasu Company – onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.</p>",
-        "image_block1": "shopify://shop_images/cloudflare.svg",
-        "heading_block2": "Qualidade",
-        "text_block2": "",
-        "heading_block3": "Paixão Oriental",
-        "text_block3": "<p>Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.</p>",
-        "image_block3": "shopify://shop_images/master.svg"
+        "heading_text": "Quem Somos Nós",
+        "heading_bold": true,
+        "heading_color": "#333333",
+        "text_color": "#666666",
+        "icon_color": "#f0b832"
       }
     }
   },
