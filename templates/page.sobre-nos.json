@@ -23,12 +23,14 @@
       "settings": {
         "main_heading": "Quem Somos Nós",
         "accent_color": "#ff6f61",
+        "main_heading_color": "#333333",
+        "sub_heading_color": "#ff6f61",
+        "body_text_color": "#555555",
         "heading_block1": "Nossa Essência",
         "text_block1": "<p>Bem-vindo à Amaterasu Company – onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.</p>",
         "image_block1": "shopify://shop_images/cloudflare.svg",
         "heading_block2": "Qualidade",
-        "text_block2": "<p>Na Amaterasu Company, trabalhamos exclusivamente com réplicas premium – também conhecidas como réplicas de primeira linha –, selecionando os melhores materiais e acabamentos para garantir que cada par ofereça conforto, durabilidade e um visual impecável, digno de um verdadeiro sneakerhead.</p>",
-        "image_block2": "shopify://shop_images/Whisk_b33a0afe57.jpg",
+        "text_block2": "",
         "heading_block3": "Paixão Oriental",
         "text_block3": "<p>Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.</p>",
         "image_block3": "shopify://shop_images/master.svg"
