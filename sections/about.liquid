@@ -59,16 +59,13 @@
       font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte padrão para H3, defina aqui */
       font-weight: 700; /* Peso da fonte padrão para H3, defina aqui */
       margin-bottom: 15px;
-      display: flex;
+      display: flex; /* Mantém flex para centralização se desejar */
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      justify-content: center; /* Centraliza o texto */
+      text-align: center; /* Centraliza o texto (redundante com justify-content, mas bom para garantir) */
     }
 
-    .amaterasu-about .content-block h3 svg {
-      margin-right: 10px;
-      fill: {{ section.settings.sub_heading_color }}; /* Cor do ícone acompanha subtítulo */
-    }
+    /* Removido o estilo .amaterasu-about .content-block h3 svg {} */
 
     .amaterasu-about .content-block p {
       font-size: 1.1em;
@@ -128,14 +125,11 @@
 
     .amaterasu-about .content-block.block-2 .text-overlay h3 {
       color: #fff; /* Título branco para contraste */
-      fill: #fff; /* Ícone branco para contraste */
       margin-bottom: 10px;
       /* As propriedades de fonte vêm do CSS geral, mas a cor é sobrescrita aqui */
     }
 
-    .amaterasu-about .content-block.block-2 .text-overlay h3 svg {
-      fill: #fff; /* Ícone branco para contraste */
-    }
+    /* Removido o estilo .amaterasu-about .content-block.block-2 .text-overlay h3 svg {} */
 
     .amaterasu-about .content-block.block-2 .text-overlay p {
       color: #fff; /* Texto branco para contraste */
@@ -167,9 +161,7 @@
       .amaterasu-about .content-block.block-2 .text-overlay h3 {
         color: {{ section.settings.sub_heading_color }}; /* Volta à cor original do subtítulo */
       }
-      .amaterasu-about .content-block.block-2 .text-overlay h3 svg {
-        fill: {{ section.settings.sub_heading_color }}; /* Volta à cor original do ícone */
-      }
+      /* Removido .amaterasu-about .content-block.block-2 .text-overlay h3 svg {} */
       .amaterasu-about .content-block.block-2 .text-overlay p {
         color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
         text-align: justify;
@@ -182,7 +174,6 @@
   <div class="container">
     <div class="content-block">
       <h3>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
         {{ section.settings.heading_block1 }}
       </h3>
       <p>
@@ -206,7 +197,6 @@
         {% endif %}
         <div class="text-overlay">
           <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
             {{ section.settings.heading_block2 }}
           </h3>
           <p>
@@ -218,7 +208,6 @@
 
     <div class="content-block">
       <h3>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v4c.47 0 .86.27 1.05.66L4 12l-.95 1.34c-.19.39-.58.66-1.05.66v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-.47 0-.86-.27-1.05-.66L20 12l.95-1.34c.19-.39.58-.66 1.05-.66zM4 6h16v2H4V6zm16 12H4v-2h16v2zm-5-8l-3 4-3-4H7l4 5 4-5h-2z"/></svg>
         {{ section.settings.heading_block3 }}
       </h3>
       <p>
