@@ -25,7 +25,8 @@
           "settings": {
             "item_title": "",
             "item_description": "Onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.",
-            "icon_character": "🥷"
+            "icon_character": "🪭",
+            "item_image": "shopify://shop_images/ama.jpg"
           }
         },
         "about_item_JUYbhz": {
@@ -33,7 +34,8 @@
           "settings": {
             "item_title": "",
             "item_description": "Na Amaterasu Company, trabalhamos exclusivamente com réplicas premium – também conhecidas como réplicas de primeira linha –, selecionando os melhores materiais e acabamentos para garantir que cada par ofereça conforto, durabilidade e um visual impecável, digno de um verdadeiro sneakerhead.",
-            "icon_character": "👟"
+            "icon_character": "👟",
+            "item_image": "shopify://shop_images/sneakers.jpg"
           }
         },
         "about_item_kWY3xx": {
@@ -41,7 +43,7 @@
           "settings": {
             "item_title": "",
             "item_description": "Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.",
-            "icon_character": "🪭"
+            "icon_character": "🥷"
           }
         }
       },
