@@ -9,14 +9,12 @@
  */
 {
   "sections": {
-    "custom_liquid_XMVThd": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
+    "main": {
+      "type": "main-page",
+      "disabled": true,
       "settings": {
-        "custom_liquid": "<div style=\"max-width: 800px; margin: 0 auto; padding: 30px 20px; font-family: sans-serif; background: #f9f9f9; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);\">\n<div>\n  <h2 style=\"font-size: 22px; margin-bottom: 15px; color: #111;\"> Quais são as formas de pagamento?</h2>\n  <ul style=\"list-style: none; padding-left: 0; color: #333; line-height: 1.6;\">\n    <li>💳 <strong>Cartão de crédito</strong> – em até 12x (dependendo da bandeira)</li>\n    <li>⚡ <strong>Pix</strong> – com <strong>5% de desconto à vista</strong></li>\n    <li>🧾 <strong>Boleto bancário</strong> – processamento em 1-2 dias úteis</li>\n    <li>🔐 <strong>Todas as transações são 100% seguras</strong></li>\n  </ul>\n</div>\n  <hr style=\"margin: 30px 0; border: none; border-top: 1px solid #ddd;\">\n\n  <h2 style=\"font-size: 22px; margin-bottom: 15px; color: #111;\">Como devo cuidar dos meus tênis para preservá-los?</h2>\n  <ul style=\"list-style: none; padding-left: 0; color: #333; line-height: 1.8;\">\n    <li>✔ <strong>Limpeza regular</strong> – Use pano macio e sabão neutro. Evite lavar na máquina.</li>\n    <li>✔ <strong>Proteção contra água</strong> – Aplique impermeabilizante para tênis (ideal para couro ou camurça).</li>\n    <li>✔ <strong>Armazenamento correto</strong> – Local arejado, sem umidade ou calor.</li>\n    <li>✔ <strong>Uso alternado</strong> – Revezar entre pares evita desgaste excessivo.</li>\n  </ul>\n</div>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 28,
+        "padding_bottom": 28
       }
     },
     "faq_HmCfVh": {
@@ -77,18 +75,32 @@
         "faq_image": "shopify://shop_images/Whisk_c9af2f3702_1.jpg"
       }
     },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "custom_liquid_XMVThd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "custom_liquid": "<div style=\"max-width: 800px; margin: 0 auto; padding: 30px 20px; font-family: sans-serif; background: #f9f9f9; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);\">\n<div>\n  <h2 style=\"font-size: 22px; margin-bottom: 15px; color: #111;\"> Quais são as formas de pagamento?</h2>\n  <ul style=\"list-style: none; padding-left: 0; color: #333; line-height: 1.6;\">\n    <li>💳 <strong>Cartão de crédito</strong> – em até 12x (dependendo da bandeira)</li>\n    <li>⚡ <strong>Pix</strong> – com <strong>5% de desconto à vista</strong></li>\n    <li>🧾 <strong>Boleto bancário</strong> – processamento em 1-2 dias úteis</li>\n    <li>🔐 <strong>Todas as transações são 100% seguras</strong></li>\n  </ul>\n</div>\n  <hr style=\"margin: 30px 0; border: none; border-top: 1px solid #ddd;\">\n\n  <h2 style=\"font-size: 22px; margin-bottom: 15px; color: #111;\">Como devo cuidar dos meus tênis para preservá-los?</h2>\n  <ul style=\"list-style: none; padding-left: 0; color: #333; line-height: 1.8;\">\n    <li>✔ <strong>Limpeza regular</strong> – Use pano macio e sabão neutro. Evite lavar na máquina.</li>\n    <li>✔ <strong>Proteção contra água</strong> – Aplique impermeabilizante para tênis (ideal para couro ou camurça).</li>\n    <li>✔ <strong>Armazenamento correto</strong> – Local arejado, sem umidade ou calor.</li>\n    <li>✔ <strong>Uso alternado</strong> – Revezar entre pares evita desgaste excessivo.</li>\n  </ul>\n</div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "contact_form_TpX6zr": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "Formulário de contato",
+        "heading_size": "h2",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "custom_liquid_XMVThd",
+    "main",
     "faq_HmCfVh",
-    "main"
+    "custom_liquid_XMVThd",
+    "contact_form_TpX6zr"
   ]
 }
