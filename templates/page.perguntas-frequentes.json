@@ -12,6 +12,13 @@
     "faq_HmCfVh": {
       "type": "faq",
       "blocks": {
+        "faq_item_3WiYKk": {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "O que são réplicas premium (ou de primeira linha)?",
+            "answer_text": "<p>As réplicas premium são versões de alta qualidade, fabricadas com materiais muito próximos aos originais, atenção aos detalhes e acabamento refinado. Na Amaterasu Company, priorizamos tênis que ofereçam conforto, durabilidade e um visual idêntico aos modelos de luxo, por um preço mais acessível.</p>"
+          }
+        },
         "faq_item_LdjBAq": {
           "type": "faq_item",
           "settings": {
@@ -35,6 +42,7 @@
         }
       },
       "block_order": [
+        "faq_item_3WiYKk",
         "faq_item_LdjBAq",
         "faq_item_hPhiGT",
         "faq_item_64njXB"
@@ -44,6 +52,8 @@
         "heading_text": "Perguntas Frequentes",
         "heading_bold": true,
         "heading_color": "#222222",
+        "intro_text": "<p>Bem-vindo à seção de Perguntas Frequentes da Amaterasu Company. Aqui, reunimos as principais dúvidas sobre nossos produtos, políticas e processos para garantir uma experiência de compra transparente e satisfatória. Se ainda tiver alguma questão, entre em contato conosco!</p>",
+        "intro_text_color": "#555555",
         "question_color": "#333333",
         "answer_color": "#666666",
         "faq_image": "shopify://shop_images/Whisk_c9af2f3702_1.jpg"
