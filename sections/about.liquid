@@ -65,7 +65,7 @@
       font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte para H3, ajuste se necessário */
       font-weight: 700;
       margin-bottom: 15px;
-      text-align: center; /* Centraliza o texto do subtítulo */
+      text-align: center; /* Mantém o subtítulo centralizado */
       word-spacing: normal; /* Garante espaçamento normal entre as palavras */
     }
 
@@ -75,7 +75,7 @@
       line-height: 1.6;
       color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo, configurável */
       margin-bottom: 20px;
-      text-align: justify;
+      text-align: left; /* ALTERADO: Alinhamento à esquerda para melhor legibilidade */
       word-spacing: normal; /* Garante espaçamento normal entre as palavras */
     }
 
@@ -136,7 +136,7 @@
 
     .amaterasu-about .content-block.block-2 .text-overlay p {
       color: #fff; /* Texto branco para contraste */
-      text-align: center;
+      text-align: left; /* ALTERADO: Alinhamento à esquerda no overlay também */
       margin-bottom: 0;
       word-spacing: normal; /* Garante espaçamento normal entre as palavras */
     }
@@ -167,7 +167,7 @@
       }
       .amaterasu-about .content-block.block-2 .text-overlay p {
         color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
-        text-align: justify;
+        text-align: left; /* ALTERADO: Alinha à esquerda no mobile também */
       }
     }
   </style>
