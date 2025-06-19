@@ -1,342 +1,135 @@
-<section class="amaterasu-about">
-  <style>
-    /* Estilos Gerais da Seção */
-    .amaterasu-about {
-      padding: 50px 20px;
-      text-align: center;
-      background-color: #f9f9f9;
-      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo, configurável */
-      font-family: 'Arial', sans-serif; /* Fonte padrão para todo o texto, pode ser ajustada aqui */
-      word-spacing: normal; /* Garante espaçamento normal entre as palavras */
+<style>
+  .amaterasu-section {
+    font-family: sans-serif;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .amaterasu-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: {{ section.settings.heading_color }};
+    {% if section.settings.heading_bold %}
+      font-weight: bold;
+    {% endif %}
+  }
+
+  .amaterasu-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .amaterasu-item {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+  }
+
+  .amaterasu-item .icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: {{ section.settings.icon_color }};
+  }
+
+  .amaterasu-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+
+  .amaterasu-item p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+  }
+
+  @media (max-width: 768px) {
+    .amaterasu-section h2 {
+      font-size: 2em;
     }
 
-    /* Estilos do Título Principal (H2) */
-    .amaterasu-about h2 {
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      color: {{ section.settings.main_heading_color }}; /* Cor do título principal, configurável */
-      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte para H2, ajuste se necessário */
-      font-weight: 700;
-      position: relative;
-      display: inline-block;
-      word-spacing: normal; /* Garante espaçamento normal entre as palavras */
-    }
-
-    .amaterasu-about h2::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: -10px;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background-color: {{ section.settings.accent_color }}; /* Cor de destaque, configurável */
-      border-radius: 2px;
-    }
-
-    /* Estilos dos Blocos de Conteúdo */
-    .amaterasu-about .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .amaterasu-about .content-block {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      flex: 1;
-      min-width: 300px;
-      max-width: 45%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: left;
-    }
-
-    /* Estilos dos Subtítulos (H3) */
-    .amaterasu-about .content-block h3 {
-      font-size: 1.8em;
-      color: {{ section.settings.sub_heading_color }}; /* Cor dos subtítulos, configurável */
-      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte para H3, ajuste se necessário */
-      font-weight: 700;
-      margin-bottom: 0px;
-      text-align: center; /* Mantém o subtítulo centralizado */
-      word-spacing: normal; /* Garante espaçamento normal entre as palavras */
-    }
-
-    /* Estilos dos Parágrafos */
-    .amaterasu-about .content-block p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo, configurável */
-      margin-bottom: 0px;
-      text-align: left; /* ALTERADO: Alinhamento à esquerda para melhor legibilidade */
-      word-spacing: normal; /* Garante espaçamento normal entre as palavras */
-    }
-
-    /* Estilos das Imagens */
-    .amaterasu-about .image-wrapper {
-      margin-top: 0px;
-      text-align: center;
-    }
-
-    .amaterasu-about .image-wrapper img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    /* Estilo Específico para o Bloco 2 (Texto sobre Imagem) */
-    .amaterasu-about .content-block.block-2 {
-      position: relative;
-      overflow: hidden;
-      padding: 0; /* Remove padding padrão para a imagem preencher */
-    }
-
-    .amaterasu-about .content-block.block-2 .image-wrapper {
-      margin: 0; /* Remove margem padrão */
-      position: relative;
-    }
-
-    .amaterasu-about .content-block.block-2 .image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .amaterasu-about .content-block.block-2 .text-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para o texto */
-      color: #fff; /* Cor do texto no overlay */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .amaterasu-item {
       padding: 20px;
-      box-sizing: border-box;
-      border-radius: 10px;
     }
+  }
+</style>
 
-    .amaterasu-about .content-block.block-2 .text-overlay h3 {
-      color: #fff; /* Título branco para contraste */
-      margin-bottom: 10px;
-      word-spacing: normal; /* Garante espaçamento normal entre as palavras */
-    }
+<div class="amaterasu-section">
+  <h2>{{ section.settings.heading_text }}</h2>
 
-    .amaterasu-about .content-block.block-2 .text-overlay p {
-      color: #fff; /* Texto branco para contraste */
-      text-align: left; /* ALTERADO: Alinhamento à esquerda no overlay também */
-      margin-bottom: 0;
-      word-spacing: normal; /* Garante espaçamento normal entre as palavras */
-    }
-
-    /* Media Queries para Responsividade (Mobile) */
-    @media (max-width: 768px) {
-      .amaterasu-about .content-block.block-2 {
-        padding: 30px; /* Restaura padding no mobile */
-        background-color: #fff;
-        position: static; /* Remove posicionamento absoluto */
-      }
-      .amaterasu-about .content-block.block-2 .image-wrapper {
-        margin-top: 20px;
-        position: static;
-      }
-      .amaterasu-about .content-block.block-2 .image-wrapper img {
-        width: auto; /* Ajuste para auto no mobile */
-        height: auto;
-      }
-      .amaterasu-about .content-block.block-2 .text-overlay {
-        position: static; /* Remove posicionamento absoluto */
-        background-color: transparent; /* Torna o fundo transparente */
-        color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
-        padding: 0;
-      }
-      .amaterasu-about .content-block.block-2 .text-overlay h3 {
-        color: {{ section.settings.sub_heading_color }}; /* Volta à cor original do subtítulo */
-      }
-      .amaterasu-about .content-block.block-2 .text-overlay p {
-        color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
-        text-align: left; /* ALTERADO: Alinha à esquerda no mobile também */
-      }
-    }
-  </style>
-
-  <h2>{{ section.settings.main_heading }}</h2>
-
-  <div class="container">
-    <div class="content-block">
-      <h3>
-        {{ section.settings.heading_block1 }}
-      </h3>
-      <p>
-        {{ section.settings.text_block1 }}
-      </p>
-      <div class="image-wrapper">
-        {% if section.settings.image_block1 != blank %}
-          <img src="{{ section.settings.image_block1 | img_url: 'grande' }}" alt="{{ section.settings.heading_block1 }}">
-        {% else %}
-          <img src="{{ 'placeholder-essence.jpg' | asset_url }}" alt="Ilustração da Deusa Amaterasu ou Sol Nascente">
-        {% endif %}
-      </div>
+  <div class="amaterasu-content">
+    <div class="amaterasu-item">
+      <span class="icon">☀️</span> <h3>Quem Somos Nós</h3>
+      <img src="{{ 'placeholder-quem-somos.jpg' | asset_url }}" alt="Quem Somos Nós" loading="lazy">
+      <p>Bem-vindo à Amaterasu Company – onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.</p>
     </div>
 
-    <div class="content-block block-2">
-      <div class="image-wrapper">
-        {% if section.settings.image_block2 != blank %}
-          <img src="{{ section.settings.image_block2 | img_url: 'grande' }}" alt="{{ section.settings.heading_block2 }}">
-        {% else %}
-          <img src="{{ 'placeholder-quality.jpg' | asset_url }}" alt="Tênis de alta qualidade ou processo de fabricação">
-        {% endif %}
-        <div class="text-overlay">
-          <h3>
-            {{ section.settings.heading_block2 }}
-          </h3>
-          <p>
-            {{ section.settings.text_block2 }}
-          </p>
-        </div>
-      </div>
+    <div class="amaterasu-item">
+      <span class="icon">✨</span> <h3>Qualidade Premium</h3>
+      <img src="{{ 'placeholder-qualidade-premium.jpg' | asset_url }}" alt="Qualidade Premium" loading="lazy">
+      <p>Na Amaterasu Company, trabalhamos exclusivamente com réplicas premium – também conhecidas como réplicas de primeira linha –, selecionando os melhores materiais e acabamentos para garantir que cada par ofereça conforto, durabilidade e um visual impecável, digno de um verdadeiro sneakerhead.</p>
     </div>
 
-    <div class="content-block">
-      <h3>
-        {{ section.settings.heading_block3 }}
-      </h3>
-      <p>
-        {{ section.settings.text_block3 }}
-      </p>
-      <div class="image-wrapper">
-        {% if section.settings.image_block3 != blank %}
-          <img src="{{ section.settings.image_block3 | img_url: 'grande' }}" alt="{{ section.settings.heading_block3 }}">
-        {% else %}
-          <img src="{{ 'placeholder-culture.jpg' | asset_url }}" alt="Elementos da cultura oriental, como um jardim zen ou caligrafia">
-        {% endif %}
-      </div>
+    <div class="amaterasu-item">
+      <span class="icon">🌸</span> <h3>Paixão Oriental</h3>
+      <img src="{{ 'placeholder-paixao-oriental.jpg' | asset_url }}" alt="Paixão Oriental" loading="lazy">
+      <p>Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.</p>
     </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
-  "name": "Sobre Nós",
+  "name": "Seção Sobre Nós",
   "settings": [
     {
-      "type": "header",
-      "content": "Configurações Gerais"
-    },
-    {
       "type": "text",
-      "id": "main_heading",
-      "label": "Título Principal da Seção",
+      "id": "heading_text",
+      "label": "Título da Seção",
       "default": "Quem Somos Nós"
     },
     {
-      "type": "color",
-      "id": "accent_color",
-      "label": "Cor de Destaque (Linha do Título)",
-      "default": "#ff6f61"
-    },
-    {
-      "type": "header",
-      "content": "Estilo de Cores"
+      "type": "checkbox",
+      "id": "heading_bold",
+      "label": "Título em Negrito?",
+      "default": true
     },
     {
       "type": "color",
-      "id": "main_heading_color",
-      "label": "Cor do Título Principal (H2)",
+      "id": "heading_color",
+      "label": "Cor do Título",
       "default": "#333333"
     },
     {
       "type": "color",
-      "id": "sub_heading_color",
-      "label": "Cor dos Subtítulos (H3)",
-      "default": "#ff6f61"
+      "id": "text_color",
+      "label": "Cor do Texto",
+      "default": "#666666"
     },
     {
       "type": "color",
-      "id": "body_text_color",
-      "label": "Cor do Texto do Corpo",
-      "default": "#555555"
-    },
-    {
-      "type": "header",
-      "content": "Bloco 1: Nossa Essência"
-    },
-    {
-      "type": "text",
-      "id": "heading_block1",
-      "label": "Título do Bloco 1",
-      "default": "Nossa Essência"
-    },
-    {
-      "type": "richtext",
-      "id": "text_block1",
-      "label": "Texto do Bloco 1",
-      "default": "<p>Bem-vindo à Amaterasu Company – onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_block1",
-      "label": "Imagem do Bloco 1"
-    },
-    {
-      "type": "header",
-      "content": "Bloco 2: Qualidade Inovadora"
-    },
-    {
-      "type": "text",
-      "id": "heading_block2",
-      "label": "Título do Bloco 2",
-      "default": "Qualidade Inovadora"
-    },
-    {
-      "type": "richtext",
-      "id": "text_block2",
-      "label": "Texto do Bloco 2",
-      "default": "<p>Na Amaterasu Company, trabalhamos exclusivamente com réplicas premium – também conhecidas como réplicas de primeira linha –, selecionando os melhores materiais e acabamentos para garantir que cada par ofereça conforto, durabilidade e um visual impecável, digno de um verdadeiro sneakerhead.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_block2",
-      "label": "Imagem do Bloco 2"
-    },
-    {
-      "type": "header",
-      "content": "Bloco 3: Paixão Oriental"
-    },
-    {
-      "type": "text",
-      "id": "heading_block3",
-      "label": "Título do Bloco 3",
-      "default": "Paixão Oriental"
-    },
-    {
-      "type": "richtext",
-      "id": "text_block3",
-      "label": "Texto do Bloco 3",
-      "default": "<p>Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_block3",
-      "label": "Imagem do Bloco 3"
+      "id": "icon_color",
+      "label": "Cor dos Ícones",
+      "default": "#f0b832"
     }
   ],
   "presets": [
     {
-      "name": "Sobre Nós",
-      "category": "Texto"
+      "name": "Sobre Nós - Amaterasu"
     }
   ]
 }
