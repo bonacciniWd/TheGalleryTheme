@@ -1,19 +1,21 @@
 <section class="amaterasu-about">
   <style>
+    /* Estilos Gerais da Seção */
     .amaterasu-about {
-      font-family: 'Arial', sans-serif; /* Fonte padrão para o corpo, pode ser definida aqui */
       padding: 50px 20px;
-      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo */
       text-align: center;
       background-color: #f9f9f9;
+      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo, configurável */
+      font-family: 'Arial', sans-serif; /* Fonte padrão para todo o texto, pode ser ajustada aqui */
     }
 
+    /* Estilos do Título Principal (H2) */
     .amaterasu-about h2 {
       font-size: 2.5em;
       margin-bottom: 40px;
-      color: {{ section.settings.main_heading_color }}; /* Cor do título principal */
-      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte padrão para H2, defina aqui */
-      font-weight: 700; /* Peso da fonte padrão para H2, defina aqui */
+      color: {{ section.settings.main_heading_color }}; /* Cor do título principal, configurável */
+      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte para H2, ajuste se necessário */
+      font-weight: 700;
       position: relative;
       display: inline-block;
     }
@@ -26,10 +28,11 @@
       transform: translateX(-50%);
       width: 80px;
       height: 4px;
-      background-color: {{ section.settings.accent_color }};
+      background-color: {{ section.settings.accent_color }}; /* Cor de destaque, configurável */
       border-radius: 2px;
     }
 
+    /* Estilos dos Blocos de Conteúdo */
     .amaterasu-about .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -53,31 +56,26 @@
       text-align: left;
     }
 
+    /* Estilos dos Subtítulos (H3) */
     .amaterasu-about .content-block h3 {
       font-size: 1.8em;
-      color: {{ section.settings.sub_heading_color }}; /* Cor dos subtítulos */
-      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte padrão para H3, defina aqui */
-      font-weight: 700; /* Peso da fonte padrão para H3, defina aqui */
+      color: {{ section.settings.sub_heading_color }}; /* Cor dos subtítulos, configurável */
+      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte para H3, ajuste se necessário */
+      font-weight: 700;
       margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      text-align: center; /* Centraliza o texto do subtítulo */
     }
 
-    .amaterasu-about .content-block h3 svg {
-      margin-right: 10px;
-      fill: {{ section.settings.sub_heading_color }}; /* Cor do ícone acompanha subtítulo */
-    }
-
+    /* Estilos dos Parágrafos */
     .amaterasu-about .content-block p {
       font-size: 1.1em;
       line-height: 1.6;
-      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo */
+      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo, configurável */
       margin-bottom: 20px;
       text-align: justify;
     }
 
+    /* Estilos das Imagens */
     .amaterasu-about .image-wrapper {
       margin-top: 20px;
       text-align: center;
@@ -90,15 +88,15 @@
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
-    /* Estilo específico para o bloco 2 - texto sobre a imagem */
+    /* Estilo Específico para o Bloco 2 (Texto sobre Imagem) */
     .amaterasu-about .content-block.block-2 {
       position: relative;
       overflow: hidden;
-      padding: 0;
+      padding: 0; /* Remove padding padrão para a imagem preencher */
     }
 
     .amaterasu-about .content-block.block-2 .image-wrapper {
-      margin: 0;
+      margin: 0; /* Remove margem padrão */
       position: relative;
     }
 
@@ -115,8 +113,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      color: #fff;
+      background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para o texto */
+      color: #fff; /* Cor do texto no overlay */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -128,47 +126,38 @@
 
     .amaterasu-about .content-block.block-2 .text-overlay h3 {
       color: #fff; /* Título branco para contraste */
-      fill: #fff; /* Ícone branco para contraste */
       margin-bottom: 10px;
-      /* As propriedades de fonte vêm do CSS geral, mas a cor é sobrescrita aqui */
-    }
-
-    .amaterasu-about .content-block.block-2 .text-overlay h3 svg {
-      fill: #fff; /* Ícone branco para contraste */
     }
 
     .amaterasu-about .content-block.block-2 .text-overlay p {
       color: #fff; /* Texto branco para contraste */
       text-align: center;
       margin-bottom: 0;
-      /* As propriedades de fonte vêm do CSS geral, mas a cor é sobrescrita aqui */
     }
 
+    /* Media Queries para Responsividade (Mobile) */
     @media (max-width: 768px) {
       .amaterasu-about .content-block.block-2 {
-        padding: 30px;
+        padding: 30px; /* Restaura padding no mobile */
         background-color: #fff;
-        position: static;
+        position: static; /* Remove posicionamento absoluto */
       }
       .amaterasu-about .content-block.block-2 .image-wrapper {
         margin-top: 20px;
         position: static;
       }
       .amaterasu-about .content-block.block-2 .image-wrapper img {
-        width: auto;
+        width: auto; /* Ajuste para auto no mobile */
         height: auto;
       }
       .amaterasu-about .content-block.block-2 .text-overlay {
-        position: static;
-        background-color: transparent;
+        position: static; /* Remove posicionamento absoluto */
+        background-color: transparent; /* Torna o fundo transparente */
         color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
         padding: 0;
       }
       .amaterasu-about .content-block.block-2 .text-overlay h3 {
         color: {{ section.settings.sub_heading_color }}; /* Volta à cor original do subtítulo */
-      }
-      .amaterasu-about .content-block.block-2 .text-overlay h3 svg {
-        fill: {{ section.settings.sub_heading_color }}; /* Volta à cor original do ícone */
       }
       .amaterasu-about .content-block.block-2 .text-overlay p {
         color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
@@ -182,7 +171,6 @@
   <div class="container">
     <div class="content-block">
       <h3>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
         {{ section.settings.heading_block1 }}
       </h3>
       <p>
@@ -206,7 +194,6 @@
         {% endif %}
         <div class="text-overlay">
           <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
             {{ section.settings.heading_block2 }}
           </h3>
           <p>
@@ -218,7 +205,6 @@
 
     <div class="content-block">
       <h3>
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v4c.47 0 .86.27 1.05.66L4 12l-.95 1.34c-.19.39-.58.66-1.05.66v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-.47 0-.86-.27-1.05-.66L20 12l.95-1.34c.19-.39.58-.66 1.05-.66zM4 6h16v2H4V6zm16 12H4v-2h16v2zm-5-8l-3 4-3-4H7l4 5 4-5h-2z"/></svg>
         {{ section.settings.heading_block3 }}
       </h3>
       <p>
@@ -246,18 +232,18 @@
     {
       "type": "text",
       "id": "main_heading",
-      "label": "Título Principal",
+      "label": "Título Principal da Seção",
       "default": "Quem Somos Nós"
     },
     {
       "type": "color",
       "id": "accent_color",
-      "label": "Cor de Destaque",
+      "label": "Cor de Destaque (Linha do Título)",
       "default": "#ff6f61"
     },
     {
       "type": "header",
-      "content": "Estilo dos Títulos (H2 e H3)"
+      "content": "Estilo de Cores"
     },
     {
       "type": "color",
@@ -270,10 +256,6 @@
       "id": "sub_heading_color",
       "label": "Cor dos Subtítulos (H3)",
       "default": "#ff6f61"
-    },
-    {
-      "type": "header",
-      "content": "Estilo do Texto do Corpo"
     },
     {
       "type": "color",
