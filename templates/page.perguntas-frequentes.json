@@ -12,6 +12,13 @@
     "faq_HmCfVh": {
       "type": "faq",
       "blocks": {
+        "faq_item_eqYCk4": {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "Como posso saber se meu tamanho está disponível?",
+            "answer_text": "<p>Todos os tamanhos disponíveis estão listados na página do produto. Caso seu número esteja esgotado, você pode entrar em contato para verificar previsão de reposição.</p>"
+          }
+        },
         "faq_item_3WiYKk": {
           "type": "faq_item",
           "settings": {
@@ -42,6 +49,7 @@
         }
       },
       "block_order": [
+        "faq_item_eqYCk4",
         "faq_item_3WiYKk",
         "faq_item_LdjBAq",
         "faq_item_hPhiGT",
