@@ -12,12 +12,21 @@
 
   .faq-section h2 {
     font-size: 2.8em;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* Reduzido para dar espaço ao parágrafo introdutório */
     color: {{ section.settings.heading_color }};
     {% if section.settings.heading_bold %}
       font-weight: bold;
     {% endif %}
-    text-align: center; /* Centraliza o título principal */
+    text-align: center;
+  }
+
+  .faq-intro-text {
+    font-size: 1.15em;
+    line-height: 1.6;
+    color: {{ section.settings.intro_text_color }}; /* Cor configurável para o texto introdutório */
+    max-width: 900px;
+    margin: 0px auto 40px auto; /* Espaçamento após o texto introdutório */
+    text-align: center;
   }
 
   .faq-grid-container {
@@ -25,7 +34,7 @@
     grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
     gap: 40px; /* Espaço entre as colunas */
     align-items: start; /* Alinha o conteúdo das colunas no topo */
-    margin-top: 40px; /* Espaço após o título */
+    /* margin-top: 40px; -- Removido pois o intro-text já tem margin-bottom */
   }
 
   .faq-content-left {
@@ -59,7 +68,7 @@
 
   .faq-question {
     padding: 18px 25px;
-    font-size: 1em;
+    font-size: 1.3em;
     font-weight: bold;
     color: {{ section.settings.question_color }};
     cursor: pointer;
@@ -86,9 +95,14 @@
     overflow: hidden;
     transition: max-height 0.5s ease-out, padding 0.5s ease-out;
   }
+  
+  .faq-answer p:last-child { /* Remove margin-bottom do último parágrafo na resposta */
+    margin-bottom: 0;
+  }
+
 
   .faq-item.active .faq-answer {
-    max-height: 200px; /* Altura máxima para a transição (ajuste conforme necessário) */
+    max-height: 500px; /* Aumentado para acomodar respostas maiores */
     padding: 15px 25px 25px; /* Adiciona padding quando aberto */
   }
 
@@ -110,6 +124,10 @@
   @media (max-width: 768px) {
     .faq-section h2 {
       font-size: 2.2em;
+    }
+    .faq-intro-text {
+      font-size: 1em;
+      margin: 0px auto 30px auto;
     }
     .faq-question {
       font-size: 1.1em;
@@ -144,6 +162,10 @@
 <div class="faq-section">
   <h2>{{ section.settings.heading_text }}</h2>
 
+  <p class="faq-intro-text">
+    {{ section.settings.intro_text }}
+  </p>
+
   <div class="faq-grid-container">
     <div class="faq-content-left">
       <div class="faq-list">
@@ -154,7 +176,7 @@
               <span class="arrow">▼</span>
             </div>
             <div class="faq-answer">
-              <p>{{ block.settings.answer_text }}</p>
+              {{ block.settings.answer_text }}
             </div>
           </div>
         {% endfor %}
@@ -214,6 +236,18 @@
       "default": "#222222"
     },
     {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Texto Introdutório",
+      "default": "<p>Bem-vindo à seção de Perguntas Frequentes da Amaterasu Company. Aqui, reunimos as principais dúvidas sobre nossos produtos, políticas e processos para garantir uma experiência de compra transparente e satisfatória. Se ainda tiver alguma questão, entre em contato conosco!</p>"
+    },
+    {
+      "type": "color",
+      "id": "intro_text_color",
+      "label": "Cor do Texto Introdutório",
+      "default": "#555555"
+    },
+    {
       "type": "color",
       "id": "question_color",
       "label": "Cor da Pergunta",
@@ -258,22 +292,57 @@
         {
           "type": "faq_item",
           "settings": {
-            "question_text": "Os tênis da Amaterasu Company são originais?",
-            "answer_text": "<p>Trabalhamos exclusivamente com réplicas premium, também conhecidas como réplicas de primeira linha. Nossos produtos são cuidadosamente selecionados para oferecer a mais alta qualidade em materiais e acabamentos, proporcionando uma experiência visual e de conforto idêntica aos modelos originais.</p>"
+            "question_text": "1. O que são réplicas premium (ou de primeira linha)?",
+            "answer_text": "<p>As réplicas premium são versões de alta qualidade, fabricadas com materiais muito próximos aos originais, atenção aos detalhes e acabamento refinado. Na Amaterasu Company, priorizamos tênis que ofereçam conforto, durabilidade e um visual idêntico aos modelos de luxo, por um preço mais acessível.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question_text": "Qual é o prazo de entrega?",
-            "answer_text": "<p>Nosso prazo de entrega varia de 15 a 25 dias úteis, dependendo da sua localização. Todos os pedidos possuem rastreamento para que você possa acompanhar cada etapa.</p>"
+            "question_text": "2. Os tênis são iguais aos originais?",
+            "answer_text": "<p>Nossas réplicas são extremamente semelhantes em design, materiais e conforto, porém não são produtos oficiais das marcas originais. Trabalhamos para entregar a melhor experiência possível dentro do segmento de réplicas de alta qualidade.</p>"
           }
         },
         {
           "type": "faq_item",
           "settings": {
-            "question_text": "Como posso realizar uma troca ou devolução?",
-            "answer_text": "<p>Aceitamos trocas e devoluções em até 7 dias após o recebimento do produto, desde que o item esteja em perfeitas condições, sem sinais de uso. Para iniciar o processo, entre em contato com nosso suporte ao cliente.</p>"
+            "question_text": "3. Como é feita a garantia de qualidade?",
+            "answer_text": "<p>Cada par é rigorosamente selecionado e inspecionado antes do envio, garantindo que atenda aos nossos padrões de excelência. Se houver qualquer defeito de fabricação, entre em contato em até 7 dias após o recebimento.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "4. Qual o prazo de entrega?",
+            "answer_text": "<p>O prazo varia conforme a região, mas geralmente leva entre 7 a 15 dias úteis após a confirmação do pagamento. Enviamos atualizações por e-mail com o código de rastreio.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "5. Vocês enviam para todo o Brasil?",
+            "answer_text": "<p>Sim! Entregamos em todo o território nacional, com opções de frete econômico ou expresso. Também realizamos envios internacionais – consulte valores no checkout.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "6. Qual a política de trocas e devoluções?",
+            "answer_text": "<p>Aceitamos trocas ou devoluções em até 7 dias após o recebimento, desde que o produto esteja inalterado, com a etiqueta e na embalagem original. O custo do reenvio fica por conta do cliente.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "7. Como posso saber se meu tamanho está disponível?",
+            "answer_text": "<p>Todos os tamanhos disponíveis estão listados na página do produto. Caso seu número esteja esgotado, você pode entrar em contato para verificar previsão de reposição.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "8. Quais são as formas de pagamento?",
+            "answer_text": "<p>Aceitamos:</p><ul><li>Cartão de crédito (em até 12x, dependendo da bandeira)</li><li>Pix (com 5% de desconto à vista)</li><li>Boleto bancário (com processamento em 1-2 dias úteis)</li></ul><p>Todas as transações são 100% seguras.</p>"
           }
         }
       ]
