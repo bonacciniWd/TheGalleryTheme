@@ -61,10 +61,21 @@
         "text_color": "#666666",
         "icon_color": "#f0b832"
       }
+    },
+    "custom_liquid_AnpWLx": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
-    "about_y83t34"
+    "about_y83t34",
+    "custom_liquid_AnpWLx"
   ]
 }
