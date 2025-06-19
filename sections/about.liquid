@@ -1,9 +1,9 @@
 <section class="amaterasu-about">
   <style>
     .amaterasu-about {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Arial', sans-serif; /* Fonte padrão para o corpo, pode ser definida aqui */
       padding: 50px 20px;
-      color: #333;
+      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo */
       text-align: center;
       background-color: #f9f9f9;
     }
@@ -11,7 +11,9 @@
     .amaterasu-about h2 {
       font-size: 2.5em;
       margin-bottom: 40px;
-      color: #333;
+      color: {{ section.settings.main_heading_color }}; /* Cor do título principal */
+      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte padrão para H2, defina aqui */
+      font-weight: 700; /* Peso da fonte padrão para H2, defina aqui */
       position: relative;
       display: inline-block;
     }
@@ -48,31 +50,32 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      text-align: left; /* Default para os textos */
+      text-align: left;
     }
 
-    /* Estilo para centralizar os títulos */
     .amaterasu-about .content-block h3 {
       font-size: 1.8em;
-      color: {{ section.settings.accent_color }};
+      color: {{ section.settings.sub_heading_color }}; /* Cor dos subtítulos */
+      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte padrão para H3, defina aqui */
+      font-weight: 700; /* Peso da fonte padrão para H3, defina aqui */
       margin-bottom: 15px;
       display: flex;
       align-items: center;
-      justify-content: center; /* Centraliza o conteúdo (ícone + texto) */
-      text-align: center; /* Garante que o texto do h3 fique centralizado */
+      justify-content: center;
+      text-align: center;
     }
 
     .amaterasu-about .content-block h3 svg {
       margin-right: 10px;
-      fill: {{ section.settings.accent_color }};
+      fill: {{ section.settings.sub_heading_color }}; /* Cor do ícone acompanha subtítulo */
     }
 
     .amaterasu-about .content-block p {
       font-size: 1.1em;
       line-height: 1.6;
-      color: #555;
+      color: {{ section.settings.body_text_color }}; /* Cor do texto do corpo */
       margin-bottom: 20px;
-      text-align: justify; /* Justifica o texto para os cantos */
+      text-align: justify;
     }
 
     .amaterasu-about .image-wrapper {
@@ -89,21 +92,21 @@
 
     /* Estilo específico para o bloco 2 - texto sobre a imagem */
     .amaterasu-about .content-block.block-2 {
-      position: relative; /* Para posicionar o texto em relação a este bloco */
-      overflow: hidden; /* Garante que o texto não "vaze" se for muito grande */
-      padding: 0; /* Remove o padding padrão para a imagem ocupar todo o espaço */
+      position: relative;
+      overflow: hidden;
+      padding: 0;
     }
 
     .amaterasu-about .content-block.block-2 .image-wrapper {
-      margin: 0; /* Remove margem para a imagem */
-      position: relative; /* Para permitir a sobreposição do texto */
+      margin: 0;
+      position: relative;
     }
 
     .amaterasu-about .content-block.block-2 .image-wrapper img {
-      width: 100%; /* Garante que a imagem preencha o bloco */
-      height: 100%; /* Garante que a imagem preencha o bloco */
-      object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
-      border-radius: 10px; /* Mantém o border-radius do card */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
     .amaterasu-about .content-block.block-2 .text-overlay {
@@ -112,23 +115,22 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente para o texto */
-      color: #fff; /* Cor do texto para contraste */
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      box-sizing: border-box; /* Inclui padding na largura/altura total */
-      border-radius: 10px; /* Mantém o border-radius do card */
+      box-sizing: border-box;
+      border-radius: 10px;
     }
 
     .amaterasu-about .content-block.block-2 .text-overlay h3 {
       color: #fff; /* Título branco para contraste */
+      fill: #fff; /* Ícone branco para contraste */
       margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      /* As propriedades de fonte vêm do CSS geral, mas a cor é sobrescrita aqui */
     }
 
     .amaterasu-about .content-block.block-2 .text-overlay h3 svg {
@@ -137,21 +139,12 @@
 
     .amaterasu-about .content-block.block-2 .text-overlay p {
       color: #fff; /* Texto branco para contraste */
-      text-align: center; /* Centraliza o texto dentro da sobreposição */
+      text-align: center;
       margin-bottom: 0;
+      /* As propriedades de fonte vêm do CSS geral, mas a cor é sobrescrita aqui */
     }
 
     @media (max-width: 768px) {
-      .amaterasu-about .container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .amaterasu-about .content-block {
-        max-width: 90%;
-      }
-
-      /* No mobile, o bloco 2 pode voltar ao normal se a sobreposição não for ideal */
       .amaterasu-about .content-block.block-2 {
         padding: 30px;
         background-color: #fff;
@@ -168,16 +161,18 @@
       .amaterasu-about .content-block.block-2 .text-overlay {
         position: static;
         background-color: transparent;
-        color: #333;
+        color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
         padding: 0;
       }
-      .amaterasu-about .content-block.block-2 .text-overlay h3,
-      .amaterasu-about .content-block.block-2 .text-overlay p {
-        color: #333; /* Volta à cor original do texto */
-        text-align: justify; /* Volta à justificação */
+      .amaterasu-about .content-block.block-2 .text-overlay h3 {
+        color: {{ section.settings.sub_heading_color }}; /* Volta à cor original do subtítulo */
       }
       .amaterasu-about .content-block.block-2 .text-overlay h3 svg {
-        fill: {{ section.settings.accent_color }}; /* Volta à cor de destaque */
+        fill: {{ section.settings.sub_heading_color }}; /* Volta à cor original do ícone */
+      }
+      .amaterasu-about .content-block.block-2 .text-overlay p {
+        color: {{ section.settings.body_text_color }}; /* Volta à cor original do texto */
+        text-align: justify;
       }
     }
   </style>
@@ -202,14 +197,14 @@
       </div>
     </div>
 
-    <div class="content-block block-2"> 
+    <div class="content-block block-2">
       <div class="image-wrapper">
         {% if section.settings.image_block2 != blank %}
           <img src="{{ section.settings.image_block2 | img_url: 'grande' }}" alt="{{ section.settings.heading_block2 }}">
         {% else %}
           <img src="{{ 'placeholder-quality.jpg' | asset_url }}" alt="Tênis de alta qualidade ou processo de fabricação">
         {% endif %}
-        <div class="text-overlay"> 
+        <div class="text-overlay">
           <h3>
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
             {{ section.settings.heading_block2 }}
@@ -245,6 +240,10 @@
   "name": "Sobre Nós",
   "settings": [
     {
+      "type": "header",
+      "content": "Configurações Gerais"
+    },
+    {
       "type": "text",
       "id": "main_heading",
       "label": "Título Principal",
@@ -255,6 +254,32 @@
       "id": "accent_color",
       "label": "Cor de Destaque",
       "default": "#ff6f61"
+    },
+    {
+      "type": "header",
+      "content": "Estilo dos Títulos (H2 e H3)"
+    },
+    {
+      "type": "color",
+      "id": "main_heading_color",
+      "label": "Cor do Título Principal (H2)",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "sub_heading_color",
+      "label": "Cor dos Subtítulos (H3)",
+      "default": "#ff6f61"
+    },
+    {
+      "type": "header",
+      "content": "Estilo do Texto do Corpo"
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Cor do Texto do Corpo",
+      "default": "#555555"
     },
     {
       "type": "header",
