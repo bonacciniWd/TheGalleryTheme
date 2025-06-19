@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: left;
+    text-align: left; /* Alinha o texto à esquerda dentro do bloco */
   }
 
   .amaterasu-item .icon {
@@ -44,17 +44,24 @@
     color: {{ section.settings.icon_color }};
   }
 
-  .amaterasu-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
+  .amaterasu-item h3 {
+    margin-bottom: 10px;
+    color: {{ section.settings.heading_color }}; /* Usando a mesma cor do título principal */
   }
 
   .amaterasu-item p {
     font-size: 1.1em;
     line-height: 1.6;
     color: {{ section.settings.text_color }};
+    margin-bottom: 15px; /* Espaço entre o texto e a imagem */
+  }
+
+  .amaterasu-item .item-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block; /* Garante que a imagem se comporte como um bloco */
+    margin-top: 15px; /* Espaço acima da imagem se for abaixo do texto */
   }
 
   @media (max-width: 768px) {
@@ -72,23 +79,19 @@
   <h2>{{ section.settings.heading_text }}</h2>
 
   <div class="amaterasu-content">
-    <div class="amaterasu-item">
-      <span class="icon">☀️</span> <h3>Quem Somos Nós</h3>
-      <img src="{{ 'placeholder-quem-somos.jpg' | asset_url }}" alt="Quem Somos Nós" loading="lazy">
-      <p>Bem-vindo à Amaterasu Company – onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.</p>
-    </div>
-
-    <div class="amaterasu-item">
-      <span class="icon">✨</span> <h3>Qualidade Premium</h3>
-      <img src="{{ 'placeholder-qualidade-premium.jpg' | asset_url }}" alt="Qualidade Premium" loading="lazy">
-      <p>Na Amaterasu Company, trabalhamos exclusivamente com réplicas premium – também conhecidas como réplicas de primeira linha –, selecionando os melhores materiais e acabamentos para garantir que cada par ofereça conforto, durabilidade e um visual impecável, digno de um verdadeiro sneakerhead.</p>
-    </div>
-
-    <div class="amaterasu-item">
-      <span class="icon">🌸</span> <h3>Paixão Oriental</h3>
-      <img src="{{ 'placeholder-paixao-oriental.jpg' | asset_url }}" alt="Paixão Oriental" loading="lazy">
-      <p>Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.</p>
-    </div>
+    {% for block in section.blocks %}
+      <div class="amaterasu-item">
+        <span class="icon">{{ block.settings.icon_character }}</span>
+        <h3>{{ block.settings.item_title }}</h3>
+        <p>{{ block.settings.item_description }}</p>
+        {% if block.settings.item_image != blank %}
+          <img src="{{ block.settings.item_image | img_url: 'master' }}"
+               alt="{{ block.settings.item_title }}"
+               class="item-image"
+               loading="lazy">
+        {% endif %}
+      </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -127,9 +130,67 @@
       "default": "#f0b832"
     }
   ],
+  "blocks": [
+    {
+      "type": "about_item",
+      "name": "Item Sobre",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Título do Item",
+          "default": "Título Padrão"
+        },
+        {
+          "type": "textarea",
+          "id": "item_description",
+          "label": "Descrição do Item",
+          "default": "Este é o texto de descrição para o seu item."
+        },
+        {
+          "type": "text",
+          "id": "icon_character",
+          "label": "Caractere do Ícone",
+          "info": "Use um emoji ou um caractere especial. Ex: ☀️, ✨, 🌸",
+          "default": "💡"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_image",
+          "label": "Imagem do Item"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Sobre Nós - Amaterasu"
+      "name": "Sobre Nós - Amaterasu",
+      "blocks": [
+        {
+          "type": "about_item",
+          "settings": {
+            "item_title": "Quem Somos Nós",
+            "item_description": "Bem-vindo à Amaterasu Company – onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.",
+            "icon_character": "☀️"
+          }
+        },
+        {
+          "type": "about_item",
+          "settings": {
+            "item_title": "Qualidade Premium",
+            "item_description": "Na Amaterasu Company, trabalhamos exclusivamente com réplicas premium – também conhecidas como réplicas de primeira linha –, selecionando os melhores materiais e acabamentos para garantir que cada par ofereça conforto, durabilidade e um visual impecável, digno de um verdadeiro sneakerhead.",
+            "icon_character": "✨"
+          }
+        },
+        {
+          "type": "about_item",
+          "settings": {
+            "item_title": "Paixão Oriental",
+            "item_description": "Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.",
+            "icon_character": "🌸"
+          }
+        }
+      ]
     }
   ]
 }
