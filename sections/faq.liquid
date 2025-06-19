@@ -1,6 +1,258 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<style>
+  .faq-section {
+    font-family: sans-serif;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #f9f9f9; /* Um fundo suave para a seção */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   }
+
+  .faq-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 40px;
+    color: {{ section.settings.heading_color }};
+    {% if section.settings.heading_bold %}
+      font-weight: bold;
+    {% endif %}
+  }
+
+  .faq-image-container {
+    margin-bottom: 40px;
+    overflow: hidden; /* Garante que a imagem se ajuste bem */
+    border-radius: 8px;
+  }
+
+  .faq-image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 8px;
+  }
+
+  .faq-list {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 18px 25px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: {{ section.settings.question_color }};
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .faq-question:hover {
+    background-color: #f0f0f0;
+  }
+
+  .faq-question .arrow {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-answer {
+    padding: 0 25px;
+    font-size: 1.1em;
+    color: {{ section.settings.answer_color }};
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 200px; /* Altura máxima para a transição (ajuste conforme necessário) */
+    padding: 15px 25px 25px; /* Adiciona padding quando aberto */
+  }
+
+  .faq-item.active .faq-question .arrow {
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 768px) {
+    .faq-section h2 {
+      font-size: 2.2em;
+    }
+    .faq-question {
+      font-size: 1.1em;
+      padding: 15px 20px;
+    }
+    .faq-answer {
+      font-size: 1em;
+      padding: 0 20px;
+    }
+    .faq-item.active .faq-answer {
+      padding: 10px 20px 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-section {
+      padding: 30px 15px;
+    }
+    .faq-question {
+      font-size: 1em;
+      padding: 12px 15px;
+    }
+    .faq-answer {
+      padding: 0 15px;
+    }
+    .faq-item.active .faq-answer {
+      padding: 8px 15px 15px;
+    }
+  }
+</style>
+
+<div class="faq-section">
+  <h2>{{ section.settings.heading_text }}</h2>
+
+  {% if section.settings.faq_image != blank %}
+    <div class="faq-image-container">
+      <img src="{{ section.settings.faq_image | img_url: 'master' }}"
+           alt="{{ section.settings.heading_text }}"
+           loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="faq-list">
+    {% for block in section.blocks %}
+      <div class="faq-item" id="faq-{{ block.id }}">
+        <div class="faq-question">
+          {{ block.settings.question_text }}
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>{{ block.settings.answer_text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        // Fecha todos os outros itens abertos
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+        // Alterna a classe 'active' para o item clicado
+        item.classList.toggle('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Seção FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Título da Seção FAQ",
+      "default": "Perguntas Frequentes"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_bold",
+      "label": "Título em Negrito?",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Cor do Título da Seção",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Cor da Pergunta",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Cor da Resposta",
+      "default": "#666666"
+    },
+    {
+      "type": "image_picker",
+      "id": "faq_image",
+      "label": "Imagem de Destaque da Seção"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Item de FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question_text",
+          "label": "Pergunta",
+          "default": "Qual é a sua pergunta?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_text",
+          "label": "Resposta",
+          "default": "<p>Insira a resposta para a pergunta aqui.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ - Amaterasu",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "Os tênis da Amaterasu Company são originais?",
+            "answer_text": "<p>Trabalhamos exclusivamente com réplicas premium, também conhecidas como réplicas de primeira linha. Nossos produtos são cuidadosamente selecionados para oferecer a mais alta qualidade em materiais e acabamentos, proporcionando uma experiência visual e de conforto idêntica aos modelos originais.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "Qual é o prazo de entrega?",
+            "answer_text": "<p>Nosso prazo de entrega varia de 15 a 25 dias úteis, dependendo da sua localização. Todos os pedidos possuem rastreamento para que você possa acompanhar cada etapa.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question_text": "Como posso realizar uma troca ou devolução?",
+            "answer_text": "<p>Aceitamos trocas e devoluções em até 7 dias após o recebimento do produto, desde que o item esteja em perfeitas condições, sem sinais de uso. Para iniciar o processo, entre em contato com nosso suporte ao cliente.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
