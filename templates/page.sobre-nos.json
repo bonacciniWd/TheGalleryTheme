@@ -17,29 +17,26 @@
         "padding_bottom": 28
       }
     },
-    "page_QDpiR4": {
-      "type": "page",
+    "about_y83t34": {
+      "type": "about",
+      "name": "Sobre Nós",
       "settings": {
-        "page": "seja-um-revendedor",
-        "heading_size": "h1",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "custom_liquid_RbJpPQ": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"text-align: center; padding: 20px; background-color: #f5f5f5; border-radius: 10px; margin: 20px 0;\">\n  \n  <p style=\"font-size: 16px; color: #666; margin-bottom: 20px;\">Baixe nosso catálogo completo e comece a revender nossos produtos!</p>\n  <a href=\"https://drive.google.com/uc?export=download&id=1dgyjxUzsdtjHFhp1SMgXYOS3Ix7l9Brq\" style=\"background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 16px;\">Baixar Catálogo</a>\n</div>",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "main_heading": "Quem Somos Nós",
+        "accent_color": "#ff6f61",
+        "heading_block1": "Nossa Essência",
+        "text_block1": "<p>Bem-vindo à Amaterasu Company – onde a tradição oriental encontra a excelência contemporânea. Inspirados pela grandiosidade de Amaterasu, a Deusa do Sol na mitologia japonesa, nossa marca nasceu em 2025 com a missão de iluminar seu estilo com tênis de altíssima qualidade, combinando design autêntico e desempenho superior.</p>",
+        "image_block1": "shopify://shop_images/cloudflare.svg",
+        "heading_block2": "Qualidade Inovadora",
+        "text_block2": "<p>Na Amaterasu Company, trabalhamos exclusivamente com réplicas premium – também conhecidas como réplicas de primeira linha –, selecionando os melhores materiais e acabamentos para garantir que cada par ofereça conforto, durabilidade e um visual impecável, digno de um verdadeiro sneakerhead.</p>",
+        "image_block2": "shopify://shop_images/Whisk_b33a0afe57.jpg",
+        "heading_block3": "Paixão Oriental",
+        "text_block3": "<p>Nossa paixão pela cultura oriental vai além do nome: ela se reflete em cada detalhe, desde a estética minimalista até a busca pela perfeição, valores profundamente enraizados no Oriente. Queremos que você não apenas calce um tênis, mas uma experiência que honre tradição e modernidade.</p>",
+        "image_block3": "shopify://shop_images/master.svg"
       }
     }
   },
   "order": [
     "main",
-    "page_QDpiR4",
-    "custom_liquid_RbJpPQ"
+    "about_y83t34"
   ]
 }
