@@ -17,26 +17,36 @@
     {% if section.settings.heading_bold %}
       font-weight: bold;
     {% endif %}
+    text-align: center; /* Centraliza o título principal */
   }
 
-  .faq-image-container {
-    margin-bottom: 40px;
-    overflow: hidden; /* Garante que a imagem se ajuste bem */
-    border-radius: 8px;
+  .faq-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
+    gap: 40px; /* Espaço entre as colunas */
+    align-items: start; /* Alinha o conteúdo das colunas no topo */
+    margin-top: 40px; /* Espaço após o título */
   }
 
-  .faq-image-container img {
+  .faq-content-left {
+    text-align: left;
+  }
+
+  .faq-image-right {
+    text-align: center;
+  }
+
+  .faq-image-right img {
     max-width: 100%;
     height: auto;
     display: block;
-    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
     border-radius: 8px;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra para destacar a imagem */
   }
 
   .faq-list {
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
+    /* Não precisa mais de max-width aqui, pois está dentro da coluna */
   }
 
   .faq-item {
@@ -86,6 +96,17 @@
     transform: rotate(180deg);
   }
 
+  /* Responsividade para telas menores: colunas viram linhas */
+  @media (max-width: 991px) { /* Ajuste este breakpoint conforme necessário */
+    .faq-grid-container {
+      grid-template-columns: 1fr; /* Coluna única em telas menores */
+      gap: 30px;
+    }
+    .faq-image-right {
+      order: -1; /* Coloca a imagem acima do conteúdo em mobile, se desejar */
+    }
+  }
+
   @media (max-width: 768px) {
     .faq-section h2 {
       font-size: 2.2em;
@@ -123,26 +144,30 @@
 <div class="faq-section">
   <h2>{{ section.settings.heading_text }}</h2>
 
-  {% if section.settings.faq_image != blank %}
-    <div class="faq-image-container">
-      <img src="{{ section.settings.faq_image | img_url: 'master' }}"
-           alt="{{ section.settings.heading_text }}"
-           loading="lazy">
-    </div>
-  {% endif %}
-
-  <div class="faq-list">
-    {% for block in section.blocks %}
-      <div class="faq-item" id="faq-{{ block.id }}">
-        <div class="faq-question">
-          {{ block.settings.question_text }}
-          <span class="arrow">▼</span>
-        </div>
-        <div class="faq-answer">
-          <p>{{ block.settings.answer_text }}</p>
-        </div>
+  <div class="faq-grid-container">
+    <div class="faq-content-left">
+      <div class="faq-list">
+        {% for block in section.blocks %}
+          <div class="faq-item" id="faq-{{ block.id }}">
+            <div class="faq-question">
+              {{ block.settings.question_text }}
+              <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+              <p>{{ block.settings.answer_text }}</p>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </div>
+
+    <div class="faq-image-right">
+      {% if section.settings.faq_image != blank %}
+        <img src="{{ section.settings.faq_image | img_url: 'master' }}"
+             alt="{{ section.settings.heading_text }}"
+             loading="lazy">
+      {% endif %}
+    </div>
   </div>
 </div>
 
@@ -203,7 +228,7 @@
     {
       "type": "image_picker",
       "id": "faq_image",
-      "label": "Imagem de Destaque da Seção"
+      "label": "Imagem de Destaque da Seção (Direita)"
     }
   ],
   "blocks": [
