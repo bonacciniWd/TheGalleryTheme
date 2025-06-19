@@ -9,29 +9,7 @@
       font-family: 'Arial', sans-serif; /* Fonte padrão para todo o texto, pode ser ajustada aqui */
     }
 
-    /* Estilos do Título Principal (H2) */
-    .amaterasu-about h2 {
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      color: {{ section.settings.main_heading_color }}; /* Cor do título principal, configurável */
-      font-family: 'Helvetica Neue', Arial, sans-serif; /* Fonte para H2, ajuste se necessário */
-      font-weight: 700;
-      position: relative;
-      display: inline-block;
-    }
-
-    .amaterasu-about h2::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: -10px;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background-color: {{ section.settings.accent_color }}; /* Cor de destaque, configurável */
-      border-radius: 2px;
-    }
-
+   
     /* Estilos dos Blocos de Conteúdo */
     .amaterasu-about .container {
       max-width: 1000px;
