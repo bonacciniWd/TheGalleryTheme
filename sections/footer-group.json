@@ -88,7 +88,8 @@
         "dfef869b-edb7-48ea-954b-9a5e4f6e74f9"
       ],
       "custom_css": [
-        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}"
+        ".footer__content-bottom-wrapper {display: flex; width: 100%; justify-content: center;}",
+        ".footer__copyright {display: none;}"
       ],
       "settings": {
         "color_scheme": "accent-1",
