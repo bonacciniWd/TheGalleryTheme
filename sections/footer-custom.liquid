@@ -1,6 +1,272 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<footer class="footer section-{{ section.id }}">
+  <div class="footer-content">
+    <div class="footer-group footer-group--gallery">
+      {% if section.settings.logo_gallery != blank %}
+        <img src="{{ section.settings.logo_gallery | image_url: width: 300 }}" alt="{{ section.settings.logo_gallery.alt | escape }}" class="footer-logo">
+      {% else %}
+        <img src="{{ 'logo.svg' | asset_url }}" alt="Logo The Gallery" class="footer-logo">
+      {% endif %}
+      <div class="footer-copyright">
+        <p>{{ 'now' | date: "%Y" }} &copy; {{ section.settings.copyright_text_gallery }}</p>
+        <p>{{ section.settings.rights_reserved_text }}</p>
+      </div>
+    </div>
+
+    <div class="footer-group footer-group--vrz">
+      {% if section.settings.logo_vrz != blank %}
+        <img src="{{ section.settings.logo_vrz | image_url: width: 150 }}" alt="{{ section.settings.logo_vrz.alt | escape }}" class="footer-logo-1">
+      {% else %}
+        <img src="{{ 'vrz.png' | asset_url }}" alt="Logo VRZ" class="footer-logo-1">
+      {% endif %}
+      <p class="footer-coded-by">{{ section.settings.coded_by_text }}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Estilos do Footer */
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: {{ section.settings.padding_vertical_mobile }}px 20px; /* Ajuste para mobile */
+    text-align: center;
+    border-top: 1px solid {{ section.settings.border_color }};
   }
+
+  .section-{{ section.id }} .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: {{ section.settings.content_max_width }}px;
+    margin: 0 auto;
+  }
+
+  .section-{{ section.id }} .footer-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-{{ section.id }} .footer-logo {
+    max-width: {{ section.settings.logo_gallery_width_mobile }}px; /* Ajuste para mobile */
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .section-{{ section.id }} .footer-logo-1 {
+    max-width: {{ section.settings.logo_vrz_width_mobile }}px; /* Ajuste para mobile */
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .section-{{ section.id }} .footer-logo:hover {
+    opacity: 0.8;
+  }
+
+  .section-{{ section.id }} .footer-copyright,
+  .section-{{ section.id }} .footer-coded-by {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.text_size_mobile }}px; /* Ajuste para mobile */
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* Layout para desktop */
+  @media (min-width: 769px) {
+    .section-{{ section.id }} {
+      padding: {{ section.settings.padding_vertical_desktop }}px 20px; /* Ajuste para desktop */
+    }
+
+    .section-{{ section.id }} .footer-content {
+      flex-direction: row;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .section-{{ section.id }} .footer-logo {
+      max-width: {{ section.settings.logo_gallery_width_desktop }}px; /* Ajuste para desktop */
+    }
+
+    .section-{{ section.id }} .footer-logo-1 {
+      max-width: {{ section.settings.logo_vrz_width_desktop }}px; /* Ajuste para desktop */
+    }
+
+    .section-{{ section.id }} .footer-copyright,
+    .section-{{ section.id }} .footer-coded-by {
+      font-size: {{ section.settings.text_size_desktop }}px; /* Ajuste para desktop */
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Rodapé Customizado",
+  "tag": "section",
+  "class": "section-footer-custom",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Configurações Gerais"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Cor de Fundo",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Cor da Borda Superior",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Cor do Texto",
+      "default": "#ffffff"
+    },
+   {
+  "type": "range",
+  "id": "content_max_width",
+  "min": 768,
+  "max": 1400,
+  "step": 8, // Alterado para 8
+  "unit": "px",
+  "label": "Largura Máxima do Conteúdo",
+  "default": 1200 // 1200 - 768 = 432. 432 é divisível por 8 (432 / 8 = 54).
+},
+    {
+      "type": "header",
+      "content": "Espaçamento Vertical (Padding)"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Vertical (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_desktop",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Vertical (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Logo The Gallery"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_gallery",
+      "label": "Logo da The Gallery"
+    },
+    {
+      "type": "range",
+      "id": "logo_gallery_width_mobile",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Largura da Logo (Mobile)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "logo_gallery_width_desktop",
+      "min": 100,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Largura da Logo (Desktop)",
+      "default": 160
+    },
+    {
+      "type": "text",
+      "id": "copyright_text_gallery",
+      "label": "Texto de Copyright (Ex: The Gallery)",
+      "default": "The Gallery"
+    },
+    {
+      "type": "text",
+      "id": "rights_reserved_text",
+      "label": "Texto de Direitos Reservados",
+      "default": "All Rights Reserved."
+    },
+    {
+      "type": "header",
+      "content": "Logo VRZ Studio"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_vrz",
+      "label": "Logo da VRZ Studio"
+    },
+    {
+      "type": "range",
+      "id": "logo_vrz_width_mobile",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Largura da Logo VRZ (Mobile)",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "logo_vrz_width_desktop",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Largura da Logo VRZ (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "coded_by_text",
+      "label": "Texto \"Coded by\"",
+      "default": "Coded by Vrz Studio"
+    },
+    {
+      "type": "header",
+      "content": "Tamanho do Texto"
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Tamanho do Texto (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Tamanho do Texto (Desktop)",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rodapé Personalizado",
+      "category": "Footer"
+    }
+  ]
+}
 {% endschema %}
