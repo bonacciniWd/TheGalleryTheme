@@ -404,17 +404,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="gallery"></div>
 
-    {%- if settings.cart_type == 'drawer' -%}
-      <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
-{% if customer == nil %}
+   {% if customer == nil %}
   <div id="newsletter-popup" class="popup">
     <div class="popup-content">
       <span class="popup-close">&times;</span>
-      <form id="newsletter-form">
-        <input type="email" name="email" placeholder="Digite seu e-mail" required>
+      {% form 'customer', id: 'newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="Digite seu e-mail" required>
         <button type="submit">Cadastrar</button>
-      </form>
+      {% endform %}
+
+      {% if form.posted_successfully? %}
+        <script>
+          localStorage.setItem("popupClosed", "true");
+          document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("newsletter-popup").style.display = "none";
+            alert("Obrigado por se cadastrar! O cupom chegará no seu e-mail.");
+          });
+        </script>
+      {% endif %}
     </div>
   </div>
 
@@ -426,13 +434,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6); /* Fundo escuro para destaque */
+      background: rgba(0, 0, 0, 0.6);
       justify-content: center;
       align-items: center;
+      z-index: 9999;
     }
 
     .popup-content {
-      background: url("{{ 'popup.png' | asset_url }}") center/cover no-repeat; 
+      background: url("{{ 'popup.png' | asset_url }}") center/cover no-repeat;
       width: 380px;
       height: 500px;
       border-radius: 12px;
@@ -440,7 +449,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end; /* Mantém o form na parte inferior */
+      justify-content: flex-end;
       padding: 20px;
     }
 
@@ -458,7 +467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px; /* Espaço entre input e botão */
+      gap: 12px;
     }
 
     input[type="email"] {
@@ -469,10 +478,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       text-align: center;
       font-size: 16px;
       color: white;
-      background: rgba(255, 255, 255, 0.2); /* Vidro fosco */
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
       outline: none;
-      margin-bottom: 10px; /* Espaço extra para evitar sobreposição */
+      margin-bottom: 10px;
     }
 
     input::placeholder {
@@ -480,7 +489,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     button {
-      background-color: #A68D7B; /* Mocha Mousse */
+      background-color: #A68D7B;
       border: none;
       padding: 12px 24px;
       border-radius: 8px;
@@ -490,7 +499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       font-size: 16px;
       color: white;
       transition: 0.3s;
-      width: 90%; /* Garante alinhamento com input */
+      width: 90%;
     }
 
     button:hover {
@@ -500,20 +509,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
+      const popup = document.getElementById("newsletter-popup");
       if (!localStorage.getItem("popupClosed")) {
-        document.getElementById("newsletter-popup").style.display = "flex";
+        popup.style.display = "flex";
       }
 
       document.querySelector(".popup-close").addEventListener("click", function() {
-        document.getElementById("newsletter-popup").style.display = "none";
-        localStorage.setItem("popupClosed", "true");
-      });
-
-      document.getElementById("newsletter-form").addEventListener("submit", function(event) {
-        event.preventDefault();
-        let email = this.querySelector("input[name='email']").value;
-        alert("Obrigado por se cadastrar! O cupom chegará no seu e-mail.");
-        document.getElementById("newsletter-popup").style.display = "none";
+        popup.style.display = "none";
         localStorage.setItem("popupClosed", "true");
       });
     });
