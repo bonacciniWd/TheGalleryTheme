@@ -396,23 +396,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    {% comment %}
-      Inclua o CSS e o JS da galeria
-    {% endcomment %}
-    <link rel="stylesheet" href="{{ 'gallery.css' | asset_url }}">
-    <script src="{{ 'gallery.js' | asset_url }}" defer></script>
-
-    <div class="gallery"></div>
-
-  {% if customer == nil %}
+   {% if customer == nil %}
   <div id="newsletter-popup" class="popup">
     <div class="popup-content">
       <span class="popup-close">&times;</span>
 
       {% if form.posted_successfully? %}
-        <p style="color: white; font-size: 18px; margin-bottom: 30px;">
+        <p id="success-message" style="color: white; font-size: 18px; margin-bottom: 30px;">
           Obrigado por se cadastrar! O cupom chegará no seu e-mail.
         </p>
+        <script>
+          localStorage.setItem("popupSubscribed", "true");
+        </script>
       {% else %}
         {% form 'customer', id: 'newsletter-form' %}
           <input type="hidden" name="contact[tags]" value="newsletter">
@@ -505,27 +500,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </style>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const popup = document.getElementById("newsletter-popup");
-
-      {% if form.posted_successfully? %}
-        // Se o formulário foi enviado com sucesso, fecha e salva no localStorage
-        localStorage.setItem("popupClosed", "true");
-        popup.style.display = "none";
-      {% else %}
-        // Se ainda não foi enviado, e não foi fechado antes, mostra o popup
-        if (!localStorage.getItem("popupClosed")) {
-          popup.style.display = "flex";
-        }
-      {% endif %}
-
-      // Ao clicar no X, fecha e salva no localStorage
       const closeBtn = document.querySelector(".popup-close");
-      if (closeBtn) {
-        closeBtn.addEventListener("click", function() {
+
+      const subscribed = localStorage.getItem("popupSubscribed");
+
+      // Se já se inscreveu, nunca mais mostrar
+      if (subscribed === "true") {
+        popup.style.display = "none";
+        return;
+      }
+
+      // Mostrar popup se ainda não fechou nem se inscreveu
+      popup.style.display = "flex";
+
+      // Fechar manualmente
+      closeBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+        localStorage.setItem("popupSubscribed", "true");
+      });
+
+      // Se sucesso, esconder popup depois de 3s
+      const successMessage = document.getElementById("success-message");
+      if (successMessage) {
+        setTimeout(() => {
           popup.style.display = "none";
-          localStorage.setItem("popupClosed", "true");
-        });
+        }, 3000);
       }
     });
   </script>
