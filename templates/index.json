@@ -203,15 +203,6 @@
         "padding_bottom": 64
       }
     },
-    "custom_liquid_tPR6Rr": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"wrapper\">\n\n  <div class=\"parent\">\n    {% assign allowed_collections = \"Conjunto Feminino,Cropped Feminino,Calça Feminina,Casacos\" | split: \",\" %}\n    {% for collection in collections %}\n      {% if allowed_collections contains collection.title %}\n        <div class=\"collection-card\">\n          <a href=\"{{ collection.url }}\">\n            <div class=\"image-container\">\n              {% if collection.image %}\n                <img src=\"{{ collection.image | img_url: '900x900', crop: 'center' }}\" alt=\"{{ collection.title }}\">\n              {% else %}\n                <img src=\"{{ 'placeholder.png' | asset_url }}\" alt=\"Sem imagem\">\n              {% endif %}\n            </div>\n            <div class=\"collection-info\">{{ collection.title }}</div>\n          </a>\n        </div>\n      {% endif %}\n    {% endfor %}\n  </div>\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
-        "color_scheme": "",
-        "padding_top": 100,
-        "padding_bottom": 100
-      }
-    },
     "custom_liquid_aXtE3H": {
       "type": "custom-liquid",
       "settings": {
@@ -372,7 +363,6 @@
     "custom_liquid_kgnPwV",
     "13e37e11-4abd-406f-b842-920e2a8de5d5",
     "custom_liquid_XrAxRT",
-    "custom_liquid_tPR6Rr",
     "custom_liquid_aXtE3H",
     "custom_liquid_xbbLbQ",
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
