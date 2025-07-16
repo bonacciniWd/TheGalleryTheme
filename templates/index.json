@@ -314,7 +314,7 @@
       "type": "featured-blog",
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
-        "heading": "GALLERY NOTES",
+        "heading": "\"READING SESSION\" .gallery's notes",
         "heading_size": "h2",
         "blog": "news",
         "post_limit": 4,
