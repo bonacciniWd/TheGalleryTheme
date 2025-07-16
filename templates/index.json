@@ -215,7 +215,7 @@
     "custom_liquid_aXtE3H": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"art-subtitle\">\n  Dê um check em nossa coleção de arte de rua!\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "custom_liquid": "<div class=\"art-subtitle\">\n  ARTE DE RUA .conheça a coleção de lambe-lambes\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 0
