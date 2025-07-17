@@ -303,6 +303,7 @@
     },
     "featured_blog_tXicJd": {
       "type": "featured-blog",
+      "custom_css": [],
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
         "heading": "READING SESSION .gallery's notes",
@@ -311,7 +312,7 @@
         "post_limit": 4,
         "columns_desktop": 4,
         "color_scheme": "",
-        "show_image": true,
+        "show_image": false,
         "show_date": true,
         "show_author": true,
         "show_view_all": true,
