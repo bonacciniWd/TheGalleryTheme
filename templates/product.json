@@ -204,7 +204,7 @@
           "settings": {
             "image": "shopify://shop_images/thegallery-Jul2023-IconesEcommerce-Frete-2.svg",
             "title": "Frete grátis",
-            "text": "<p>Para compras acima de R$ 399, a entrega fica por nossa conta</p>",
+            "text": "<p>Para compras acima de R$ 500 a entrega fica por nossa conta</p>",
             "link_label": "",
             "link": ""
           }
