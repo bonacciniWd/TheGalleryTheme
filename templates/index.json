@@ -306,7 +306,7 @@
       "custom_css": [],
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
-        "heading": "READING SESSION .gallery's notes",
+        "heading": "READING SESSION .gallery notes",
         "heading_size": "h2",
         "blog": "news",
         "post_limit": 4,
