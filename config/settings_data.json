@@ -127,7 +127,7 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "ceramic-by-flame",
-    "cart_color_scheme": "background-2",
+    "cart_color_scheme": "background-1",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
