@@ -77,36 +77,6 @@
         "color_scheme": "background-1"
       }
     },
-    "rich_text_3xEH77": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_MyEHVX": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h1"
-          }
-        },
-        "text_qHJmpw": {
-          "type": "text",
-          "settings": {
-            "text": "<h5>Sofisticação e atitude se encontram no universo masculino da thegallery.co. Peças atemporais, minimalistas e com a essência do skate. Entre o street e a alfaiataria, criamos um novo olhar para o urbano. Explore camisetas, camisas, calças, jaquetas e shapes com design sofisticado e identidade única.</h5>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_MyEHVX",
-        "text_qHJmpw"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "disabled": true,
@@ -128,57 +98,13 @@
         "padding_bottom": 36
       }
     },
-    "bff4db11-e873-4576-8ead-a864c906d75b": {
-      "type": "multicolumn",
-      "blocks": {
-        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-1": {
-          "type": "column",
-          "settings": {
-            "title": "Slow fashion movement",
-            "text": "<h5>Descaleramos em prol do planeta Terra e de todos que aqueles que fazem parte da nossa sociedade.</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-2": {
-          "type": "column",
-          "settings": {
-            "title": "Art is our kind of thing",
-            "text": "<h5>Vestimos arte , criamos movimento.</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-3": {
-          "type": "column",
-          "settings": {
-            "title": "In people we trust",
-            "text": "<h5>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-1",
-        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-2",
-        "template--20798371463484__bff4db11-e873-4576-8ead-a864c906d75b-column-3"
-      ],
+    "custom_liquid_X3yFz9": {
+      "type": "custom-liquid",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 100,
-        "padding_bottom": 32
+        "custom_liquid": "<section class=\"custom-grid-section\">\n  <div class=\"custom-grid\">\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'tag.png' | asset_url }}\" alt=\"Ícone Slow Fashion\">\n      <h3>Slow fashion Movement</h3>\n      <p>Guiados por princípios claros na criação de peças que inspiram confiança</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'abstract.png' | asset_url }}\" alt=\"Ícone Art\">\n      <h3>Moda, skate e arte</h3>\n      <p>Navegamos através da intersecção desses três elementos como peça contribuinte para a cultura</p>\n    </div>\n    <div class=\"custom-grid-item\">\n      <img src=\"{{ 'unity.png' | asset_url }}\" alt=\"Ícone People\">\n      <h3>In People we trust</h3>\n      <p>Valorizamos a criatividade e a cocriação, vestimos pessoas e suas formas únicas de articular-se</p>\n    </div>\n  </div>\n</section>\n\n<style>\n.custom-grid-section {\n  background: url('{{ 'blank' | asset_url }}') no-repeat center center;\n  background-size: cover;\n  padding: 80px 40px; /* Mais padding para evitar bordas coladas */\n}\n\n.custom-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));\n  gap: 30px;\n  max-width: 1400px;\n  margin: auto;\n  text-align: center;\n}\n\n.custom-grid-item {\n  background: rgba(255, 255, 255, 0.9); /* Fundo mais opaco para melhor contraste */\n  padding: 30px;\nmargin: 20px;\n  border-radius: 12px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  transition: transform 0.3s ease;\n}\n\n.custom-grid-item:hover {\n  transform: scale(1.05); /* Efeito sutil de hover */\n}\n\n.custom-grid-item img {\n  width: 70px;\n  height: auto;\n  margin-bottom: 15px;\n}\n\n.custom-grid-item h3 {\n  font-size: 1.6rem;\n  font-weight: bold;\n  color: #222;\n  margin-bottom: 12px;\n}\n\n.custom-grid-item p {\n  font-size: 1rem;\n  color: #555;\n  line-height: 1.6;\n  max-width: 90%;\n}\n\n/* Responsivo */\n@media (max-width: 768px) {\n  .custom-grid-section {\n    padding: 50px 20px;\n  }\n  \n  .custom-grid {\n    gap: 20px;\n  }\n\n  .custom-grid-item {\n    padding: 20px;\n  }\n\n </style>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "33d0b73f-cb88-47ef-ba87-a9183c7cb646": {
@@ -220,9 +146,8 @@
     "featured_collection_GAzEXU",
     "image_with_text_YkMyrx",
     "banner",
-    "rich_text_3xEH77",
     "product-grid",
-    "bff4db11-e873-4576-8ead-a864c906d75b",
+    "custom_liquid_X3yFz9",
     "33d0b73f-cb88-47ef-ba87-a9183c7cb646"
   ]
 }
