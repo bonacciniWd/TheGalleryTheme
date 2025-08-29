@@ -76,59 +76,6 @@
         "padding_bottom": 36
       }
     },
-    "multicolumn_TGwDUh": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_UAhMzg": {
-          "type": "column",
-          "settings": {
-            "title": "Slow fashion movement",
-            "text": "<h5>Descaleramos em prol do planeta Terra e de todos que aqueles que fazem parte da nossa sociedade.</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_EryEQb": {
-          "type": "column",
-          "settings": {
-            "title": "Art is our kind of thing",
-            "text": "<h5>A arte é a nossa essência. Por isso, vemos a roupa como uma tela em branco e nos posicionamos como uma marca livre.</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_pKykVK": {
-          "type": "column",
-          "settings": {
-            "title": "In people we trust",
-            "text": "<h5>Valorizamos a criatividade, a particularidade de cada um e nascemos para fazer sentido na vida de todo mundo.</h5>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_UAhMzg",
-        "column_EryEQb",
-        "column_pKykVK"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 100,
-        "padding_bottom": 32
-      }
-    },
     "multirow_JTjdLH": {
       "type": "multirow",
       "blocks": {
@@ -236,7 +183,6 @@
     "banner",
     "image_with_text_n3Hedi",
     "product-grid",
-    "multicolumn_TGwDUh",
     "multirow_JTjdLH",
     "multicolumn_6Rc8nX"
   ]
