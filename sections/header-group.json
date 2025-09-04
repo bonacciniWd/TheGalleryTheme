@@ -52,8 +52,8 @@
         "enable_customer_avatar": true,
         "mobile_logo_position": "left",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
     "1702556271eaf9b50c": {
