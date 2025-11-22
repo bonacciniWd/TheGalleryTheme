@@ -92,6 +92,24 @@
         "padding_bottom": 0
       }
     },
+    "custom_liquid_QqV7b3": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"fine-art-title\">\n  Básico Bem Feito\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_yNDLPX": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"fine-art-title\">\n  Street Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
     "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
       "type": "slideshow",
       "blocks": {
@@ -227,24 +245,6 @@
         "color_scheme": "background-2",
         "padding_top": 12,
         "padding_bottom": 64
-      }
-    },
-    "custom_liquid_aXtE3H": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"art-subtitle\">\n  Arte De Rua\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 0
-      }
-    },
-    "custom_liquid_8UKxBD": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"art-subtitle\">\n  Básico Bem Feito\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 0
       }
     },
     "custom_liquid_xbbLbQ": {
@@ -445,9 +445,9 @@
     "custom_liquid_kgnPwV",
     "13e37e11-4abd-406f-b842-920e2a8de5d5",
     "custom_liquid_XrAxRT",
-    "custom_liquid_aXtE3H",
+    "custom_liquid_yNDLPX",
     "custom_liquid_xbbLbQ",
-    "custom_liquid_8UKxBD",
+    "custom_liquid_QqV7b3",
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
     "featured_blog_tXicJd",
     "slideshow_UQECmf",
