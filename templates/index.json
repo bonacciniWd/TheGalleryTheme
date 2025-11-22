@@ -320,6 +320,37 @@
         "padding_bottom": 36
       }
     },
+    "video_TmEY9R": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "Feito no Brasil",
+        "heading_size": "h2",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/L1041156.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/Imagem_do_WhatsApp_de_2025-08-09_a_s_10.18.28_e8d00c1e-2.jpg",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "slideshow_UQECmf": {
+      "type": "slideshow",
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Apresentação de slides sobre nossa marca"
+      }
+    },
     "65dc89e4-1148-46e1-9752-a54509740fe3": {
       "type": "multirow",
       "blocks": {
@@ -359,6 +390,7 @@
     "image_banner_zyji7q",
     "featured_collection",
     "custom_liquid_dPLTTL",
+    "video_TmEY9R",
     "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "featured_collection_cC38QC",
     "custom_liquid_kgnPwV",
@@ -368,6 +400,7 @@
     "custom_liquid_xbbLbQ",
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
     "featured_blog_tXicJd",
+    "slideshow_UQECmf",
     "65dc89e4-1148-46e1-9752-a54509740fe3"
   ]
 }
