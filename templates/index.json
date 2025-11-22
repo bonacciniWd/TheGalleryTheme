@@ -66,6 +66,23 @@
         "padding_bottom": 0
       }
     },
+    "video_TmEY9R": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "Feito no Brasil",
+        "heading_size": "h2",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/L1041156.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/Imagem_do_WhatsApp_de_2025-08-09_a_s_10.18.28_e8d00c1e-2.jpg",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
       "type": "slideshow",
       "blocks": {
@@ -303,6 +320,7 @@
     },
     "featured_blog_tXicJd": {
       "type": "featured-blog",
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.featured-blog.presets.name",
       "settings": {
@@ -320,23 +338,6 @@
         "padding_bottom": 36
       }
     },
-    "video_TmEY9R": {
-      "type": "video",
-      "name": "t:sections.video.presets.name",
-      "settings": {
-        "heading": "Feito no Brasil",
-        "heading_size": "h2",
-        "enable_video_looping": false,
-        "video": "shopify://files/videos/L1041156.mp4",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "cover_image": "shopify://shop_images/Imagem_do_WhatsApp_de_2025-08-09_a_s_10.18.28_e8d00c1e-2.jpg",
-        "description": "",
-        "full_width": true,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "slideshow_UQECmf": {
       "type": "slideshow",
       "name": "t:sections.slideshow.presets.name",
@@ -349,6 +350,35 @@
         "image_behavior": "none",
         "show_text_below": true,
         "accessibility_info": "Apresentação de slides sobre nossa marca"
+      }
+    },
+    "featured_collection_EMq8T9": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Basico bem feito",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "camisetas",
+        "products_to_show": 6,
+        "columns_desktop": 6,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "65dc89e4-1148-46e1-9752-a54509740fe3": {
@@ -401,6 +431,7 @@
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
     "featured_blog_tXicJd",
     "slideshow_UQECmf",
+    "featured_collection_EMq8T9",
     "65dc89e4-1148-46e1-9752-a54509740fe3"
   ]
 }
