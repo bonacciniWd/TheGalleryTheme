@@ -60,7 +60,7 @@
     "custom_liquid_dPLTTL": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"fine-art-title\">\n  Fine Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "custom_liquid": "<div class=\"fine-art-title\">\n  Feito No Brasil\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 0
@@ -70,7 +70,7 @@
       "type": "video",
       "name": "t:sections.video.presets.name",
       "settings": {
-        "heading": "Feito no Brasil",
+        "heading": "",
         "heading_size": "h2",
         "enable_video_looping": false,
         "video": "shopify://files/videos/L1041156.mp4",
@@ -81,6 +81,15 @@
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "custom_liquid_HAmxVP": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"fine-art-title\">\n  Fine Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
       }
     },
     "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
@@ -223,7 +232,16 @@
     "custom_liquid_aXtE3H": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"art-subtitle\">\n  ARTE DE RUA .conheça a coleção de lambe-lambes\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "custom_liquid": "<div class=\"art-subtitle\">\n  Arte De Rua\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_8UKxBD": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"art-subtitle\">\n  Básico Bem Feito\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 0
@@ -356,7 +374,7 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Basico bem feito",
+        "title": "",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -421,6 +439,7 @@
     "featured_collection",
     "custom_liquid_dPLTTL",
     "video_TmEY9R",
+    "custom_liquid_HAmxVP",
     "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "featured_collection_cC38QC",
     "custom_liquid_kgnPwV",
@@ -428,6 +447,7 @@
     "custom_liquid_XrAxRT",
     "custom_liquid_aXtE3H",
     "custom_liquid_xbbLbQ",
+    "custom_liquid_8UKxBD",
     "2fceb7f8-6f12-442d-8691-10f8d317cab3",
     "featured_blog_tXicJd",
     "slideshow_UQECmf",
