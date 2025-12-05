@@ -26,19 +26,41 @@
           "settings": {
             "text": "<p>ID not found.</p><p>Inscreva-se para saber mais sobre<br/>nossos lançamentos, projetos e exclusividades</p>"
           }
+        }
+      },
+      "block_order": [
+        "heading_eePnKK",
+        "paragraph_WXTGDe"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "newsletter_BVzHVA": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_FiGVGP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Assine nossos e-mails",
+            "heading_size": "h1"
+          }
         },
-        "email_form_Wq6fUY": {
+        "email_form_NjhinH": {
           "type": "email_form",
           "settings": {}
         }
       },
       "block_order": [
-        "heading_eePnKK",
-        "paragraph_WXTGDe",
-        "email_form_Wq6fUY"
+        "heading_FiGVGP",
+        "email_form_NjhinH"
       ],
+      "name": "t:sections.newsletter.presets.name",
       "settings": {
-        "color_scheme": "inverse",
+        "color_scheme": "background-2",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
@@ -67,7 +89,7 @@
           "type": "text",
           "settings": {
             "heading": "",
-            "subtext": "<h5>All rights reserved. thegallery®</h5><h5>CNPJ: 42.670.996/0001-92 - Cascavel - Paraná</h5><h5> <a href=\"https://www.instagram.com/thegallerycorporation/?hl=en\" title=\"https://www.instagram.com/thegallerycorporation/?hl=en\">Instagram / </a><a href=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\" title=\"https://www.tiktok.com/@thegallery.co?lang=pt-BR\">Tik Tok </a></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5>"
+            "subtext": "<h5>All rights reserved. thegallery®</h5><h5>CNPJ: 42.670.996/0001-92 - Cascavel - Paraná</h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5><h5></h5>"
           }
         },
         "e4f83e93-4bc9-413c-b778-2445f16bd54c": {
@@ -117,6 +139,7 @@
   },
   "order": [
     "newsletter_HjNMEg",
+    "newsletter_BVzHVA",
     "footer",
     "custom_liquid_4AjX3J"
   ]
