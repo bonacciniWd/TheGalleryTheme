@@ -11,61 +11,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "newsletter_HjNMEg": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_eePnKK": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h1"
-          }
-        },
-        "paragraph_WXTGDe": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>ID not found.</p><p>Inscreva-se para saber mais sobre<br/>nossos lançamentos, projetos e exclusividades</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_eePnKK",
-        "paragraph_WXTGDe"
-      ],
-      "settings": {
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "newsletter_BVzHVA": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_FiGVGP": {
-          "type": "heading",
-          "settings": {
-            "heading": "Assine nossos e-mails",
-            "heading_size": "h1"
-          }
-        },
-        "email_form_NjhinH": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading_FiGVGP",
-        "email_form_NjhinH"
-      ],
-      "name": "t:sections.newsletter.presets.name",
-      "settings": {
-        "color_scheme": "background-2",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -138,8 +83,6 @@
     }
   },
   "order": [
-    "newsletter_HjNMEg",
-    "newsletter_BVzHVA",
     "footer",
     "custom_liquid_4AjX3J"
   ]
