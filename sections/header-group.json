@@ -20,10 +20,18 @@
             "text": "ID not found.",
             "link": "shopify://collections/nwft"
           }
+        },
+        "announcement_C46w9T": {
+          "type": "announcement",
+          "settings": {
+            "text": "Frete Grátis Acima de R$500,00",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "d4709907-66e5-4fee-a7e7-b82cfafe8c77"
+        "d4709907-66e5-4fee-a7e7-b82cfafe8c77",
+        "announcement_C46w9T"
       ],
       "custom_css": [],
       "settings": {
@@ -31,7 +39,7 @@
         "show_line_separator": false,
         "show_social": true,
         "auto_rotate": true,
-        "change_slides_speed": 3,
+        "change_slides_speed": 4,
         "enable_country_selector": false,
         "enable_language_selector": false
       }
