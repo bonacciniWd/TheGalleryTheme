@@ -88,7 +88,7 @@
     "custom_liquid_HAmxVP": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"fine-art-title\">\n  Fine Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
+        "custom_liquid": "<div class=\"fine-art-title\">\n Quadros Fine Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
         "color_scheme": "",
         "padding_top": 40,
         "padding_bottom": 0
