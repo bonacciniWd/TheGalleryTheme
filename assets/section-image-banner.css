@@ -491,3 +491,11 @@
   }
 }
 
+.banner__media::before {
+  display: none !important;
+}
+
+.banner__media {
+  height: auto !important;
+}
+
