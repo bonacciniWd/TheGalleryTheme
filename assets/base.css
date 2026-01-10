@@ -3602,17 +3602,28 @@ details-disclosure > details {
 .banner__media+.banner__media {
     display: none;
 }
+/* Fix definitivo para remover bloco cinza mobile */
 @media screen and (max-width: 749px) {
-    .banner__media:first-child {
-        display: none;
-    }
-    .banner__media+.banner__media {
-        width: 100%;
-        display: block !important;
-    }
-}
-@media screen and (max-width: 749px) {
-    .banner__content::before{
+  .banner::before,
+  .banner__media::before,
+  .banner__content::before {
+    display: none !important;
     padding-bottom: 0 !important;
-    }
+  }
+  
+  .banner {
+    min-height: auto !important;
+    height: auto !important;
+  }
+  
+  .banner__media {
+    height: auto !important;
+    position: relative !important;
+  }
+  
+  .banner__media img {
+    width: 100%;
+    height: auto !important;
+    display: block;
+  }
 }
