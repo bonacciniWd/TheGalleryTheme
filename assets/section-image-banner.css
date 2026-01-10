@@ -499,3 +499,23 @@
   height: auto !important;
 }
 
+/* Mostrar apenas imagem desktop por padrão */
+.banner__media img:first-child {
+  display: block;
+}
+
+.banner__media img:last-child {
+  display: none;
+}
+
+/* No mobile, esconder desktop e mostrar mobile */
+@media screen and (max-width: 749px) {
+  .banner__media img:first-child {
+    display: none;
+  }
+  
+  .banner__media img:last-child {
+    display: block !important;
+  }
+}
+
