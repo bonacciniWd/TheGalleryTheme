@@ -82,15 +82,6 @@
         "padding_bottom": 36
       }
     },
-    "custom_liquid_HAmxVP": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"fine-art-title\">\n Quadros Fine Art\n</div>\n\n{{ 'grid.css' | asset_url | stylesheet_tag }}",
-        "color_scheme": "",
-        "padding_top": 40,
-        "padding_bottom": 0
-      }
-    },
     "966fe78b-5060-4ad6-88e7-9fe770c14d98": {
       "type": "slideshow",
       "blocks": {
@@ -464,7 +455,6 @@
     "featured_collection",
     "custom_liquid_dPLTTL",
     "video_TmEY9R",
-    "custom_liquid_HAmxVP",
     "966fe78b-5060-4ad6-88e7-9fe770c14d98",
     "featured_collection_cC38QC",
     "custom_liquid_kgnPwV",
