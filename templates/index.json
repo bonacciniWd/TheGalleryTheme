@@ -35,7 +35,7 @@
         "show_description": false,
         "description_style": "body",
         "collection": "nwft",
-        "products_to_show": 25,
+        "products_to_show": 15,
         "columns_desktop": 6,
         "full_width": true,
         "show_view_all": true,
