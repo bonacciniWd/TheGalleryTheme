@@ -15,15 +15,17 @@
 {%- endif -%}
 
 {%- style -%}
-  #Banner-{{ section.id }} .banner__media {
-    height: 700px !important;
-  }
-  
-  #Banner-{{ section.id }} .banner__media img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
+#Banner-{{ section.id }} .banner__media {
+  height: auto !important;
+  min-height: 500px;
+}
+
+#Banner-{{ section.id }} .banner__media img {
+  object-fit: contain !important;
+  height: auto !important;
+  width: 100%;
+  max-width: 100%;
+}
 {%- endstyle -%}
 
 {%- liquid
