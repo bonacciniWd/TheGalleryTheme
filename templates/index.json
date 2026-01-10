@@ -9,21 +9,59 @@
  */
 {
   "sections": {
-    "image_banner_zyji7q": {
-      "type": "image-banner",
+    "slideshow_Lp84hz": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_G9g7Ti": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/VISITE_NOSSO_SITE4.png",
+            "heading": "Slide de imagem",
+            "heading_size": "h1",
+            "subheading": "Conte a história de sua marca com vídeos e imagens",
+            "button_label": "Etiqueta de botão",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_QrwdzC": {
+          "type": "slide",
+          "settings": {
+            "heading": "Slide de imagem",
+            "heading_size": "h1",
+            "subheading": "Conte a história de sua marca com vídeos e imagens",
+            "button_label": "Etiqueta de botão",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_G9g7Ti",
+        "slide_QrwdzC"
+      ],
+      "name": "t:sections.slideshow.presets.name",
       "settings": {
-        "image": "shopify://shop_images/herobanner-horizontal-verao.png",
-        "image_2": "shopify://shop_images/hero-banner-vertical.png",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-2",
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "show_text_below": true,
+        "accessibility_info": "Apresentação de slides sobre nossa marca"
       }
     },
     "featured_collection": {
@@ -451,7 +489,7 @@
     }
   },
   "order": [
-    "image_banner_zyji7q",
+    "slideshow_Lp84hz",
     "featured_collection",
     "custom_liquid_dPLTTL",
     "video_TmEY9R",
