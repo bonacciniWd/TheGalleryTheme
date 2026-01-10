@@ -490,3 +490,26 @@
     color: currentColor;
   }
 }
+
+/* Fix para remover espaço cinza e parallax */
+.banner--adapt {
+  min-height: auto !important;
+}
+
+.banner__media {
+  position: relative !important;
+  height: auto !important;
+  transform: none !important;
+}
+
+.banner__media img {
+  position: relative !important;
+  transform: none !important;
+  object-fit: contain !important;
+  width: 100%;
+  height: auto !important;
+}
+
+.banner__content {
+  position: absolute !important;
+}
