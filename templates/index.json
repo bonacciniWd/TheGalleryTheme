@@ -9,6 +9,24 @@
  */
 {
   "sections": {
+    "image_banner_VLKaDp": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/herobanner-horizontal-verao.png",
+        "image_2": "shopify://shop_images/hero-banner-vertical.png",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "slideshow_Lp84hz": {
       "type": "slideshow",
       "name": "t:sections.slideshow.presets.name",
@@ -460,25 +478,19 @@
         "accessibility_info": "Apresentação de slides sobre nossa marca"
       }
     },
-    "image_banner_VLKaDp": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
+    "custom_liquid_9AbcjW": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "image": "shopify://shop_images/herobanner-horizontal-verao.png",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "center",
+        "custom_liquid": "",
         "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     }
   },
   "order": [
+    "image_banner_VLKaDp",
     "slideshow_Lp84hz",
     "featured_collection",
     "custom_liquid_dPLTTL",
@@ -498,6 +510,6 @@
     "65dc89e4-1148-46e1-9752-a54509740fe3",
     "newsletter_BxQat3",
     "slideshow_PMikV8",
-    "image_banner_VLKaDp"
+    "custom_liquid_9AbcjW"
   ]
 }
