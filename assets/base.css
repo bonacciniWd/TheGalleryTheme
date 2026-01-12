@@ -1329,9 +1329,6 @@ shopify-accelerated-checkout-cart {
   rgba(var(--color-shadow), var(--shadow-opacity));
 }
 
-<!-- Start Script Custom -->
-{% render "make_cot" %}
-  <!-- End Script Custom -->
 
 /* Button - other */
 
