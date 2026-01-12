@@ -98,9 +98,22 @@
             {{ form | payment_button }}
           {%- endif -%}
 
-          <!-- Start Script Custom -->
-{% render "make_cot" %}
-  <!-- End Script Custom -->
+          <div id="frete-melhor-envio">
+  <h3>Calcule o frete</h3>
+
+  <input 
+    type="text" 
+    id="cep-destino" 
+    placeholder="Digite seu CEP" 
+    maxlength="9"
+  >
+
+  <button id="calcular-frete">
+    Calcular frete
+  </button>
+
+  <div id="resultado-frete"></div>
+</div>
 
 
         </div>
