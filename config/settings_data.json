@@ -140,6 +140,14 @@
         "settings": {
           "color_scheme": "background-1"
         }
+      },
+      "wsp-whatsapp": {
+        "type": "wsp-whatsapp",
+        "settings": {
+          "show_whatsapp": true,
+          "whatsapp_number": "+5545999687685",
+          "whatsapp_msg": "Vim pelo site, preciso de ajuda"
+        }
       }
     },
     "content_for_index": [],
