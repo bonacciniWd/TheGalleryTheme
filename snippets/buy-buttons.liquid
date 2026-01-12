@@ -97,6 +97,12 @@
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}
+
+          <!-- Start Script Custom -->
+{% render "make_cot" %}
+  <!-- End Script Custom -->
+
+
         </div>
       {%- endform -%}
     </product-form>
