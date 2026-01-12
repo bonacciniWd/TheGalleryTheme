@@ -81,6 +81,11 @@
             %}
               disabled
             {% endif %}
+
+<!-- Start Script Custom -->
+{% render "make_cot" %}
+  <!-- End Script Custom -->
+
           >
             <span>
               {%- if product.selected_or_first_available_variant == null -%}
