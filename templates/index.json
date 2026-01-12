@@ -487,29 +487,6 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
-    },
-    "1768179414c354d3bb": {
-      "type": "apps",
-      "blocks": {
-        "frete_no_produto_shipping_calculator_9ecbGB": {
-          "type": "shopify://apps/frete-no-produto/blocks/shipping_calculator/31419da2-d36b-478b-b343-989a0e842a1c",
-          "settings": {
-            "shipping_calculator": true,
-            "background_color_container": "transparent",
-            "btnshipping": "#ff0000",
-            "color_text": "#ffffff",
-            "padding_external": 16,
-            "text": "Calcular Frete",
-            "pickup": ""
-          }
-        }
-      },
-      "block_order": [
-        "frete_no_produto_shipping_calculator_9ecbGB"
-      ],
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
@@ -533,7 +510,6 @@
     "65dc89e4-1148-46e1-9752-a54509740fe3",
     "newsletter_BxQat3",
     "slideshow_PMikV8",
-    "custom_liquid_9AbcjW",
-    "1768179414c354d3bb"
+    "custom_liquid_9AbcjW"
   ]
 }
